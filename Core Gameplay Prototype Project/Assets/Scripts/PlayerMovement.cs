@@ -1,0 +1,72 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum SpeedTier
+{
+    Slow,
+    Medium,
+    Fast
+}
+
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] float slowFollowSpeed;
+    [SerializeField] float mediumFollowSpeed;
+    [SerializeField] float fastFollowSpeed;
+    [SerializeField] float snapDistance = 0.01f;
+
+    float selectedFollowSpeed;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        SetSpeed(SpeedTier.Medium);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            MoveTowards(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+    }
+
+    public void SetSpeed(string tier)
+    {
+        SetSpeed((SpeedTier)Enum.Parse(typeof(SpeedTier), tier));
+    }
+
+    private void SetSpeed(SpeedTier tier)
+    {
+        switch(tier)
+        {
+            case SpeedTier.Slow:
+                selectedFollowSpeed = slowFollowSpeed;
+                break;
+            case SpeedTier.Medium:
+                selectedFollowSpeed = mediumFollowSpeed;
+                break;
+            case SpeedTier.Fast:
+                selectedFollowSpeed = fastFollowSpeed;
+                break;
+            default:
+                print("Unrecognized speed tier argument");
+                return;
+        }
+    }
+
+    private void MoveTowards(Vector2 target)
+    {
+        if (Vector2.Distance(transform.position, target) <= snapDistance)
+        {
+            transform.position = new Vector3(target.x, target.y, transform.position.z);
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target, selectedFollowSpeed * Time.deltaTime);
+        }
+    }
+}
