@@ -28,5 +28,12 @@ public class EnemyBehavior : MonoBehaviour, IBulletHittable
     public void OnBulletHit()
     {
         print(gameObject.name + " was hit by a bullet!");
+
+        // TODO: implement some form of health system
+        if (MockActionScene.Manager != null)
+        {
+            gameObject.SetActive(false);
+            MockActionScene.Manager.DisplayEndScreen(StageResult.Win);
+        }
     }
 }

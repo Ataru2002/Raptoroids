@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 77bac1a0433acca43831144223b17d78
+guid: 5fb00e052354a054fa32cc2383c17f2b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8780731059002482210
-    second: RaptoroidEx_0
+      213: -4553384029410632487
+    second: settingIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RaptoroidEx_0
+      name: settingIcon_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 19
-        width: 242
-        height: 292
+        x: 0
+        y: 0
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed1eae7cf93942680800000000000000
-      internalID: -8780731059002482210
+      spriteID: 9dcda01a9512fc0c0800000000000000
+      internalID: -4553384029410632487
       vertices: []
       indices: 
       edges: []
@@ -143,8 +143,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      RaptoroidEx_0: -8780731059002482210
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

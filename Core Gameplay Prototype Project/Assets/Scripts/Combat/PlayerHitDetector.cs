@@ -19,5 +19,12 @@ public class PlayerHitDetector : MonoBehaviour, IBulletHittable
     public void OnBulletHit()
     {
         print("Player hit by an enemy bullet!");
+
+        // TODO: implement some form of health system
+        if (MockActionScene.Manager != null)
+        {
+            gameObject.SetActive(false);
+            MockActionScene.Manager.DisplayEndScreen(StageResult.Lose);
+        }
     }
 }
