@@ -1,0 +1,73 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ButtonListener : MonoBehaviour
+{
+    private GameObject[] panels;
+    private GameObject defaultMenu; 
+    // Start is called before the first frame update
+    void Start()
+    {
+        // settingsPanel = GameObject.FindGameObjectWithTag("Panel");
+        panels = GameObject.FindGameObjectsWithTag("Panel");
+        foreach(GameObject panel in panels){
+            panel.SetActive(false);
+        }
+        defaultMenu = GameObject.FindGameObjectWithTag("DefaultMenu"); 
+    }
+
+    // Update is called once per frame
+ 
+
+    public void playListener(){
+        StartCoroutine(loadScene("CombatPrototype"));
+    }
+
+    public void shopListener(){
+        foreach(GameObject panel in panels){
+            if(panel.name == "CanvasShop"){
+                panel.SetActive(true);
+            }
+        }
+        defaultMenu.SetActive(false);
+    }
+
+    public void loadoutListener(){
+        foreach(GameObject panel in panels){
+            if(panel.name == "CanvasLoadout"){
+                panel.SetActive(true);
+            }
+        }
+
+        defaultMenu.SetActive(false);
+    }
+
+    public void settingsListener(){
+        
+        foreach(GameObject panel in panels){
+            if(panel.name == "CanvasSettings"){
+                panel.SetActive(true);
+            }
+        }
+        
+        defaultMenu.SetActive(false);    
+    }
+
+    public void backListener(){
+        foreach(GameObject panel in panels){
+            panel.SetActive(false);
+        }
+    
+        defaultMenu.SetActive(true);
+    }
+
+    IEnumerator loadScene(string sceneName){
+        AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(sceneName);
+
+        while(!sceneLoad.isDone){   //in the future change this
+            yield return null;
+        }
+    }
+}

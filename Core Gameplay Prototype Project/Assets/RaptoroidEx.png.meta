@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77bac1a0433acca43831144223b17d78
+guid: 16e89613a80547e498238f0d38e75b7d
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: RaptoroidEx_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 19
-        width: 242
-        height: 292
+        x: 19
+        y: 39
+        width: 292
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +143,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      RaptoroidEx_0: -8780731059002482210
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

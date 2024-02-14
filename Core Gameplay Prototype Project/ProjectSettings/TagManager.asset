@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Panel
+  - otherButton
+  - DefaultMenu
   layers:
   - Default
   - TransparentFX
