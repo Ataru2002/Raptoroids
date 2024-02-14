@@ -5,15 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class ButtonListener : MonoBehaviour
 {
-    private GameObject settingsPanel;
-    private GameObject[] allOtherButtons; 
+    private GameObject[] panels;
+    private GameObject defaultMenu; 
     // Start is called before the first frame update
     void Start()
     {
-        settingsPanel = GameObject.FindGameObjectWithTag("Panel");
-        settingsPanel.SetActive(false);
-        allOtherButtons = GameObject.FindGameObjectsWithTag("otherButton"); 
-        Debug.Log(settingsPanel);
+        // settingsPanel = GameObject.FindGameObjectWithTag("Panel");
+        panels = GameObject.FindGameObjectsWithTag("Panel");
+        foreach(GameObject panel in panels){
+            panel.SetActive(false);
+        }
+        defaultMenu = GameObject.FindGameObjectWithTag("DefaultMenu"); 
     }
 
     // Update is called once per frame
@@ -24,25 +26,41 @@ public class ButtonListener : MonoBehaviour
     }
 
     public void shopListener(){
-        StartCoroutine(loadScene("Shop"));
+        foreach(GameObject panel in panels){
+            if(panel.name == "CanvasShop"){
+                panel.SetActive(true);
+            }
+        }
+        defaultMenu.SetActive(false);
     }
 
     public void loadoutListener(){
-        StartCoroutine(loadScene("Loadout"));
+        foreach(GameObject panel in panels){
+            if(panel.name == "CanvasLoadout"){
+                panel.SetActive(true);
+            }
+        }
+
+        defaultMenu.SetActive(false);
     }
 
     public void settingsListener(){
-        settingsPanel.SetActive(true);
-        foreach (GameObject button in allOtherButtons){
-            button.SetActive(false);
+        
+        foreach(GameObject panel in panels){
+            if(panel.name == "CanvasSettings"){
+                panel.SetActive(true);
+            }
         }
+        
+        defaultMenu.SetActive(false);    
     }
 
     public void backListener(){
-        settingsPanel.SetActive(false);
-        foreach (GameObject button in allOtherButtons){
-            button.SetActive(true);
+        foreach(GameObject panel in panels){
+            panel.SetActive(false);
         }
+    
+        defaultMenu.SetActive(true);
     }
 
     IEnumerator loadScene(string sceneName){
