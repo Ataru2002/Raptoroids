@@ -1947,7 +1947,7 @@ MonoBehaviour:
   shieldObject: {fileID: 738247449}
   shieldButton: {fileID: 1249251950}
   cooldown: 10
-  shieldDuration: 5
+  shieldDuration: 1
   shieldPermanent: 1
 --- !u!1 &2137648545
 GameObject:

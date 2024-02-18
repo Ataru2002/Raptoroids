@@ -21,12 +21,15 @@ public class PlayerAbility : MonoBehaviour
     public bool shieldPermanent = true;
     void Start()
     {
-        shieldButton.onClick.AddListener(activateShield);
+        // shieldButton.onClick.AddListener(activateShield);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetButton("Jump")){
+            activateShield();
+        }
         diminishCooldown();
         updateShieldDuration();
     }
