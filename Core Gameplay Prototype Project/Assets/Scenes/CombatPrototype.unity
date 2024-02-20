@@ -402,6 +402,8 @@ MonoBehaviour:
   fireRate: 1.6
   coneFire: 1
   coneAngle: 15
+  randomizeShotTimes: 1
+  shotTimeMaxDelta: 0.3
 --- !u!1 &622502396
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +453,8 @@ MonoBehaviour:
   fireRate: 1.6
   coneFire: 0
   coneAngle: 0
+  randomizeShotTimes: 1
+  shotTimeMaxDelta: 0.3
 --- !u!1 &643218098
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +881,8 @@ MonoBehaviour:
   fireRate: 3
   coneFire: 0
   coneAngle: 0
+  randomizeShotTimes: 0
+  shotTimeMaxDelta: 0
 --- !u!1 &1184145909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,10 +1053,10 @@ RectTransform:
   - {fileID: 643218099}
   m_Father: {fileID: 1553420535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -146, y: 205.9}
-  m_SizeDelta: {x: 100, y: 40}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249251950
 MonoBehaviour:
@@ -1244,6 +1250,7 @@ GameObject:
   - component: {fileID: 1437167467}
   - component: {fileID: 1437167469}
   - component: {fileID: 1437167470}
+  - component: {fileID: 1437167471}
   m_Layer: 0
   m_Name: Middle Enemy
   m_TagString: Enemy
@@ -1314,7 +1321,7 @@ Transform:
   m_GameObject: {fileID: 1437167466}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1374,12 +1381,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437167466}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c780604d67ad1d4392fee0b52e37dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackPlayer: 1
+  trackPlayer: 0
+--- !u!114 &1437167471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437167466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8f0ce217e19a64bae93491cae08ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackPlayer: 0
+  strafeCycleTime: 2
+  strafeDistance: 1.5
+  finalPosition: {x: 0, y: 1.5}
+  strafePauseDurationAverage: 1
+  strafePauseDurationMaxDelta: 0.2
 --- !u!1 &1471915820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,6 +1454,8 @@ MonoBehaviour:
   fireRate: 1.6
   coneFire: 0
   coneAngle: 0
+  randomizeShotTimes: 0
+  shotTimeMaxDelta: 0
 --- !u!1 &1550378002
 GameObject:
   m_ObjectHideFlags: 0

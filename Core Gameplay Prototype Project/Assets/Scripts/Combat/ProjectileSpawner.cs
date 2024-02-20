@@ -10,25 +10,31 @@ public class ProjectileSpawner : MonoBehaviour
     [SerializeField] bool coneFire;
     [SerializeField] float coneAngle;
 
-    float timeSinceLastShot = 0;
+    // Randomizing shot times will use the fire rate to determine the
+    // middle point of the range.
+    [SerializeField] bool randomizeShotTimes;
+    [SerializeField] float shotTimeMaxDelta;
+
+    float shotInterval;
+    float timeOfNextShot = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        shotInterval = 1f / fireRate;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeSinceLastShot += Time.deltaTime;
+        float timestamp = Time.time;
 
         if (isPlayer && !Input.GetMouseButton(0))
         {
             return;
         }
 
-        if (timeSinceLastShot >= 1f / fireRate)
+        if (timestamp >= timeOfNextShot)
         {
             GameObject projectile = Instantiate(projectilePrefab);
             projectile.transform.position = transform.position;
@@ -55,7 +61,11 @@ public class ProjectileSpawner : MonoBehaviour
                 projectile3.transform.Rotate(0, 0, 0.5f * coneAngle);
             }
 
-            timeSinceLastShot = 0;
+            timeOfNextShot = Time.time + shotInterval;
+            if (randomizeShotTimes)
+            {
+                timeOfNextShot += Random.Range(-shotTimeMaxDelta, shotTimeMaxDelta);
+            }
         }
     }
 }
