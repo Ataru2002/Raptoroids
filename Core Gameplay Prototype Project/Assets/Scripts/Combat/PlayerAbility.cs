@@ -19,17 +19,23 @@ public class PlayerAbility : MonoBehaviour
     private float shieldTimer = 0f;
     // Start is called before the first frame update
     public bool shieldPermanent = true;
-    void Start()
-    {
-        // shieldButton.onClick.AddListener(activateShield);
-    }
 
-    // Update is called once per frame
+    private float doubleClickWindow = 0.2f;
+
+    private float lastClickTime = 0f;
+    
     void Update()
-    {
-        if(Input.GetButton("Jump")){
-            activateShield();
+    {   
+        //double click implementation
+        if(Input.GetMouseButtonDown(0)){
+            float sinceLastClick = Time.time - lastClickTime;
+
+            if(sinceLastClick <= doubleClickWindow){
+                activateShield();
+            }
+            lastClickTime = Time.time;
         }
+
         diminishCooldown();
         updateShieldDuration();
     }
@@ -40,7 +46,7 @@ public class PlayerAbility : MonoBehaviour
             shieldActive = true;
             shieldObject.SetActive(true);
             cooldownTimer = cooldown;
-            if(!shieldPermanent){
+            if(!shieldPermanent){                   //can remove after playesting
                 shieldTimer = shieldDuration;
             }
         }
@@ -76,7 +82,8 @@ public class PlayerAbility : MonoBehaviour
     void updateCooldownText(){
         shieldButton.GetComponentInChildren<TMP_Text>().text = cooldownTimer.ToString("F1");
     }
-
+    
+    
     
     
 }
