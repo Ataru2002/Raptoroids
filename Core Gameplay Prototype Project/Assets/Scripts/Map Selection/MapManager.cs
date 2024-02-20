@@ -23,6 +23,9 @@ public class MapManager : MonoBehaviour
     ObjectPool<GameObject> drawnLinePool;
     List<GameObject> drawnLines = new List<GameObject>();
 
+    [SerializeField] Sprite combatNodeSprite;
+    [SerializeField] Sprite treasureNodeSprite;
+
     [SerializeField] GameObject mapScreen;
     [SerializeField] RectTransform[] mapSelectButtonTransforms;
     [SerializeField] GameObject mapLineContainer;
@@ -106,7 +109,7 @@ public class MapManager : MonoBehaviour
         return maps;
     }
 
-    public void SelectMap(int mapIndex)
+    void SelectMap(int mapIndex)
     {
         GameManager.Instance.MapIndex = mapIndex;
 
@@ -117,6 +120,12 @@ public class MapManager : MonoBehaviour
         }
 
         DrawMap(mapIndex);
+    }
+
+    public void ReselectMap(int mapIndex)
+    {
+        SelectMap(mapIndex);
+        ButtonSFXPlayer.Instance.PlaySFX("MapSelect");
     }
 
     public void SelectNode(int nodeIndex)
@@ -132,6 +141,7 @@ public class MapManager : MonoBehaviour
         if (selectedNodeType == MapNodeType.Treasure)
         {
             ToggleTreasureRoom(true);
+            ButtonSFXPlayer.Instance.PlaySFX("TreasureGet");
         }
         else
         {
@@ -142,11 +152,13 @@ public class MapManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        ButtonSFXPlayer.Instance.PlaySFX("ToMenus");
     }
 
     public void GoToAction()
     {
         SceneManager.LoadScene("MockAction", LoadSceneMode.Single);
+        ButtonSFXPlayer.Instance.PlaySFX("ToAction");
     }
 
     public void RequestTreasureCollect()
@@ -204,7 +216,7 @@ public class MapManager : MonoBehaviour
                 else
                 {
                     icon.enabled = true;
-                    icon.color = node.Type == MapNodeType.Combat ? Color.red : Color.yellow;
+                    icon.sprite = node.Type == MapNodeType.Combat ? combatNodeSprite : treasureNodeSprite;
                     icon.rectTransform.localPosition = node.PositionOffset;
 
                     Button iconButton = icon.GetComponent<Button>();
@@ -214,6 +226,8 @@ public class MapManager : MonoBehaviour
                     MapNode lastVisitedNode = GameManager.Instance.LastVisitedNode;
                     bool selectable = currentTier == y && (currentTier == 0 || lastVisitedNode.GetConnections().Contains(node));
                     iconButton.interactable = selectable;
+
+                    icon.GetComponent<MapNodeAnimator>().ToggleAnimation(selectable);
                 }
             }
 

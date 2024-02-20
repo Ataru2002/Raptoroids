@@ -69,11 +69,13 @@ public class MockActionScene : MonoBehaviour
     {
         GameManager.Instance.AdvanceMapProgress();
         SceneManager.LoadScene("MapSelection");
+        ButtonSFXPlayer.Instance.PlaySFX("ToMaps");
     }
 
     public void ToMainMenu()
     {
         GameManager.Instance.ClearMapInfo();
         SceneManager.LoadScene("MainMenu");
+        ButtonSFXPlayer.Instance.PlaySFX("ToMenus");
     }
 }

@@ -23,6 +23,7 @@ public class ButtonListener : MonoBehaviour
 
     public void playListener(){
         StartCoroutine(loadScene("MapSelection"));
+        ButtonSFXPlayer.Instance.PlaySFX("ToMaps");
     }
 
     public void shopListener(){
@@ -32,6 +33,7 @@ public class ButtonListener : MonoBehaviour
             }
         }
         defaultMenu.SetActive(false);
+        ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
     }
 
     public void loadoutListener(){
@@ -42,6 +44,7 @@ public class ButtonListener : MonoBehaviour
         }
 
         defaultMenu.SetActive(false);
+        ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
     }
 
     public void settingsListener(){
@@ -52,7 +55,8 @@ public class ButtonListener : MonoBehaviour
             }
         }
         
-        defaultMenu.SetActive(false);    
+        defaultMenu.SetActive(false);
+        ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
     }
 
     public void backListener(){
@@ -61,6 +65,7 @@ public class ButtonListener : MonoBehaviour
         }
     
         defaultMenu.SetActive(true);
+        ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
     }
 
     IEnumerator loadScene(string sceneName){
