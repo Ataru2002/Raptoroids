@@ -7,6 +7,7 @@ public class ProjectileSpawner : MonoBehaviour
     [SerializeField] bool isPlayer;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] float fireRate;
+    [SerializeField] float firstShotDelay;
     [SerializeField] bool coneFire;
     [SerializeField] float coneAngle;
 
@@ -15,6 +16,8 @@ public class ProjectileSpawner : MonoBehaviour
     [SerializeField] bool randomizeShotTimes;
     [SerializeField] float shotTimeMaxDelta;
 
+    EnemyBehavior enemyBehavior = null;
+
     float shotInterval;
     float timeOfNextShot = 0;
 
@@ -22,6 +25,13 @@ public class ProjectileSpawner : MonoBehaviour
     void Start()
     {
         shotInterval = 1f / fireRate;
+        timeOfNextShot = firstShotDelay;
+
+        if (!isPlayer)
+        {
+            enemyBehavior = GetComponentInParent<EnemyBehavior>();
+        }
+
     }
 
     // Update is called once per frame
@@ -30,6 +40,12 @@ public class ProjectileSpawner : MonoBehaviour
         float timestamp = Time.time;
 
         if (isPlayer && !Input.GetMouseButton(0))
+        {
+            return;
+        }
+
+        // Only let the enemy begin shooting once it gets in position.
+        if (enemyBehavior != null && !enemyBehavior.FinalPositionReached)
         {
             return;
         }

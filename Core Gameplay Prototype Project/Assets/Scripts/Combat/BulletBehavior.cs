@@ -11,13 +11,14 @@ public enum TargetType
 public class BulletBehavior : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] float lifespan = 5.0f;
     [SerializeField] TargetType targetType;
+
+    SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -27,7 +28,11 @@ public class BulletBehavior : MonoBehaviour
         // is like 1 unit up the y-axis relative to the transform (after rotation)
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
-        Destroy(gameObject, lifespan);
+        if (!spriteRenderer.isVisible)
+        {
+            // TODO: use pooling instead
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

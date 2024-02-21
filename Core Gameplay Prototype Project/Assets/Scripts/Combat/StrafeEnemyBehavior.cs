@@ -11,10 +11,6 @@ public class StrafeEnemyBehavior : EnemyBehavior
     // How far the enemy will go from the center
     [SerializeField] float strafeDistance;
 
-    // TODO: move this into the base EnemyBehavior class
-    // so that the enemies can "fly in".
-    [SerializeField] Vector2 finalPosition;
-
     [SerializeField] float strafePauseDurationAverage;
     [SerializeField] float strafePauseDurationMaxDelta;
 
@@ -22,15 +18,16 @@ public class StrafeEnemyBehavior : EnemyBehavior
     float nextStrafeStart = 0;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
-        if (Time.time >= nextStrafeStart)
+        base.Update();
+        if (FinalPositionReached && Time.time >= nextStrafeStart)
         {
             Strafe();
         }
