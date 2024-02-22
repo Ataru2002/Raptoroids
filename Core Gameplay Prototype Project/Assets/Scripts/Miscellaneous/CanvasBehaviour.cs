@@ -24,7 +24,7 @@ public class CanvasBehaviour : MonoBehaviour
             teamLogo.SetActive(false);
             textCrawl.SetActive(true);
         }
-        else if(image.alpha == 1){
+        else if(image.alpha == 0){
             teamLogo.SetActive(false);
             textCrawl.SetActive(true);
         }    

@@ -19,8 +19,10 @@ public class TextCrawlBehaviour : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             SceneManager.LoadScene("MainMenu");
         }
-        else if(gameObject.transform.position.y >= textOutOfScreen){
-            SceneManager.LoadScene("MainMenu");
-        }   
+           
+    }
+
+    public void animationEvent(){
+        SceneManager.LoadScene("MainMenu");
     }
 }
