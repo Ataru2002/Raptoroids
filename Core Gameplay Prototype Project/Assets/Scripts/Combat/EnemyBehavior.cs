@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour, IBulletHittable
+public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] bool trackPlayer;
 
     Transform playerTransform;
-
-    SpriteRenderer spriteRenderer;
-
     float timeSinceSpawn = 0;
     [SerializeField] float timeToFinalPosition = 0;
     protected Vector2 initialPosition;
@@ -20,7 +17,7 @@ public class EnemyBehavior : MonoBehaviour, IBulletHittable
     protected void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -59,21 +56,5 @@ public class EnemyBehavior : MonoBehaviour, IBulletHittable
         finalPosition = val;
     }
 
-    public void OnBulletHit()
-    {
-        // Do not allow the player to hit the enemy before the enemy comes on screen.
-        if (!spriteRenderer.isVisible)
-        {
-            return;
-        }
-
-        print(gameObject.name + " was hit by a bullet!");
-
-        // TODO: implement some form of health system
-        if (CombatStageManager.Instance != null)
-        {
-            gameObject.SetActive(false);
-            CombatStageManager.Instance.OnEnemyDefeated();
-        }
-    }
+    
 }

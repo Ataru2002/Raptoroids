@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 6397397824612412776}
   - component: {fileID: 3035377416404862491}
   - component: {fileID: 7730016327616722248}
+  - component: {fileID: -3337596448108323892}
   m_Layer: 0
   m_Name: Strafing Enemy
   m_TagString: Enemy
@@ -205,3 +206,16 @@ MonoBehaviour:
   strafeDistance: 1.5
   strafePauseDurationAverage: 1
   strafePauseDurationMaxDelta: 0.2
+--- !u!114 &-3337596448108323892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536745841740775154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11cfa19176d82224684fcd4f69217fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
