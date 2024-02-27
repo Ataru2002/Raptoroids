@@ -23,7 +23,8 @@ public class PlayerAbility : MonoBehaviour
     private float doubleClickWindow = 0.2f;
 
     private float lastClickTime = 0f;
-    
+
+
     void Update()
     {   
         //double click implementation
@@ -75,12 +76,20 @@ public class PlayerAbility : MonoBehaviour
             shieldButton.interactable = true;
             deactivateShield();
         }
-
         updateCooldownText();
     }
 
     void updateCooldownText(){
-        shieldButton.GetComponentInChildren<TMP_Text>().text = cooldownTimer.ToString("F1");
+        if (cooldownTimer <= 0f)
+        {
+            shieldButton.GetComponentInChildren<TMP_Text>().text = "Activate Shield";
+        }
+        else
+        {
+            string timeleft = "Time Left: ";
+            timeleft += cooldownTimer.ToString("F1");
+            shieldButton.GetComponentInChildren<TMP_Text>().text = timeleft;
+        }
     }
     
     
