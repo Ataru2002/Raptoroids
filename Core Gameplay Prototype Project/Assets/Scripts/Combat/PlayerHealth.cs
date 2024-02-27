@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHitDetector : MonoBehaviour, IBulletHittable
+public class PlayerHealth : MonoBehaviour, IBulletHittable
 {
+    [SerializeField] int maxHealth = 0;
+    int currentHealth = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -20,8 +23,9 @@ public class PlayerHitDetector : MonoBehaviour, IBulletHittable
     {
         print("Player hit by an enemy bullet!");
 
-        // TODO: implement some form of health system
-        if (CombatStageManager.Instance != null)
+        currentHealth -= 1;
+
+        if (currentHealth <= 0 && CombatStageManager.Instance != null)
         {
             gameObject.SetActive(false);
             CombatStageManager.Instance.OnPlayerDefeated();
