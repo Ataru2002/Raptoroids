@@ -157,7 +157,7 @@ public class MapManager : MonoBehaviour
 
     public void GoToAction()
     {
-        SceneManager.LoadScene("MockAction", LoadSceneMode.Single);
+        SceneManager.LoadScene("CombatStagePrototype", LoadSceneMode.Single);
         ButtonSFXPlayer.Instance.PlaySFX("ToAction");
     }
 

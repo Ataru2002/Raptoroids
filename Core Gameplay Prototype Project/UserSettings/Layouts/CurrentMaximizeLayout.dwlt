@@ -149,7 +149,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 16536
+=======
+  controlID: 440
+>>>>>>> Stashed changes
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +178,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 16496
+=======
+  controlID: 417
+>>>>>>> Stashed changes
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,7 +250,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< Updated upstream
       m_ExpandedIDs: 227ffffff085ffffe086ffff66b8000070b8000090b80000aeb80000
+=======
+      m_ExpandedIDs: d2f8fffff6f9fffff8faffff
+>>>>>>> Stashed changes
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -932,18 +944,30 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< Updated upstream
     y: 645
     width: 1555
     height: 294
   m_MinSize: {x: 230, y: 250}
   m_MaxSize: {x: 10000, y: 10000}
+=======
+    y: 502.4
+    width: 1244
+    height: 228.4
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+>>>>>>> Stashed changes
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
   - {fileID: 11}
   - {fileID: 12}
   m_Selected: 0
+<<<<<<< Updated upstream
   m_LastSelected: 2
+=======
+  m_LastSelected: 1
+>>>>>>> Stashed changes
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -991,7 +1015,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< Updated upstream
     - Assets/Scripts/Combat
+=======
+    - Assets/Scripts/Map Selection
+>>>>>>> Stashed changes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1001,7 +1029,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Combat
+  - Assets/Prefabs/Enemy Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\nhann\OneDrive\Desktop\Unity\Raptoroids\Core Gameplay
     Prototype Project
@@ -1009,9 +1037,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 4.600006}
-    m_SelectedIDs: cca00000
-    m_LastClickedID: 41164
-    m_ExpandedIDs: 00000000e49a00009a9c000000ca9a3bffffff7f
+    m_SelectedIDs: 1e880000
+    m_LastClickedID: 34846
+    m_ExpandedIDs: 00000000bc8700001288000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1040,7 +1068,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e49a000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000bc870000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1190,8 +1218,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1555
     y: 0
-    width: 365
-    height: 939
+    width: 292
+    height: 730.8
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
