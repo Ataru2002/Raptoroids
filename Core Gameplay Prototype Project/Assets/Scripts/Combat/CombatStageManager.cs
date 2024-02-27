@@ -20,8 +20,13 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] GameObject bossWinScreen;
     [SerializeField] GameObject loseScreen;
     [SerializeField] TextMeshProUGUI killCounter;
+    [SerializeField] GameObject bossHealthBar;
+    [SerializeField] RectTransform bossHealthBarRect;
 
     EnemySpawner enemySpawner;
+
+    const float bossHealthBarWidth = 500f;
+    const float bossHealthBarHeight = 50f;
 
     int enemyKillCount = 0;
 
@@ -47,12 +52,17 @@ public class CombatStageManager : MonoBehaviour
         if (isBossStage)
         {
             enemyKillRequirement = 1;
+            killCounter.gameObject.SetActive(false);
+            enemySpawner.SpawnBossEnemy();
         }
-
-        while (activeEnemies < MaxConcurrentEnemies)
+        else
         {
-            enemySpawner.SpawnEnemy();
-            activeEnemies++;
+            bossHealthBar.SetActive(false);
+            while (activeEnemies < MaxConcurrentEnemies)
+            {
+                enemySpawner.SpawnEnemy();
+                activeEnemies++;
+            }
         }
 
         killCounter.text = string.Format("0 / {0}", enemyKillRequirement);
@@ -62,6 +72,11 @@ public class CombatStageManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateBossHealthBar(float healthRatio)
+    {
+        bossHealthBarRect.sizeDelta = new Vector2(bossHealthBarWidth * healthRatio, bossHealthBarHeight);
     }
 
     public void OnPlayerDefeated()

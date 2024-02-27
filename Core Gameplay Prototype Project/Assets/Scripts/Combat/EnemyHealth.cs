@@ -31,16 +31,20 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
         print(gameObject.name + " was hit by a bullet!");
 
-        // TODO: implement some form of health system
-        
         currentHealth--;
-        
-        print("enemy current health:" + currentHealth);
 
-        if (currentHealth <= 0 && CombatStageManager.Instance != null)
+        if (CombatStageManager.Instance != null)
         {
-            gameObject.SetActive(false);
-            CombatStageManager.Instance.OnEnemyDefeated();
+            if (CombatStageManager.Instance.isBossStage)
+            {
+                CombatStageManager.Instance.UpdateBossHealthBar((float)currentHealth / maxHealth);
+            }
+
+            if (currentHealth <= 0)
+            {
+                gameObject.SetActive(false);
+                CombatStageManager.Instance.OnEnemyDefeated();
+            }
         }
     }
 }
