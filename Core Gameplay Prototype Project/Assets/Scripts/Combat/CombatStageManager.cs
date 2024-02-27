@@ -17,12 +17,15 @@ public class CombatStageManager : MonoBehaviour
 
     [SerializeField] GameObject stageUI;
     [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject bossWinScreen;
     [SerializeField] GameObject loseScreen;
     [SerializeField] TextMeshProUGUI killCounter;
 
     EnemySpawner enemySpawner;
 
     int enemyKillCount = 0;
+
+    public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
 
     private void Awake()
     {
@@ -40,6 +43,12 @@ public class CombatStageManager : MonoBehaviour
     void Start()
     {
         enemySpawner = GetComponent<EnemySpawner>();
+
+        if (isBossStage)
+        {
+            enemyKillRequirement = 1;
+        }
+
         while (activeEnemies < MaxConcurrentEnemies)
         {
             enemySpawner.SpawnEnemy();
@@ -86,7 +95,14 @@ public class CombatStageManager : MonoBehaviour
 
         if (playerWin)
         {
-            winScreen.SetActive(true);
+            if (isBossStage)
+            {
+                bossWinScreen.SetActive(true);
+            }
+            else
+            {
+                winScreen.SetActive(true);
+            }
         }
         else
         {
