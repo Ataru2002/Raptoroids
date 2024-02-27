@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 714152568}
   - component: {fileID: 714152567}
   m_Layer: 5
-  m_Name: Reset Button
+  m_Name: Map Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,7 +691,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1946619567}
         m_TargetAssemblyTypeName: CombatStageManager, Assembly-CSharp
-        m_MethodName: ReloadStage
+        m_MethodName: GoToMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 1155185021}
   - component: {fileID: 1155185020}
   m_Layer: 5
-  m_Name: Reset Button
+  m_Name: Main Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1110,7 +1110,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1946619567}
         m_TargetAssemblyTypeName: CombatStageManager, Assembly-CSharp
-        m_MethodName: ReloadStage
+        m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart Demo
+  m_text: To Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -2585,7 +2585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart Demo
+  m_text: To Map
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}

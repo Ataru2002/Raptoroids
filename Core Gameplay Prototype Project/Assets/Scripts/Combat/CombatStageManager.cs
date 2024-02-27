@@ -101,4 +101,18 @@ public class CombatStageManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+        GameManager.Instance.ClearMapInfo();
+    }
+
+    public void GoToMap()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MapSelection");
+        GameManager.Instance.AdvanceMapProgress();
+    }
 }
