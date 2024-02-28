@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float slowFollowSpeed;
     [SerializeField] float mediumFollowSpeed;
     [SerializeField] float fastFollowSpeed;
+    [SerializeField] float yOffset = 0.5f;
     [SerializeField] float snapDistance = 0.01f;
 
     float selectedFollowSpeed;
@@ -30,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            MoveTowards(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            target += Vector3.up * yOffset;
+            MoveTowards(target);
         }
     }
 
