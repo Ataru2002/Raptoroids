@@ -9,7 +9,6 @@ public class TreasureRoomManager : MonoBehaviour
     private static TreasureRoomManager instance;
     public static TreasureRoomManager Instance { get { return instance; } }
     public TMP_Text gemText;
-    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -23,6 +22,7 @@ public class TreasureRoomManager : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         gemText.text = "Gems: 0";
