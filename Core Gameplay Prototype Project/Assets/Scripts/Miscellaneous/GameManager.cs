@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
 
+    int currentGems = 0;
     Map[] generatedMaps = null;
     int mapIndex = 0;
     int currentMapTier = 0;
@@ -78,5 +79,13 @@ public class GameManager : MonoBehaviour
         mapIndex = 0;
         currentMapTier = 0;
         visitedNodes.Clear();
+    }
+
+    public void collectGems(int gemAmount){
+        currentGems += gemAmount;
+    }
+
+    public int getCurrentGems(){
+        return currentGems;
     }
 }

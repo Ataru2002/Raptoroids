@@ -173,7 +173,12 @@ public class MapManager : MonoBehaviour
     public void ToggleTreasureRoom(bool val)
     {
         mapScreen.SetActive(!val);
+
         treasureRoomScreen.SetActive(val);
+        if(val){
+            GemRewards rewards = new GemRewards();
+            rewards.ProcessReward();   
+        }
     }
 
     void UpdateMapButtons()
