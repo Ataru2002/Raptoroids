@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   projectilePrefab: {fileID: 8930704053567165026, guid: ebbdadbacbb8e1c4592b5fbbf5a3fcad, type: 3}
-  fireRate: 1.6
+  fireRate: 0.8
   firstShotDelay: 0.8
   coneFire: 0
   coneAngle: 0
