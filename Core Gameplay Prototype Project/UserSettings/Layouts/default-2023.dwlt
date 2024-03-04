@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 8686
+  controlID: 8013
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,12 +139,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1244
+    width: 1189.6
     height: 730.8
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 8630
+  controlID: 8014
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,12 +164,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1244
+    width: 1189.6
     height: 501.6
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 8631
+  controlID: 8015
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,7 +187,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 236
+    width: 222.4
     height: 501.6
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
@@ -211,9 +211,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 236
+    x: 222.4
     y: 0
-    width: 1008
+    width: 967.19995
     height: 501.6
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -240,7 +240,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 501.6
-    width: 1244
+    width: 1189.6
     height: 229.19998
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
@@ -266,9 +266,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1244
+    x: 1189.6
     y: 0
-    width: 292
+    width: 346.40002
     height: 730.8
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
@@ -298,9 +298,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 237
+    x: 223.4
     y: 19
-    width: 1006
+    width: 965.19995
     height: 480.6
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -400,7 +400,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73.6
-    width: 235
+    width: 221.4
     height: 480.6
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a68b0000
+      m_SelectedIDs: 8c8b0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 5494ffff409affff069effff389efffff29fffff04a0ffff1ca0ffff98a0ffffb6a0ffff96afffff64b2ffff10c9ffffb4d9ffff10e6ffff38ebffffdafaffff76a80000b6a90000c4a90000f8c000002cc1000054e8000088e80000aee80000e01f01004e20010082200100022101002421010074210100
+      m_ExpandedIDs: 3aaffffff2befffff8faffff6ca400008ea400009ca40000a0a40000bea40000e6a40000f6a4000032a500004aa500006ca5000094a500009ca50000a0a50000d0a500000ea6000012a6000032a6000036a60000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -464,9 +464,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 236
+    x: 222.40001
     y: 73.6
-    width: 1006
+    width: 965.19995
     height: 480.6
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -980,9 +980,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 633.21454, y: 1747.3943, z: -11.099252}
+    m_Target: {x: 17.565773, y: 7.3929253, z: -10.298382}
     speed: 2
-    m_Value: {x: 643.0745, y: 1741.0143, z: -10.550193}
+    m_Value: {x: 17.565773, y: 7.3929253, z: -10.298382}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1032,9 +1032,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1275.0511
+    m_Target: 42.77061
     speed: 2
-    m_Value: 1220.1447
+    m_Value: 42.77061
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1088,7 +1088,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 575.2
-    width: 1243
+    width: 1188.6
     height: 208.19998
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1112,7 +1112,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Prefabs
+    - Assets/Resources/Prefabs/Enemies/Bosses
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1122,17 +1122,17 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Prefabs
+  - Assets/Resources/Prefabs/Enemies/Bosses
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\School Work\CMPM 171\Prototype Projects\Raptoroids Prototype
     Repo\Core Gameplay Prototype Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 159.80002}
-    m_SelectedIDs: 668c0000
-    m_LastClickedID: 35942
-    m_ExpandedIDs: 00000000ee8b0000f08b0000668c00006c8c00001a1c010000ca9a3b
+    scrollPos: {x: 0, y: 75.80002}
+    m_SelectedIDs: 648c0000
+    m_LastClickedID: 35940
+    m_ExpandedIDs: 00000000ea8b0000ec8b0000ee8b0000f08b0000f28b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1161,7 +1161,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ee8b0000f08b0000668c00006c8c00001a1c010000ca9a3b
+    m_ExpandedIDs: 00000000ea8b0000ec8b0000ee8b0000f08b0000f28b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1293,7 +1293,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 59438
+  m_LastSelectedObjectID: -32412
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1315,9 +1315,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1244
+    x: 1189.6
     y: 73.6
-    width: 291
+    width: 345.40002
     height: 709.8
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1337,7 +1337,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 576.00006
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

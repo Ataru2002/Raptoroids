@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c4ebadb9e40361f428f5156fc5f2686b
+guid: c9b33a28156c07b4e9a9ea596439e3c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 799894067207294300
-    second: EnemyEx_0
+      213: 480179400812087344
+    second: GreenBottleFly_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemyEx_0
+      name: GreenBottleFly_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 44
-        width: 297
-        height: 232
+        x: 24
+        y: 79
+        width: 282
+        height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5d45d58a6bc91b00800000000000000
-      internalID: 799894067207294300
+      spriteID: 0384dd5fe90f9a600800000000000000
+      internalID: 480179400812087344
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EnemyEx_0: 799894067207294300
+      GreenBottleFly_0: 480179400812087344
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
