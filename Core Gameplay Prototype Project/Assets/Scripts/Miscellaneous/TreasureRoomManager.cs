@@ -25,11 +25,11 @@ public class TreasureRoomManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gemText.text = "Gems: 0";
+        UpdateDisplay(GameManager.Instance.getCurrentGems());
     }
 
 
     public void UpdateDisplay(int currentGems){
-        gemText.text = $"Gems: {currentGems}";
+        gemText.text = $"Gems Collected: {currentGems}";
     }
 }
