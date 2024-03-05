@@ -343,7 +343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -370,8 +370,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1079,7 +1079,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 123170745}
   m_OnClick:
     m_PersistentCalls:
@@ -1816,7 +1816,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 161065902}
   m_OnClick:
     m_PersistentCalls:
@@ -1916,7 +1916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -1943,8 +1943,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Equipped
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -2262,8 +2262,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2515,7 +2515,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 226791763}
   m_OnClick:
     m_PersistentCalls:
@@ -3351,7 +3351,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 367051318}
   m_OnClick:
     m_PersistentCalls:
@@ -3759,7 +3759,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 394228735}
   m_OnClick:
     m_PersistentCalls:
@@ -4009,7 +4009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -4036,8 +4036,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4166,7 +4166,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 421491474}
   m_OnClick:
     m_PersistentCalls:
@@ -4590,7 +4590,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 490343574}
   m_OnClick:
     m_PersistentCalls:
@@ -5356,7 +5356,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 671966533}
   m_OnClick:
     m_PersistentCalls:
@@ -5477,7 +5477,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 687433265}
   m_OnClick:
     m_PersistentCalls:
@@ -6704,7 +6704,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -6731,8 +6731,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6915,7 +6915,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -6942,8 +6942,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7072,7 +7072,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 894687466}
   m_OnClick:
     m_PersistentCalls:
@@ -7549,7 +7549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -7576,8 +7576,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8186,7 +8186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -8213,8 +8213,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8400,7 +8400,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -8427,8 +8427,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8722,7 +8722,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Equipped
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -8749,8 +8749,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9051,7 +9051,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1173684132}
   m_OnClick:
     m_PersistentCalls:
@@ -9362,7 +9362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -9389,8 +9389,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9519,7 +9519,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1210706321}
   m_OnClick:
     m_PersistentCalls:
@@ -9694,7 +9694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -9721,8 +9721,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10458,7 +10458,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1424420053}
   m_OnClick:
     m_PersistentCalls:
@@ -10905,7 +10905,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -10932,8 +10932,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11664,7 +11664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -11691,8 +11691,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11821,7 +11821,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1600916548}
   m_OnClick:
     m_PersistentCalls:
@@ -13334,7 +13334,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1775649331}
   m_OnClick:
     m_PersistentCalls:
@@ -13434,7 +13434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -13461,8 +13461,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14384,7 +14384,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -14411,8 +14411,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14610,7 +14610,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -14637,8 +14637,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15142,7 +15142,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1978508337}
   m_OnClick:
     m_PersistentCalls:
@@ -15263,7 +15263,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2016672941}
   m_OnClick:
     m_PersistentCalls:
@@ -15713,7 +15713,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2079038410}
   m_OnClick:
     m_PersistentCalls:
@@ -16279,7 +16279,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Unavailable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -16306,8 +16306,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
