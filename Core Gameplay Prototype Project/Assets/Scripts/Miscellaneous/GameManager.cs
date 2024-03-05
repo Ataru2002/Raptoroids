@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
 
-    int currentGems = 0;
+    int pendingGems = 0;
+    int totalGems = 0;
+
     Map[] generatedMaps = null;
     int mapIndex = 0;
     int currentMapTier = 0;
@@ -81,11 +83,22 @@ public class GameManager : MonoBehaviour
         visitedNodes.Clear();
     }
 
-    public void collectGems(int gemAmount){
-        currentGems += gemAmount;
+    public void CollectGems(int gemAmount){
+        pendingGems += gemAmount;
     }
 
-    public int getCurrentGems(){
-        return currentGems;
+    public int GetCurrentGems(){
+        return pendingGems;
+    }
+
+    public void CommitCollectedGems(float modifier)
+    {
+        totalGems += Mathf.CeilToInt(modifier * pendingGems);
+        pendingGems = 0;
+    }
+
+    public int GetTotalGems()
+    {
+        return totalGems;
     }
 }

@@ -25,7 +25,7 @@ public class TreasureRoomManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateDisplay(GameManager.Instance.getCurrentGems());
+        UpdateDisplay(GameManager.Instance.GetCurrentGems());
     }
 
 

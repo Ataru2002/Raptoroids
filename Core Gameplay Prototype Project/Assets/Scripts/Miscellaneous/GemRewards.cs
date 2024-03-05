@@ -20,8 +20,8 @@ public class GemRewards : IRewardProcessor
 
     public void ProcessReward(){
         int selectedGem = getRandomByWeight();
-        GameManager.Instance.collectGems(selectedGem);
-        TreasureRoomManager.Instance.UpdateDisplay(GameManager.Instance.getCurrentGems());
+        GameManager.Instance.CollectGems(selectedGem);
+        TreasureRoomManager.Instance.UpdateDisplay(GameManager.Instance.GetCurrentGems());
     }
 
     public int getRandomByWeight(){

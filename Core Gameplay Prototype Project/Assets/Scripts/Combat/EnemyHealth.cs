@@ -29,8 +29,6 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
             return;
         }
 
-        print(gameObject.name + " was hit by a bullet!");
-
         currentHealth--;
 
         if (CombatStageManager.Instance != null)

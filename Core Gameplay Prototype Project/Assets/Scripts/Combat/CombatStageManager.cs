@@ -20,6 +20,7 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] GameObject winScreen;
     [SerializeField] GameObject bossWinScreen;
     [SerializeField] GameObject loseScreen;
+    [SerializeField] RectTransform loseScreenSummaryBox;
     [SerializeField] TextMeshProUGUI killCounter;
     [SerializeField] GameObject bossHealthBar;
     [SerializeField] RectTransform bossHealthBarRect;
@@ -40,6 +41,8 @@ public class CombatStageManager : MonoBehaviour
     LinkedPool<GameObject> enemyHitParticles;
     GameObject hitParticlesPrefab;
 
+    GameObject rewardSummaryPrefab;
+
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
 
     private void Awake()
@@ -55,6 +58,7 @@ public class CombatStageManager : MonoBehaviour
             playerProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/PlayerBullet");
             enemyProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyBullet");
             hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
+            rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
         }
     }
 
@@ -203,8 +207,26 @@ public class CombatStageManager : MonoBehaviour
         else
         {
             loseScreen.SetActive(true);
-        }
 
+            int grossGems = GameManager.Instance.GetCurrentGems();
+
+            GameObject collectedGemCounter = Instantiate(rewardSummaryPrefab);
+            collectedGemCounter.transform.SetParent(loseScreenSummaryBox);
+            collectedGemCounter.transform.localScale = Vector3.one;
+            string grossGemText = $"Gems collected this run: {grossGems}";
+            collectedGemCounter.GetComponentInChildren<TextMeshProUGUI>().text = grossGemText;
+
+            GameObject failureMarker = Instantiate(rewardSummaryPrefab);
+            failureMarker.transform.SetParent(loseScreenSummaryBox);
+            failureMarker.transform.localScale = Vector3.one;
+            failureMarker.GetComponentInChildren<TextMeshProUGUI>().text = "Failure penalty: 20% reduction";
+
+            GameObject finalGemCounter = Instantiate(rewardSummaryPrefab);
+            finalGemCounter.transform.SetParent(loseScreenSummaryBox);
+            finalGemCounter.transform.localScale = Vector3.one;
+            string netGemText = $"Final gem amount awarded: {Mathf.CeilToInt(0.8f * grossGems)}";
+            finalGemCounter.GetComponentInChildren<TextMeshProUGUI>().text = netGemText;
+        }
     }
 
     // For prototype use ONLY. Allows player to play again
@@ -214,17 +236,22 @@ public class CombatStageManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void GoToMainMenu()
+    public void EndRun(bool playerWon)
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
         GameManager.Instance.ClearMapInfo();
+
+        float multiplier = playerWon ? 1f : 0.8f;
+        GameManager.Instance.CommitCollectedGems(multiplier);
+
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void GoToMap()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MapSelection");
         GameManager.Instance.AdvanceMapProgress();
+
+        SceneManager.LoadScene("MapSelection");
     }
 }

@@ -15,7 +15,6 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         bossPrefabs = Resources.LoadAll<GameObject>("Prefabs/Enemies/Bosses");
-        print(bossPrefabs.Length);
     }
 
     // Start is called before the first frame update

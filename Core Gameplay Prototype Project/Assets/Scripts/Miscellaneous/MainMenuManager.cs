@@ -21,14 +21,18 @@ public class MainMenuManager : MonoBehaviour
             instance = this;
         }
     }
+
     void Start()
     {
-        UpdateDisplay(GameManager.Instance.getCurrentGems());
+        UpdateGemCount();
     }
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        UpdateGemCount();
+    }
 
-    public void UpdateDisplay(int currentGems){
-        gemText.text = $"Gems: {currentGems}";
+    public void UpdateGemCount(){
+        gemText.text = $"Gems: {GameManager.Instance.GetTotalGems()}";
     }
 }
