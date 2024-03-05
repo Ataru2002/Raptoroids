@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -30,6 +31,15 @@ public class CombatStageManager : MonoBehaviour
 
     int enemyKillCount = 0;
 
+    LinkedPool<GameObject> playerProjectiles;
+    GameObject playerProjectilePrefab;
+
+    LinkedPool<GameObject> enemyProjectiles;
+    GameObject enemyProjectilePrefab;
+
+    LinkedPool<GameObject> enemyHitParticles;
+    GameObject hitParticlesPrefab;
+
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
 
     private void Awake()
@@ -41,6 +51,10 @@ public class CombatStageManager : MonoBehaviour
         else
         {
             instance = this;
+
+            playerProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/PlayerBullet");
+            enemyProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyBullet");
+            hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
         }
     }
 
@@ -65,8 +79,75 @@ public class CombatStageManager : MonoBehaviour
             }
         }
 
+        playerProjectiles = new LinkedPool<GameObject>(MakePlayerProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
+        enemyProjectiles = new LinkedPool<GameObject>(MakeEnemyProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
+        enemyHitParticles = new LinkedPool<GameObject>(MakeEnemyParticles, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
+
         killCounter.text = string.Format("0 / {0}", enemyKillRequirement);
     }
+
+    // Pooling functions
+    GameObject MakePlayerProjectile()
+    {
+        return Instantiate(playerProjectilePrefab);
+    }
+
+    public GameObject GetPlayerProjectile()
+    {
+        return playerProjectiles.Get();
+    }
+
+    public void ReturnPlayerProjectile(GameObject target)
+    {
+        playerProjectiles.Release(target);
+    }
+
+    GameObject MakeEnemyProjectile()
+    {
+        return Instantiate(enemyProjectilePrefab);
+    }
+
+    public GameObject GetEnemyProjectile()
+    {
+        return enemyProjectiles.Get();
+    }
+
+    public void ReturnEnemyProjectile(GameObject target)
+    {
+        enemyProjectiles.Release(target);
+    }
+
+    GameObject MakeEnemyParticles()
+    {
+        return Instantiate(hitParticlesPrefab);
+    }
+
+    public GameObject GetEnemyHitParticles()
+    {
+        return enemyHitParticles.Get();
+    }
+
+    public void ReturnEnemyParticles(GameObject target)
+    {
+        enemyHitParticles.Release(target);
+    }
+
+    void OnGetFromPool(GameObject item)
+    {
+        item.SetActive(true);
+    }
+
+    void OnReleaseToPool(GameObject item)
+    {
+        item.SetActive(false);
+    }
+
+    private void OnPoolItemDestroy(GameObject item)
+    {
+        Destroy(item);
+    }
+
+    // End of Pooling functions
 
     // Update is called once per frame
     void Update()

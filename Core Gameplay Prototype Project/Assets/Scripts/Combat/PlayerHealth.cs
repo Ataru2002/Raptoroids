@@ -27,11 +27,13 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
     {
         print("Player hit by an enemy bullet!");
 
-        impactParticles.Emit(5);
+        impactParticles.Emit(10);
         currentHealth -= 1;
         healthUI.UpdateHealth((float)currentHealth / maxHealth);
         if (currentHealth <= 0 && CombatStageManager.Instance != null)
         {
+            // Decouple the particle system from this gameobject so that it may continue playing
+            impactParticles.transform.parent = null;
             gameObject.SetActive(false);
             CombatStageManager.Instance.OnPlayerDefeated();
         }

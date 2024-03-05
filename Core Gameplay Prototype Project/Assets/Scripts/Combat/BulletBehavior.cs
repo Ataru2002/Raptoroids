@@ -15,10 +15,16 @@ public class BulletBehavior : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+    delegate void BulletDespawner(GameObject bullet);
+    BulletDespawner despawn;
+
+    bool isPlayerBullet { get { return targetType == TargetType.Enemy; } }
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        despawn = isPlayerBullet ? CombatStageManager.Instance.ReturnPlayerProjectile : CombatStageManager.Instance.ReturnEnemyProjectile;
     }
 
     // Update is called once per frame
@@ -30,8 +36,7 @@ public class BulletBehavior : MonoBehaviour
 
         if (!spriteRenderer.isVisible)
         {
-            // TODO: use pooling instead
-            Destroy(gameObject);
+            despawn(gameObject);
         }
     }
 
@@ -40,7 +45,21 @@ public class BulletBehavior : MonoBehaviour
         if (collision.tag == targetType.ToString())
         {
             collision.GetComponent<IBulletHittable>().OnBulletHit();
-            Destroy(gameObject);
+
+            if (isPlayerBullet)
+            {
+                GameObject particles = CombatStageManager.Instance.GetEnemyHitParticles();
+                particles.transform.position = transform.position;
+                particles.GetComponent<ParticleSystem>().Emit(10);
+            }
+
+            despawn(gameObject);
         }
+    }
+
+    // For use in cases where the projectile speed is different from the default
+    public void SetSpeed(float val)
+    {
+        speed = val;
     }
 }
