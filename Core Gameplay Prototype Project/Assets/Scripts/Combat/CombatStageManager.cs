@@ -162,6 +162,11 @@ public class CombatStageManager : MonoBehaviour
         
     }
 
+    public void OnGemPickup(int gemValue)
+    {
+        gemsCollectedInStage += gemValue;
+    }
+
     public void UpdateBossHealthBar(float healthRatio)
     {
         bossHealthBarRect.sizeDelta = new Vector2(bossHealthBarWidth * healthRatio, bossHealthBarHeight);
