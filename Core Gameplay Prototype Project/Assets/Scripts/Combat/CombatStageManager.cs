@@ -243,22 +243,28 @@ public class CombatStageManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void AdvanceRun()
+    {
+        GameManager.Instance.AdvanceMapProgress();
+    }
+
     public void EndRun(bool playerWon)
     {
-        Time.timeScale = 1;
         GameManager.Instance.ClearMapInfo();
 
         float multiplier = playerWon ? 1f : 0.8f;
         GameManager.Instance.CommitCollectedGems(multiplier);
+    }
 
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 
     public void GoToMap()
     {
         Time.timeScale = 1;
-        GameManager.Instance.AdvanceMapProgress();
-
         SceneManager.LoadScene("MapSelection");
     }
 }
