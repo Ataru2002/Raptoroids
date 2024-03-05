@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectileSpawner : MonoBehaviour
 {
     [SerializeField] bool isPlayer;
-    [SerializeField] GameObject projectilePrefab;
     [SerializeField] float fireRate;
     [SerializeField] float firstShotDelay;
     [SerializeField] bool coneFire;
@@ -18,6 +17,9 @@ public class ProjectileSpawner : MonoBehaviour
 
     EnemyBehavior enemyBehavior = null;
 
+    delegate GameObject ProjectileSpawnFunc();
+    ProjectileSpawnFunc spawnProjectile;
+
     float shotInterval;
     float timeOfNextShot = 0;
 
@@ -27,11 +29,15 @@ public class ProjectileSpawner : MonoBehaviour
         shotInterval = 1f / fireRate;
         timeOfNextShot = firstShotDelay;
 
-        if (!isPlayer)
+        if (isPlayer)
+        {
+            spawnProjectile = CombatStageManager.Instance.GetPlayerProjectile;
+        }
+        else
         {
             enemyBehavior = GetComponentInParent<EnemyBehavior>();
+            spawnProjectile = CombatStageManager.Instance.GetEnemyProjectile;
         }
-
     }
 
     // Update is called once per frame
@@ -52,7 +58,7 @@ public class ProjectileSpawner : MonoBehaviour
 
         if (timestamp >= timeOfNextShot)
         {
-            GameObject projectile = Instantiate(projectilePrefab);
+            GameObject projectile = spawnProjectile();
             projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
             
@@ -64,8 +70,8 @@ public class ProjectileSpawner : MonoBehaviour
 
             if (coneFire)
             {
-                GameObject projectile2 = Instantiate(projectilePrefab);
-                GameObject projectile3 = Instantiate(projectilePrefab);
+                GameObject projectile2 = spawnProjectile();
+                GameObject projectile3 = spawnProjectile();
 
                 projectile2.transform.position = transform.position;
                 projectile3.transform.position = transform.position;

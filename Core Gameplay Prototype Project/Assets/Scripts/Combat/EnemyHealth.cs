@@ -42,8 +42,8 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
             if (currentHealth <= 0)
             {
-                gameObject.SetActive(false);
                 CombatStageManager.Instance.OnEnemyDefeated();
+                Destroy(gameObject);
             }
         }
     }
