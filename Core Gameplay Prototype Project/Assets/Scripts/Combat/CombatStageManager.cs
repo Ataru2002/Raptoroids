@@ -44,6 +44,7 @@ public class CombatStageManager : MonoBehaviour
     GameObject rewardSummaryPrefab;
 
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
+    bool stageEnded = false;
 
     private void Awake()
     {
@@ -191,7 +192,13 @@ public class CombatStageManager : MonoBehaviour
 
     void EndStage(bool playerWin)
     {
+        if (stageEnded)
+        {
+            return;
+        }
+
         Time.timeScale = 0;
+        stageEnded = true;
 
         if (playerWin)
         {
