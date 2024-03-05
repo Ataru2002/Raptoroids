@@ -30,6 +30,6 @@ public class TreasureRoomManager : MonoBehaviour
 
 
     public void UpdateDisplay(int currentGems){
-        gemText.text = $"Gems Collected: {currentGems}";
+        gemText.text = $"Gems Pending: {currentGems}";
     }
 }

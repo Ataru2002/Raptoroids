@@ -4255,7 +4255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gems Collected: 1000'
+  m_text: 'Gems Pending: 1000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}

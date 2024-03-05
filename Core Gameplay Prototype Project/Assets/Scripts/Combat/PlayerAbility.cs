@@ -6,8 +6,8 @@ using TMPro;
 
 public class PlayerAbility : MonoBehaviour
 {
-    public GameObject shieldObject;
-    public Button shieldButton;
+    [SerializeField] GameObject shieldObject;
+    AbilityCooldownUI cooldownUI;
 
     TargetType targetType;
 
@@ -17,7 +17,6 @@ public class PlayerAbility : MonoBehaviour
     private float cooldownTimer = 0f;
     public float shieldDuration = 5f;
     private float shieldTimer = 0f;
-    // Start is called before the first frame update
     public bool shieldPermanent = true;
 
     private float doubleClickWindow = 0.2f;
@@ -25,10 +24,15 @@ public class PlayerAbility : MonoBehaviour
     private float lastClickTime = 0f;
 
 
+    private void Start()
+    {
+        cooldownUI = FindFirstObjectByType<AbilityCooldownUI>();
+    }
+
     void Update()
     {   
         //double click implementation
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0)) {
             float sinceLastClick = Time.time - lastClickTime;
 
             if(sinceLastClick <= doubleClickWindow){
@@ -41,9 +45,9 @@ public class PlayerAbility : MonoBehaviour
         updateShieldDuration();
     }
 
-    public void activateShield(){
+    public void activateShield() {
         print("Ability activated");
-        if(!shieldActive && cooldownTimer <= 0){
+        if(!shieldActive && cooldownTimer <= 0) {
             shieldActive = true;
             shieldObject.SetActive(true);
             cooldownTimer = cooldown;
@@ -53,8 +57,8 @@ public class PlayerAbility : MonoBehaviour
         }
     }
 
-    void updateShieldDuration(){
-        if(shieldActive && !shieldPermanent){
+    void updateShieldDuration() {
+        if(shieldActive && !shieldPermanent) {
             shieldTimer -= Time.deltaTime;
             if(shieldTimer <= 0f){
                 deactivateShield();
@@ -62,37 +66,23 @@ public class PlayerAbility : MonoBehaviour
         }
     }
 
-    public void deactivateShield(){
+    public void deactivateShield() {
         shieldActive = false;
         shieldObject.SetActive(false);
     }
 
-    void diminishCooldown(){
-        if(cooldownTimer > 0f){
-            shieldButton.interactable = false;
+    void diminishCooldown() {
+        if(cooldownTimer > 0f) {
             cooldownTimer -= Time.deltaTime;
             cooldownTimer = Mathf.Max(0f, cooldownTimer);   //make sure that it does not go below 0
         } else{
-            shieldButton.interactable = true;
             deactivateShield();
         }
-        updateCooldownText();
+        updateCooldownHUD();
     }
 
-    void updateCooldownText(){
-        if (cooldownTimer <= 0f)
-        {
-            shieldButton.GetComponentInChildren<TMP_Text>().text = "Activate Shield";
-        }
-        else
-        {
-            string timeleft = "Time Left: ";
-            timeleft += cooldownTimer.ToString("F1");
-            shieldButton.GetComponentInChildren<TMP_Text>().text = timeleft;
-        }
+    void updateCooldownHUD() {
+        float timeRemaining = cooldown - cooldownTimer;
+        cooldownUI.UpdateCooldownProgress(timeRemaining / cooldown);
     }
-    
-    
-    
-    
 }

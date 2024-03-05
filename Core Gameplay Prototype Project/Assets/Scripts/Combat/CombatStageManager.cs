@@ -18,6 +18,7 @@ public class CombatStageManager : MonoBehaviour
 
     [SerializeField] GameObject stageUI;
     [SerializeField] GameObject winScreen;
+    [SerializeField] RectTransform winScreenSummaryBox;
     [SerializeField] GameObject bossWinScreen;
     [SerializeField] GameObject loseScreen;
     [SerializeField] RectTransform loseScreenSummaryBox;
@@ -31,6 +32,7 @@ public class CombatStageManager : MonoBehaviour
     const float bossHealthBarHeight = 50f;
 
     int enemyKillCount = 0;
+    int gemsCollectedInStage = 0;
 
     LinkedPool<GameObject> playerProjectiles;
     GameObject playerProjectilePrefab;
@@ -209,6 +211,21 @@ public class CombatStageManager : MonoBehaviour
             else
             {
                 winScreen.SetActive(true);
+
+                GameManager.Instance.CollectGems(gemsCollectedInStage);
+
+                GameObject stageGemsBox = Instantiate(rewardSummaryPrefab);
+                stageGemsBox.transform.SetParent(winScreenSummaryBox);
+                stageGemsBox.transform.localScale = Vector3.one;
+                string stageGemText = $"Gems collected this stage: {gemsCollectedInStage}";
+                stageGemsBox.GetComponentInChildren<TextMeshProUGUI>().text = stageGemText;
+
+                int runTotalGems = GameManager.Instance.GetCurrentGems();
+                GameObject runTotalBox = Instantiate(rewardSummaryPrefab);
+                runTotalBox.transform.SetParent(winScreenSummaryBox);
+                runTotalBox.transform.localScale = Vector3.one;
+                string totalGemText = $"Total gems collected this run: {runTotalGems}";
+                runTotalBox.GetComponentInChildren<TextMeshProUGUI>().text = totalGemText;
             }
         }
         else
@@ -252,6 +269,7 @@ public class CombatStageManager : MonoBehaviour
     {
         GameManager.Instance.ClearMapInfo();
 
+        // TODO: possibly handle multipliers in Game Manager instead
         float multiplier = playerWon ? 1f : 0.8f;
         GameManager.Instance.CommitCollectedGems(multiplier);
     }
