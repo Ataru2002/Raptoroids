@@ -12,7 +12,7 @@ public class CombatStageManager : MonoBehaviour
 
     [SerializeField] float enemyRespawnDelay;
     [SerializeField] int maxConcurrentEnemies;
-    int activeEnemies = 0;
+
     public int MaxConcurrentEnemies { get {  return maxConcurrentEnemies; } }
     [SerializeField] int enemyKillRequirement;
 
@@ -79,11 +79,7 @@ public class CombatStageManager : MonoBehaviour
         else
         {
             bossHealthBar.SetActive(false);
-            while (activeEnemies < MaxConcurrentEnemies)
-            {
-                enemySpawner.SpawnEnemy();
-                activeEnemies++;
-            }
+            enemySpawner.DeployFormation();
         }
 
         playerProjectiles = new LinkedPool<GameObject>(MakePlayerProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
@@ -185,16 +181,6 @@ public class CombatStageManager : MonoBehaviour
         {
             EndStage(true);
         }
-        else
-        {
-            StartCoroutine(RespawnEnemy());
-        }
-    }
-
-    IEnumerator RespawnEnemy()
-    {
-        yield return new WaitForSeconds(enemyRespawnDelay);
-        enemySpawner.SpawnEnemy();
     }
 
     void EndStage(bool playerWin)

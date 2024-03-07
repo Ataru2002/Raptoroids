@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 7730016327616722248}
   - component: {fileID: -3337596448108323892}
   m_Layer: 0
-  m_Name: Strafing Enemy
+  m_Name: Inverted Strafing Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   trackPlayer: 0
   timeToFinalPosition: 0.9
   strafeCycleTime: 2
-  invertStrafe: 0
+  invertStrafe: 1
   strafeDistance: 1.5
   strafePauseDurationAverage: 1
   strafePauseDurationMaxDelta: 0

@@ -9,15 +9,16 @@ public class EnemyBehavior : MonoBehaviour
     Transform playerTransform;
     float timeSinceSpawn = 0;
     [SerializeField] float timeToFinalPosition = 0;
-    protected Vector2 initialPosition;
     protected Vector2 finalPosition;
+
+    protected BezierCurve path;
+
     public bool FinalPositionReached { get { return timeSinceSpawn >= timeToFinalPosition; } }
 
     // Start is called before the first frame update
     protected void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        
     }
 
     // Update is called once per frame
@@ -34,8 +35,7 @@ public class EnemyBehavior : MonoBehaviour
                 timeSinceSpawn = timeToFinalPosition;
             }
 
-            Vector2 currentPosition = Vector2.Lerp(initialPosition, finalPosition, timeSinceSpawn / timeToFinalPosition);
-            transform.position = currentPosition;
+            transform.position = path.GetPosition(timeSinceSpawn / timeToFinalPosition);
         }
 
         if (trackPlayer)
@@ -46,15 +46,51 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public void SetInitialPosition(Vector2 val)
+    public void SetPath(Vector2[] points)
     {
-        initialPosition = val;
+        path = new BezierCurve(points);
+        finalPosition = points[points.Length - 1];
+        print(finalPosition);
+    }
+}
+
+public class BezierCurve
+{
+    Vector2[] controlPoints;
+
+    public BezierCurve(Vector2[] points)
+    {
+        controlPoints = points;
     }
 
-    public void SetFinalPosition(Vector2 val)
+    public Vector2 GetPosition(float timeRatio)
     {
-        finalPosition = val;
+        Vector2 position = Vector2.zero;
+        int n = controlPoints.Length - 1;
+        for (int i = 0; i <= n; i++)
+        {
+            float coefficient = Combination(n, i) * Mathf.Pow(1 - timeRatio, n - i) * Mathf.Pow(timeRatio, i);
+            position += controlPoints[i] * coefficient;
+        }
+        return position;
     }
 
-    
+    int Combination(int n, int r)
+    {
+        int result = Factorial(n) / (Factorial(r) * Factorial(n - r));
+        Debug.Log(result);
+        return result;
+    }
+
+    int Factorial(int n)
+    {
+        int result = 1;
+        int i = 1;
+        while (i <= n)
+        {
+            result *= i;
+            i += 1;
+        }
+        return result;
+    }
 }

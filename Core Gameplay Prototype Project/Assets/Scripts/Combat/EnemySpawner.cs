@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    EnemyFormation[] enemyFormations;
+
     [SerializeField] Vector2 finalPointLowerBound;
     [SerializeField] Vector2 finalPointUpperBound;
 
     // TODO: possibly get a list of enemies that can spawn in this level
     // once there is a sufficient variety of enemies in the game
     [SerializeField] GameObject[] enemyPrefabs;
+
+    // For use in boss levels -- spawn just one boss
     GameObject[] bossPrefabs;
 
     private void Awake()
     {
         bossPrefabs = Resources.LoadAll<GameObject>("Prefabs/Enemies/Bosses");
+        enemyFormations = Resources.LoadAll<EnemyFormation>("Scriptable Objects/Enemy Formations");
     }
 
     // Start is called before the first frame update
@@ -29,21 +34,10 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    public void SpawnEnemy()
+    public void DeployFormation()
     {
-        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        GameObject enemy = Instantiate(enemyPrefabs[enemyIndex]);
-        
-        // Bring the enemy far above the viewport to hide the enemy on spawn,
-        // lest we get an enemy blip in a la FnaF 1 Golden Freddy.
-        enemy.transform.position = new Vector3(0, 10, 0);
-
-        float xPos = Random.Range(finalPointLowerBound.x, finalPointUpperBound.x);
-        float yPos = Random.Range(finalPointLowerBound.y, finalPointUpperBound.y);
-
-        EnemyBehavior enemyBehavior = enemy.GetComponent<EnemyBehavior>();
-        enemyBehavior.SetInitialPosition(new Vector3(Random.Range(finalPointLowerBound.x, finalPointUpperBound.x), 7, 0));
-        enemyBehavior.SetFinalPosition(new Vector3(xPos, yPos, 0));
+        int formationIndex = Random.Range(0, enemyFormations.Length);
+        StartCoroutine(enemyFormations[formationIndex].Deploy());
     }
 
     // TODO: get data on what the boss will be from the Game Manager
@@ -53,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
         boss.transform.position = new Vector3(0, 10, 0);
 
         EnemyBehavior bossBehavior = boss.GetComponent<EnemyBehavior>();
-        bossBehavior.SetInitialPosition(new Vector3(0, 10, 0));
-        bossBehavior.SetFinalPosition(new Vector3(0, 3, 0));
+        Vector2[] bossPath = { new Vector2(0, 10), new Vector2(0, 3) };
+        bossBehavior.SetPath(bossPath);
     }
 }

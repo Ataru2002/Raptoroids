@@ -8,12 +8,16 @@ public class StrafeEnemyBehavior : EnemyBehavior
     // then to the left, then back to the center to complete the cycle.
     [SerializeField] float strafeCycleTime;
 
+    // Invert strafe direction (i.e. start by going to the left instead)
+    [SerializeField] bool invertStrafe = false;
+
     // How far the enemy will go from the center
     [SerializeField] float strafeDistance;
 
     [SerializeField] float strafePauseDurationAverage;
     [SerializeField] float strafePauseDurationMaxDelta;
 
+    int strafeDirection = 1;
     float sinceStrafeStart = 0;
     float nextStrafeStart = 0;
 
@@ -21,6 +25,10 @@ public class StrafeEnemyBehavior : EnemyBehavior
     new void Start()
     {
         base.Start();
+        if (invertStrafe)
+        {
+            strafeDirection = -1;
+        }
     }
 
     // Update is called once per frame
@@ -43,7 +51,7 @@ public class StrafeEnemyBehavior : EnemyBehavior
         else
         {
             sinceStrafeStart += Time.deltaTime;
-            float nextX = finalPosition.x + Mathf.Sin(2 * Mathf.PI * sinceStrafeStart / strafeCycleTime);
+            float nextX = finalPosition.x + strafeDirection * Mathf.Sin(2 * Mathf.PI * sinceStrafeStart / strafeCycleTime);
             transform.position = new Vector3(nextX, transform.position.y, transform.position.z);
         }
     }
