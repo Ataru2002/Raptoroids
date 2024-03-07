@@ -25,6 +25,11 @@ public class EnemyFormation : ScriptableObject
             }
         }
     }
+
+    public int GetEnemyCount()
+    {
+        return enemies.Length;
+    }
 }
 
 [Serializable]

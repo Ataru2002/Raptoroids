@@ -370,7 +370,7 @@ public class Map
 
                 if (current.IsClear())
                 {
-                    mapNodes[y, x].Randomize();
+                    mapNodes[y, x].Randomize(y);
                 }
 
                 previous = current;
@@ -402,9 +402,16 @@ public class MapNode
         nextNodes = new List<MapNode>();
     }
 
-    public void Randomize()
+    public void Randomize(int nodeTier)
     {
-        type = Random.Range(0.0f, 1.0f) <= 0.75f ? MapNodeType.Combat : MapNodeType.Treasure;
+        if (nodeTier == 0)
+        {
+            type = MapNodeType.Combat;
+        }
+        else
+        {
+            type = Random.Range(0.0f, 1.0f) <= 0.75f ? MapNodeType.Combat : MapNodeType.Treasure;
+        }
 
         float xOffset = Random.Range(-10.0f, 10.0f);
         float yOffset = Random.Range(-10.0f, 10.0f);

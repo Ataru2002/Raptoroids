@@ -3765,7 +3765,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyRespawnDelay: 2
   maxConcurrentEnemies: 3
-  enemyKillRequirement: 15
   stageUI: {fileID: 1237136593}
   winScreen: {fileID: 1635279445}
   winScreenSummaryBox: {fileID: 772071145}
@@ -3802,6 +3801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeff9bca7218140428947bb4028bb5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  formationInterval: 3
   finalPointLowerBound: {x: -2.5, y: 1}
   finalPointUpperBound: {x: 2.5, y: 3}
   enemyPrefabs:

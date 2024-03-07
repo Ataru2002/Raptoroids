@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e372234f87a8bf459b00d17ac87e47a, type: 3}
+  m_Name: Blowfly Quartet
+  m_EditorClassIdentifier: 
+  enemies:
+  - prefab: {fileID: 782689998002506709, guid: 916d5def56cc4a44cb99caac113cf342, type: 3}
+    spawnDelay: 0
+    curvePoints:
+    - {x: -4, y: 1}
+    - {x: -3, y: 3.5}
+    - {x: -2, y: 3.5}
+  - prefab: {fileID: 782689998002506709, guid: 916d5def56cc4a44cb99caac113cf342, type: 3}
+    spawnDelay: 0
+    curvePoints:
+    - {x: -4, y: 1}
+    - {x: -2, y: 2}
+    - {x: -1, y: 2}
+  - prefab: {fileID: 782689998002506709, guid: 916d5def56cc4a44cb99caac113cf342, type: 3}
+    spawnDelay: 0.5
+    curvePoints:
+    - {x: 4, y: 1}
+    - {x: 3, y: 3.5}
+    - {x: 2, y: 3.5}
+  - prefab: {fileID: 782689998002506709, guid: 916d5def56cc4a44cb99caac113cf342, type: 3}
+    spawnDelay: 0
+    curvePoints:
+    - {x: 4, y: 1}
+    - {x: 2, y: 2}
+    - {x: 1, y: 2}

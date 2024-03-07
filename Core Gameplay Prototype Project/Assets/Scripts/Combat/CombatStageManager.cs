@@ -14,7 +14,6 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] int maxConcurrentEnemies;
 
     public int MaxConcurrentEnemies { get {  return maxConcurrentEnemies; } }
-    [SerializeField] int enemyKillRequirement;
 
     [SerializeField] GameObject stageUI;
     [SerializeField] GameObject winScreen;
@@ -31,6 +30,7 @@ public class CombatStageManager : MonoBehaviour
     const float bossHealthBarWidth = 500f;
     const float bossHealthBarHeight = 50f;
 
+    int enemyKillRequirement;
     int enemyKillCount = 0;
     int gemsCollectedInStage = 0;
 
@@ -69,6 +69,7 @@ public class CombatStageManager : MonoBehaviour
     void Start()
     {
         enemySpawner = GetComponent<EnemySpawner>();
+        enemyKillRequirement = enemySpawner.GetEnemyCount();
 
         if (isBossStage)
         {
@@ -79,7 +80,7 @@ public class CombatStageManager : MonoBehaviour
         else
         {
             bossHealthBar.SetActive(false);
-            enemySpawner.DeployFormation();
+            StartCoroutine(enemySpawner.DeployFormations());
         }
 
         playerProjectiles = new LinkedPool<GameObject>(MakePlayerProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
