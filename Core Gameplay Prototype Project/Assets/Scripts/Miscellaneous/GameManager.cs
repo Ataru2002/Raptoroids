@@ -14,7 +14,13 @@ public class GameManager : MonoBehaviour
     Map[] generatedMaps = null;
     int mapIndex = 0;
     int currentMapTier = 0;
+    int totalShips = 2;
+    int totalGuns = 2;
     List<MapNode> visitedNodes = new List<MapNode>();
+    List<byte> availShips;
+    List<byte> availGuns;
+    int currentShip;
+    int currentGuns;
 
     private void Awake()
     {
@@ -27,11 +33,16 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        availShips = new List<byte>(totalShips);
+        availGuns = new List<byte>(totalGuns);
+        currentShip = 0;
+        currentGuns = 0;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+
         
     }
 
@@ -101,4 +112,19 @@ public class GameManager : MonoBehaviour
     {
         return totalGems;
     }
+
+    public int getCurrentShip()
+    {
+        return currentShip;
+    }
+    public int getCurrentGun()
+    {
+        return currentGuns;
+    }
+
+    public void changeCurrentShip(int type)
+    {
+        currentShip = type;
+    }
+
 }
