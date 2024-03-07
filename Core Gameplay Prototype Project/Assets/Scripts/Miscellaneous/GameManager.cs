@@ -17,10 +17,8 @@ public class GameManager : MonoBehaviour
     int totalShips = 2;
     int totalGuns = 2;
     List<MapNode> visitedNodes = new List<MapNode>();
-    List<byte> availShips;
-    List<byte> availGuns;
-    int currentShip;
-    int currentGuns;
+    List<byte> availableShips;
+    List<byte> availableGuns;
 
     private void Awake()
     {
@@ -33,10 +31,8 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        availShips = new List<byte>(totalShips);
-        availGuns = new List<byte>(totalGuns);
-        currentShip = 0;
-        currentGuns = 0;
+        availableShips = new List<byte>(totalShips / 8 + 1);
+        availableGuns = new List<byte>(totalGuns / 8 + 1);
     }
 
     // Start is called before the first frame update
@@ -112,19 +108,4 @@ public class GameManager : MonoBehaviour
     {
         return totalGems;
     }
-
-    public int getCurrentShip()
-    {
-        return currentShip;
-    }
-    public int getCurrentGun()
-    {
-        return currentGuns;
-    }
-
-    public void changeCurrentShip(int type)
-    {
-        currentShip = type;
-    }
-
 }

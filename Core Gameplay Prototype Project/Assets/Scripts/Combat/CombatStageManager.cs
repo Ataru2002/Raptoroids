@@ -10,6 +10,9 @@ public class CombatStageManager : MonoBehaviour
     static CombatStageManager instance;
     public static CombatStageManager Instance { get { return instance; } }
 
+    [SerializeField] Transform playerSpawnPoint;
+    [SerializeField] GameObject[] playerPrefabs;
+
     [SerializeField] float enemyRespawnDelay;
     [SerializeField] int maxConcurrentEnemies;
 
@@ -70,6 +73,10 @@ public class CombatStageManager : MonoBehaviour
     {
         enemySpawner = GetComponent<EnemySpawner>();
         enemyKillRequirement = enemySpawner.GetEnemyCount();
+
+        int raptoroidID = PlayerPrefs.HasKey("EquippedRaptoroid") ? PlayerPrefs.GetInt("EquippedRaptoroid") : 0;
+        GameObject player = Instantiate(playerPrefabs[raptoroidID]);
+        player.transform.position = playerSpawnPoint.position;
 
         if (isBossStage)
         {

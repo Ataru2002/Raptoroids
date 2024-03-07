@@ -11,7 +11,7 @@ public class LoadoutSelection : MonoBehaviour
     [SerializeField] TMP_Text Ship2;
     void Start()
     {
-        int current = GameManager.Instance.getCurrentShip();
+        int current = PlayerPrefs.HasKey("EquippedRaptoroid") ? PlayerPrefs.GetInt("EquippedRaptoroid") : 0;
         if (current == 0)
         {
             Ship1.text = "Equipped";
@@ -26,7 +26,7 @@ public class LoadoutSelection : MonoBehaviour
 
     public void chooseShip(int type)
     {
-        GameManager.Instance.changeCurrentShip(type);
+        PlayerPrefs.SetInt("EquippedRaptoroid", type);
         if (type == 0)
         {
             Ship1.text = "Equipped";
