@@ -15,7 +15,7 @@ public class PlayerAbility : MonoBehaviour
     private bool shieldActive = false;
 
     private float cooldownTimer = 0f;
-    public float shieldDuration = 5f;
+    public float shieldDuration = 3f;
     private float shieldTimer = 0f;
     public bool shieldPermanent = true;
 

@@ -18,6 +18,6 @@ public class PlayerShieldDetectable : MonoBehaviour, IBulletHittable
     }
 
     public void OnBulletHit(){
-        playerAbility.deactivateShield();
+        
     }
 }

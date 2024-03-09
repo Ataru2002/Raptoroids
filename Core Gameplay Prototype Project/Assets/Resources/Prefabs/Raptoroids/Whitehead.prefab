@@ -235,8 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldObject: {fileID: 5683339773515422960}
   cooldown: 10
-  shieldDuration: 1
-  shieldPermanent: 1
+  shieldDuration: 2
+  shieldPermanent: 0
 --- !u!1 &4407078997391759102
 GameObject:
   m_ObjectHideFlags: 0
