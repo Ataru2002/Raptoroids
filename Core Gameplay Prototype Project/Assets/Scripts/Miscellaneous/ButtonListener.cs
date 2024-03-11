@@ -68,6 +68,12 @@ public class ButtonListener : MonoBehaviour
         ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
     }
 
+    public void TutorialListener()
+    {
+        StartCoroutine(loadScene("Tutorial"));
+        ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
+    }
+
     IEnumerator loadScene(string sceneName){
         AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(sceneName);
 
