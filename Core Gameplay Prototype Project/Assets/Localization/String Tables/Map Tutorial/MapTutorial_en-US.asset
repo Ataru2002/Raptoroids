@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Localized: Begin a stage by selecting a map node. Clearing a stage unlocks
       the next node, which is a node below the current one, connected to it by a
       black line. <color=red>ATTENTION:</color> once progress is made on a map, no
-      other map can be selected.
+      other map can be selected until you defeat the boss or you are defeated.
     m_Metadata:
       m_Items: []
   - m_Id: 28154927243264
@@ -47,7 +47,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 29240002076672
-    m_Localized: All paths in a map end in the map's boss.
+    m_Localized: All paths in a map end in the map's boss. Defeating the boss concludes
+      the run and allows you to begin your mission in a new map.
     m_Metadata:
       m_Items: []
   references:

@@ -10,6 +10,7 @@ public class MapProgressTutorialController : MonoBehaviour
     [SerializeField] string[] subheaderKeys;
     [SerializeField] string[] bodyKeys;
     [SerializeField] GameObject[] highlighters;
+
     [SerializeField] Button reverseButton;
     [SerializeField] Button advanceButton;
 
@@ -38,16 +39,16 @@ public class MapProgressTutorialController : MonoBehaviour
     public void ChangeSlide(int direction)
     {
         currentSlide += direction;
-        UpdateSlideStrings();
+        UpdateSlides();
     }
 
     void ResetTutorial()
     {
         currentSlide = 0;
-        UpdateSlideStrings();
+        UpdateSlides();
     }
 
-    void UpdateSlideStrings()
+    void UpdateSlides()
     {
         subheader.SetEntry(subheaderKeys[currentSlide]);
         subheader.RefreshString();
@@ -59,5 +60,8 @@ public class MapProgressTutorialController : MonoBehaviour
         {
             highlighters[i].SetActive(i == currentSlide);
         }
+
+        reverseButton.interactable = currentSlide > 0;
+        advanceButton.interactable = currentSlide < subheaderKeys.Length - 1;
     }
 }
