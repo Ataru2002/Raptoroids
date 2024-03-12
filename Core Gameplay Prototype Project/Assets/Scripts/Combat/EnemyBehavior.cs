@@ -50,7 +50,6 @@ public class EnemyBehavior : MonoBehaviour
     {
         path = new BezierCurve(points);
         finalPosition = points[points.Length - 1];
-        print(finalPosition);
     }
 }
 

@@ -13514,6 +13514,8 @@ MonoBehaviour:
           items:
           - rid: 4180197150079582751
           - rid: 4180197150079582752
+          - rid: 4180197242655998021
+          - rid: 4180197242655998022
         m_UpdateType: 0
     - rid: 4180197150079582751
       type: {class: UnityObjectProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
@@ -13541,6 +13543,28 @@ MonoBehaviour:
         - localeIdentifier:
             m_Code: ja-JP
           value: {fileID: 1777318592459769999, guid: a560758e2a83dea4ca4b538db0c035ae, type: 2}
+    - rid: 4180197242655998021
+      type: {class: FloatTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_fontSize
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 20
+        - localeIdentifier:
+            m_Code: ja-JP
+          value: 16
+    - rid: 4180197242655998022
+      type: {class: FloatTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_fontSizeBase
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 20
+        - localeIdentifier:
+            m_Code: ja-JP
+          value: 16
 --- !u!114 &1686089680
 MonoBehaviour:
   m_ObjectHideFlags: 0

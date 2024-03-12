@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MapTutorial_en-US
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 3dd49bea1216d96459d50ad94ff6ce2a, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 12632186880
+    m_Localized: Map Progression
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1543536369664
+    m_Localized: Selecting a Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2465578606592
+    m_Localized: When starting a game, you can choose a map from 3 maps. Press on
+      a map button to choose a map.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15624855085056
+    m_Localized: Progressing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16794373840896
+    m_Localized: Begin a stage by selecting a map node. Clearing a stage unlocks
+      the next node, which is a node below the current one, connected to it by a
+      black line. <color=red>ATTENTION:</color> once progress is made on a map, no
+      other map can be selected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28154927243264
+    m_Localized: Boss Node
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29240002076672
+    m_Localized: All paths in a map end in the map's boss.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
