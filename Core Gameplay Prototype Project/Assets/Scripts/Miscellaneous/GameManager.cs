@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
+
+    [SerializeField] LocaleIdentifier[] gameLocales;
 
     int pendingGems = 0;
     int totalGems = 0;
@@ -33,6 +37,12 @@ public class GameManager : MonoBehaviour
         }
         availableShips = new List<byte>(totalShips / 8 + 1);
         availableGuns = new List<byte>(totalGuns / 8 + 1);
+
+        if (!PlayerPrefs.HasKey("Locale"))
+        {
+            PlayerPrefs.SetInt("Locale", 0);
+        }
+        SetLocale(PlayerPrefs.GetInt("Locale"));
     }
 
     // Start is called before the first frame update
@@ -46,6 +56,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetLocale(int id)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(gameLocales[id]);
     }
 
     // Map info

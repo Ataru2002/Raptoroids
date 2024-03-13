@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861d494ca4bf0ad4dac775a5076e9e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLocales:
+  - m_Code: en-US
+  - m_Code: ja-JP

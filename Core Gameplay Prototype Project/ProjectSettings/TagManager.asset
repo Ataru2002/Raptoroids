@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Panel
+  - DefaultMenu
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PostProcessing
   - Water
   - UI
   - 

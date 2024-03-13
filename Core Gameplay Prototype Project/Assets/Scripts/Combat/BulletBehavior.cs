@@ -44,14 +44,14 @@ public class BulletBehavior : MonoBehaviour
     {
         if (collision.tag == targetType.ToString())
         {
-            collision.GetComponent<IBulletHittable>().OnBulletHit();
-
             if (isPlayerBullet)
             {
                 GameObject particles = CombatStageManager.Instance.GetEnemyHitParticles();
                 particles.transform.position = transform.position;
                 particles.GetComponent<ParticleSystem>().Emit(10);
             }
+
+            collision.GetComponent<IBulletHittable>().OnBulletHit();
 
             despawn(gameObject);
         }

@@ -23,6 +23,8 @@ public class MapManager : MonoBehaviour
     ObjectPool<GameObject> drawnLinePool;
     List<GameObject> drawnLines = new List<GameObject>();
 
+    [SerializeField] RectTransform screenCanvasTransform;
+
     [SerializeField] Sprite combatNodeSprite;
     [SerializeField] Sprite treasureNodeSprite;
 
@@ -275,7 +277,7 @@ public class MapManager : MonoBehaviour
         
         RectTransform lineRect = line.GetComponent<RectTransform>();
         lineRect.position = start;
-        lineRect.sizeDelta = new Vector2(5, (end - start).magnitude);
+        lineRect.sizeDelta = new Vector2(5 * screenCanvasTransform.lossyScale.x, (end - start).magnitude);
         
         float angle = Mathf.Atan2(end.y - start.y, end.x - start.x) * Mathf.Rad2Deg;
 
