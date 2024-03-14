@@ -12599,7 +12599,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 29480704}
         m_TargetAssemblyTypeName: ButtonListener, Assembly-CSharp
-        m_MethodName: playListener
+        m_MethodName: TutorialListener
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
