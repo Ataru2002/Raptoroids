@@ -42,12 +42,12 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
             if (currentHealth <= 0)
             {
-                CombatStageManager.Instance.OnEnemyDefeated();
-
                 if (lootDropper != null)
                 {
                     lootDropper.DropLoot();
                 }
+
+                CombatStageManager.Instance.OnEnemyDefeated();
 
                 Destroy(gameObject);
             }
