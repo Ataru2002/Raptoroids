@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1976006783916308585}
   - component: {fileID: 4704902835936950345}
   - component: {fileID: 6228448001037781231}
+  - component: {fileID: 790520298502941996}
   m_Layer: 0
   m_Name: Tracking Enemy
   m_TagString: Enemy
@@ -163,6 +164,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
+--- !u!114 &790520298502941996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4242455608330757441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff1957b8d85b2f4d95480ff173fdc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 0.4
+  dropTable:
+  - dropItemPrefab: {fileID: 1587647123911017236, guid: c2cf0274b8a5aa144977c021dd60b374, type: 3}
+    weight: 1
 --- !u!1 &7229488627911370185
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  projectilePrefab: {fileID: 8930704053567165026, guid: ebbdadbacbb8e1c4592b5fbbf5a3fcad, type: 3}
   fireRate: 1.2
   firstShotDelay: 0.8
   coneFire: 0

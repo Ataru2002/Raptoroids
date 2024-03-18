@@ -8,11 +8,13 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
     SpriteRenderer spriteRenderer;
     [SerializeField] int maxHealth = 5;
     private int currentHealth;
+    LootDropper lootDropper;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
+        lootDropper = GetComponent<LootDropper>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,12 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
             if (currentHealth <= 0)
             {
                 CombatStageManager.Instance.OnEnemyDefeated();
+
+                if (lootDropper != null)
+                {
+                    lootDropper.DropLoot();
+                }
+
                 Destroy(gameObject);
             }
         }

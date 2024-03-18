@@ -35,7 +35,10 @@ public class CombatStageManager : MonoBehaviour
 
     int enemyKillRequirement;
     int enemyKillCount = 0;
+    
     int gemsCollectedInStage = 0;
+
+    int gemsWaiting = 0;
 
     LinkedPool<GameObject> playerProjectiles;
     GameObject playerProjectilePrefab;
@@ -166,9 +169,20 @@ public class CombatStageManager : MonoBehaviour
         
     }
 
+    public void OnGemSpawn()
+    {
+        gemsWaiting += 1;
+    }
+
     public void OnGemPickup(int gemValue)
     {
         gemsCollectedInStage += gemValue;
+        gemsWaiting -= 1;
+    }
+
+    public void OnGemDespawn()
+    {
+        gemsWaiting -= 1;
     }
 
     public void UpdateBossHealthBar(float healthRatio)
@@ -198,38 +212,16 @@ public class CombatStageManager : MonoBehaviour
             return;
         }
 
-        Time.timeScale = 0;
         stageEnded = true;
 
         if (playerWin)
         {
-            if (isBossStage)
-            {
-                bossWinScreen.SetActive(true);
-            }
-            else
-            {
-                winScreen.SetActive(true);
-
-                GameManager.Instance.CollectGems(gemsCollectedInStage);
-
-                GameObject stageGemsBox = Instantiate(rewardSummaryPrefab);
-                stageGemsBox.transform.SetParent(winScreenSummaryBox);
-                stageGemsBox.transform.localScale = Vector3.one;
-                string stageGemText = $"Gems collected this stage: {gemsCollectedInStage}";
-                stageGemsBox.GetComponentInChildren<TextMeshProUGUI>().text = stageGemText;
-
-                int runTotalGems = GameManager.Instance.GetCurrentGems();
-                GameObject runTotalBox = Instantiate(rewardSummaryPrefab);
-                runTotalBox.transform.SetParent(winScreenSummaryBox);
-                runTotalBox.transform.localScale = Vector3.one;
-                string totalGemText = $"Total gems collected this run: {runTotalGems}";
-                runTotalBox.GetComponentInChildren<TextMeshProUGUI>().text = totalGemText;
-            }
+            StartCoroutine(LevelEndGemCollectChance());
         }
         else
         {
             loseScreen.SetActive(true);
+            Time.timeScale = 0;
 
             int grossGems = GameManager.Instance.GetCurrentGems();
 
@@ -249,6 +241,40 @@ public class CombatStageManager : MonoBehaviour
             finalGemCounter.transform.localScale = Vector3.one;
             string netGemText = $"Final gem amount awarded: {Mathf.CeilToInt(0.8f * grossGems)}";
             finalGemCounter.GetComponentInChildren<TextMeshProUGUI>().text = netGemText;
+        }
+    }
+
+    IEnumerator LevelEndGemCollectChance()
+    {
+        while (gemsWaiting > 0)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        Time.timeScale = 0;
+
+        if (isBossStage)
+        {
+            bossWinScreen.SetActive(true);
+        }
+        else
+        {
+            winScreen.SetActive(true);
+
+            GameManager.Instance.CollectGems(gemsCollectedInStage);
+
+            GameObject stageGemsBox = Instantiate(rewardSummaryPrefab);
+            stageGemsBox.transform.SetParent(winScreenSummaryBox);
+            stageGemsBox.transform.localScale = Vector3.one;
+            string stageGemText = $"Gems collected this stage: {gemsCollectedInStage}";
+            stageGemsBox.GetComponentInChildren<TextMeshProUGUI>().text = stageGemText;
+
+            int runTotalGems = GameManager.Instance.GetCurrentGems();
+            GameObject runTotalBox = Instantiate(rewardSummaryPrefab);
+            runTotalBox.transform.SetParent(winScreenSummaryBox);
+            runTotalBox.transform.localScale = Vector3.one;
+            string totalGemText = $"Total gems collected this run: {runTotalGems}";
+            runTotalBox.GetComponentInChildren<TextMeshProUGUI>().text = totalGemText;
         }
     }
 

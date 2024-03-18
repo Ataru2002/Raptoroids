@@ -84,6 +84,9 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	""
+	"Language"
+	"Header"
 ]
 searchItemFavorites = [
 ]
