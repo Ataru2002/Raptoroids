@@ -235,4 +235,6 @@ MonoBehaviour:
   dropChance: 0.6
   dropTable:
   - dropItemPrefab: {fileID: 1587647123911017236, guid: c2cf0274b8a5aa144977c021dd60b374, type: 3}
-    weight: 1
+    weight: 0.45
+  - dropItemPrefab: {fileID: 1587647123911017236, guid: 8b8c0206b0684bc4a87c43281b192ce9, type: 3}
+    weight: 0.55

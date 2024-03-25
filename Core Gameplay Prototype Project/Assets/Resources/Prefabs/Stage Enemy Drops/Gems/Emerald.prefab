@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3266192630409647633}
   - component: {fileID: 6684922082248893992}
   m_Layer: 3
-  m_Name: Ruby Drop
+  m_Name: Emerald
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.6212265, y: 0.8127632, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 40b520532a526c5408567812b8070396, type: 3}
+  m_Sprite: {fileID: -3030195262141100859, guid: 39c0e5761c9cf12499fbd9facab6b80f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840c3b96b19a5994f835c48ae44b6c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gemValue: 10
+  gemValue: 1
 --- !u!61 &3266192630409647633
 BoxCollider2D:
   m_ObjectHideFlags: 0
