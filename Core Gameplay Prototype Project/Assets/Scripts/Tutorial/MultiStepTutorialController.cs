@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 
-public class MapProgressTutorialController : MonoBehaviour
+public class MultiStepTutorialController : MonoBehaviour
 {
     [SerializeField] string[] subheaderKeys;
     [SerializeField] string[] bodyKeys;

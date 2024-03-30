@@ -25,8 +25,13 @@ public class SettingsControl : MonoBehaviour
         {
             PlayerPrefs.SetInt("Grayscale", 0);
         }
-
         grayScaleMode.isOn = PlayerPrefs.GetInt("Grayscale") != 0;
+
+        if (!PlayerPrefs.HasKey("Locale"))
+        {
+            PlayerPrefs.SetInt("Locale", 0);
+        }
+        localeDropdown.value = PlayerPrefs.GetInt("Locale");
     }
 
     // Update is called once per frame

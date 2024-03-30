@@ -8,9 +8,13 @@ public class GemCollectible : MonoBehaviour
     const float lifetime = 10f;
     SpriteRenderer spriteRenderer;
 
-    void Start()
+    void Awake()
     {
         CombatStageManager.Instance.OnGemSpawn();
+    }
+
+    void Start()
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(RunLifetime());
     }

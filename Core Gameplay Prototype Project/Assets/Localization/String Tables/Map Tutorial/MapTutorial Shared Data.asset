@@ -43,6 +43,18 @@ MonoBehaviour:
     m_Key: BossBody
     m_Metadata:
       m_Items: []
+  - m_Id: 6589217135124480
+    m_Key: MapNodesHeader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6591130022961152
+    m_Key: CombatStageNodeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6597752673787904
+    m_Key: TreasureNodeDescription
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

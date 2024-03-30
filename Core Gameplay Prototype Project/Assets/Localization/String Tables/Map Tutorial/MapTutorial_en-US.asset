@@ -51,6 +51,21 @@ MonoBehaviour:
       the run and allows you to begin your mission in a new map.
     m_Metadata:
       m_Items: []
+  - m_Id: 6589217135124480
+    m_Localized: Map Nodes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6591130022961152
+    m_Localized: This icon denotes a combat stage. In a combat stage, you will pilot
+      your Raptoroid to eliminate mutant insects. You may be awarded gems according
+      to your performance here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6597752673787904
+    m_Localized: This icon denotes a treasure room. The amount of gems you can earn
+      here depends on how many mutant insects you have eliminated.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 using TMPro;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 public class TreasureRoomManager : MonoBehaviour
 {
 
     private static TreasureRoomManager instance;
     public static TreasureRoomManager Instance { get { return instance; } }
-    public TMP_Text gemText;
+    public LocalizeStringEvent gemText;
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class TreasureRoomManager : MonoBehaviour
         else
         {
             instance = this;
+            gemText.StringReference.Add("collectedGems", new IntVariable { Value = 0 });
         }
     }
 
@@ -30,6 +34,7 @@ public class TreasureRoomManager : MonoBehaviour
 
 
     public void UpdateDisplay(int currentGems){
-        gemText.text = $"Gems Pending: {currentGems}";
+        gemText.StringReference.Add("collectedGems", new IntVariable { Value = currentGems });
+        gemText.StringReference.RefreshString();
     }
 }

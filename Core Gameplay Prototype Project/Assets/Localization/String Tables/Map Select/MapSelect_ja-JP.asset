@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MapSelect_ja-JP
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ja-JP
+  m_SharedData: {fileID: 11400000, guid: 6b17eddea4ef9864f9b89aebf11e8d7b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 4180197670639370319
+  m_TableData:
+  - m_Id: 67233636352
+    m_Localized: "\u96C6\u3081\u305FG: {collectedGems}"
+    m_Metadata:
+      m_Items:
+      - rid: 4180197670639370319
+  - m_Id: 17007364792320
+    m_Localized: "\u30DE\u30C3\u30D7 {mapNumber}"
+    m_Metadata:
+      m_Items:
+      - rid: 4180197670639370319
+  references:
+    version: 2
+    RefIds:
+    - rid: 4180197670639370319
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e06fa70f00000000e0efd5770f0000

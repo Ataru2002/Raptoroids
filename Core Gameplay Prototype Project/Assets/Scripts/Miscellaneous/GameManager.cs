@@ -34,15 +34,16 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        availableShips = new List<byte>(totalShips / 8 + 1);
-        availableGuns = new List<byte>(totalGuns / 8 + 1);
 
-        if (!PlayerPrefs.HasKey("Locale"))
-        {
-            PlayerPrefs.SetInt("Locale", 0);
+            availableShips = new List<byte>(totalShips / 8 + 1);
+            availableGuns = new List<byte>(totalGuns / 8 + 1);
+
+            if (!PlayerPrefs.HasKey("Locale"))
+            {
+                PlayerPrefs.SetInt("Locale", 0);
+            }
+            SetLocale(PlayerPrefs.GetInt("Locale"));
         }
-        SetLocale(PlayerPrefs.GetInt("Locale"));
     }
 
     // Start is called before the first frame update
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void SetLocale(int id)
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(gameLocales[id]);
+        PlayerPrefs.SetInt("Locale", id);
     }
 
     // Map info

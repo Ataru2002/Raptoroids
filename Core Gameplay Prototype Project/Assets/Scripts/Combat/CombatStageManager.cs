@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 public class CombatStageManager : MonoBehaviour
 {
@@ -229,18 +231,25 @@ public class CombatStageManager : MonoBehaviour
             collectedGemCounter.transform.SetParent(loseScreenSummaryBox);
             collectedGemCounter.transform.localScale = Vector3.one;
             string grossGemText = $"Gems collected this run: {grossGems}";
-            collectedGemCounter.GetComponentInChildren<TextMeshProUGUI>().text = grossGemText;
+            LocalizeStringEvent grossGemEvent = collectedGemCounter.GetComponentInChildren<LocalizeStringEvent>();
+            grossGemEvent.StringReference.Add("runGems", new IntVariable { Value = grossGems });
+            grossGemEvent.SetTable("StageClearScreen");
+            grossGemEvent.SetEntry("RunGems");
 
             GameObject failureMarker = Instantiate(rewardSummaryPrefab);
             failureMarker.transform.SetParent(loseScreenSummaryBox);
             failureMarker.transform.localScale = Vector3.one;
-            failureMarker.GetComponentInChildren<TextMeshProUGUI>().text = "Failure penalty: 20% reduction";
+            LocalizeStringEvent penaltyEvent = failureMarker.GetComponentInChildren<LocalizeStringEvent>();
+            penaltyEvent.SetTable("LoseScreen");
+            penaltyEvent.SetEntry("Penalty");
 
             GameObject finalGemCounter = Instantiate(rewardSummaryPrefab);
             finalGemCounter.transform.SetParent(loseScreenSummaryBox);
             finalGemCounter.transform.localScale = Vector3.one;
-            string netGemText = $"Final gem amount awarded: {Mathf.CeilToInt(0.8f * grossGems)}";
-            finalGemCounter.GetComponentInChildren<TextMeshProUGUI>().text = netGemText;
+            LocalizeStringEvent netGemEvent = finalGemCounter.GetComponentInChildren<LocalizeStringEvent>();
+            netGemEvent.StringReference.Add("netGems", new IntVariable { Value = Mathf.CeilToInt(0.8f * grossGems) });
+            netGemEvent.SetTable("LoseScreen");
+            netGemEvent.SetEntry("FinalGemCount");
         }
     }
 
@@ -266,15 +275,19 @@ public class CombatStageManager : MonoBehaviour
             GameObject stageGemsBox = Instantiate(rewardSummaryPrefab);
             stageGemsBox.transform.SetParent(winScreenSummaryBox);
             stageGemsBox.transform.localScale = Vector3.one;
-            string stageGemText = $"Gems collected this stage: {gemsCollectedInStage}";
-            stageGemsBox.GetComponentInChildren<TextMeshProUGUI>().text = stageGemText;
+            LocalizeStringEvent stageGemEvent = stageGemsBox.GetComponentInChildren<LocalizeStringEvent>();
+            stageGemEvent.StringReference.Add("stageGems", new IntVariable { Value = gemsCollectedInStage });
+            stageGemEvent.SetTable("StageClearScreen");
+            stageGemEvent.SetEntry("StageGems");
 
             int runTotalGems = GameManager.Instance.GetCurrentGems();
             GameObject runTotalBox = Instantiate(rewardSummaryPrefab);
             runTotalBox.transform.SetParent(winScreenSummaryBox);
             runTotalBox.transform.localScale = Vector3.one;
-            string totalGemText = $"Total gems collected this run: {runTotalGems}";
-            runTotalBox.GetComponentInChildren<TextMeshProUGUI>().text = totalGemText;
+            LocalizeStringEvent totalGemEvent = runTotalBox.GetComponentInChildren<LocalizeStringEvent>();
+            totalGemEvent.StringReference.Add("runGems", new IntVariable { Value = runTotalGems });
+            totalGemEvent.SetTable("StageClearScreen");
+            totalGemEvent.SetEntry("RunGems");
         }
     }
 
