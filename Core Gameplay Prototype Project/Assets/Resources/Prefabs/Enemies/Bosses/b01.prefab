@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 5446047701997317394}
   - component: {fileID: 7664752921978116612}
   m_Layer: 0
-  m_Name: Projectile Spawn (1)
+  m_Name: Head Projectile Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,8 @@ MonoBehaviour:
   isPlayer: 0
   fireRate: 1.8
   firstShotDelay: 0.8
-  coneFire: 1
-  coneAngle: 10
+  shotType: 1
+  projectilesPerShot: 5
+  coneAngle: 15
   randomizeShotTimes: 1
   shotTimeMaxDelta: 0.1

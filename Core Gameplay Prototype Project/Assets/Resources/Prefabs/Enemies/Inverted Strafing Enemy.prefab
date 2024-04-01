@@ -47,7 +47,8 @@ MonoBehaviour:
   isPlayer: 0
   fireRate: 0.6
   firstShotDelay: 0.6
-  coneFire: 1
+  shotType: 1
+  projectilesPerShot: 3
   coneAngle: 15
   randomizeShotTimes: 1
   shotTimeMaxDelta: 0.3

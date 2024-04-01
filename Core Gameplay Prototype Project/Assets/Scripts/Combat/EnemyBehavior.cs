@@ -11,6 +11,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float timeToFinalPosition = 0;
     protected Vector2 finalPosition;
 
+    protected ProjectileSpawner projectileSpawner;
+
     protected BezierCurve path;
 
     public bool FinalPositionReached { get { return timeSinceSpawn >= timeToFinalPosition; } }
@@ -19,6 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     protected void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        projectileSpawner = GetComponentInChildren<ProjectileSpawner>();
     }
 
     // Update is called once per frame
@@ -44,6 +47,8 @@ public class EnemyBehavior : MonoBehaviour
             float angle = Mathf.Atan2(posDelta.y, posDelta.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
+
+        projectileSpawner.TryShoot();
     }
 
     public void SetPath(Vector2[] points)
