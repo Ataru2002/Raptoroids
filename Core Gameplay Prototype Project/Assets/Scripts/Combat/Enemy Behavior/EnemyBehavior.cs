@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] bool trackPlayer;
+    [SerializeField] protected bool trackPlayer;
 
     Transform playerTransform;
     float timeSinceSpawn = 0;
     [SerializeField] float timeToFinalPosition = 0;
+    
     protected Vector2 finalPosition;
+    public Vector2 FinalPosition { get { return finalPosition; } }
 
-    protected ProjectileSpawner projectileSpawner;
+    [SerializeField] protected ProjectileSpawner defaultProjectileSpawn;
 
     protected BezierCurve path;
 
@@ -21,7 +23,6 @@ public class EnemyBehavior : MonoBehaviour
     protected void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        projectileSpawner = GetComponentInChildren<ProjectileSpawner>();
     }
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class EnemyBehavior : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        projectileSpawner.TryShoot();
+        defaultProjectileSpawn.TryShoot();
     }
 
     public void SetPath(Vector2[] points)

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour, IBulletHittable
 {
@@ -9,6 +11,9 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
     [SerializeField] int maxHealth = 5;
     private int currentHealth;
     LootDropper lootDropper;
+
+    // Used to notify boss behavior script of changes in remaining health
+    [SerializeField] HealthChangeEvent OnHealthChange;
 
     void Start()
     {
@@ -33,6 +38,8 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
         currentHealth--;
 
+        OnHealthChange.Invoke((float)currentHealth / maxHealth);
+
         if (CombatStageManager.Instance != null)
         {
             if (CombatStageManager.Instance.isBossStage)
@@ -53,4 +60,10 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
             }
         }
     }
+}
+
+[System.Serializable]
+public class HealthChangeEvent : UnityEvent <float>
+{
+
 }

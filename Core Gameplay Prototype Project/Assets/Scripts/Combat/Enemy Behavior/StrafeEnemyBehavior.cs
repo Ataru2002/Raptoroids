@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class StrafeEnemyBehavior : EnemyBehavior
+[RequireComponent(typeof(EnemyBehavior))]
+public class StrafeEnemyBehavior : MonoBehaviour
 {
+    EnemyBehavior enemyBehavior;
+
     // Using the sine function, the enemy goes to the right, 
     // then to the left, then back to the center to complete the cycle.
     [SerializeField] float strafeCycleTime;
@@ -21,10 +25,19 @@ public class StrafeEnemyBehavior : EnemyBehavior
     float sinceStrafeStart = 0;
     float nextStrafeStart = 0;
 
-    // Start is called before the first frame update
-    new void Start()
+    bool strafeStarted = false;
+
+    public UnityEvent OnStrafeStart;
+    public UnityEvent OnStrafeEnd;
+
+    private void Awake()
     {
-        base.Start();
+        enemyBehavior = GetComponent<EnemyBehavior>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         if (invertStrafe)
         {
             strafeDirection = -1;
@@ -32,10 +45,9 @@ public class StrafeEnemyBehavior : EnemyBehavior
     }
 
     // Update is called once per frame
-    new void Update()
+    void Update()
     {
-        base.Update();
-        if (FinalPositionReached && Time.time >= nextStrafeStart)
+        if (enemyBehavior.FinalPositionReached && Time.time >= nextStrafeStart)
         {
             Strafe();
         }
@@ -45,14 +57,22 @@ public class StrafeEnemyBehavior : EnemyBehavior
     {
         if (sinceStrafeStart >= strafeCycleTime)
         {
+            if (!strafeStarted)
+            {
+                strafeStarted = true;
+                OnStrafeStart.Invoke();
+            }
+
             sinceStrafeStart = 0;
             nextStrafeStart = Time.time + strafePauseDurationAverage + Random.Range(-strafePauseDurationMaxDelta, strafePauseDurationMaxDelta);
         }
         else
         {
             sinceStrafeStart += Time.deltaTime;
-            float nextX = finalPosition.x + strafeDirection * Mathf.Sin(2 * Mathf.PI * sinceStrafeStart / strafeCycleTime);
+            float nextX = enemyBehavior.FinalPosition.x + strafeDirection * Mathf.Sin(2 * Mathf.PI * sinceStrafeStart / strafeCycleTime);
             transform.position = new Vector3(nextX, transform.position.y, transform.position.z);
+            strafeStarted = false;
+            OnStrafeEnd.Invoke();
         }
     }
 }

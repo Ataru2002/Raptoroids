@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackPlayer: 1
   timeToFinalPosition: 1.2
+  defaultProjectileSpawn: {fileID: 4121584616713353693}
 --- !u!114 &6228448001037781231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &790520298502941996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +233,6 @@ MonoBehaviour:
   isPlayer: 0
   fireRate: 1.2
   firstShotDelay: 0.8
-  coneFire: 0
+  shotType: 0
+  projectilesPerShot: 0
   coneAngle: 0
-  randomizeShotTimes: 1
-  shotTimeMaxDelta: 0.3

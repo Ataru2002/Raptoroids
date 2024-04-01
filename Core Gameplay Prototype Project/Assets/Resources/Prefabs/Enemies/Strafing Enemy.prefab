@@ -50,8 +50,6 @@ MonoBehaviour:
   shotType: 1
   projectilesPerShot: 3
   coneAngle: 15
-  randomizeShotTimes: 1
-  shotTimeMaxDelta: 0.3
 --- !u!1 &4536745841740775154
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,6 +61,7 @@ GameObject:
   - component: {fileID: 932810285947765638}
   - component: {fileID: 6397397824612412776}
   - component: {fileID: 3035377416404862491}
+  - component: {fileID: 2159036636388848805}
   - component: {fileID: 7730016327616722248}
   - component: {fileID: -3337596448108323892}
   - component: {fileID: -2685531040773037737}
@@ -189,6 +188,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.97, y: 1.8}
   m_EdgeRadius: 0
+--- !u!114 &2159036636388848805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536745841740775154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c780604d67ad1d4392fee0b52e37dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackPlayer: 0
+  timeToFinalPosition: 0.9
+  defaultProjectileSpawn: {fileID: 6747715034321093874}
 --- !u!114 &7730016327616722248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,13 +215,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8f0ce217e19a64bae93491cae08ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackPlayer: 0
-  timeToFinalPosition: 0.9
   strafeCycleTime: 2
   invertStrafe: 0
   strafeDistance: 1.5
   strafePauseDurationAverage: 1
   strafePauseDurationMaxDelta: 0
+  OnStrafeStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStrafeEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-3337596448108323892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +239,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-2685531040773037737
 MonoBehaviour:
   m_ObjectHideFlags: 0

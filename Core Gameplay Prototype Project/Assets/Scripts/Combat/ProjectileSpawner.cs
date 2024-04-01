@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,18 +15,12 @@ public class ProjectileSpawner : MonoBehaviour
 
     [SerializeField] float coneAngle;
 
-    // Randomizing shot times will use the fire rate to determine the
-    // middle point of the range.
-    [SerializeField] bool randomizeShotTimes;
-    [SerializeField] float shotTimeMaxDelta;
-
     EnemyBehavior enemyBehavior = null;
 
     delegate GameObject ProjectileSpawnFunc();
     ProjectileSpawnFunc spawnProjectile;
 
-    delegate void ShootFunc();
-    ShootFunc shoot;
+    Action shoot;
 
     float shotInterval;
     float timestamp;
@@ -41,7 +36,7 @@ public class ProjectileSpawner : MonoBehaviour
     void Start()
     {
         shotInterval = 1f / fireRate;
-        timeOfNextShot = firstShotDelay;
+        ResetShotTimer();
     }
 
     // Update is called once per frame
@@ -84,6 +79,11 @@ public class ProjectileSpawner : MonoBehaviour
         }
     }
 
+    public void ResetShotTimer()
+    {
+        timeOfNextShot = firstShotDelay;
+    }
+
     public void TryShoot()
     {
         // Only let the enemy begin shooting once it gets in position.
@@ -100,10 +100,6 @@ public class ProjectileSpawner : MonoBehaviour
         shoot();
 
         timeOfNextShot = Time.time + shotInterval;
-        if (randomizeShotTimes)
-        {
-            timeOfNextShot += Random.Range(-shotTimeMaxDelta, shotTimeMaxDelta);
-        }
     }
 
     GameObject BaseProjectile()
@@ -122,6 +118,7 @@ public class ProjectileSpawner : MonoBehaviour
     }
 
     // --- Shot Pattern Functions ---
+    // These will be referenced via the shoot action.
     void SingleShot()
     {
         BaseProjectile();

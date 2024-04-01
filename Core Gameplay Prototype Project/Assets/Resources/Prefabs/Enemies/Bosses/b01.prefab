@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3554353638152477922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4921997778770560857}
+  - component: {fileID: 5319305285897824045}
+  m_Layer: 0
+  m_Name: Left Pincer Projectile Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4921997778770560857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3554353638152477922}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.8, y: -1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1430111410331758404}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5319305285897824045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3554353638152477922}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  fireRate: 1.2
+  firstShotDelay: 0.8
+  shotType: 1
+  projectilesPerShot: 3
+  coneAngle: 10
 --- !u!1 &7816989691025050568
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +61,8 @@ GameObject:
   - component: {fileID: 1430111410331758404}
   - component: {fileID: 1905245425199148051}
   - component: {fileID: 9211498720577594745}
-  - component: {fileID: 4343228994730447405}
+  - component: {fileID: -7630995428654869975}
+  - component: {fileID: 1814463657671491208}
   - component: {fileID: 3502411648157564497}
   m_Layer: 0
   m_Name: b01
@@ -34,6 +85,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5446047701997317394}
+  - {fileID: 4921997778770560857}
+  - {fileID: 7288483135454070560}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
 --- !u!212 &1905245425199148051
@@ -136,7 +189,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &4343228994730447405
+--- !u!114 &-7630995428654869975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,11 +198,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 7816989691025050568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c780604d67ad1d4392fee0b52e37dab, type: 3}
+  m_Script: {fileID: 11500000, guid: cbc4bb95811584e4cbeba6e834fbaaa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackPlayer: 1
+  trackPlayer: 0
   timeToFinalPosition: 0.6
+  defaultProjectileSpawn: {fileID: 7664752921978116612}
+  leftSpawner: {fileID: 5319305285897824045}
+  rightSpawner: {fileID: 7828250207718245176}
+  strafeBehavior: {fileID: 1814463657671491208}
+--- !u!114 &1814463657671491208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7816989691025050568}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8f0ce217e19a64bae93491cae08ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strafeCycleTime: 1.2
+  invertStrafe: 0
+  strafeDistance: 2
+  strafePauseDurationAverage: 0.8
+  strafePauseDurationMaxDelta: 0.1
+  OnStrafeStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7630995428654869975}
+        m_TargetAssemblyTypeName: CentipedeBossBehavior, Assembly-CSharp
+        m_MethodName: UpdateStrafeStatus
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnStrafeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7630995428654869975}
+        m_TargetAssemblyTypeName: CentipedeBossBehavior, Assembly-CSharp
+        m_MethodName: UpdateStrafeStatus
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3502411648157564497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +267,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7630995428654869975}
+        m_TargetAssemblyTypeName: CentipedeBossBehavior, Assembly-CSharp
+        m_MethodName: UpdateHealthRatio
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7830252936337917581
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +330,55 @@ MonoBehaviour:
   fireRate: 1.8
   firstShotDelay: 0.8
   shotType: 1
-  projectilesPerShot: 5
-  coneAngle: 15
-  randomizeShotTimes: 1
-  shotTimeMaxDelta: 0.1
+  projectilesPerShot: 3
+  coneAngle: 10
+--- !u!1 &8896003717663039108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7288483135454070560}
+  - component: {fileID: 7828250207718245176}
+  m_Layer: 0
+  m_Name: Right Pincer Projectile Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7288483135454070560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896003717663039108}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.8, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1430111410331758404}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7828250207718245176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896003717663039108}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  fireRate: 1.2
+  firstShotDelay: 0.8
+  shotType: 1
+  projectilesPerShot: 3
+  coneAngle: 10
