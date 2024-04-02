@@ -8,7 +8,7 @@ public class CentipedeBossBehavior : BossBehavior
     [SerializeField] ProjectileSpawner rightSpawner;
     [SerializeField] StrafeEnemyBehavior strafeBehavior;
 
-    bool strafing = false;
+    public bool strafing = false;
     float remainingHealthRatio = 1f;
 
     void Awake()
@@ -16,6 +16,7 @@ public class CentipedeBossBehavior : BossBehavior
         transitionConditions = new List<System.Func<bool>>
         {
             StateTransition1,
+            StateTransition2
         };
     }
 

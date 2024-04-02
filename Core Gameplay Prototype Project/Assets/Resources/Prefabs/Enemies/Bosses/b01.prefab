@@ -207,6 +207,7 @@ MonoBehaviour:
   leftSpawner: {fileID: 5319305285897824045}
   rightSpawner: {fileID: 7828250207718245176}
   strafeBehavior: {fileID: 1814463657671491208}
+  strafing: 0
 --- !u!114 &1814463657671491208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,10 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8f0ce217e19a64bae93491cae08ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strafeCycleTime: 1.2
+  strafeCycleTime: 2
   invertStrafe: 0
   strafeDistance: 2
-  strafePauseDurationAverage: 0.8
+  strafePauseDurationAverage: 1.2
   strafePauseDurationMaxDelta: 0.1
   OnStrafeStart:
     m_PersistentCalls:

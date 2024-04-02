@@ -57,22 +57,23 @@ public class StrafeEnemyBehavior : MonoBehaviour
     {
         if (sinceStrafeStart >= strafeCycleTime)
         {
+            sinceStrafeStart = 0;
+            nextStrafeStart = Time.time + strafePauseDurationAverage + Random.Range(-strafePauseDurationMaxDelta, strafePauseDurationMaxDelta);
+
+            OnStrafeEnd.Invoke();
+            strafeStarted = false;
+        }
+        else
+        {
             if (!strafeStarted)
             {
                 strafeStarted = true;
                 OnStrafeStart.Invoke();
             }
 
-            sinceStrafeStart = 0;
-            nextStrafeStart = Time.time + strafePauseDurationAverage + Random.Range(-strafePauseDurationMaxDelta, strafePauseDurationMaxDelta);
-        }
-        else
-        {
             sinceStrafeStart += Time.deltaTime;
-            float nextX = enemyBehavior.FinalPosition.x + strafeDirection * Mathf.Sin(2 * Mathf.PI * sinceStrafeStart / strafeCycleTime);
+            float nextX = enemyBehavior.FinalPosition.x + strafeDirection * strafeDistance * Mathf.Sin(2 * Mathf.PI * sinceStrafeStart / strafeCycleTime);
             transform.position = new Vector3(nextX, transform.position.y, transform.position.z);
-            strafeStarted = false;
-            OnStrafeEnd.Invoke();
         }
     }
 }

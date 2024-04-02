@@ -217,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strafeCycleTime: 2
   invertStrafe: 0
-  strafeDistance: 1.5
+  strafeDistance: 1
   strafePauseDurationAverage: 1
   strafePauseDurationMaxDelta: 0
   OnStrafeStart:
