@@ -981,7 +981,6 @@ GameObject:
   - component: {fileID: 120599815}
   - component: {fileID: 120599814}
   - component: {fileID: 120599818}
-  - component: {fileID: 120599819}
   m_Layer: 5
   m_Name: Map Scene UI
   m_TagString: Untagged
@@ -1118,19 +1117,6 @@ MonoBehaviour:
   bossNodeTransform: {fileID: 1610041660}
   bossButton: {fileID: 1610041663}
   treasureRoomScreen: {fileID: 1023711964}
---- !u!114 &120599819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120599813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abaa9eebf14d1b14cb0d336c077b78db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gemText: {fileID: 1585855009}
 --- !u!1 &247846550
 GameObject:
   m_ObjectHideFlags: 0
@@ -4524,6 +4510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585855006}
   - component: {fileID: 1585855008}
+  - component: {fileID: 1585855010}
   - component: {fileID: 1585855007}
   - component: {fileID: 1585855009}
   m_Layer: 5
@@ -4671,7 +4658,10 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-    m_LocalVariables: []
+    m_LocalVariables:
+    - name: collectedGems
+      variable:
+        rid: 8133101854040522839
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
@@ -4690,7 +4680,23 @@ MonoBehaviour:
         m_CallState: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8133101854040522839
+      type: {class: IntVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 0
+--- !u!114 &1585855010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585855005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06e140e01971534da83a8c6d3bee57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1610041659
 GameObject:
   m_ObjectHideFlags: 0
