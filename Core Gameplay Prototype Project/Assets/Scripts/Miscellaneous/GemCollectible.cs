@@ -10,21 +10,33 @@ public class GemCollectible : MonoBehaviour
 
     void Awake()
     {
-        CombatStageManager.Instance.OnGemSpawn();
+        if (CombatStageManager.Instance != null){
+            CombatStageManager.Instance.OnGemSpawn();
+        }
     }
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        StartCoroutine(RunLifetime());
+        
+        if (CombatStageManager.Instance != null){
+            StartCoroutine(RunLifetime());
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            CombatStageManager.Instance.OnGemPickup(gemValue);
-            Destroy(gameObject);
+            if(CombatStageManager.Instance != null){
+                CombatStageManager.Instance.OnGemPickup(gemValue);
+                Destroy(gameObject);
+            }
+            else{
+                TreasureStageManager.Instance.GemPickup(gemValue);
+                TreasureStageManager.Instance.ReturnDiamondProjectile(gameObject);
+            }
         }
     }
 

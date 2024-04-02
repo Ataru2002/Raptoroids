@@ -142,7 +142,7 @@ public class MapManager : MonoBehaviour
 
         if (selectedNodeType == MapNodeType.Treasure)
         {
-            ToggleTreasureRoom(true);
+            GoToTreasureRoom(true);
             ButtonSFXPlayer.Instance.PlaySFX("TreasureGet");
         }
         else
@@ -165,22 +165,23 @@ public class MapManager : MonoBehaviour
 
     public void RequestTreasureCollect()
     {
-        ToggleTreasureRoom(false);
+        GoToTreasureRoom(false);
         GameManager.Instance.AdvanceMapProgress();
         
         DrawMap(GameManager.Instance.MapIndex);
         UpdateMapButtons();
     }
 
-    public void ToggleTreasureRoom(bool val)
+    public void GoToTreasureRoom(bool val)
     {
-        mapScreen.SetActive(!val);
+        // mapScreen.SetActive(!val);
 
-        treasureRoomScreen.SetActive(val);
-        if(val){
-            GemRewards rewards = new GemRewards();
-            rewards.ProcessReward();   
-        }
+        // treasureRoomScreen.SetActive(val);
+        // if(val){
+        //     GemRewards rewards = new GemRewards();
+        //     rewards.ProcessReward();   
+        // }
+        SceneManager.LoadScene("TreasureStagePrototype", LoadSceneMode.Single);
     }
 
     void UpdateMapButtons()
