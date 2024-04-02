@@ -47,10 +47,9 @@ MonoBehaviour:
   isPlayer: 0
   fireRate: 0.8
   firstShotDelay: 0.8
-  coneFire: 0
+  shotType: 0
+  projectilesPerShot: 0
   coneAngle: 0
-  randomizeShotTimes: 0
-  shotTimeMaxDelta: 0
 --- !u!1 &782689998002506709
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackPlayer: 0
   timeToFinalPosition: 1.2
+  defaultProjectileSpawn: {fileID: 3893651740375252004}
 --- !u!114 &-8304840118553371879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8248970015963855011
 MonoBehaviour:
   m_ObjectHideFlags: 0

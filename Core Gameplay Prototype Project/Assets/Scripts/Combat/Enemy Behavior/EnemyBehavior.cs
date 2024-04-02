@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] bool trackPlayer;
+    [SerializeField] protected bool trackPlayer;
 
     Transform playerTransform;
     float timeSinceSpawn = 0;
     [SerializeField] float timeToFinalPosition = 0;
+    
     protected Vector2 finalPosition;
+    public Vector2 FinalPosition { get { return finalPosition; } }
+
+    [SerializeField] protected ProjectileSpawner defaultProjectileSpawn;
 
     protected BezierCurve path;
 
@@ -44,6 +48,8 @@ public class EnemyBehavior : MonoBehaviour
             float angle = Mathf.Atan2(posDelta.y, posDelta.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
+
+        defaultProjectileSpawn.TryShoot();
     }
 
     public void SetPath(Vector2[] points)
