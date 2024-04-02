@@ -10,7 +10,6 @@ using System;
 public class TreasureStageManager : MonoBehaviour
 {
     int gemsCollectedInStage = 0;
-    int gemsWaiting = 0;
     static TreasureStageManager instance;
     public static TreasureStageManager Instance { get { return instance; } }
 
@@ -64,7 +63,7 @@ public class TreasureStageManager : MonoBehaviour
             EndStage();
         }
 
-        timer.text = Mathf.FloorToInt(timeLimit - currentTime).ToString();
+        timer.text = Mathf.CeilToInt(timeLimit - currentTime).ToString();
     }
 
 
@@ -96,7 +95,6 @@ public class TreasureStageManager : MonoBehaviour
         Destroy(item);
     }
 
-
     void EndStage()
     {
         if(stageEnded){
@@ -104,16 +102,17 @@ public class TreasureStageManager : MonoBehaviour
         }
         stageEnded = true;
         
+        timer.gameObject.SetActive(false);
         Time.timeScale = 0;
         winScreen.SetActive(true);
         GameObject reward = Instantiate(rewardSummaryPrefab);
         reward.transform.SetParent(winScreenSummaryBox);
+        reward.transform.localScale = Vector3.one;
         reward.GetComponentInChildren<TextMeshProUGUI>().text = gemsCollectedInStage.ToString();
         AdvanceRun();
         GameManager.Instance.CollectGems(gemsCollectedInStage);
-        
-        
     }
+
     public void GemPickup(int gemValue){
         gemsCollectedInStage += gemValue;
     }

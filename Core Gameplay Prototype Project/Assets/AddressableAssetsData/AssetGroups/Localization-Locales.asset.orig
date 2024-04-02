@@ -29,7 +29,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
+<<<<<<< HEAD
+  - m_GUID: d25abafc4f148ce49be781246d4e9cf1
+=======
   - m_GUID: 7b02b7d875705994dbe414f48edc2e40
+>>>>>>> core-gameplay-prototypes
     m_Address: English (en-reverse)
     m_ReadOnly: 1
     m_SerializedLabels:
