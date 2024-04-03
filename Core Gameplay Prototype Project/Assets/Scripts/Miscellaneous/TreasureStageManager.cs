@@ -20,7 +20,7 @@ public class TreasureStageManager : MonoBehaviour
     [SerializeField] GameObject winScreen;
     [SerializeField] RectTransform winScreenSummaryBox;
     [SerializeField] TextMeshProUGUI timer;
-    [SerializeField] float timeLimit = 2;
+    [SerializeField] float timeLimit = 10;
     float currentTime = 0;
 
     public string[] scriptsToDisable;

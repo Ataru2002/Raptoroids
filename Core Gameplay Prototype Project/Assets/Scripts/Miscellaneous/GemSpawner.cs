@@ -10,6 +10,7 @@ public class GemSpawner : MonoBehaviour
     [SerializeField] float maxX = 2.5f;
     [SerializeField] float spawnY = 5f;
     [SerializeField] float gemSpawnInterval = 0.5f;
+    [SerializeField] float[] gemSpawnIntervals = {0.25f, 0.5f, 1f};
 
 
     
@@ -24,7 +25,8 @@ public class GemSpawner : MonoBehaviour
             GameObject gem = TreasureStageManager.Instance.GetDiamondProjectile();
             gem.transform.position = spawnPos;
             gem.GetComponent<GemProjectile>().speed = Random.Range(gemMinSpeed, gemMaxSpeed);
-            yield return new WaitForSeconds(gemSpawnInterval);
+            int rngInterval = Random.Range(0,3);
+            yield return new WaitForSeconds(gemSpawnIntervals[rngInterval]);
         }
     }
     
