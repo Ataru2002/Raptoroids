@@ -14,6 +14,8 @@ public class CombatStageManager : MonoBehaviour
 
     [SerializeField] Transform playerSpawnPoint;
     [SerializeField] GameObject[] playerPrefabs;
+    [SerializeField] GameObject oakNutPrefab;
+    LinkedPool<GameObject> oakNuts;
 
     [SerializeField] float enemyRespawnDelay;
     [SerializeField] int maxConcurrentEnemies;
@@ -37,7 +39,7 @@ public class CombatStageManager : MonoBehaviour
 
     int enemyKillRequirement;
     int enemyKillCount = 0;
-    
+
     int gemsCollectedInStage = 0;
 
     int gemsWaiting = 0;
@@ -73,6 +75,8 @@ public class CombatStageManager : MonoBehaviour
         }
     }
 
+    const float oakNutFallSpeed = 2f;
+    const float playerFreezeDuration = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -100,8 +104,54 @@ public class CombatStageManager : MonoBehaviour
         enemyHitParticles = new LinkedPool<GameObject>(MakeEnemyParticles, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
 
         killCounter.text = string.Format("0 / {0}", enemyKillRequirement);
+
+        oakNuts = new LinkedPool<GameObject>(MakeOakNut, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
+        StartCoroutine(StartOakNutSpawn());
     }
 
+    GameObject MakeOakNut()
+    {
+        GameObject oakNut = Instantiate(oakNutPrefab);
+        oakNut.SetActive(false); // Set inactive initially
+        return oakNut;
+    }
+
+    IEnumerator StartOakNutSpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10f); // Spawn oak nut every 20 seconds
+            SpawnOakNut();
+        }
+    }
+
+    void SpawnOakNut()
+    {
+        GameObject oakNut = oakNuts.Get();
+        oakNut.transform.position = new Vector3(Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
+        oakNut.SetActive(true);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Freeze player movement for a duration
+            StartCoroutine(FreezePlayer(playerFreezeDuration));
+        }
+    }
+
+    IEnumerator FreezePlayer(float duration)
+    {
+        // Disable player movement here (e.g., disable player input)
+        yield return new WaitForSeconds(duration);
+        // Enable player movement here (e.g., enable player input)
+    }
+
+    void OnDisable()
+    {
+        StopAllCoroutines(); // Stop spawning coroutine when the stage ends
+    }
     // Pooling functions
     GameObject MakePlayerProjectile()
     {
@@ -168,7 +218,7 @@ public class CombatStageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnGemSpawn()
