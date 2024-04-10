@@ -28,7 +28,9 @@ public class EnemySpawner : MonoBehaviour
         formationPools = new Dictionary<EnemyFormationTiers, EnemyFormation[]>();
         foreach(EnemyFormationTiers formationTier in System.Enum.GetValues(typeof(EnemyFormationTiers)))
         {
-            formationPools[formationTier] = Resources.LoadAll<EnemyFormation>("Resources/Scriptable Objects/Enemy Formations" +  formationTier);
+            string formationDirectory = "Scriptable Objects/Enemy Formations/" + formationTier.ToString();
+            print(formationDirectory);
+            formationPools[formationTier] = Resources.LoadAll<EnemyFormation>(formationDirectory);
         }
 
         bossPrefabs = Resources.LoadAll<GameObject>("Prefabs/Enemies/Bosses");
@@ -58,6 +60,8 @@ public class EnemySpawner : MonoBehaviour
                     formationInterval = 3f;
                     break;
             }
+
+            enemyFormations = GameManager.Instance.GetStageFormations();
         }
     }
 
@@ -111,6 +115,7 @@ public class EnemySpawner : MonoBehaviour
             formationPool[i] = temp;
         }
 
+        print(formationPool.Count);
         List<EnemyFormation> formationsDraw = formationPool.GetRange(0, level + 2);
 
         return formationsDraw.ToArray();

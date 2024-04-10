@@ -17,6 +17,7 @@ public class MapManager : MonoBehaviour
     const int mapCount = 3;
 
     Map[] maps = null;
+    MapNode selectedNode = null;
 
     RectTransform nodeGroupTransform;
 
@@ -140,12 +141,12 @@ public class MapManager : MonoBehaviour
 
     public void SelectNode(int nodeIndex)
     {
-        MapNode selected = GetNodeInfo(nodeIndex);
-        MapNodeType selectedNodeType = selected.Type;
+        selectedNode = GetNodeInfo(nodeIndex);
+        MapNodeType selectedNodeType = selectedNode.Type;
 
         if (selectedNodeType == MapNodeType.Treasure)
         {
-            GameManager.Instance.MarkNodeVisited(selected);
+            GameManager.Instance.MarkNodeVisited(selectedNode);
             GoToTreasureRoom();
         }
         else
@@ -162,25 +163,32 @@ public class MapManager : MonoBehaviour
 
     public void ToggleActionPrompt(int nodeIndex)
     {
-        actionStagePrompt.SetActive(nodeIndex >= 0);
+        // TODO: put in a prompt
+
+        //actionStagePrompt.SetActive(nodeIndex >= 0);
 
         if (nodeIndex < -1)
         {
             return;
         }
 
-        MapNode selected = GetNodeInfo(nodeIndex);
+        selectedNode = GetNodeInfo(nodeIndex);
         int enemyCount = 0;
-        foreach (EnemyFormation formation in selected.GetEnemyFormations())
+        foreach (EnemyFormation formation in selectedNode.GetEnemyFormations())
         {
             enemyCount += formation.GetEnemyCount();
         }
 
-        enemyCountText.text = enemyCount.ToString();
+        GameManager.Instance.SetStageFormations(selectedNode.GetEnemyFormations());
+
+        //enemyCountText.text = enemyCount.ToString();
+
+        GoToAction();
     }
 
     public void GoToAction()
     {
+        GameManager.Instance.MarkNodeVisited(selectedNode);
         SceneManager.LoadScene("CombatStagePrototype", LoadSceneMode.Single);
         ButtonSFXPlayer.Instance.PlaySFX("ToAction");
     }

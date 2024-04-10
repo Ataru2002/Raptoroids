@@ -4187,6 +4187,7 @@ MonoBehaviour:
   playerPrefabs:
   - {fileID: 4272951143565367387, guid: dd49fce6e26fd0e43af4c5e79188ab59, type: 3}
   - {fileID: 7442410451283973695, guid: e32c3cd1528425148872b667765064e7, type: 3}
+  oakNutPrefab: {fileID: 8562175422482686477, guid: 3dcdd9673cd19b5489baa1aea070aceb, type: 3}
   enemyRespawnDelay: 2
   maxConcurrentEnemies: 3
   stageUI: {fileID: 1237136593}

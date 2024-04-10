@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     List<byte> availableShips;
     List<byte> availableGuns;
 
+    EnemyFormation[] selectedStageFormations;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -85,6 +87,21 @@ public class GameManager : MonoBehaviour
     }
 
     public int MapTier { get { return currentMapTier; } }
+
+    public void ClearStageFormations()
+    {
+        selectedStageFormations = null;
+    }
+
+    public void SetStageFormations(EnemyFormation[] formations)
+    {
+        selectedStageFormations = formations;
+    }
+
+    public EnemyFormation[] GetStageFormations()
+    {
+        return selectedStageFormations;
+    }
 
     public void AdvanceMapProgress()
     {
