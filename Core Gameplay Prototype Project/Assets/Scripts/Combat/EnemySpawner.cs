@@ -4,35 +4,38 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    static EnemyFormation[] easyFormations;
-    static EnemyFormation[] mediumFormations;
-    static EnemyFormation[] hardFormations;
+    static Dictionary<EnemyFormationTiers, EnemyFormation[]> formationPools;
+    // For use in boss levels -- spawn just one boss
+    static GameObject[] bossPrefabs;
+
+    public enum EnemyFormationTiers
+    {
+        Easy,
+        Medium,
+        Hard
+    }
 
     EnemyFormation[] enemyFormations;
     float formationInterval;
 
-    // For use in boss levels -- spawn just one boss
-    GameObject[] bossPrefabs;
-
-    private void Awake()
+    public static void LoadEnemyFormations()
     {
-        if (easyFormations == null)
+        if (formationPools != null && bossPrefabs != null)
         {
-            easyFormations = Resources.LoadAll<EnemyFormation>("Scriptable Objects/Enemy Formations/Easy");
+            return;
         }
 
-        if (mediumFormations == null)
+        formationPools = new Dictionary<EnemyFormationTiers, EnemyFormation[]>();
+        foreach(EnemyFormationTiers formationTier in System.Enum.GetValues(typeof(EnemyFormationTiers)))
         {
-            mediumFormations = Resources.LoadAll<EnemyFormation>("Scriptable Objects/Enemy Formations/Medium");
-        }
-
-        if (hardFormations == null)
-        {
-            hardFormations = Resources.LoadAll<EnemyFormation>("Scriptable Objects/Enemy Formations/Hard");
+            formationPools[formationTier] = Resources.LoadAll<EnemyFormation>("Resources/Scriptable Objects/Enemy Formations" +  formationTier);
         }
 
         bossPrefabs = Resources.LoadAll<GameObject>("Prefabs/Enemies/Bosses");
+    }
 
+    private void Awake()
+    {
         if (!CombatStageManager.Instance.isBossStage)
         {
             int level = GameManager.Instance.MapTier;
@@ -43,42 +46,18 @@ public class EnemySpawner : MonoBehaviour
             switch (level)
             {
                 case 3:
-                    formationPool.AddRange(hardFormations);
-                    formationPool.AddRange(mediumFormations);
-                    formationPool.AddRange(easyFormations);
-
                     formationInterval = 1.8f;
                     break;
                 case 2:
-                    formationPool.AddRange(mediumFormations);
-                    formationPool.AddRange(easyFormations);
-
                     formationInterval = 2.2f;
                     break;
                 case 1:
-                    formationPool.AddRange(mediumFormations);
-                    formationPool.AddRange(easyFormations);
-
                     formationInterval = 2.6f;
                     break;
                 case 0:
-                    formationPool.AddRange(easyFormations);
-
                     formationInterval = 3f;
                     break;
             }
-
-            for (int i = formationPool.Count - 1; i > 0; i--)
-            {
-                int targetIndex = Random.Range(0, i + 1);
-                EnemyFormation temp = formationPool[targetIndex];
-                formationPool[targetIndex] = formationPool[i];
-                formationPool[i] = temp;
-            }
-
-            List<EnemyFormation> formationsDraw = formationPool.GetRange(0, level + 2);
-
-            enemyFormations = formationsDraw.ToArray();
         }
     }
 
@@ -97,6 +76,44 @@ public class EnemySpawner : MonoBehaviour
     public void SetDeployInterval(float deployInterval)
     {
         formationInterval = deployInterval;
+    }
+
+    public static EnemyFormation[] PrepareFormations(int level)
+    {
+        // TODO: once more enemy formations are made, phase out the lower-difficulty formations
+        // from each level's pool
+        List<EnemyFormation> formationPool = new List<EnemyFormation>();
+        switch (level)
+        {
+            case 3:
+                formationPool.AddRange(formationPools[EnemyFormationTiers.Hard]);
+                formationPool.AddRange(formationPools[EnemyFormationTiers.Medium]);
+                formationPool.AddRange(formationPools[EnemyFormationTiers.Easy]);
+                break;
+            case 2:
+                formationPool.AddRange(formationPools[EnemyFormationTiers.Medium]);
+                formationPool.AddRange(formationPools[EnemyFormationTiers.Easy]);
+                break;
+            case 1:
+                formationPool.AddRange(formationPools[EnemyFormationTiers.Medium]);
+                formationPool.AddRange(formationPools[EnemyFormationTiers.Easy]);
+                break;
+            case 0:
+                formationPool.AddRange(formationPools[EnemyFormationTiers.Easy]);
+                break;
+        }
+
+        for (int i = formationPool.Count - 1; i > 0; i--)
+        {
+            int targetIndex = Random.Range(0, i + 1);
+            EnemyFormation temp = formationPool[targetIndex];
+            formationPool[targetIndex] = formationPool[i];
+            formationPool[i] = temp;
+        }
+
+        List<EnemyFormation> formationsDraw = formationPool.GetRange(0, level + 2);
+
+        return formationsDraw.ToArray();
     }
 
     public int GetEnemyCount()

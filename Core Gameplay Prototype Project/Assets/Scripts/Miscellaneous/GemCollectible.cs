@@ -59,4 +59,9 @@ public class GemCollectible : MonoBehaviour
         CombatStageManager.Instance.OnGemDespawn();
         Destroy(gameObject);
     }
+
+    public void SetValue(int val)
+    {
+        gemValue = val;
+    }
 }

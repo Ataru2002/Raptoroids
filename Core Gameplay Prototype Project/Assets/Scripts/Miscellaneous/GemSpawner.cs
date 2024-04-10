@@ -11,7 +11,7 @@ public class GemSpawner : MonoBehaviour
     [SerializeField] float spawnY = 5f;
     [SerializeField] float gemSpawnInterval = 0.5f;
     [SerializeField] float[] gemSpawnIntervals = {0.25f, 0.5f, 1f};
-
+    [SerializeField] DropTableEntry<GemProjectileData>[] gemData;
 
     
     void Start()
@@ -25,7 +25,23 @@ public class GemSpawner : MonoBehaviour
             GameObject gem = TreasureStageManager.Instance.GetDiamondProjectile();
             gem.transform.position = spawnPos;
             gem.GetComponent<GemProjectile>().speed = Random.Range(gemMinSpeed, gemMaxSpeed);
-            int rngInterval = Random.Range(0,3);
+            
+            GemProjectileData randGemData = gemData[gemData.Length - 1].item;
+            float gemSelector = Random.value;
+            for (int i = 0; i < gemData.Length; i++)
+            {
+                gemSelector -= gemData[i].weight;
+                if (gemSelector <= 0)
+                {
+                    randGemData = gemData[i].item;
+                    break;
+                }
+            }
+
+            gem.GetComponent<SpriteRenderer>().sprite = randGemData.gemSprite;
+            gem.GetComponent<GemCollectible>().SetValue(randGemData.gemValue);
+            
+            int rngInterval = Random.Range(0, gemSpawnIntervals.Length);
             yield return new WaitForSeconds(gemSpawnIntervals[rngInterval]);
         }
     }

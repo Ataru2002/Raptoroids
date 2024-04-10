@@ -511,6 +511,19 @@ MonoBehaviour:
   maxX: 2.5
   spawnY: 5
   gemSpawnInterval: 0.5
+  gemSpawnIntervals:
+  - 0.25
+  - 0.5
+  - 1
+  gemData:
+  - item: {fileID: 11400000, guid: c373e3df2dd673842a47a5ce53e880be, type: 2}
+    weight: 0.1
+  - item: {fileID: 11400000, guid: 7e69f12e2f126274e8febeda000b1be0, type: 2}
+    weight: 0.5
+  - item: {fileID: 11400000, guid: f9e66f0890ca48b4e9329295cb238ce5, type: 2}
+    weight: 0.2
+  - item: {fileID: 11400000, guid: 1c1885ae37fa13248a4cc87fe25f5204, type: 2}
+    weight: 0.3
 --- !u!4 &396193050
 Transform:
   m_ObjectHideFlags: 0

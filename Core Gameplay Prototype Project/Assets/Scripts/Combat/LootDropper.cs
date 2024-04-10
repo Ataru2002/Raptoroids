@@ -5,7 +5,7 @@ using UnityEngine;
 public class LootDropper : MonoBehaviour
 {
     [SerializeField] float dropChance;
-    [SerializeField] DropTableEntry[] dropTable;
+    [SerializeField] DropTableEntry<GameObject>[] dropTable;
     
     public void DropLoot()
     {
@@ -21,7 +21,7 @@ public class LootDropper : MonoBehaviour
             selector -= dropTable[i].weight;
             if (selector <= 0)
             {
-                GameObject droppedItem = Instantiate(dropTable[i].dropItemPrefab);
+                GameObject droppedItem = Instantiate(dropTable[i].item);
                 droppedItem.transform.position = transform.position;
                 break;
             }
@@ -30,8 +30,8 @@ public class LootDropper : MonoBehaviour
 }
 
 [System.Serializable]
-public class DropTableEntry
+public class DropTableEntry<T>
 {
-    public GameObject dropItemPrefab;
+    public T item;
     public float weight;
 }

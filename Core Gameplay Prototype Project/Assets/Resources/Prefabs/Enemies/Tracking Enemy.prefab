@@ -182,9 +182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropChance: 0.3
   dropTable:
-  - dropItemPrefab: {fileID: 1587647123911017236, guid: f1e4841a7aacbb34087b5d2616d09cce, type: 3}
+  - item: {fileID: 1587647123911017236, guid: 8b8c0206b0684bc4a87c43281b192ce9, type: 3}
     weight: 0.6
-  - dropItemPrefab: {fileID: 1587647123911017236, guid: 8b8c0206b0684bc4a87c43281b192ce9, type: 3}
+  - item: {fileID: 1587647123911017236, guid: f1e4841a7aacbb34087b5d2616d09cce, type: 3}
     weight: 0.4
 --- !u!1 &7229488627911370185
 GameObject:

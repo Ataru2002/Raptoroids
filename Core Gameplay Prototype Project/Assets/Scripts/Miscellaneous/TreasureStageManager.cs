@@ -13,8 +13,8 @@ public class TreasureStageManager : MonoBehaviour
     static TreasureStageManager instance;
     public static TreasureStageManager Instance { get { return instance; } }
 
-    LinkedPool<GameObject> diamondProjectiles;
-    GameObject diamondPrefab;
+    LinkedPool<GameObject> gemProjectiles;
+    GameObject gemPrefab;
     [SerializeField] Transform playerSpawnPoint;
     [SerializeField] GameObject[] playerPrefabs;
     [SerializeField] GameObject winScreen;
@@ -41,7 +41,7 @@ public class TreasureStageManager : MonoBehaviour
 
             
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
-            diamondPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/Pickups/Diamond");
+            gemPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/Pickups/TreasureRoomGem");
 
         }
     }
@@ -51,7 +51,7 @@ public class TreasureStageManager : MonoBehaviour
         GameObject player = Instantiate(playerPrefabs[raptoroidID]);
         player.transform.position = playerSpawnPoint.position;
     
-        diamondProjectiles = new LinkedPool<GameObject>(MakeGemProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
+        gemProjectiles = new LinkedPool<GameObject>(MakeGemProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
         
     }
 
@@ -68,17 +68,17 @@ public class TreasureStageManager : MonoBehaviour
 
 
     GameObject MakeGemProjectile(){
-        return Instantiate(diamondPrefab);
+        return Instantiate(gemPrefab);
     }
 
     public GameObject GetDiamondProjectile()
     {
-        return diamondProjectiles.Get();
+        return gemProjectiles.Get();
     }
 
     public void ReturnDiamondProjectile(GameObject target)
     {
-        diamondProjectiles.Release(target);
+        gemProjectiles.Release(target);
     }
     void OnGetFromPool(GameObject item)
     {

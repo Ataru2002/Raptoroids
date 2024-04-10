@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("Locale", 0);
             }
             SetLocale(PlayerPrefs.GetInt("Locale"));
+
+            EnemySpawner.LoadEnemyFormations();
         }
     }
 

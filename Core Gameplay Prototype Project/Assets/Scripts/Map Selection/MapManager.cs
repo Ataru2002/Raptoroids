@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MapManager : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class MapManager : MonoBehaviour
     const int mapCount = 3;
 
     Map[] maps = null;
-    int currentMapIndex;
 
     RectTransform nodeGroupTransform;
 
@@ -35,7 +35,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] RectTransform bossNodeTransform;
     [SerializeField] Button bossButton;
 
-    [SerializeField] GameObject treasureRoomScreen;
+    [SerializeField] GameObject actionStagePrompt;
+    [SerializeField] TextMeshProUGUI enemyCountText;
 
     private void Awake()
     {
@@ -130,24 +131,26 @@ public class MapManager : MonoBehaviour
         ButtonSFXPlayer.Instance.PlaySFX("MapSelect");
     }
 
-    public void SelectNode(int nodeIndex)
+    MapNode GetNodeInfo(int nodeIndex)
     {
         int y = nodeIndex / mapWidth;
         int x = nodeIndex % mapWidth;
+        return maps[GameManager.Instance.MapIndex].GetNodes()[y, x];
+    }
 
-        MapNode selected = maps[GameManager.Instance.MapIndex].GetNodes()[y, x];
+    public void SelectNode(int nodeIndex)
+    {
+        MapNode selected = GetNodeInfo(nodeIndex);
         MapNodeType selectedNodeType = selected.Type;
-
-        GameManager.Instance.MarkNodeVisited(selected);
 
         if (selectedNodeType == MapNodeType.Treasure)
         {
-            GoToTreasureRoom(true);
-            ButtonSFXPlayer.Instance.PlaySFX("TreasureGet");
+            GameManager.Instance.MarkNodeVisited(selected);
+            GoToTreasureRoom();
         }
         else
         {
-            GoToAction();
+            ToggleActionPrompt(nodeIndex);
         }
     }
 
@@ -157,31 +160,35 @@ public class MapManager : MonoBehaviour
         ButtonSFXPlayer.Instance.PlaySFX("ToMenus");
     }
 
+    public void ToggleActionPrompt(int nodeIndex)
+    {
+        actionStagePrompt.SetActive(nodeIndex >= 0);
+
+        if (nodeIndex < -1)
+        {
+            return;
+        }
+
+        MapNode selected = GetNodeInfo(nodeIndex);
+        int enemyCount = 0;
+        foreach (EnemyFormation formation in selected.GetEnemyFormations())
+        {
+            enemyCount += formation.GetEnemyCount();
+        }
+
+        enemyCountText.text = enemyCount.ToString();
+    }
+
     public void GoToAction()
     {
         SceneManager.LoadScene("CombatStagePrototype", LoadSceneMode.Single);
         ButtonSFXPlayer.Instance.PlaySFX("ToAction");
     }
 
-    public void RequestTreasureCollect()
+    public void GoToTreasureRoom()
     {
-        GoToTreasureRoom(false);
-        GameManager.Instance.AdvanceMapProgress();
-        
-        DrawMap(GameManager.Instance.MapIndex);
-        UpdateMapButtons();
-    }
-
-    public void GoToTreasureRoom(bool val)
-    {
-        // mapScreen.SetActive(!val);
-
-        // treasureRoomScreen.SetActive(val);
-        // if(val){
-        //     GemRewards rewards = new GemRewards();
-        //     rewards.ProcessReward();   
-        // }
         SceneManager.LoadScene("TreasureStagePrototype", LoadSceneMode.Single);
+        ButtonSFXPlayer.Instance.PlaySFX("TreasureGet");
     }
 
     void UpdateMapButtons()
@@ -393,6 +400,7 @@ public class Map
 public class MapNode
 {
     MapNodeType type;
+    EnemyFormation[] nodeEnemies = null;
     Vector2 positionOffset;
     List<MapNode> nextNodes;
 
@@ -416,9 +424,19 @@ public class MapNode
             type = Random.Range(0.0f, 1.0f) <= 0.75f ? MapNodeType.Combat : MapNodeType.Treasure;
         }
 
+        if (type == MapNodeType.Combat)
+        {
+            nodeEnemies = EnemySpawner.PrepareFormations(nodeTier);
+        }
+
         float xOffset = Random.Range(-10.0f, 10.0f);
         float yOffset = Random.Range(-10.0f, 10.0f);
         positionOffset = new Vector2(xOffset, yOffset);
+    }
+
+    public EnemyFormation[] GetEnemyFormations()
+    {
+        return nodeEnemies;
     }
 
     public MapNodeType Type { get { return type; } }
