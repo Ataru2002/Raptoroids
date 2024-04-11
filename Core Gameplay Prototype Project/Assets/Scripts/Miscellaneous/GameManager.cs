@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     EnemyFormation[] selectedStageFormations;
 
+    public int BossID { get; set; } = 0;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -106,6 +108,12 @@ public class GameManager : MonoBehaviour
     public void AdvanceMapProgress()
     {
         currentMapTier++;
+    }
+
+    // The following function is included for the purpose of cheats
+    public void SetMapTier(int val)
+    {
+        currentMapTier = val;
     }
 
     public void MarkNodeVisited(MapNode node)

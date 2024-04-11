@@ -152,6 +152,8 @@ public class CombatStageManager : MonoBehaviour
     {
         StopAllCoroutines(); // Stop spawning coroutine when the stage ends
     }
+
+    #region Pool Functions
     // Pooling functions
     GameObject MakePlayerProjectile()
     {
@@ -214,6 +216,7 @@ public class CombatStageManager : MonoBehaviour
     }
 
     // End of Pooling functions
+    #endregion
 
     // Update is called once per frame
     void Update()

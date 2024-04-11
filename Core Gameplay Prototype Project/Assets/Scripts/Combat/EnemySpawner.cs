@@ -148,7 +148,7 @@ public class EnemySpawner : MonoBehaviour
     // TODO: get data on what the boss will be from the Game Manager
     public void SpawnBossEnemy()
     {
-        GameObject boss = Instantiate(bossPrefabs[0]);
+        GameObject boss = Instantiate(bossPrefabs[GameManager.Instance.BossID]);
         boss.transform.position = new Vector3(0, 10, 0);
 
         EnemyBehavior bossBehavior = boss.GetComponent<EnemyBehavior>();
