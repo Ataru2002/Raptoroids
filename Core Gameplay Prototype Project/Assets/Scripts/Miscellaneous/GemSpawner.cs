@@ -9,7 +9,6 @@ public class GemSpawner : MonoBehaviour
     [SerializeField] float minX = -2.5f;
     [SerializeField] float maxX = 2.5f;
     [SerializeField] float spawnY = 5f;
-    [SerializeField] float gemSpawnInterval = 0.5f;
     [SerializeField] float[] gemSpawnIntervals = {0.25f, 0.5f, 1f};
     [SerializeField] DropTableEntry<GemProjectileData>[] gemData;
 
