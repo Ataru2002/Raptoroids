@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float snapDistance = 0.01f;
 
     float selectedFollowSpeed;
+    bool isFrozen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (!isFrozen && Input.GetMouseButton(0))
         {
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target += Vector3.up * yOffset;
