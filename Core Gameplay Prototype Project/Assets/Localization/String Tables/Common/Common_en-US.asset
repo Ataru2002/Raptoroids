@@ -22,6 +22,26 @@ MonoBehaviour:
     m_Localized: Back
     m_Metadata:
       m_Items: []
+  - m_Id: 4469305491054592
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4469373929512960
+    m_Localized: High Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4469484097101824
+    m_Localized: Hi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4501764962246656
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4501835929870336
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -106,7 +106,7 @@ public class MapManager : MonoBehaviour
         for (int m = 0; m < maps.Length; m++)
         {
             Map currentMap = new Map(mapWidth, mapHeight);
-            currentMap.Populate(Random.Range(4, mapWidth + 1));
+            currentMap.Populate(Random.Range(mapWidth - 1, mapWidth + 1));
             maps[m] = currentMap;
         }
 
@@ -163,11 +163,9 @@ public class MapManager : MonoBehaviour
 
     public void ToggleActionPrompt(int nodeIndex)
     {
-        // TODO: put in a prompt
+        actionStagePrompt.SetActive(nodeIndex >= 0);
 
-        //actionStagePrompt.SetActive(nodeIndex >= 0);
-
-        if (nodeIndex < -1)
+        if (nodeIndex < 0)
         {
             return;
         }
@@ -181,9 +179,7 @@ public class MapManager : MonoBehaviour
 
         GameManager.Instance.SetStageFormations(selectedNode.GetEnemyFormations());
 
-        //enemyCountText.text = enemyCount.ToString();
-
-        GoToAction();
+        enemyCountText.text = enemyCount.ToString();
     }
 
     public void GoToAction()
@@ -353,11 +349,6 @@ public class Map
 
     public void Populate(int seeds)
     {
-        if (seeds > width)
-        {
-            throw new System.ArgumentOutOfRangeException();
-        }
-
         // Range code acquired from https://stackoverflow.com/questions/10681882/create-c-sharp-int-with-value-as-0-1-2-3-length
         int[] slotNumbers = Enumerable.Range(0, width).ToArray();
 
@@ -373,7 +364,7 @@ public class Map
 
         for (int i = 0; i < seeds; i++)
         {
-            int x = slotNumbers[i];
+            int x = slotNumbers[i % width];
             int y = 0;
             MapNode previous = null;
 

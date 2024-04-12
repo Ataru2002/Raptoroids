@@ -20,19 +20,26 @@ MonoBehaviour:
     - rid: 4180197670639370319
   m_TableData:
   - m_Id: 67233636352
-    m_Localized: "\u96C6\u3081\u305FG: {collectedGems}"
+    m_Localized: "\u96C6\u3081\u305FG"
     m_Metadata:
-      m_Items:
-      - rid: 4180197670639370319
+      m_Items: []
   - m_Id: 17007364792320
     m_Localized: "\u30DE\u30C3\u30D7 {mapNumber}"
     m_Metadata:
       m_Items:
       - rid: 4180197670639370319
+  - m_Id: 4483373698375680
+    m_Localized: "\u30DF\u30E5\u30FC\u30BF\u30F3\u30C8\u866B\u6570 :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4483407139561472
+    m_Localized: "\u30B9\u30C6\u30FC\u30B8\u3092\u59CB\u3081\u308B ?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 4180197670639370319
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e06fa70f00000000e0efd5770f0000
+        m_Entries: 00e0efd5770f0000

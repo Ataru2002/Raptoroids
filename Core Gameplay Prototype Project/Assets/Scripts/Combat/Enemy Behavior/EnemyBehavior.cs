@@ -83,7 +83,6 @@ public class BezierCurve
     int Combination(int n, int r)
     {
         int result = Factorial(n) / (Factorial(r) * Factorial(n - r));
-        Debug.Log(result);
         return result;
     }
 

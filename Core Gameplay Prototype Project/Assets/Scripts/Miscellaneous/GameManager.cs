@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
 
     EnemyFormation[] selectedStageFormations;
 
+    int score;
+    int hiScore;
+
     public int BossID { get; set; } = 0;
 
     private void Awake()
@@ -151,5 +154,25 @@ public class GameManager : MonoBehaviour
     public int GetTotalGems()
     {
         return totalGems;
+    }
+
+    public int GetCurrentScore()
+    {
+        return score;
+    }
+
+    public void AddScore(int val)
+    {
+        score += val;
+        
+        if (score > hiScore)
+        {
+            hiScore = score;
+        }
+    }
+
+    public int GetHighScore()
+    {
+        return hiScore;
     }
 }

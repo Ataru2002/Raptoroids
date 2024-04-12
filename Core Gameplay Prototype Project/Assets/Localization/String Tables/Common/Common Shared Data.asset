@@ -19,6 +19,26 @@ MonoBehaviour:
     m_Key: Back
     m_Metadata:
       m_Items: []
+  - m_Id: 4469305491054592
+    m_Key: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4469373929512960
+    m_Key: HighScore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4469484097101824
+    m_Key: HighScoreShort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4501764962246656
+    m_Key: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4501835929870336
+    m_Key: No
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
