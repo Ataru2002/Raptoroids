@@ -20,14 +20,13 @@ public class PlayerMovement : MonoBehaviour
 
     float selectedFollowSpeed;
     bool isFrozen = false;
+    float freezeDuration = 5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         SetSpeed(SpeedTier.Medium);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isFrozen && Input.GetMouseButton(0))
@@ -71,6 +70,27 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, target, selectedFollowSpeed * Time.deltaTime);
+        }
+    }
+
+    public void FreezePlayer()
+    {
+        isFrozen = true;
+        StartCoroutine(UnfreezePlayerAfterDelay());
+    }
+
+    IEnumerator UnfreezePlayerAfterDelay()
+    {
+        yield return new WaitForSeconds(freezeDuration);
+        isFrozen = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("OakNut"))
+        {
+            isFrozen = true;
+            StartCoroutine(UnfreezePlayerAfterDelay());
         }
     }
 }
