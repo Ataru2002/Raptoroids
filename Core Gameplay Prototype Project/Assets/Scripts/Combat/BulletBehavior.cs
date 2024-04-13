@@ -5,7 +5,7 @@ using UnityEngine;
 public enum TargetType
 {
     Player,
-    Enemy
+    Enemy,
 }
 
 public class BulletBehavior : MonoBehaviour

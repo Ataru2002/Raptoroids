@@ -23,16 +23,20 @@ public class PlayerAbility : MonoBehaviour
 
     private float lastClickTime = 0f;
 
+    public bool isPlayer;
 
     private void Start()
     {
         cooldownUI = FindFirstObjectByType<AbilityCooldownUI>();
+        if(!isPlayer){
+            activateShield();
+        }
     }
 
     void Update()
     {   
         //double click implementation
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(0) && isPlayer) {
             float sinceLastClick = Time.time - lastClickTime;
 
             if(sinceLastClick <= doubleClickWindow){
@@ -41,8 +45,12 @@ public class PlayerAbility : MonoBehaviour
             lastClickTime = Time.time;
         }
 
-        diminishCooldown();
-        updateShieldDuration();
+        if(isPlayer){
+            diminishCooldown();
+            updateShieldDuration();
+        }
+        
+        
     }
 
     public void activateShield() {
