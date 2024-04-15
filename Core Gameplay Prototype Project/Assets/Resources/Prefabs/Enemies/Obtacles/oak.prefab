@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 2
-  freezeDuration: 5
+  spawnInterval: 3
+  oakNutPrefab: {fileID: 8562175422482686477}
 --- !u!50 &-5018650540024815869
 Rigidbody2D:
   serializedVersion: 4

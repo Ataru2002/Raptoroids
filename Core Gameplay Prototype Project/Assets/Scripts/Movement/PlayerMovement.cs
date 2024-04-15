@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("OakNut"))
+        if (other.CompareTag("Obstacles"))
         {
             isFrozen = true;
             StartCoroutine(UnfreezePlayerAfterDelay());
