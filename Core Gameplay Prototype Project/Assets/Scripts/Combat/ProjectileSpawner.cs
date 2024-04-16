@@ -89,6 +89,10 @@ public class ProjectileSpawner : MonoBehaviour
         // Only let the enemy begin shooting once it gets in position.
         if (enemyBehavior != null && !enemyBehavior.FinalPositionReached)
         {
+            if (enemyBehavior == null)
+            {
+                print("Enemy behavior not found");
+            }
             return;
         }
 

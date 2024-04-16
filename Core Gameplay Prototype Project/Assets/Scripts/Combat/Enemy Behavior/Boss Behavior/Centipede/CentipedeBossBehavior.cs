@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CentipedeBossBehavior : BossBehavior
 {
-    [SerializeField] ProjectileSpawner leftSpawner;
-    [SerializeField] ProjectileSpawner rightSpawner;
+    [SerializeField] CentipedePincerBehavior leftPincer;
+    [SerializeField] CentipedePincerBehavior rightPincer;
     [SerializeField] StrafeEnemyBehavior strafeBehavior;
 
     const int legPairCount = 5;
@@ -13,6 +13,7 @@ public class CentipedeBossBehavior : BossBehavior
     [SerializeField] CentipedeLegBehavior[] centipedeRightLegs;
 
     bool legBarrageStarted = false;
+    bool pincersFiring = false;
 
     public bool strafing = false;
     float remainingHealthRatio = 1f;
@@ -49,8 +50,6 @@ public class CentipedeBossBehavior : BossBehavior
 
         stateExecute = State2Execute;
 
-        leftSpawner.enabled = true;
-        rightSpawner.enabled = true;
         strafeBehavior.enabled = true;
 
         return true;
@@ -58,16 +57,14 @@ public class CentipedeBossBehavior : BossBehavior
 
     bool StateTransition2()
     {
-        if (remainingHealthRatio > 0.4f || strafing)
+        if (remainingHealthRatio > 0.1f || strafing)
         {
             return false;
         }
 
         stateExecute = State3Execute;
 
-        defaultProjectileSpawn.ResetShotTimer();
-        leftSpawner.ResetShotTimer();
-        rightSpawner.ResetShotTimer();
+        // defaultProjectileSpawn.ResetShotTimer();
 
         return true;
     }
@@ -112,8 +109,22 @@ public class CentipedeBossBehavior : BossBehavior
 
     void State2Execute()
     {
-        leftSpawner.TryShoot();
-        rightSpawner.TryShoot();
+        if (!pincersFiring)
+        {
+            StartCoroutine(PincerFireSequence());
+        }
+    }
+
+    IEnumerator PincerFireSequence()
+    {
+        pincersFiring = true;
+
+        leftPincer.PlayAttackSequence();
+        yield return new WaitForSeconds(0.6f);
+        rightPincer.PlayAttackSequence();
+        yield return new WaitForSeconds(0.6f);
+
+        pincersFiring = false;
     }
 
     void State3Execute()
