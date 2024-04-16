@@ -23,6 +23,14 @@ MonoBehaviour:
     m_Key: MapButton
     m_Metadata:
       m_Items: []
+  - m_Id: 4483373698375680
+    m_Key: EnemyCountHeader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4483407139561472
+    m_Key: StageBeginPrompt
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

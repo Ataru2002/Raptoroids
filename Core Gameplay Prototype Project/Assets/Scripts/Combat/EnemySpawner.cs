@@ -29,7 +29,6 @@ public class EnemySpawner : MonoBehaviour
         foreach(EnemyFormationTiers formationTier in System.Enum.GetValues(typeof(EnemyFormationTiers)))
         {
             string formationDirectory = "Scriptable Objects/Enemy Formations/" + formationTier.ToString();
-            print(formationDirectory);
             formationPools[formationTier] = Resources.LoadAll<EnemyFormation>(formationDirectory);
         }
 
@@ -115,7 +114,6 @@ public class EnemySpawner : MonoBehaviour
             formationPool[i] = temp;
         }
 
-        print(formationPool.Count);
         List<EnemyFormation> formationsDraw = formationPool.GetRange(0, level + 2);
 
         return formationsDraw.ToArray();
