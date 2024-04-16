@@ -26,8 +26,14 @@ public class OakNut : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-        // Destroy the oak nut when it collides with the player
-        Destroy(gameObject);
+            PlayerMovement moveComponent = other.GetComponent<PlayerMovement>();
+            if (moveComponent != null)
+            {
+                moveComponent.FreezePlayer();
+            }
+
+            // Destroy the oak nut when it collides with the player
+            Destroy(gameObject);
         }
 
     }

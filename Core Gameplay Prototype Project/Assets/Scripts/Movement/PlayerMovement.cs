@@ -84,13 +84,4 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(freezeDuration);
         isFrozen = false;
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Obstacles"))
-        {
-            isFrozen = true;
-            StartCoroutine(UnfreezePlayerAfterDelay());
-        }
-    }
 }
