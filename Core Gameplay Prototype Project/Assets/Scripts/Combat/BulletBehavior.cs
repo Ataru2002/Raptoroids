@@ -51,7 +51,11 @@ public class BulletBehavior : MonoBehaviour
                 particles.GetComponent<ParticleSystem>().Emit(10);
             }
 
-            collision.GetComponent<IBulletHittable>().OnBulletHit();
+            IBulletHittable bulletHitDetector = collision.GetComponent<IBulletHittable>();
+            if (bulletHitDetector != null)
+            {
+                bulletHitDetector.OnBulletHit();
+            }
 
             despawn(gameObject);
         }

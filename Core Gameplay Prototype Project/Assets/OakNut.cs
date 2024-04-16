@@ -13,13 +13,13 @@ public class OakNut : MonoBehaviour
         // Move the oak nut downwards
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
 
-        timer += Time.deltaTime;
-        if (timer >= spawnInterval)
-        {
-            // Instantiate a new oak nut and reset the timer
-            Instantiate(oakNutPrefab, transform.position, Quaternion.identity);
-            timer = 0f;
-        }
+        //timer += Time.deltaTime;
+        //if (timer >= spawnInterval)
+        //{
+        //    // Instantiate a new oak nut and reset the timer
+        //    Instantiate(oakNutPrefab, transform.position, Quaternion.identity);
+        //    timer = 0f;
+        //}
     }
 
     void OnTriggerEnter2D(Collider2D other)

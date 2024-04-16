@@ -47,10 +47,9 @@ MonoBehaviour:
   isPlayer: 1
   fireRate: 3
   firstShotDelay: 0
-  coneFire: 0
+  shotType: 0
+  projectilesPerShot: 0
   coneAngle: 0
-  randomizeShotTimes: 0
-  shotTimeMaxDelta: 0
 --- !u!1 &4272951143565367387
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +236,7 @@ MonoBehaviour:
   cooldown: 10
   shieldDuration: 2
   shieldPermanent: 0
+  isPlayer: 1
 --- !u!1 &4407078997391759102
 GameObject:
   m_ObjectHideFlags: 0

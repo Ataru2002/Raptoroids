@@ -8,6 +8,12 @@ public class CentipedeBossBehavior : BossBehavior
     [SerializeField] ProjectileSpawner rightSpawner;
     [SerializeField] StrafeEnemyBehavior strafeBehavior;
 
+    const int legPairCount = 5;
+    [SerializeField] CentipedeLegBehavior[] centipedeLeftLegs;
+    [SerializeField] CentipedeLegBehavior[] centipedeRightLegs;
+
+    bool legBarrageStarted = false;
+
     public bool strafing = false;
     float remainingHealthRatio = 1f;
 
@@ -18,6 +24,8 @@ public class CentipedeBossBehavior : BossBehavior
             StateTransition1,
             StateTransition2
         };
+
+        stateExecute = State1Execute;
     }
 
     public void UpdateHealthRatio(float val)
@@ -34,7 +42,7 @@ public class CentipedeBossBehavior : BossBehavior
 
     bool StateTransition1()
     {
-        if (remainingHealthRatio > 0.7f)
+        if (remainingHealthRatio > 0.5f)
         {
             return false;
         }
@@ -44,8 +52,6 @@ public class CentipedeBossBehavior : BossBehavior
         leftSpawner.enabled = true;
         rightSpawner.enabled = true;
         strafeBehavior.enabled = true;
-
-        defaultProjectileSpawn.ResetShotTimer();
 
         return true;
     }
@@ -64,6 +70,44 @@ public class CentipedeBossBehavior : BossBehavior
         rightSpawner.ResetShotTimer();
 
         return true;
+    }
+
+    void State1Execute()
+    {
+        if (!FinalPositionReached)
+        {
+            return;
+        }
+
+        if (!legBarrageStarted)
+        {
+            StartCoroutine(LegBarrage());
+        }
+    }
+
+    IEnumerator LegBarrage()
+    {
+        legBarrageStarted = true;
+
+        for (int i = 0; i < legPairCount; i++)
+        {
+            CentipedeLegBehavior leftLeg = centipedeLeftLegs[i];
+            CentipedeLegBehavior rightLeg = centipedeRightLegs[i];
+
+            if (leftLeg != null)
+            {
+                leftLeg.TryStartAttack();
+            }
+
+            if (rightLeg != null)
+            {
+                rightLeg.TryStartAttack();
+            }
+
+            yield return new WaitForSeconds(1.2f);
+        }
+
+        legBarrageStarted = false;
     }
 
     void State2Execute()

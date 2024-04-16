@@ -6,7 +6,6 @@ public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] protected bool trackPlayer;
 
-    Transform playerTransform;
     float timeSinceSpawn = 0;
     [SerializeField] float timeToFinalPosition = 0;
     
@@ -22,7 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
     // Update is called once per frame
@@ -44,12 +43,15 @@ public class EnemyBehavior : MonoBehaviour
 
         if (trackPlayer)
         {
-            Vector2 posDelta = (playerTransform.position - transform.position).normalized;
+            Vector2 posDelta = (CombatStageManager.Instance.PlayerTransform.position - transform.position).normalized;
             float angle = Mathf.Atan2(posDelta.y, posDelta.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        defaultProjectileSpawn.TryShoot();
+        if (defaultProjectileSpawn != null)
+        {
+            defaultProjectileSpawn.TryShoot();
+        }
     }
 
     public void SetPath(Vector2[] points)

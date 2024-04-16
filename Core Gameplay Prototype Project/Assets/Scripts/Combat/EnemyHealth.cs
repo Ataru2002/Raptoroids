@@ -36,7 +36,17 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
         }
 
         currentHealth--;
+        NotifyUpdateHealth();
+    }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        NotifyUpdateHealth();
+    }
+
+    void NotifyUpdateHealth()
+    {
         OnHealthChange.Invoke((float)currentHealth / maxHealth);
 
         if (CombatStageManager.Instance != null)

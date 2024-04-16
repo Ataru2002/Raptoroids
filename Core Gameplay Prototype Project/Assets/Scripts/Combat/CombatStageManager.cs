@@ -14,13 +14,8 @@ public class CombatStageManager : MonoBehaviour
 
     [SerializeField] Transform playerSpawnPoint;
     [SerializeField] GameObject[] playerPrefabs;
-    [SerializeField] GameObject oakNutPrefab;
-    LinkedPool<GameObject> oakNuts;
 
     [SerializeField] float enemyRespawnDelay;
-    [SerializeField] int maxConcurrentEnemies;
-
-    public int MaxConcurrentEnemies { get {  return maxConcurrentEnemies; } }
 
     [SerializeField] GameObject stageUI;
     [SerializeField] GameObject winScreen;
@@ -36,6 +31,10 @@ public class CombatStageManager : MonoBehaviour
 
     const float bossHealthBarWidth = 500f;
     const float bossHealthBarHeight = 50f;
+
+    const float yBounds = 7f;
+    public float VerticalLowerBound { get {  return -yBounds; } }
+    public float VerticalUpperBound { get {  return yBounds; } }
 
     int enemyKillRequirement;
     int enemyKillCount = 0;
@@ -53,7 +52,13 @@ public class CombatStageManager : MonoBehaviour
     LinkedPool<GameObject> enemyHitParticles;
     GameObject hitParticlesPrefab;
 
+    [SerializeField] GameObject oakNutPrefab;
+    LinkedPool<GameObject> oakNuts;
+
     GameObject rewardSummaryPrefab;
+
+    GameObject playerObject;
+    public Transform PlayerTransform { get { return playerObject.transform; } }
 
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
     bool stageEnded = false;
@@ -84,8 +89,8 @@ public class CombatStageManager : MonoBehaviour
         enemyKillRequirement = enemySpawner.GetEnemyCount();
 
         int raptoroidID = PlayerPrefs.HasKey("EquippedRaptoroid") ? PlayerPrefs.GetInt("EquippedRaptoroid") : 0;
-        GameObject player = Instantiate(playerPrefabs[raptoroidID]);
-        player.transform.position = playerSpawnPoint.position;
+        playerObject = Instantiate(playerPrefabs[raptoroidID]);
+        playerObject.transform.position = playerSpawnPoint.position;
 
         if (isBossStage)
         {
