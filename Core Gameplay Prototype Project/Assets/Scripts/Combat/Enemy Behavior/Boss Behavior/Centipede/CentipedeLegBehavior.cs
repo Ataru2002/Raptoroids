@@ -155,7 +155,9 @@ public class CentipedeLegBehavior : MonoBehaviour
     void ReturnToBody()
     {
         timeSinceReturnStart += Time.deltaTime;
-        transform.position = returnCurve.GetPosition(timeSinceReturnStart / returnTime);
+        Vector2 nextPos = returnCurve.GetPosition(timeSinceReturnStart / returnTime);
+        LookAtTarget(nextPos);
+        transform.position = nextPos;
     }
 
     void LookAtTarget(Vector3 target)
