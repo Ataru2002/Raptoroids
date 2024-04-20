@@ -12,7 +12,7 @@ public class EnemyBehavior : MonoBehaviour
     protected Vector2 finalPosition;
     public Vector2 FinalPosition { get { return finalPosition; } }
 
-    [SerializeField] protected ProjectileSpawner defaultProjectileSpawn;
+    [SerializeField] protected IShootable defaultWeapon;
 
     protected BezierCurve path;
 
@@ -48,9 +48,9 @@ public class EnemyBehavior : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        if (defaultProjectileSpawn != null)
+        if (defaultWeapon != null)
         {
-            defaultProjectileSpawn.TryShoot();
+            defaultWeapon.TryShoot();
         }
     }
 

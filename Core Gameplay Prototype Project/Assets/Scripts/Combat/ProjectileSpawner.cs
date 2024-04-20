@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class ProjectileSpawner : MonoBehaviour
+public class ProjectileSpawner : MonoBehaviour, IShootable
 {
     [SerializeField] bool isPlayer;
     [SerializeField] float fireRate;
@@ -89,10 +89,6 @@ public class ProjectileSpawner : MonoBehaviour
         // Only let the enemy begin shooting once it gets in position.
         if (enemyBehavior != null && !enemyBehavior.FinalPositionReached)
         {
-            if (enemyBehavior == null)
-            {
-                print("Enemy behavior not found");
-            }
             return;
         }
 
@@ -161,10 +157,4 @@ public class ProjectileSpawner : MonoBehaviour
         }
     }
     // ---
-}
-
-public enum ShotType
-{
-    Single,
-    Cone,
 }

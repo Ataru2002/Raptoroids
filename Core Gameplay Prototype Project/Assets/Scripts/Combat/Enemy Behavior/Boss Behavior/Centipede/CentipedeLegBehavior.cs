@@ -128,6 +128,7 @@ public class CentipedeLegBehavior : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         attackStarted = false;
+        alreadyHitPlayer = false;
         distanceTraveled = 0;
         timeSinceReturnStart = 0;
         returnCurve = null;
