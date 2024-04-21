@@ -161,6 +161,11 @@ public class GameManager : MonoBehaviour
         return score;
     }
 
+    public void ResetScore()
+    {
+        score = 0;
+    }
+
     public void AddScore(int val)
     {
         score += val;

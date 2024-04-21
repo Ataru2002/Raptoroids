@@ -26,6 +26,8 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI killCounter;
     [SerializeField] GameObject bossHealthBar;
     [SerializeField] RectTransform bossHealthBarRect;
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI hiScoreText;
 
     EnemySpawner enemySpawner;
 
@@ -115,6 +117,8 @@ public class CombatStageManager : MonoBehaviour
 
         oakNuts = new LinkedPool<GameObject>(MakeOakNut, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
         StartCoroutine(StartOakNutSpawn());
+
+        UpdateScoreDisplay();
     }
 
     GameObject MakeOakNut()
@@ -268,6 +272,18 @@ public class CombatStageManager : MonoBehaviour
         }
     }
 
+    public void UpdateScore(int score)
+    {
+        GameManager.Instance.AddScore(score);
+        UpdateScoreDisplay();
+    }
+
+    public void UpdateScoreDisplay()
+    {
+        scoreText.text = GameManager.Instance.GetCurrentScore().ToString();
+        hiScoreText.text = GameManager.Instance.GetHighScore().ToString();
+    }
+
     void EndStage(bool playerWin)
     {
         if (stageEnded)
@@ -276,6 +292,7 @@ public class CombatStageManager : MonoBehaviour
         }
 
         stageEnded = true;
+        stageUI.SetActive(false);
 
         if (playerWin)
         {
@@ -367,6 +384,7 @@ public class CombatStageManager : MonoBehaviour
     public void EndRun(bool playerWon)
     {
         GameManager.Instance.ClearMapInfo();
+        GameManager.Instance.ResetScore();
 
         // TODO: possibly handle multipliers in Game Manager instead
         float multiplier = playerWon ? 1f : 0.8f;
