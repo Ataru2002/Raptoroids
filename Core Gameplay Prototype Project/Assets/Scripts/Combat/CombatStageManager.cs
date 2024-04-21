@@ -29,6 +29,10 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI hiScoreText;
 
+    [SerializeField] GameObject runEndScoreCanvas;
+    [SerializeField] TextMeshProUGUI runEndScoreText;
+    [SerializeField] GameObject newHiScoreNotice;
+
     EnemySpawner enemySpawner;
 
     const float bossHealthBarWidth = 500f;
@@ -301,6 +305,9 @@ public class CombatStageManager : MonoBehaviour
         else
         {
             loseScreen.SetActive(true);
+            runEndScoreCanvas.SetActive(true);
+            runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
+            newHiScoreNotice.SetActive(GameManager.Instance.HighScoreChanged);
             Time.timeScale = 0;
 
             int grossGems = GameManager.Instance.GetCurrentGems();
@@ -343,6 +350,9 @@ public class CombatStageManager : MonoBehaviour
         if (isBossStage)
         {
             bossWinScreen.SetActive(true);
+            runEndScoreCanvas.SetActive(true);
+            runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
+            newHiScoreNotice.SetActive(GameManager.Instance.HighScoreChanged);
         }
         else
         {
@@ -367,13 +377,6 @@ public class CombatStageManager : MonoBehaviour
             totalGemEvent.SetTable("StageClearScreen");
             totalGemEvent.SetEntry("RunGems");
         }
-    }
-
-    // For prototype use ONLY. Allows player to play again
-    public void ReloadStage()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void AdvanceRun()

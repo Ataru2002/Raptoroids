@@ -71,8 +71,11 @@ public class CentipedePincerBehavior : MonoBehaviour
 
     public void NotifyPincerHit()
     {
+        CombatStageManager.Instance.UpdateScore(15);
+
         centipedeHP.TakeDamage(1);
         armHP--;
+
         if (armHP <= 0)
         {
             Destroy(gameObject);

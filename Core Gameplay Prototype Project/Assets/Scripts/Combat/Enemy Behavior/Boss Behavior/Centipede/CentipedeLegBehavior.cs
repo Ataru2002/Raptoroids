@@ -13,6 +13,8 @@ public class CentipedeLegBehavior : MonoBehaviour
     EnemyHealth centipedeHP;
     int legHP = 6;
 
+    const int pointsAwarded = 50;
+
     const float moveSpeed = 1f;
     const float attackMoveSpeed = 4f;
     [SerializeField] float bodySeparationDistance = 1f;
@@ -68,6 +70,7 @@ public class CentipedeLegBehavior : MonoBehaviour
 
         if (legHP <= 0)
         {
+            CombatStageManager.Instance.UpdateScore(pointsAwarded);
             centipedeHP.TakeDamage(1);
             StopAllCoroutines();
             Destroy(gameObject);

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     int score;
     int hiScore;
+    public bool HighScoreChanged { get; private set; } = false;
 
     public int BossID { get; set; } = 0;
 
@@ -164,6 +165,7 @@ public class GameManager : MonoBehaviour
     public void ResetScore()
     {
         score = 0;
+        HighScoreChanged = false;
     }
 
     public void AddScore(int val)
@@ -172,6 +174,7 @@ public class GameManager : MonoBehaviour
         
         if (score > hiScore)
         {
+            HighScoreChanged = true;
             hiScore = score;
         }
     }
