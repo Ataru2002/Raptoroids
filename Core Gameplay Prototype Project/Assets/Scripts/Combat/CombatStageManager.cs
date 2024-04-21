@@ -32,7 +32,10 @@ public class CombatStageManager : MonoBehaviour
     const float bossHealthBarWidth = 500f;
     const float bossHealthBarHeight = 50f;
 
+    const float xBounds = 4f;
     const float yBounds = 7f;
+    public float HorizontalLowerBound { get { return -xBounds; } }
+    public float HorizontalUpperBound {  get { return xBounds; } }
     public float VerticalLowerBound { get {  return -yBounds; } }
     public float VerticalUpperBound { get {  return yBounds; } }
 

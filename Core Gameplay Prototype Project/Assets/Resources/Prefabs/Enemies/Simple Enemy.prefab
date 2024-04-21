@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackPlayer: 0
   timeToFinalPosition: 1.2
-  defaultProjectileSpawn: {fileID: 3893651740375252004}
+  defaultWeapon: {fileID: 3893651740375252004}
 --- !u!114 &-8304840118553371879
 MonoBehaviour:
   m_ObjectHideFlags: 0

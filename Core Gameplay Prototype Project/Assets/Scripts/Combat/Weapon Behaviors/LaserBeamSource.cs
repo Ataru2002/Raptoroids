@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserBeamSource : MonoBehaviour, IShootable
+public class LaserBeamSource : Weapon
 {
-    [SerializeField] bool isPlayer;
     [SerializeField] float laserRange;
     [SerializeField] float laserBreadth;
     [SerializeField] float laserTickTime;
@@ -50,7 +49,7 @@ public class LaserBeamSource : MonoBehaviour, IShootable
         laserActive = toggle;
     }
 
-    public void TryShoot()
+    public override void TryShoot()
     {
         timeSinceLastTick += Time.deltaTime;
         if (timeSinceLastTick > laserTickTime)

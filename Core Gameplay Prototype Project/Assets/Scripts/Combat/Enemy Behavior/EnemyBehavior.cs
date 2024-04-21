@@ -12,7 +12,7 @@ public class EnemyBehavior : MonoBehaviour
     protected Vector2 finalPosition;
     public Vector2 FinalPosition { get { return finalPosition; } }
 
-    [SerializeField] protected IShootable defaultWeapon;
+    [SerializeField] protected Weapon defaultWeapon;
 
     protected BezierCurve path;
 

@@ -99,7 +99,8 @@ public class CentipedeLegBehavior : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         stateUpdate = Attack;
-        while (transform.position.y > CombatStageManager.Instance.VerticalLowerBound)
+        while (transform.position.y > CombatStageManager.Instance.VerticalLowerBound && 
+            Mathf.Abs(transform.position.x) < CombatStageManager.Instance.HorizontalUpperBound)
         {
             yield return new WaitForEndOfFrame();
         }
