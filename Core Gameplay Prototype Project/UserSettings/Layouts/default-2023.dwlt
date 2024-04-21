@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -301,7 +301,7 @@ MonoBehaviour:
     x: 219.2
     y: 73.6
     width: 964.39996
-    height: 495.8
+    height: 484.6
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -356,22 +356,22 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 964.39996
-      height: 474.8
-    m_Scale: {x: 0.30911458, y: 0.30911458}
-    m_Translation: {x: 482.19998, y: 237.4}
+      height: 463.6
+    m_Scale: {x: 0.30182293, y: 0.30182293}
+    m_Translation: {x: 482.19998, y: 231.80002}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1559.9393
+      x: -1597.6254
       y: -768
-      width: 3119.8787
+      width: 3195.2507
       height: 1536
     m_MinimalGUI: 1
-  m_defaultScale: 0.30911458
-  m_LastWindowPixelSize: {x: 1205.5, y: 619.75}
+  m_defaultScale: 0.30182293
+  m_LastWindowPixelSize: {x: 1205.5, y: 605.75}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 18710000
       m_LastClickedID: 0
-      m_ExpandedIDs: c6faffff
+      m_ExpandedIDs: ccfaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1112,7 +1112,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Combat
+    - Assets/Scripts/Combat/Enemy Behavior/Boss Behavior/Centipede
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Combat
+  - Assets/Scripts/Combat/Enemy Behavior/Boss Behavior/Centipede
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\School Work\CMPM 171\Prototype Projects\Raptoroids Prototype
     Repo\Core Gameplay Prototype Project
@@ -1130,8 +1130,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 479}
-    m_SelectedIDs: 6ea00000
-    m_LastClickedID: 41070
+    m_SelectedIDs: 0ca10000
+    m_LastClickedID: 41228
     m_ExpandedIDs: 000000005ea0000060a0000062a0000064a0000066a0000068a000006aa000006ca000006ea0000070a0000072a0000074a0000076a0000078a0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
