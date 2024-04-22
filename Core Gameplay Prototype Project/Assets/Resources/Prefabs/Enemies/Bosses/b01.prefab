@@ -3475,6 +3475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackPlayer: 0
   timeToFinalPosition: 0.6
+  defaultWeapon: {fileID: 0}
   strafeBehavior: {fileID: 1814463657671491208}
   centipedeLeftLegs:
   - {fileID: 7765345029153694569}
@@ -3554,7 +3555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11cfa19176d82224684fcd4f69217fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 120
+  pointsAwarded: 0
   OnHealthChange:
     m_PersistentCalls:
       m_Calls:
@@ -3570,6 +3572,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDefeat:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7830252936337917581
 GameObject:
   m_ObjectHideFlags: 0

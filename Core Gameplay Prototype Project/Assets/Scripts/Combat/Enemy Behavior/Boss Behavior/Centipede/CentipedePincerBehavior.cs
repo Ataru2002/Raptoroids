@@ -14,6 +14,7 @@ public class CentipedePincerBehavior : MonoBehaviour
     [SerializeField] Sprite openSprite;
 
     EnemyHealth centipedeHP;
+    const int hpScale = 6;
     int armHP = 4;
 
     bool inAttackSequence = false;
@@ -73,7 +74,7 @@ public class CentipedePincerBehavior : MonoBehaviour
     {
         CombatStageManager.Instance.UpdateScore(15);
 
-        centipedeHP.TakeDamage(1);
+        centipedeHP.TakeDamage(hpScale);
         armHP--;
 
         if (armHP <= 0)
