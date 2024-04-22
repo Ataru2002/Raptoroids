@@ -71,7 +71,6 @@ public class CombatStageManager : MonoBehaviour
 
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
     bool stageEnded = false;
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -405,4 +404,6 @@ public class CombatStageManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MapSelection");
     }
+
+    
 }
