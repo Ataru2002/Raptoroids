@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
     int currentHealth = 0;
     [SerializeField] ParticleSystem impactParticles;
     PlayerHealthUI healthUI;
+    [SerializeField] Hill hills;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnBulletHit()
@@ -37,5 +38,10 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
             gameObject.SetActive(false);
             CombatStageManager.Instance.OnPlayerDefeated();
         }
+    }
+    public void hillCollide()
+    {
+        print("Player hit by hill!");
+        currentHealth -= 1;
     }
 }

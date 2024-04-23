@@ -4187,9 +4187,7 @@ MonoBehaviour:
   playerPrefabs:
   - {fileID: 4272951143565367387, guid: dd49fce6e26fd0e43af4c5e79188ab59, type: 3}
   - {fileID: 7442410451283973695, guid: e32c3cd1528425148872b667765064e7, type: 3}
-  oakNutPrefab: {fileID: 8562175422482686477, guid: 3dcdd9673cd19b5489baa1aea070aceb, type: 3}
   enemyRespawnDelay: 2
-  maxConcurrentEnemies: 3
   stageUI: {fileID: 1237136593}
   winScreen: {fileID: 1635279445}
   winScreenSummaryBox: {fileID: 772071145}
@@ -4199,6 +4197,8 @@ MonoBehaviour:
   killCounter: {fileID: 1422116366}
   bossHealthBar: {fileID: 1090703519}
   bossHealthBarRect: {fileID: 1008951163}
+  oakNutPrefab: {fileID: 8562175422482686477, guid: 3dcdd9673cd19b5489baa1aea070aceb, type: 3}
+  hillPrefab: {fileID: 411778055368168216, guid: e6cdd9c0e81e5435fa9279155fc49dcf, type: 3}
 --- !u!4 &1946619568
 Transform:
   m_ObjectHideFlags: 0

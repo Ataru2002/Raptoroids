@@ -55,6 +55,9 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] GameObject oakNutPrefab;
     LinkedPool<GameObject> oakNuts;
 
+    [SerializeField] GameObject hillPrefab;
+    LinkedPool<GameObject> hills;
+
     GameObject rewardSummaryPrefab;
 
     GameObject playerObject;
@@ -81,6 +84,7 @@ public class CombatStageManager : MonoBehaviour
     }
 
     const float oakNutFallSpeed = 2f;
+    const float hillSpeed = 2f;
     const float playerFreezeDuration = 5f;
     // Start is called before the first frame update
     void Start()
@@ -112,6 +116,9 @@ public class CombatStageManager : MonoBehaviour
 
         oakNuts = new LinkedPool<GameObject>(MakeOakNut, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
         StartCoroutine(StartOakNutSpawn());
+
+        hills = new LinkedPool<GameObject>(MakeHill, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
+        StartCoroutine(StartHillSpawn());
     }
 
     GameObject MakeOakNut()
@@ -144,6 +151,29 @@ public class CombatStageManager : MonoBehaviour
             // Freeze player movement for a duration
             StartCoroutine(FreezePlayer(playerFreezeDuration));
         }
+    }
+
+    GameObject MakeHill()
+    {
+        GameObject hill = Instantiate(hillPrefab);
+        hill.SetActive(false); // Set inactive initially
+        return hill;
+    }
+
+    IEnumerator StartHillSpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10f); // Spawn hill every 20 seconds
+            SpawnHill();
+        }
+    }
+
+    void SpawnHill()
+    {
+        GameObject hill = hills.Get();
+        hill.transform.position = new Vector3(Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
+        hill.SetActive(true);
     }
 
     IEnumerator FreezePlayer(float duration)
