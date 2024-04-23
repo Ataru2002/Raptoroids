@@ -9,16 +9,18 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
     SpriteRenderer spriteRenderer;
     [SerializeField] int maxHealth = 5;
     private int currentHealth;
-    LootDropper lootDropper;
+
+    [SerializeField] int pointsAwarded;
 
     // Used to notify boss behavior script of changes in remaining health
     [SerializeField] HealthChangeEvent OnHealthChange;
+
+    [SerializeField] EnemyDefeatEvent OnDefeat;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
-        lootDropper = GetComponent<LootDropper>();
     }
 
     // Update is called once per frame
@@ -58,12 +60,10 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
             if (currentHealth <= 0)
             {
-                if (lootDropper != null)
-                {
-                    lootDropper.DropLoot();
-                }
+                OnDefeat.Invoke();
 
                 CombatStageManager.Instance.OnEnemyDefeated();
+                CombatStageManager.Instance.UpdateScore(pointsAwarded);
 
                 Destroy(gameObject);
             }
@@ -73,6 +73,12 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
 [System.Serializable]
 public class HealthChangeEvent : UnityEvent <float>
+{
+
+}
+
+[System.Serializable]
+public class EnemyDefeatEvent : UnityEvent
 {
 
 }

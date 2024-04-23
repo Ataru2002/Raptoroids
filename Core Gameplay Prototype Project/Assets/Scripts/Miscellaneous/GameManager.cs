@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     int score;
     int hiScore;
+    public bool HighScoreChanged { get; private set; } = false;
 
     public int BossID { get; set; } = 0;
 
@@ -45,11 +46,11 @@ public class GameManager : MonoBehaviour
             availableShips = new List<byte>(totalShips / 8 + 1);
             availableGuns = new List<byte>(totalGuns / 8 + 1);
 
-            if (!PlayerPrefs.HasKey("Locale"))
+            if (!PlayerPrefs.HasKey("LocaleIntID"))
             {
-                PlayerPrefs.SetInt("Locale", 0);
+                PlayerPrefs.SetInt("LocaleIntID", 0);
             }
-            SetLocale(PlayerPrefs.GetInt("Locale"));
+            SetLocale(PlayerPrefs.GetInt("LocaleIntID"));
 
             EnemySpawner.LoadEnemyFormations();
         }
@@ -71,7 +72,13 @@ public class GameManager : MonoBehaviour
     public void SetLocale(int id)
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(gameLocales[id]);
-        PlayerPrefs.SetInt("Locale", id);
+        PlayerPrefs.SetString("LocaleStringID", gameLocales[id].ToString());
+        PlayerPrefs.SetInt("LocaleIntID", id);
+    }
+
+    public Locale GetLocale(int id)
+    {
+        return LocalizationSettings.AvailableLocales.GetLocale(gameLocales[id]);
     }
 
     // Map info
@@ -161,12 +168,19 @@ public class GameManager : MonoBehaviour
         return score;
     }
 
+    public void ResetScore()
+    {
+        score = 0;
+        HighScoreChanged = false;
+    }
+
     public void AddScore(int val)
     {
         score += val;
         
         if (score > hiScore)
         {
+            HighScoreChanged = true;
             hiScore = score;
         }
     }

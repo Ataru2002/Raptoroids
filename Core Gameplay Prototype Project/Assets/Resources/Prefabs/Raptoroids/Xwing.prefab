@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4295472950757345947}
   - component: {fileID: 9136181844585125110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile Spawn Side Gun (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,10 +47,9 @@ MonoBehaviour:
   isPlayer: 1
   fireRate: 3
   firstShotDelay: 0
-  coneFire: 0
+  shotType: 0
+  projectilesPerShot: 0
   coneAngle: 0
-  randomizeShotTimes: 0
-  shotTimeMaxDelta: 0
 --- !u!1 &3941256206491604988
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +60,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8340267889384408785}
   - component: {fileID: 5292410739541137123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile Spawn Side Gun (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,10 +97,9 @@ MonoBehaviour:
   isPlayer: 1
   fireRate: 3
   firstShotDelay: 0
-  coneFire: 0
+  shotType: 0
+  projectilesPerShot: 0
   coneAngle: 0
-  randomizeShotTimes: 0
-  shotTimeMaxDelta: 0
 --- !u!1 &4196629239620882456
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +111,7 @@ GameObject:
   - component: {fileID: 8977459758248513366}
   - component: {fileID: 3659203513468650084}
   - component: {fileID: 230155429362986219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Impact Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,9 +386,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.5
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.6
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -441,7 +439,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -494,7 +492,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -766,7 +764,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 10
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -4948,7 +4946,7 @@ GameObject:
   - component: {fileID: 3275017834772844810}
   - component: {fileID: 514816332975612332}
   - component: {fileID: 2290518305236426929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Xwing
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5138,7 +5136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3651067703011654775}
   - component: {fileID: 2109385524537357240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Default Projectile Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5175,10 +5173,9 @@ MonoBehaviour:
   isPlayer: 1
   fireRate: 3
   firstShotDelay: 0
-  coneFire: 0
+  shotType: 0
+  projectilesPerShot: 0
   coneAngle: 0
-  randomizeShotTimes: 0
-  shotTimeMaxDelta: 0
 --- !u!1 &8096883183830287567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5189,7 +5186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1368452253988166753}
   - component: {fileID: 327690111202734985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile Spawn Side Gun (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5226,10 +5223,9 @@ MonoBehaviour:
   isPlayer: 1
   fireRate: 3
   firstShotDelay: 0
-  coneFire: 0
+  shotType: 0
+  projectilesPerShot: 0
   coneAngle: 0
-  randomizeShotTimes: 0
-  shotTimeMaxDelta: 0
 --- !u!1 &9072429906028354087
 GameObject:
   m_ObjectHideFlags: 0
@@ -5240,7 +5236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7176817967660786667}
   - component: {fileID: 927499948782642580}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile Spawn Side Gun (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5277,7 +5273,6 @@ MonoBehaviour:
   isPlayer: 1
   fireRate: 3
   firstShotDelay: 0
-  coneFire: 0
+  shotType: 0
+  projectilesPerShot: 0
   coneAngle: 0
-  randomizeShotTimes: 0
-  shotTimeMaxDelta: 0

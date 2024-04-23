@@ -11,7 +11,7 @@ public class AbilityCooldownUI : MonoBehaviour
     [SerializeField] Color readyColor = Color.white;
     [SerializeField] Color rechargingColor = Color.gray;
 
-    const float cooldownBarWidth = 20;
+    const float cooldownBarWidth = 18;
     const float cooldownBarHeight = 150;
 
     private void Awake()

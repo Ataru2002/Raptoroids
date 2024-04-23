@@ -26,13 +26,22 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI killCounter;
     [SerializeField] GameObject bossHealthBar;
     [SerializeField] RectTransform bossHealthBarRect;
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI hiScoreText;
+
+    [SerializeField] GameObject runEndScoreCanvas;
+    [SerializeField] TextMeshProUGUI runEndScoreText;
+    [SerializeField] GameObject newHiScoreNotice;
 
     EnemySpawner enemySpawner;
 
     const float bossHealthBarWidth = 500f;
     const float bossHealthBarHeight = 50f;
 
+    const float xBounds = 4f;
     const float yBounds = 7f;
+    public float HorizontalLowerBound { get { return -xBounds; } }
+    public float HorizontalUpperBound {  get { return xBounds; } }
     public float VerticalLowerBound { get {  return -yBounds; } }
     public float VerticalUpperBound { get {  return yBounds; } }
 
@@ -65,7 +74,6 @@ public class CombatStageManager : MonoBehaviour
 
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
     bool stageEnded = false;
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -117,8 +125,12 @@ public class CombatStageManager : MonoBehaviour
         oakNuts = new LinkedPool<GameObject>(MakeOakNut, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
         StartCoroutine(StartOakNutSpawn());
 
+<<<<<<< HEAD
         hills = new LinkedPool<GameObject>(MakeHill, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
         StartCoroutine(StartHillSpawn());
+=======
+        UpdateScoreDisplay();
+>>>>>>> 0914aea32df7496fb7aca8719b416eda7465c098
     }
 
     GameObject MakeOakNut()
@@ -295,6 +307,18 @@ public class CombatStageManager : MonoBehaviour
         }
     }
 
+    public void UpdateScore(int score)
+    {
+        GameManager.Instance.AddScore(score);
+        UpdateScoreDisplay();
+    }
+
+    public void UpdateScoreDisplay()
+    {
+        scoreText.text = GameManager.Instance.GetCurrentScore().ToString();
+        hiScoreText.text = GameManager.Instance.GetHighScore().ToString();
+    }
+
     void EndStage(bool playerWin)
     {
         if (stageEnded)
@@ -303,6 +327,7 @@ public class CombatStageManager : MonoBehaviour
         }
 
         stageEnded = true;
+        stageUI.SetActive(false);
 
         if (playerWin)
         {
@@ -311,6 +336,9 @@ public class CombatStageManager : MonoBehaviour
         else
         {
             loseScreen.SetActive(true);
+            runEndScoreCanvas.SetActive(true);
+            runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
+            newHiScoreNotice.SetActive(GameManager.Instance.HighScoreChanged);
             Time.timeScale = 0;
 
             int grossGems = GameManager.Instance.GetCurrentGems();
@@ -353,6 +381,9 @@ public class CombatStageManager : MonoBehaviour
         if (isBossStage)
         {
             bossWinScreen.SetActive(true);
+            runEndScoreCanvas.SetActive(true);
+            runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
+            newHiScoreNotice.SetActive(GameManager.Instance.HighScoreChanged);
         }
         else
         {
@@ -379,13 +410,6 @@ public class CombatStageManager : MonoBehaviour
         }
     }
 
-    // For prototype use ONLY. Allows player to play again
-    public void ReloadStage()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
     public void AdvanceRun()
     {
         GameManager.Instance.AdvanceMapProgress();
@@ -394,6 +418,7 @@ public class CombatStageManager : MonoBehaviour
     public void EndRun(bool playerWon)
     {
         GameManager.Instance.ClearMapInfo();
+        GameManager.Instance.ResetScore();
 
         // TODO: possibly handle multipliers in Game Manager instead
         float multiplier = playerWon ? 1f : 0.8f;
@@ -411,4 +436,6 @@ public class CombatStageManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MapSelection");
     }
+
+    
 }

@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class BombDetectable : MonoBehaviour, IBulletHittable 
 {
-    [SerializeField] GameObject Explosion;
+    [SerializeField] GameObject explosion;
+    [SerializeField] GameObject explosionVisual;
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnBulletHit(){
-        Explosion.SetActive(true);   
+
+        explosion.SetActive(true);
+        explosionVisual.SetActive(true);
     }
 
-    private void OnDrawGizmos() {
-        Gizmos.DrawSphere(transform.position, 2);
-    }
+    // private void OnDrawGizmos() {
+    //     Gizmos.DrawSphere(transform.position, 2);
+    // }
 }

@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class CentipedeBossBehavior : BossBehavior
 {
-    [SerializeField] ProjectileSpawner leftSpawner;
-    [SerializeField] ProjectileSpawner rightSpawner;
     [SerializeField] StrafeEnemyBehavior strafeBehavior;
 
     const int legPairCount = 5;
     [SerializeField] CentipedeLegBehavior[] centipedeLeftLegs;
     [SerializeField] CentipedeLegBehavior[] centipedeRightLegs;
 
+    [SerializeField] CentipedePincerBehavior leftPincer;
+    [SerializeField] CentipedePincerBehavior rightPincer;
+
+    [SerializeField] CentipedeMandibleBehavior[] mandibles;
+    [SerializeField] LaserBeamSource headLaser;
+
     bool legBarrageStarted = false;
+    bool pincersFiring = false;
+    bool laserSequenceStarted = false;
+    bool laserFiring = false;
 
     public bool strafing = false;
     float remainingHealthRatio = 1f;
@@ -49,8 +56,6 @@ public class CentipedeBossBehavior : BossBehavior
 
         stateExecute = State2Execute;
 
-        leftSpawner.enabled = true;
-        rightSpawner.enabled = true;
         strafeBehavior.enabled = true;
 
         return true;
@@ -58,16 +63,14 @@ public class CentipedeBossBehavior : BossBehavior
 
     bool StateTransition2()
     {
-        if (remainingHealthRatio > 0.4f || strafing)
+        if (remainingHealthRatio > 0.1f || strafing)
         {
             return false;
         }
 
         stateExecute = State3Execute;
 
-        defaultProjectileSpawn.ResetShotTimer();
-        leftSpawner.ResetShotTimer();
-        rightSpawner.ResetShotTimer();
+        strafeBehavior.enabled = false;
 
         return true;
     }
@@ -112,18 +115,91 @@ public class CentipedeBossBehavior : BossBehavior
 
     void State2Execute()
     {
-        leftSpawner.TryShoot();
-        rightSpawner.TryShoot();
+        if (!pincersFiring)
+        {
+            StartCoroutine(PincerFireSequence());
+        }
+    }
+
+    IEnumerator PincerFireSequence()
+    {
+        pincersFiring = true;
+
+        if (leftPincer != null)
+        {
+            leftPincer.PlayAttackSequence();
+        }
+        yield return new WaitForSeconds(0.6f);
+
+        if (rightPincer != null)
+        {
+            rightPincer.PlayAttackSequence();
+        }
+        yield return new WaitForSeconds(0.6f);
+
+        pincersFiring = false;
     }
 
     void State3Execute()
-    {
-        State2Execute();
-        trackPlayer = strafing;
-        
-        if (!trackPlayer)
+    {   
+        if (!laserSequenceStarted)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 270);
+            StartCoroutine(LaserFireSequence());
         }
+
+        if (laserFiring)
+        {
+            headLaser.TryShoot();
+        }
+    }
+
+    IEnumerator LaserFireSequence()
+    {
+        trackPlayer = true;
+        laserSequenceStarted = true;
+
+        yield return new WaitForSeconds(0.6f);
+        foreach (CentipedeMandibleBehavior mandible in mandibles)
+        {
+            if (mandible != null)
+            {
+                mandible.SetState(1);
+            }
+        }
+
+        yield return new WaitForSeconds(0.9f);
+        trackPlayer = false;
+
+        yield return new WaitForSeconds(0.4f);
+        foreach (CentipedeMandibleBehavior mandible in mandibles)
+        {
+            if (mandible != null)
+            {
+                mandible.SetState(2);
+            }
+        }
+        laserFiring = true;
+        headLaser.ToggleLaserBeam(true);
+
+        yield return new WaitForSeconds(1);
+        foreach (CentipedeMandibleBehavior mandible in mandibles)
+        {
+            if (mandible != null)
+            {
+                mandible.SetState(1);
+            }
+        }
+        laserFiring = false;
+        headLaser.ToggleLaserBeam(false);
+
+        yield return new WaitForSeconds(0.6f);
+        foreach (CentipedeMandibleBehavior mandible in mandibles)
+        {
+            if (mandible != null)
+            {
+                mandible.SetState(0);
+            }
+        }
+        laserSequenceStarted = false;
     }
 }

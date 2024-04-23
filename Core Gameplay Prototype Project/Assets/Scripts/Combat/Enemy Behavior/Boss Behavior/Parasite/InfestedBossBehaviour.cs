@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Timeline;
+using UnityEngine.UIElements;
 
 public class InfestedBossBehaviour : BossBehavior
 {
@@ -16,8 +18,8 @@ public class InfestedBossBehaviour : BossBehavior
     public bool strafing = false;
     float remainingHealthRatio = 1f;
     bool spawnFromRight;
-    [SerializeField] float Phase3BerserkCountDown = 10f; 
-    private float spawnTimer = 0;
+    private float spawnTimer = 5f;
+
     void Awake(){
         transitionConditions = new List<System.Func<bool>>{StateTransition1, StateTransition2};
     }
@@ -29,7 +31,7 @@ public class InfestedBossBehaviour : BossBehavior
     }
 
     bool StateTransition1(){
-        if (remainingHealthRatio > 0.7f){   //as long as health is greater than 70%, dont do anything
+        if (remainingHealthRatio > 0.9f){   //as long as health is greater than 70%, dont do anything
             return false;
         }
         trackPlayer = true;
@@ -39,13 +41,21 @@ public class InfestedBossBehaviour : BossBehavior
     }
 
     bool StateTransition2(){
-        if (remainingHealthRatio > 0.4f){
+        if (remainingHealthRatio > 0.8f){
             return false;
         }
         gameObject.GetComponent<PlayerAbility>().enabled = true;
-        SpawnBomb();
         GetComponent<BoxCollider2D>().enabled = false;
+        ParasiteManager.Instance.SetShieldStatus(true);
         stateExecute = State3Execute;
+        return true;
+    }
+
+    bool StateTransition3(){
+        if(remainingHealthRatio > 0.6f){
+            return false;
+        }
+        stateExecute = State4Execute;
         return true;
     }
     void State2Execute(){
@@ -59,32 +69,49 @@ public class InfestedBossBehaviour : BossBehavior
     void State3Execute(){
         //spawn bomb objs
         State2Execute();    
-        
         spawnTimer += Time.deltaTime;
-
-        if(spawnTimer >= spawnInterval){
-            spawnTimer = 0f;
+         
+        if((spawnTimer >= spawnInterval) && ParasiteManager.Instance.BossShieldStatus()){
             SpawnBomb();
+            spawnTimer = 0f;
         }
-            
-        //if player dont break shield under some time limit, increase fire power dramatically
+    }
 
-        
+    void State4Execute(){
+        //tentacles attack
     }
     void SpawnBomb(){
         Vector3 spawnPos;
         spawnFromRight = Random.Range(0, 2) == 0;
         if(spawnFromRight){
-            spawnFromRight = true;
             spawnPos = Camera.main.ViewportToWorldPoint(new Vector3(1f, Random.Range(0.7f, 0.9f), 1));
         }
         else{
-            spawnFromRight = false;
             spawnPos = Camera.main.ViewportToWorldPoint(new Vector3(0f, Random.Range(0.7f, 0.9f), 1));
         }
         GameObject prefabClone = Instantiate(bombPrefab, spawnPos, Quaternion.identity);
         Rigidbody2D rb = prefabClone.GetComponent<Rigidbody2D>();
-        rb.velocity =  spawnFromRight ? Vector2.left * bombSpeed : Vector2.right * bombSpeed;    
+        rb.velocity =  spawnFromRight ? Vector2.left * bombSpeed : Vector2.right * bombSpeed;   
+        StartCoroutine(DestroyOutOfRange(prefabClone));
+    }
+
+    IEnumerator DestroyOutOfRange(GameObject obj){
+        yield return null;
+        if(obj != null){
+            if(spawnFromRight){
+                while(obj.transform.position.x > -5f){
+                    yield return null;
+                }
+            }
+            else{
+                while(obj.transform.position.x < 5f){
+                    yield return null;
+                }
+            }
+            
+            Destroy(obj);
+            
+        }
     }
     
     public void enableCollider(){

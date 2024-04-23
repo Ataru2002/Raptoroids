@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e863383a39351a64a8854c304883bd26
+guid: 21dada34ebd3ae34d84515ef2c1b7729
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2644228792872706433
-    second: Centipede-LeftArm_0
+      213: 3456101416147348911
+    second: LaserBall_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,11 +48,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spriteMeshType: 0
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 30, y: 30, z: 30, w: 30}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -113,22 +113,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Centipede-LeftArm_0
+      name: LaserBall_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 199
-        width: 122
-        height: 102
+        x: 0
+        y: 0
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7e56ff2cefcd4bd0800000000000000
-      internalID: -2644228792872706433
+      spriteID: fadef214de986ff20800000000000000
+      internalID: 3456101416147348911
       vertices: []
       indices: 
       edges: []
@@ -137,14 +137,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Centipede-LeftArm_0: -2644228792872706433
+      LaserBall_0: 3456101416147348911
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

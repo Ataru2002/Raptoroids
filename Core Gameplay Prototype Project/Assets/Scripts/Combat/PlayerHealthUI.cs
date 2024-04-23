@@ -12,7 +12,7 @@ public class PlayerHealthUI : MonoBehaviour
     [SerializeField] Color warningColor;
     [SerializeField] Color criticalColor;
 
-    const float healthBarWidth = 20;
+    const float healthBarWidth = 18;
     const float healthBarHeight = 150;
 
     private void Awake()

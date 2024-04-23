@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class ProjectileSpawner : MonoBehaviour
+public class ProjectileSpawner : Weapon
 {
-    [SerializeField] bool isPlayer;
     [SerializeField] float fireRate;
     [SerializeField] float firstShotDelay;
     [SerializeField] ShotType shotType;
@@ -84,7 +83,7 @@ public class ProjectileSpawner : MonoBehaviour
         timeOfNextShot = firstShotDelay;
     }
 
-    public void TryShoot()
+    public override void TryShoot()
     {
         // Only let the enemy begin shooting once it gets in position.
         if (enemyBehavior != null && !enemyBehavior.FinalPositionReached)
@@ -157,10 +156,4 @@ public class ProjectileSpawner : MonoBehaviour
         }
     }
     // ---
-}
-
-public enum ShotType
-{
-    Single,
-    Cone,
 }

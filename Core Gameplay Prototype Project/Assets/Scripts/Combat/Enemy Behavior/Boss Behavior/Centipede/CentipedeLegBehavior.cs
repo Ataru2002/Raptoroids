@@ -13,6 +13,8 @@ public class CentipedeLegBehavior : MonoBehaviour
     EnemyHealth centipedeHP;
     int legHP = 6;
 
+    const int pointsAwarded = 50;
+
     const float moveSpeed = 1f;
     const float attackMoveSpeed = 4f;
     [SerializeField] float bodySeparationDistance = 1f;
@@ -65,10 +67,11 @@ public class CentipedeLegBehavior : MonoBehaviour
     {
         int damage = attackStarted ? 2 : 1;
         legHP -= damage;
+        CombatStageManager.Instance.UpdateScore(pointsAwarded);
+        centipedeHP.TakeDamage(damage);
 
         if (legHP <= 0)
         {
-            centipedeHP.TakeDamage(1);
             StopAllCoroutines();
             Destroy(gameObject);
         }
@@ -99,7 +102,8 @@ public class CentipedeLegBehavior : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         stateUpdate = Attack;
-        while (transform.position.y > CombatStageManager.Instance.VerticalLowerBound)
+        while (Mathf.Abs(transform.position.y) < CombatStageManager.Instance.VerticalUpperBound && 
+            Mathf.Abs(transform.position.x) < CombatStageManager.Instance.HorizontalUpperBound)
         {
             yield return new WaitForEndOfFrame();
         }
@@ -128,6 +132,7 @@ public class CentipedeLegBehavior : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         attackStarted = false;
+        alreadyHitPlayer = false;
         distanceTraveled = 0;
         timeSinceReturnStart = 0;
         returnCurve = null;
@@ -155,7 +160,9 @@ public class CentipedeLegBehavior : MonoBehaviour
     void ReturnToBody()
     {
         timeSinceReturnStart += Time.deltaTime;
-        transform.position = returnCurve.GetPosition(timeSinceReturnStart / returnTime);
+        Vector2 nextPos = returnCurve.GetPosition(timeSinceReturnStart / returnTime);
+        LookAtTarget(nextPos);
+        transform.position = nextPos;
     }
 
     void LookAtTarget(Vector3 target)

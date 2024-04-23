@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2395272731790689791}
   - component: {fileID: 6758883703252888463}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 6474109902213267987}
   - component: {fileID: 5838066362365024841}
   - component: {fileID: 5435155920222395559}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Whitehead
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4721694139620723549}
   - component: {fileID: 6901887412563049001}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 7534475651929846949}
   - component: {fileID: 7079663249782597342}
   - component: {fileID: 6528355002125666595}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Impact Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,9 +609,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.5
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.6
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -662,7 +662,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -715,7 +715,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -987,7 +987,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 10
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -5166,7 +5166,7 @@ GameObject:
   - component: {fileID: 3227318845912037281}
   - component: {fileID: 2256965007658540401}
   - component: {fileID: 1025395162517044910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shield
   m_TagString: Player
   m_Icon: {fileID: 0}
