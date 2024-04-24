@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9701135c4413a0e49b1d8702c8b3eaa1, type: 3}
+  m_Name: r01
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemNumber: 1
+  itemCodename: AMR-01
+  itemNickname: Stavropter
+  itemSprite: {fileID: 21300000, guid: e32414ff41800094e860758452b2bcd8, type: 3}
+  gemCost: 300
+  flavorText: Seems to be a relic from a galaxy far, far away. Highly destructive
+    in the right hands.

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8592961143897934641}
   - component: {fileID: 3275017834772844810}
   m_Layer: 0
-  m_Name: Xwing
+  m_Name: Stavropter
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

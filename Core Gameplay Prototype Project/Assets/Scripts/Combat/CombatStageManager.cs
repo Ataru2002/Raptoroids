@@ -13,7 +13,7 @@ public class CombatStageManager : MonoBehaviour
     public static CombatStageManager Instance { get { return instance; } }
 
     [SerializeField] Transform playerSpawnPoint;
-    [SerializeField] GameObject[] playerPrefabs;
+    GameObject[] playerPrefabs;
 
     [SerializeField] float enemyRespawnDelay;
 
@@ -85,6 +85,7 @@ public class CombatStageManager : MonoBehaviour
             enemyProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyBullet");
             hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
+            playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids/Armed");
         }
     }
 
@@ -404,6 +405,4 @@ public class CombatStageManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MapSelection");
     }
-
-    
 }

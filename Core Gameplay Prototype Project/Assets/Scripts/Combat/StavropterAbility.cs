@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class XwingAbility : MonoBehaviour
+public class StavropterAbility : MonoBehaviour
 {
     [SerializeField] GameObject defaultGun;
     [SerializeField] GameObject[] sideGunBulletSpawn;

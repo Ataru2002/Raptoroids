@@ -13,14 +13,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] LocaleIdentifier[] gameLocales;
 
     int pendingGems = 0;
-    int totalGems = 0;
+    int totalGems = 500;
 
     Map[] generatedMaps = null;
     int mapIndex = 0;
     int currentMapTier = 0;
-    int totalShips = 2;
-    int totalGuns = 2;
     List<MapNode> visitedNodes = new List<MapNode>();
+
+    const int totalShips = 2;
+    const int totalGuns = 2;
     List<byte> availableShips;
     List<byte> availableGuns;
 
@@ -43,8 +44,22 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
 
-            availableShips = new List<byte>(totalShips / 8 + 1);
-            availableGuns = new List<byte>(totalGuns / 8 + 1);
+            // TODO: load from save file instead
+            int shipVectorBytes = totalShips / 8 + 1;
+            availableShips = new List<byte>();
+            for (int s = 0; s < shipVectorBytes; s++)
+            {
+                availableShips.Add(0);
+            }
+            UnlockItem(ItemType.Raptoroid, 0);
+            
+            int gunVectorBytes = totalGuns / 8 + 1;
+            availableGuns = new List<byte>();
+            for (int g = 0; g < gunVectorBytes; g++)
+            {
+                availableGuns.Add(0);
+            }
+            UnlockItem(ItemType.Weapon, 0);
 
             if (!PlayerPrefs.HasKey("LocaleIntID"))
             {
@@ -56,19 +71,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    #region LOCALIZATION
     public void SetLocale(int id)
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(gameLocales[id]);
@@ -80,7 +83,9 @@ public class GameManager : MonoBehaviour
     {
         return LocalizationSettings.AvailableLocales.GetLocale(gameLocales[id]);
     }
+    #endregion
 
+    #region MAP_PROGRESSION
     // Map info
     public Map[] GetMaps()
     {
@@ -143,7 +148,9 @@ public class GameManager : MonoBehaviour
         currentMapTier = 0;
         visitedNodes.Clear();
     }
+    #endregion
 
+    #region GEMS
     public void CollectGems(int gemAmount){
         pendingGems += gemAmount;
     }
@@ -167,7 +174,50 @@ public class GameManager : MonoBehaviour
     {
         return score;
     }
+    #endregion
 
+    #region ITEM_PURCHASE
+    public void PurchaseItem(ShopItemData purchasedItem)
+    {
+        int bitVectorKey = purchasedItem.itemNumber / 8;
+        int bitIndex = purchasedItem.itemNumber % 8;
+
+        List<byte> targetList = purchasedItem.itemType == ItemType.Weapon ? availableGuns : availableShips;
+        
+        byte bitMask = (byte)(1 << bitIndex);
+        targetList[bitVectorKey] |= bitMask;
+
+        totalGems -= purchasedItem.gemCost;
+    }
+    #endregion
+
+    #region LOADOUT
+    public void UnlockItem(ItemType type, int itemNumber)
+    {
+        if (type == ItemType.Weapon)
+        {
+            availableGuns[itemNumber / 8] |= (byte)(1 << itemNumber % 8);
+        }
+        else
+        {
+            availableShips[itemNumber / 8] |= (byte)(1 << itemNumber % 8);
+        }
+    }
+
+    public bool ItemUnlocked(ItemType type, int itemNumber)
+    {
+        if (type == ItemType.Weapon)
+        {
+            return (availableGuns[itemNumber / 8] & (1 << itemNumber % 8)) == 1;
+        }
+        else
+        {
+            return (availableShips[itemNumber / 8] & (1 << itemNumber % 8)) == 1;
+        }
+    }
+    #endregion
+
+    #region SCORE
     public void ResetScore()
     {
         score = 0;
@@ -189,4 +239,5 @@ public class GameManager : MonoBehaviour
     {
         return hiScore;
     }
+    #endregion
 }
