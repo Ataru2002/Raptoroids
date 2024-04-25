@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ShopItemControl : MonoBehaviour
 {
-    ShopItemData itemData;
+    ItemData itemData;
 
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI itemCodenameLabel;
@@ -20,7 +20,7 @@ public class ShopItemControl : MonoBehaviour
         ShopManager.Instance.DisplayItemInfo(itemData);
     }
 
-    public void AssociateItemData(ShopItemData val)
+    public void AssociateItemData(ItemData val)
     {
         itemData = val;
         itemImage.sprite = itemData.itemSprite;

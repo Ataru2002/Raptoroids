@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region ITEM_PURCHASE
-    public void PurchaseItem(ShopItemData purchasedItem)
+    public void PurchaseItem(ItemData purchasedItem)
     {
         int bitVectorKey = purchasedItem.itemNumber / 8;
         int bitIndex = purchasedItem.itemNumber % 8;
@@ -194,25 +194,45 @@ public class GameManager : MonoBehaviour
     #region LOADOUT
     public void UnlockItem(ItemType type, int itemNumber)
     {
+        int arrayIndex = itemNumber / 8;
+        int bitIndex = itemNumber % 8;
+
         if (type == ItemType.Weapon)
         {
-            availableGuns[itemNumber / 8] |= (byte)(1 << itemNumber % 8);
+            availableGuns[arrayIndex] |= (byte)(1 << bitIndex);
         }
         else
         {
-            availableShips[itemNumber / 8] |= (byte)(1 << itemNumber % 8);
+            availableShips[arrayIndex] |= (byte)(1 << bitIndex);
         }
     }
 
     public bool ItemUnlocked(ItemType type, int itemNumber)
     {
+        int arrayIndex = itemNumber / 8;
+        int bitIndex = itemNumber % 8;
+
         if (type == ItemType.Weapon)
         {
-            return (availableGuns[itemNumber / 8] & (1 << itemNumber % 8)) == 1;
+            return (availableGuns[arrayIndex] & (1 << bitIndex)) != 0;
         }
         else
         {
-            return (availableShips[itemNumber / 8] & (1 << itemNumber % 8)) == 1;
+            return (availableShips[arrayIndex] & (1 << bitIndex)) != 0;
+        }
+    }
+
+    public void EquipItem(ItemType type, int itemNumber)
+    {
+        // TODO: use some other form of serialization
+        // to make it harder for the player to manipulate the data illegitimately
+        if (type == ItemType.Weapon)
+        {
+            PlayerPrefs.SetInt("EquippedWeapon", itemNumber);
+        }
+        else if (type == ItemType.Raptoroid)
+        {
+            PlayerPrefs.SetInt("EquippedRaptoroid", itemNumber);
         }
     }
     #endregion

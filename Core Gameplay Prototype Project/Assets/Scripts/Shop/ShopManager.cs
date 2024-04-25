@@ -14,8 +14,8 @@ public class ShopManager : MonoBehaviour
     private static ShopManager instance;
     public static ShopManager Instance { get { return instance; } }
 
-    static ShopItemData[] weaponsData;
-    static ShopItemData[] raptoroidsData;
+    static ItemData[] weaponsData;
+    static ItemData[] raptoroidsData;
 
     [SerializeField] LocalizeStringEvent gemCounterLocalizeEvent;
 
@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] Transform itemGridTransform;
 
-    public ShopItemData selectedItem;
+    public ItemData selectedItem;
 
     private void Awake()
     {
@@ -46,8 +46,8 @@ public class ShopManager : MonoBehaviour
             instance = this;
             shopPages = new Dictionary<ItemType, List<GameObject>>();
 
-            weaponsData = Resources.LoadAll<ShopItemData>("Scriptable Objects/Shop Items/Weapon");
-            raptoroidsData = Resources.LoadAll<ShopItemData>("Scriptable Objects/Shop Items/Raptoroid");
+            weaponsData = Resources.LoadAll<ItemData>("Scriptable Objects/Items/Purchasable/Weapon");
+            raptoroidsData = Resources.LoadAll<ItemData>("Scriptable Objects/Items/Purchasable/Raptoroid");
             
             shopPages[ItemType.Weapon] = new List<GameObject>();
             shopPages[ItemType.Raptoroid] = new List<GameObject>();
@@ -76,8 +76,8 @@ public class ShopManager : MonoBehaviour
         ItemType pageType = Enum.Parse<ItemType>(type);
         if (shopPages[pageType].Count == 0)
         {
-            ShopItemData[] itemArray = pageType == ItemType.Weapon ? weaponsData : raptoroidsData;
-            foreach (ShopItemData item in itemArray)
+            ItemData[] itemArray = pageType == ItemType.Weapon ? weaponsData : raptoroidsData;
+            foreach (ItemData item in itemArray)
             {
                 GameObject itemEntry = Instantiate(itemPrefab);
                 itemEntry.transform.SetParent(itemGridTransform);
@@ -114,7 +114,7 @@ public class ShopManager : MonoBehaviour
         BroadcastMessage("UpdatePurchaseButton", SendMessageOptions.DontRequireReceiver);
     }
 
-    public void DisplayItemInfo(ShopItemData item)
+    public void DisplayItemInfo(ItemData item)
     {
         itemInfoDisplay.SetActive(true);
         itemImage.sprite = item.itemSprite;

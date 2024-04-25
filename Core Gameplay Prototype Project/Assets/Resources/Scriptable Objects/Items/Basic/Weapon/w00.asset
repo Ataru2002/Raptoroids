@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9701135c4413a0e49b1d8702c8b3eaa1, type: 3}
-  m_Name: r01
+  m_Name: w00
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemNumber: 1
-  itemCodename: AMR-01
-  itemNickname: Stavropter
-  itemSprite: {fileID: 21300000, guid: e32414ff41800094e860758452b2bcd8, type: 3}
-  gemCost: 300
-  flavorText: Seems to be a relic from a galaxy far, far away. Highly destructive
-    in the right hands.
+  itemType: 1
+  itemNumber: 0
+  itemCodename: RWM-00
+  itemNickname: 
+  itemSprite: {fileID: 0}
+  gemCost: 0
+  flavorText: 
