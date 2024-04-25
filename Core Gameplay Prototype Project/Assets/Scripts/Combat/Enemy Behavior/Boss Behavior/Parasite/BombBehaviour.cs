@@ -32,7 +32,7 @@ public class BombBehaviour : MonoBehaviour
                     explosionVisual.transform.localScale = new Vector3(explosionRadius, explosionRadius, 1); 
                     collision.gameObject.SetActive(false);
                     disableBombCollider();
-                    bossBehaviour.enableCollider();
+                    
                     ParasiteManager.Instance.SetShieldStatus(false);
                 }
                 StartCoroutine(bombVisualDelay(2));

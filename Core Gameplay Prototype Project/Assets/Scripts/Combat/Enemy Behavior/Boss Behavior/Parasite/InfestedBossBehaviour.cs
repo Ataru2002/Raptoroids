@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.Timeline;
 using UnityEngine.UIElements;
 
@@ -12,16 +13,32 @@ public class InfestedBossBehaviour : BossBehavior
     [SerializeField] ProjectileSpawner leftSpawner2;
     [SerializeField] ProjectileSpawner rightSpawner1;
     [SerializeField] ProjectileSpawner rightSpawner2;
+    [SerializeField] TentacleBehavior[] tentacles;
+    [SerializeField] TentacleBehavior leftTop;
+    [SerializeField] StrafeEnemyBehavior strafeBehavior;
     [SerializeField] GameObject bombPrefab;
+    [SerializeField] GameObject hostBody;
     [SerializeField] float bombSpeed;
     [SerializeField] float spawnInterval = 5f;
+
+    Vector3 originalPosition;
+    bool tentacleAttacking = false;
     public bool strafing = false;
     float remainingHealthRatio = 1f;
     bool spawnFromRight;
     private float spawnTimer = 5f;
 
     void Awake(){
-        transitionConditions = new List<System.Func<bool>>{StateTransition1, StateTransition2};
+        transitionConditions = new List<System.Func<bool>>{StateTransition1, StateTransition2, StateTransition3};
+        stateExecute = State1Execute;
+    }
+
+    void State1Execute(){
+        if(!strafing){
+            strafeBehavior.enabled = true;
+            strafing = true;
+        }
+        
     }
 
     public void UpdateHealthRatio(float val)
@@ -31,54 +48,85 @@ public class InfestedBossBehaviour : BossBehavior
     }
 
     bool StateTransition1(){
-        if (remainingHealthRatio > 0.9f){   //as long as health is greater than 70%, dont do anything
+        if(remainingHealthRatio > 0.9){
             return false;
         }
-        trackPlayer = true;
-        stateExecute = State2Execute;
+        defaultWeapon.enabled = false;
+        
+        stateExecute = State2Execute; 
 
         return true;
     }
 
-    bool StateTransition2(){
-        if (remainingHealthRatio > 0.8f){
-            return false;
-        }
-        gameObject.GetComponent<PlayerAbility>().enabled = true;
-        GetComponent<BoxCollider2D>().enabled = false;
-        ParasiteManager.Instance.SetShieldStatus(true);
-        stateExecute = State3Execute;
-        return true;
-    }
-
-    bool StateTransition3(){
-        if(remainingHealthRatio > 0.6f){
-            return false;
-        }
-        stateExecute = State4Execute;
-        return true;
-    }
     void State2Execute(){
         leftSpawner1.TryShoot();
         leftSpawner2.TryShoot();
         rightSpawner1.TryShoot();
         rightSpawner2.TryShoot();
-        
+        State1Execute();
     }
 
+    
+
+    bool StateTransition2(){
+        if (remainingHealthRatio > 0.7f){
+            return false;
+        }
+        gameObject.GetComponent<PlayerAbility>().enabled = true;
+        hostBody.GetComponent<BoxCollider2D>().enabled = false;
+        trackPlayer = true;
+
+        ParasiteManager.Instance.SetShieldStatus(true);
+
+        stateExecute = State3Execute;
+
+        return true;
+    }
     void State3Execute(){
-        //spawn bomb objs
-        State2Execute();    
+        leftSpawner1.TryShoot();
+        leftSpawner2.TryShoot();
+        rightSpawner1.TryShoot();
+        rightSpawner2.TryShoot();
         spawnTimer += Time.deltaTime;
          
         if((spawnTimer >= spawnInterval) && ParasiteManager.Instance.BossShieldStatus()){
             SpawnBomb();
             spawnTimer = 0f;
         }
+        if(!ParasiteManager.Instance.BossShieldStatus()){
+            hostBody.GetComponent<BoxCollider2D>().enabled = true;
+            defaultWeapon.enabled = true;
+        }
     }
+    bool StateTransition3(){
+        if(remainingHealthRatio > 0.3f){
+            return false;
+        }
+        
+        hostBody.SetActive(false);
+        originalPosition = finalPosition;
+        transform.position = originalPosition;
+        
+        
+        enableTentacleHitbox();
+        trackPlayer = false;
+        stateExecute = State4Execute;
+        return true;
+    }
+    
+
+    
 
     void State4Execute(){
-        //tentacles attack
+        if(!tentacleAttacking){
+            foreach(TentacleBehavior tentacle in tentacles){
+                //tentacle.TryAttackSequenceIndicator();
+                if(tentacle != null){
+                    tentacle.TryTentacleSequence();
+                }
+                
+            }
+        }
     }
     void SpawnBomb(){
         Vector3 spawnPos;
@@ -113,8 +161,34 @@ public class InfestedBossBehaviour : BossBehavior
             
         }
     }
+
+    // IEnumerator BulletBarrageStrafe(){
+    //     originalPosition = finalPosition;
+    //     strafing = true;
+        
+    //     strafeBehavior.enabled = true;
+    //     yield return new WaitForSeconds(4.0f);
+    //     if(transform.position != originalPosition){
+    //         print("returning to position");
+    //         transform.position = originalPosition;
+    //         yield return new WaitForSeconds(0.8f);
+    //     }
+
+    //     strafeBehavior.enabled = false;
+    //     strafing = false;
+    // }
+
     
-    public void enableCollider(){
-        GetComponent<BoxCollider2D>().enabled = true;
+    
+
+
+    private void enableTentacleHitbox(){
+        foreach(TentacleBehavior tentacle in tentacles){
+            if(tentacle != null){
+                tentacle.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
     }
+
+
 }

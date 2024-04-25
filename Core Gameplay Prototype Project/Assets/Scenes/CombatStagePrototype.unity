@@ -5319,6 +5319,7 @@ MonoBehaviour:
   runEndScoreCanvas: {fileID: 337880007}
   runEndScoreText: {fileID: 311143083}
   newHiScoreNotice: {fileID: 1686828529}
+  wallBounds: {fileID: 0}
   oakNutPrefab: {fileID: 8562175422482686477, guid: 3dcdd9673cd19b5489baa1aea070aceb, type: 3}
 --- !u!4 &1946619568
 Transform:

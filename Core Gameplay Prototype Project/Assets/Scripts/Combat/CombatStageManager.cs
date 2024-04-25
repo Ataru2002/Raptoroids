@@ -32,7 +32,6 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] GameObject runEndScoreCanvas;
     [SerializeField] TextMeshProUGUI runEndScoreText;
     [SerializeField] GameObject newHiScoreNotice;
-
     EnemySpawner enemySpawner;
 
     const float bossHealthBarWidth = 500f;
