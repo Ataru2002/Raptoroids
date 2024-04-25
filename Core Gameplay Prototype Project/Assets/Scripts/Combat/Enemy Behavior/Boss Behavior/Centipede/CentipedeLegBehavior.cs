@@ -31,6 +31,8 @@ public class CentipedeLegBehavior : MonoBehaviour
 
     Action stateUpdate = null;
 
+    bool destroyed = false;
+
     void Awake()
     {
         parentTransform = transform.parent;
@@ -65,6 +67,11 @@ public class CentipedeLegBehavior : MonoBehaviour
 
     public void NotifyLegHit()
     {
+        if (destroyed)
+        {
+            return;
+        }
+
         int damage = attackStarted ? 2 : 1;
         legHP -= damage;
         CombatStageManager.Instance.UpdateScore(pointsAwarded);
@@ -72,6 +79,7 @@ public class CentipedeLegBehavior : MonoBehaviour
 
         if (legHP <= 0)
         {
+            destroyed = true;
             StopAllCoroutines();
             Destroy(gameObject);
         }

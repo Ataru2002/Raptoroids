@@ -17,6 +17,9 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
     [SerializeField] EnemyDefeatEvent OnDefeat;
 
+    // Ensure that multi-projectile attacks don't trigger death more than once
+    bool dead = false;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -58,8 +61,9 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
                 CombatStageManager.Instance.UpdateBossHealthBar((float)currentHealth / maxHealth);
             }
 
-            if (currentHealth <= 0)
+            if (!dead && currentHealth <= 0)
             {
+                dead = true;
                 OnDefeat.Invoke();
 
                 CombatStageManager.Instance.OnEnemyDefeated();

@@ -13,7 +13,9 @@ public class CombatStageManager : MonoBehaviour
     public static CombatStageManager Instance { get { return instance; } }
 
     [SerializeField] Transform playerSpawnPoint;
-    [SerializeField] GameObject[] playerPrefabs;
+    GameObject[] playerPrefabs;
+
+    WeaponData[] weaponDataBank;
 
     [SerializeField] float enemyRespawnDelay;
 
@@ -34,7 +36,7 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] GameObject newHiScoreNotice;
     EnemySpawner enemySpawner;
 
-    const float bossHealthBarWidth = 500f;
+    const float bossHealthBarWidth = 400f;
     const float bossHealthBarHeight = 50f;
 
     const float xBounds = 4f;
@@ -87,6 +89,8 @@ public class CombatStageManager : MonoBehaviour
             enemyProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyBullet");
             hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
+            playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids/Armed");
+            weaponDataBank = Resources.LoadAll<WeaponData>("Scriptable Objects/Weapons");
         }
     }
 
@@ -102,6 +106,9 @@ public class CombatStageManager : MonoBehaviour
         int raptoroidID = PlayerPrefs.HasKey("EquippedRaptoroid") ? PlayerPrefs.GetInt("EquippedRaptoroid") : 0;
         playerObject = Instantiate(playerPrefabs[raptoroidID]);
         playerObject.transform.position = playerSpawnPoint.position;
+
+        int gunID = PlayerPrefs.HasKey("EquippedWeapon") ? PlayerPrefs.GetInt("EquippedWeapon") : 0;
+        playerObject.GetComponentInChildren<ProjectileSpawner>().AssociateWeaponData(weaponDataBank[gunID]);
 
         if (isBossStage)
         {
@@ -432,6 +439,4 @@ public class CombatStageManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MapSelection");
     }
-
-    
 }

@@ -14,6 +14,8 @@ public class CentipedeMandibleBehavior : MonoBehaviour, IBulletHittable
 
     [SerializeField] Sprite[] sprites;
 
+    bool destroyed = false;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,13 +36,19 @@ public class CentipedeMandibleBehavior : MonoBehaviour, IBulletHittable
 
     public void OnBulletHit()
     {
+        if (destroyed)
+        {
+            return;
+        }
+
         mandibleHP -= mandibleState;
 
-        CombatStageManager.Instance.UpdateScore(pointsAwarded);
+        CombatStageManager.Instance.UpdateScore(pointsAwarded * mandibleState);
         centipedeHP.TakeDamage(mandibleState);
 
         if (mandibleHP <= 0)
         {
+            destroyed = true;
             Destroy(gameObject);
         }
     }

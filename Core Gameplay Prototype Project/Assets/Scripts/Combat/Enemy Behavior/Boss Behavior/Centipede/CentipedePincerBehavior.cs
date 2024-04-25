@@ -19,6 +19,8 @@ public class CentipedePincerBehavior : MonoBehaviour
 
     bool inAttackSequence = false;
 
+    bool destroyed = false;
+
     private void Awake()
     {
         circleCollider = GetComponent<CircleCollider2D>();
@@ -72,6 +74,11 @@ public class CentipedePincerBehavior : MonoBehaviour
 
     public void NotifyPincerHit()
     {
+        if (destroyed)
+        {
+            return;
+        }
+
         CombatStageManager.Instance.UpdateScore(15);
 
         centipedeHP.TakeDamage(hpScale);
@@ -79,6 +86,7 @@ public class CentipedePincerBehavior : MonoBehaviour
 
         if (armHP <= 0)
         {
+            destroyed = true;
             Destroy(gameObject);
         }
     }
