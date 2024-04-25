@@ -15,6 +15,8 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] Transform playerSpawnPoint;
     GameObject[] playerPrefabs;
 
+    WeaponData[] weaponDataBank;
+
     [SerializeField] float enemyRespawnDelay;
 
     [SerializeField] GameObject stageUI;
@@ -86,6 +88,7 @@ public class CombatStageManager : MonoBehaviour
             hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
             playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids/Armed");
+            weaponDataBank = Resources.LoadAll<WeaponData>("Scriptable Objects/Weapons");
         }
     }
 
@@ -100,6 +103,9 @@ public class CombatStageManager : MonoBehaviour
         int raptoroidID = PlayerPrefs.HasKey("EquippedRaptoroid") ? PlayerPrefs.GetInt("EquippedRaptoroid") : 0;
         playerObject = Instantiate(playerPrefabs[raptoroidID]);
         playerObject.transform.position = playerSpawnPoint.position;
+
+        int gunID = PlayerPrefs.HasKey("EquippedWeapon") ? PlayerPrefs.GetInt("EquippedWeapon") : 0;
+        playerObject.GetComponentInChildren<ProjectileSpawner>().AssociateWeaponData(weaponDataBank[gunID]);
 
         if (isBossStage)
         {

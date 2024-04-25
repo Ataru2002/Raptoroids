@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] LocaleIdentifier[] gameLocales;
 
     int pendingGems = 0;
-    int totalGems = 500;
+    int totalGems = 0;
 
     Map[] generatedMaps = null;
     int mapIndex = 0;

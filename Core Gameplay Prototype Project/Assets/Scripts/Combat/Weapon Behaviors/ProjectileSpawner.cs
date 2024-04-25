@@ -58,7 +58,7 @@ public class ProjectileSpawner : Weapon
             case ShotType.Cone:
                 shoot = ConeShot; break;
             default:
-                Debug.LogWarning("Setting shot to unrecognized type. Falling back to single shot.");
+                Debug.LogWarning("Setting shot to unsupported type. Falling back to single shot.");
                 shoot = SingleShot;
                 shotType = ShotType.Single;
                 break;
@@ -76,6 +76,20 @@ public class ProjectileSpawner : Weapon
             enemyBehavior = GetComponentInParent<EnemyBehavior>();
             spawnProjectile = CombatStageManager.Instance.GetEnemyProjectile;
         }
+    }
+
+    public void AssociateWeaponData(WeaponData weaponData)
+    {
+        shotType = weaponData.shotType;
+        fireRate = weaponData.fireRate;
+
+        if (shotType == ShotType.Cone)
+        {
+            coneAngle = weaponData.coneAngle;
+            projectilesPerShot = weaponData.projectileCount;
+        }
+
+        SetShootFunc();
     }
 
     public void ResetShotTimer()

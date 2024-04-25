@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Weapon Data", menuName = "Weapon Data")]
 public class WeaponData : ScriptableObject
 {
     public ShotType shotType;
