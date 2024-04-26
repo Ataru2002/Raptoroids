@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.Timeline;
-using UnityEngine.UIElements;
 
 public class InfestedBossBehaviour : BossBehavior
 {

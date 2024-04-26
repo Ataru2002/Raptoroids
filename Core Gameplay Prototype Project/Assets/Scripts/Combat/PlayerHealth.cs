@@ -39,6 +39,7 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
             CombatStageManager.Instance.OnPlayerDefeated();
         }
     }
+
     public void hillCollide()
     {
         print("Player hit by hill!");
