@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InfestedRaptoroidHittable : MonoBehaviour, IBulletHittable
 {
+    int pointsAwarded = 20;
     [SerializeField] EnemyHealth enemyHealth;
     void Start()
     {
@@ -18,5 +19,6 @@ public class InfestedRaptoroidHittable : MonoBehaviour, IBulletHittable
 
     public void OnBulletHit(){
         enemyHealth.TakeDamage(4);
+        CombatStageManager.Instance.UpdateScore(pointsAwarded);
     }
 }

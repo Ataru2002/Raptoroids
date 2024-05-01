@@ -10,11 +10,11 @@ public class TentacleBehavior : MonoBehaviour
 {
     Transform parentTransform;
     [SerializeField] bool isLeftTentacle = false;
-
+    int pointsAwarded = 50;
     float tentacleDirection = 1f;
 
     EnemyHealth parasiteHP;
-
+    bool tentacleDestroyed = false;
     int tentacleHP = 3;
 
     const float moveSpeed = 1f;
@@ -68,13 +68,17 @@ public class TentacleBehavior : MonoBehaviour
     }
 
     public void NotifytentacleHit(){
+        if(tentacleDestroyed){
+            return;
+        }
         if(vulnerable){
             int damage = 1;
             tentacleHP -= damage;
+            CombatStageManager.Instance.UpdateScore(pointsAwarded);
             parasiteHP.TakeDamage(damage);
 
             if(tentacleHP <= 0){
-                
+                tentacleDestroyed = true;
                 StopAllCoroutines();
                 Destroy(gameObject);
             }
