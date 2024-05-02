@@ -103,6 +103,7 @@ public class CombatStageManager : MonoBehaviour
     const float oakNutFallSpeed = 2f;
     const float hillSpeed = 2f;
     const float playerFreezeDuration = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -163,15 +164,6 @@ public class CombatStageManager : MonoBehaviour
         GameObject oakNut = oakNuts.Get();
         oakNut.transform.position = new Vector3(Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
         oakNut.SetActive(true);
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Freeze player movement for a duration
-            StartCoroutine(FreezePlayer(playerFreezeDuration));
-        }
     }
 
     GameObject MakeHill()

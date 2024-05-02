@@ -47,16 +47,16 @@ public class EnemySpawner : MonoBehaviour
             switch (level)
             {
                 case 3:
-                    formationInterval = 1.8f;
+                    formationInterval = 4.4f;
                     break;
                 case 2:
-                    formationInterval = 2.2f;
+                    formationInterval = 4.6f;
                     break;
                 case 1:
-                    formationInterval = 2.6f;
+                    formationInterval = 4.8f;
                     break;
                 case 0:
-                    formationInterval = 3f;
+                    formationInterval = 5f;
                     break;
             }
 
@@ -83,19 +83,15 @@ public class EnemySpawner : MonoBehaviour
 
     public static EnemyFormation[] PrepareFormations(int level)
     {
-        // TODO: once more enemy formations are made, phase out the lower-difficulty formations
-        // from each level's pool
         List<EnemyFormation> formationPool = new List<EnemyFormation>();
         switch (level)
         {
             case 3:
                 formationPool.AddRange(formationPools[EnemyFormationTiers.Hard]);
                 formationPool.AddRange(formationPools[EnemyFormationTiers.Medium]);
-                formationPool.AddRange(formationPools[EnemyFormationTiers.Easy]);
                 break;
             case 2:
                 formationPool.AddRange(formationPools[EnemyFormationTiers.Medium]);
-                formationPool.AddRange(formationPools[EnemyFormationTiers.Easy]);
                 break;
             case 1:
                 formationPool.AddRange(formationPools[EnemyFormationTiers.Medium]);

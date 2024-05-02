@@ -21,7 +21,7 @@ MonoBehaviour:
     - {x: 1, y: 3}
     - {x: 0, y: 1}
   - prefab: {fileID: 4536745841740775154, guid: 701ee5bb1684aed4e9595549c5dc47bc, type: 3}
-    spawnDelay: 0
+    spawnDelay: 0.3
     curvePoints:
     - {x: -4, y: 3}
     - {x: -2, y: 6}
