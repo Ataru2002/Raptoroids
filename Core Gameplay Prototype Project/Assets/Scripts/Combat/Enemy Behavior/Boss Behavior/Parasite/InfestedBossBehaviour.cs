@@ -102,11 +102,14 @@ public class InfestedBossBehaviour : BossBehavior
         hostBody.SetActive(false);
         originalPosition = finalPosition;
         transform.position = originalPosition;
+        transform.rotation = Quaternion.Euler(0, 0, 270);
         
         
         enableTentacleHitbox();
         trackPlayer = false;
         strafeBehavior.enabled = false;
+        
+
         stateExecute = State4Execute;
         return true;
     }
