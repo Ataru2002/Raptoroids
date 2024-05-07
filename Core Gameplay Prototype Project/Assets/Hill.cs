@@ -16,7 +16,7 @@ public class Hill : MonoBehaviour
     {
         if (other.CompareTag("Player")){
             PlayerHealth health = other.GetComponent<PlayerHealth>();
-            health.hillCollide();
+            health.OnBulletHit();
             Destroy(gameObject);
         }
     }
