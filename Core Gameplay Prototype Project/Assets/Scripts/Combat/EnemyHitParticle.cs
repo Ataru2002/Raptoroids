@@ -17,7 +17,12 @@ public class EnemyHitParticle : MonoBehaviour
     {
         if (!particles.IsAlive())
         {
-            CombatStageManager.Instance.ReturnEnemyParticles(gameObject);
+            if(CombatStageManager.Instance != null){
+                CombatStageManager.Instance.ReturnEnemyParticles(gameObject);
+            }
+            else{
+                TutorialRoomManager.Instance.ReturnEnemyParticles(gameObject);
+            }
         }
     }
 }

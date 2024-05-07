@@ -13,7 +13,7 @@ public class AbilityCooldownUI : MonoBehaviour
 
     const float cooldownBarWidth = 18;
     const float cooldownBarHeight = 150;
-
+    
     private void Awake()
     {
         cooldownBarRect = GetComponent<RectTransform>();

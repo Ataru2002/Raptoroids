@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System.Net.NetworkInformation;
+using System;
 public class PlayerAbility : MonoBehaviour
 {
     [SerializeField] GameObject shieldObject;
@@ -25,6 +26,9 @@ public class PlayerAbility : MonoBehaviour
 
     public bool isPlayer;
 
+    public static event Action onShieldActivated; 
+
+    public static event Action onShieldCDFull;
     private void Start()
     {
         cooldownUI = FindFirstObjectByType<AbilityCooldownUI>();
@@ -59,6 +63,7 @@ public class PlayerAbility : MonoBehaviour
             shieldActive = true;
             shieldObject.SetActive(true);
             cooldownTimer = cooldown;
+            onShieldActivated?.Invoke();
             if(!shieldPermanent){                   //can remove after playesting
                 shieldTimer = shieldDuration;
             }
@@ -89,8 +94,11 @@ public class PlayerAbility : MonoBehaviour
         updateCooldownHUD();
     }
 
-    void updateCooldownHUD() {
+    public void updateCooldownHUD() {
         float timeRemaining = cooldown - cooldownTimer;
+        if(cooldownTimer <= 0 && onShieldCDFull != null){
+            onShieldCDFull.Invoke();
+        }
         cooldownUI.UpdateCooldownProgress(timeRemaining / cooldown);
     }
 }

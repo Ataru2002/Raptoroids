@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
     // Used to notify boss behavior script of changes in remaining health
     [SerializeField] HealthChangeEvent OnHealthChange;
 
-    [SerializeField] EnemyDefeatEvent OnDefeat;
+    public EnemyDefeatEvent OnDefeat;
 
     // Ensure that multi-projectile attacks don't trigger death more than once
     bool dead = false;
@@ -68,6 +68,15 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
                 CombatStageManager.Instance.OnEnemyDefeated();
                 CombatStageManager.Instance.UpdateScore(pointsAwarded);
+
+                Destroy(gameObject);
+            }
+        }
+        else{
+            if (!dead && currentHealth <= 0)
+            {
+                dead = true;
+                OnDefeat.Invoke();
 
                 Destroy(gameObject);
             }
