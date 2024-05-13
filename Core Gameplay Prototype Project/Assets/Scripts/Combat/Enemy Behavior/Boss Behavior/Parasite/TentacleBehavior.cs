@@ -5,16 +5,18 @@ using Unity.VisualScripting;
 
 // using System.Numerics;
 using UnityEngine;
+using UnityEditor;
 //99% Poom's code - Harry
 public class TentacleBehavior : MonoBehaviour
 {
     Transform parentTransform;
-    [SerializeField] bool isLeftTentacle = false;
-
+    [SerializeField] bool isTopTentacle = false;
+    int pointsAwarded = 50;
     float tentacleDirection = 1f;
 
-    EnemyHealth parasiteHP;
 
+    EnemyHealth parasiteHP;
+    bool tentacleDestroyed = false;
     int tentacleHP = 3;
 
     const float moveSpeed = 1f;
@@ -35,7 +37,7 @@ public class TentacleBehavior : MonoBehaviour
     bool vulnerable = false;
     void Awake(){
         parentTransform = transform.parent;
-        tentacleDirection = isLeftTentacle ? 1f : -1f;
+        tentacleDirection = isTopTentacle ? 1f : -1f;
         originalPosition = transform.position;
         parasiteHP = GetComponentInParent<EnemyHealth>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -64,17 +66,22 @@ public class TentacleBehavior : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(!alreadyHitPlayer && other.tag == "Player"){
             other.GetComponent<IBulletHittable>().OnBulletHit();
+            alreadyHitPlayer = true;
         }
     }
 
     public void NotifytentacleHit(){
+        if(tentacleDestroyed){
+            return;
+        }
         if(vulnerable){
             int damage = 1;
             tentacleHP -= damage;
+            CombatStageManager.Instance.UpdateScore(pointsAwarded);
             parasiteHP.TakeDamage(damage);
 
             if(tentacleHP <= 0){
-                
+                tentacleDestroyed = true;
                 StopAllCoroutines();
                 Destroy(gameObject);
             }
@@ -82,30 +89,26 @@ public class TentacleBehavior : MonoBehaviour
     }
 
     IEnumerator AttackSequenceIndicator(){
-        float endOpacity = 1;
-        float startOpacity = 0;
-        float elapsedTime = 0f;
-        float opacDuration = 2;
-        float middleOpacity = elapsedTime/opacDuration;
-
-        while(elapsedTime < opacDuration){
-            float alpha = Mathf.Lerp(startOpacity, endOpacity, middleOpacity);
-            spriteRenderer.color = new Color(1, 1, 1, alpha);
-            yield return null;
+        float step = 0;
+        float stepTime = 0.2f;
+        while(true){
+            spriteRenderer.color = step % 2 == 0 ? Color.white : new Color(0.4f, 0.4f, 0.4f, 0.6f);
+            yield return new WaitForSeconds(stepTime);
+            step++;
         }
-        
-        spriteRenderer.color = new Color(1, 1, 1, endOpacity);
     }
     IEnumerator AttackSequence(){
         attackStarted = true;
         
-        transform.parent = null;
+        // transform.parent = null;
         // stateUpdate = MoveFromBody;
         // while (distanceTraveled < bodySeparationDistance)
         // {
         //     yield return new WaitForEndOfFrame();
         // }
         
+        StartCoroutine(AttackSequenceIndicator());
+
         stateUpdate = TrackPlayer;
 
         yield return new WaitForSeconds(1);
@@ -144,7 +147,12 @@ public class TentacleBehavior : MonoBehaviour
     }
 
     void Attack(){
-        transform.Translate(Vector2.up * attackMoveSpeed * Time.deltaTime * tentacleDirection);
+        if(isTopTentacle){
+            transform.Translate(Vector2.right * attackMoveSpeed * Time.deltaTime * -tentacleDirection);
+        }
+        else{
+            transform.Translate(Vector2.right * attackMoveSpeed * Time.deltaTime * tentacleDirection);
+        }
     }
 
     void MoveFromBody()
@@ -161,13 +169,14 @@ public class TentacleBehavior : MonoBehaviour
         Vector2 nextPos = returnLine.GetPosition(timeSinceReturnStart / returnTime);
         LookAtTarget(nextPos);
         transform.position = nextPos;
+        alreadyHitPlayer = false;
     }
 
     void LookAtTarget(Vector3 target)
     {
         Vector2 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x);
-        angle += -tentacleDirection * (Mathf.PI / 2f);
+        angle += -tentacleDirection * (Mathf.PI / 2f) * 2;
         angle *= Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
@@ -176,6 +185,7 @@ public class TentacleBehavior : MonoBehaviour
         LookAtTarget(CombatStageManager.Instance.PlayerTransform.position);
     }
 
+    
 
 
 }

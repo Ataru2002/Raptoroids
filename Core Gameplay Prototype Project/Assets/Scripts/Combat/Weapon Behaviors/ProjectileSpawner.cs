@@ -69,12 +69,22 @@ public class ProjectileSpawner : Weapon
     {
         if (isPlayer)
         {
-            spawnProjectile = CombatStageManager.Instance.GetPlayerProjectile;
+            if(CombatStageManager.Instance != null){
+                spawnProjectile = CombatStageManager.Instance.GetPlayerProjectile;
+            }
+            else{
+                spawnProjectile = TutorialRoomManager.Instance.GetPlayerProjectile;   
+            }
         }
         else
         {
             enemyBehavior = GetComponentInParent<EnemyBehavior>();
-            spawnProjectile = CombatStageManager.Instance.GetEnemyProjectile;
+            if(CombatStageManager.Instance != null){
+                spawnProjectile = CombatStageManager.Instance.GetEnemyProjectile;
+            }
+            else{
+                spawnProjectile = TutorialRoomManager.Instance.GetEnemyProjectile;
+            }
         }
     }
 

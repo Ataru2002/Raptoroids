@@ -38,6 +38,9 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
             gameObject.SetActive(false);
             CombatStageManager.Instance.OnPlayerDefeated();
         }
+        else if(currentHealth <= 0){
+            TutorialRoomManager.Instance.OnPlayerDefeated();
+        }
     }
 
     public void hillCollide()

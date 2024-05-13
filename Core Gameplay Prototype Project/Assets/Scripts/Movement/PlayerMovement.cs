@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     float selectedFollowSpeed;
     bool isFrozen = false;
-    float freezeDuration = 5f;
+    float freezeDuration = 2f;
 
     void Start()
     {

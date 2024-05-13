@@ -24,7 +24,13 @@ public class BulletBehavior : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        despawn = isPlayerBullet ? CombatStageManager.Instance.ReturnPlayerProjectile : CombatStageManager.Instance.ReturnEnemyProjectile;
+        if(CombatStageManager.Instance != null){
+            despawn = isPlayerBullet ? CombatStageManager.Instance.ReturnPlayerProjectile : CombatStageManager.Instance.ReturnEnemyProjectile;
+        }
+        else{
+            despawn = isPlayerBullet ? TutorialRoomManager.Instance.ReturnPlayerProjectile : TutorialRoomManager.Instance.ReturnEnemyProjectile;
+        }
+        
     }
 
     // Update is called once per frame
@@ -46,7 +52,13 @@ public class BulletBehavior : MonoBehaviour
         {
             if (isPlayerBullet)
             {
-                GameObject particles = CombatStageManager.Instance.GetEnemyHitParticles();
+                GameObject particles;
+                if(CombatStageManager.Instance != null){
+                    particles = CombatStageManager.Instance.GetEnemyHitParticles();
+                }
+                else{
+                    particles = TutorialRoomManager.Instance.GetEnemyHitParticles();
+                }
                 particles.transform.position = transform.position;
                 particles.GetComponent<ParticleSystem>().Emit(10);
             }

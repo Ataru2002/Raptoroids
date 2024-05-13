@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InfestedBossBehaviour : BossBehavior
 {
@@ -10,7 +11,6 @@ public class InfestedBossBehaviour : BossBehavior
     [SerializeField] ProjectileSpawner rightSpawner1;
     [SerializeField] ProjectileSpawner rightSpawner2;
     [SerializeField] TentacleBehavior[] tentacles;
-    [SerializeField] TentacleBehavior leftTop;
     [SerializeField] StrafeEnemyBehavior strafeBehavior;
     [SerializeField] GameObject bombPrefab;
     [SerializeField] GameObject hostBody;
@@ -102,10 +102,14 @@ public class InfestedBossBehaviour : BossBehavior
         hostBody.SetActive(false);
         originalPosition = finalPosition;
         transform.position = originalPosition;
+        transform.rotation = Quaternion.Euler(0, 0, 270);
         
         
         enableTentacleHitbox();
         trackPlayer = false;
+        strafeBehavior.enabled = false;
+        
+
         stateExecute = State4Execute;
         return true;
     }
