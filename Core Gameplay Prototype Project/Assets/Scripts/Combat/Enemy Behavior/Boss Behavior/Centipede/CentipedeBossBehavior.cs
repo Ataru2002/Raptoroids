@@ -51,6 +51,8 @@ public class CentipedeBossBehavior : BossBehavior
         TryTransition();
     }
 
+    #region TRANSITIONS
+
     bool StateTransition1()
     {
         if (remainingHealthRatio > 0.5f)
@@ -82,6 +84,10 @@ public class CentipedeBossBehavior : BossBehavior
 
         return true;
     }
+
+    #endregion
+
+    #region EXECUTION
 
     void State1Execute()
     {
@@ -226,4 +232,6 @@ public class CentipedeBossBehavior : BossBehavior
         }
         laserSequenceStarted = false;
     }
+
+    #endregion
 }

@@ -41,8 +41,6 @@ public class EnemySpawner : MonoBehaviour
         {
             int level = GameManager.Instance.MapTier;
 
-            // TODO: once more enemy formations are made, phase out the lower-difficulty formations
-            // from each level's pool
             List<EnemyFormation> formationPool = new List<EnemyFormation>();
             switch (level)
             {
