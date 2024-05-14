@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
+using GameAnalyticsSDK;
 
 public class CombatStageManager : MonoBehaviour
 {
@@ -161,15 +162,6 @@ public class CombatStageManager : MonoBehaviour
         oakNut.SetActive(true);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Freeze player movement for a duration
-            StartCoroutine(FreezePlayer(playerFreezeDuration));
-        }
-    }
-
     GameObject MakeHill()
     {
         GameObject hill = Instantiate(hillPrefab);
@@ -191,13 +183,6 @@ public class CombatStageManager : MonoBehaviour
         GameObject hill = hills.Get();
         hill.transform.position = new Vector3(Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
         hill.SetActive(true);
-    }
-
-    IEnumerator FreezePlayer(float duration)
-    {
-        // Disable player movement here (e.g., disable player input)
-        yield return new WaitForSeconds(duration);
-        // Enable player movement here (e.g., enable player input)
     }
 
     void OnDisable()
@@ -269,12 +254,6 @@ public class CombatStageManager : MonoBehaviour
 
     // End of Pooling functions
     #endregion
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void OnGemSpawn()
     {
@@ -423,6 +402,23 @@ public class CombatStageManager : MonoBehaviour
 
     public void EndRun(bool playerWon)
     {
+        //if (playerWon)
+        //{
+        //    GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Mission");
+        //}
+        //else
+        //{
+        //    if (isBossStage)
+        //    {
+        //        // BossID is 0-indexed for array access purposes. Add 1 to match the ID number
+        //        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "Boss", GameManager.Instance.BossID + 1);
+        //    }
+        //    else
+        //    {
+        //        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "ActionStage", GameManager.Instance.MapTier);
+        //    }
+        //}
+
         GameManager.Instance.ClearMapInfo();
         GameManager.Instance.ResetScore();
 

@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         LoadingDataStart();
-        GameAnalytics.Initialize();
+        //GameAnalytics.Initialize();
     }
 
     public void LoadingDataStart()
