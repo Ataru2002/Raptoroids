@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
             EnemySpawner.LoadEnemyFormations();
         }
     }
+<<<<<<< HEAD
     private void Start()
     {
         LoadingDataStart();
@@ -95,6 +96,8 @@ public class GameManager : MonoBehaviour
         quests.SaveData(ID);
     }
 
+=======
+>>>>>>> parent of e275165 (GameAnalytics initialization)
 
     #region LOCALIZATION
     public void SetLocale(int id)
