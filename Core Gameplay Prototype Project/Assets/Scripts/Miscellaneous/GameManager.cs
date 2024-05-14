@@ -1,3 +1,4 @@
+using GameAnalyticsSDK;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,6 +75,11 @@ public class GameManager : MonoBehaviour
 
             EnemySpawner.LoadEnemyFormations();
         }
+    }
+
+    private void Start()
+    {
+        GameAnalytics.Initialize();
     }
 
     #region LOCALIZATION
