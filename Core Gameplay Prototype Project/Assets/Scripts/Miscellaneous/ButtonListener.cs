@@ -74,6 +74,12 @@ public class ButtonListener : MonoBehaviour
         ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
     }
 
+    public void QuestListener()
+    {
+        StartCoroutine(loadScene("Quests"));
+        ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
+    }
+
     IEnumerator loadScene(string sceneName){
         AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(sceneName);
 

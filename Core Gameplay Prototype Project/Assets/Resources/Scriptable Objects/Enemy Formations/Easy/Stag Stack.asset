@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e372234f87a8bf459b00d17ac87e47a, type: 3}
+  m_Name: Stag Stack
+  m_EditorClassIdentifier: 
+  enemies:
+  - prefab: {fileID: 4536745841740775154, guid: 0b3a84489d0b3824c873831aab436a52, type: 3}
+    spawnDelay: 0
+    curvePoints:
+    - {x: 4, y: 1}
+    - {x: 2, y: -2}
+    - {x: 1, y: 3}
+    - {x: 0, y: 1}
+  - prefab: {fileID: 4536745841740775154, guid: 701ee5bb1684aed4e9595549c5dc47bc, type: 3}
+    spawnDelay: 0
+    curvePoints:
+    - {x: -4, y: 3}
+    - {x: -2, y: 6}
+    - {x: -1, y: 1}
+    - {x: 0, y: 3}

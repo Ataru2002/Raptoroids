@@ -1,4 +1,3 @@
-using GameAnalyticsSDK;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
+    public QuestGetter quests;
 
     [SerializeField] LocaleIdentifier[] gameLocales;
 
@@ -34,8 +34,9 @@ public class GameManager : MonoBehaviour
 
     public int BossID { get; set; } = 0;
 
+  
     private void Awake()
-    {
+    {   
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -76,11 +77,24 @@ public class GameManager : MonoBehaviour
             EnemySpawner.LoadEnemyFormations();
         }
     }
-
     private void Start()
     {
-        GameAnalytics.Initialize();
+        LoadingDataStart();
     }
+
+    public void LoadingDataStart()
+    {
+        quests = GetComponent<QuestGetter>();
+        quests.LoadData("Quest 2");
+    }
+
+    public void updateProgress(string ID, int amount) 
+    {
+        quests.LoadData(ID);
+        quests.dscurrent.progress += amount;
+        quests.SaveData(ID);
+    }
+
 
     #region LOCALIZATION
     public void SetLocale(int id)

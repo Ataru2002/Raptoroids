@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
     // Ensure that multi-projectile attacks don't trigger death more than once
     bool dead = false;
+    
 
     void Start()
     {
@@ -68,6 +69,7 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
                 CombatStageManager.Instance.OnEnemyDefeated();
                 CombatStageManager.Instance.UpdateScore(pointsAwarded);
+
 
                 Destroy(gameObject);
             }

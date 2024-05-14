@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
-using UnityEngine.UI;
 
 public class CombatStageManager : MonoBehaviour
 {
@@ -76,11 +75,6 @@ public class CombatStageManager : MonoBehaviour
 
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
     bool stageEnded = false;
-
-    [SerializeField] GameObject bossHintCanvas;
-    [SerializeField] TextMeshProUGUI hint;
-    [SerializeField] Image warningSign;
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -103,10 +97,11 @@ public class CombatStageManager : MonoBehaviour
     const float oakNutFallSpeed = 2f;
     const float hillSpeed = 2f;
     const float playerFreezeDuration = 5f;
-
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.LoadingDataStart();
+
         enemySpawner = GetComponent<EnemySpawner>();
         enemyKillRequirement = enemySpawner.GetEnemyCount();
 
@@ -164,6 +159,15 @@ public class CombatStageManager : MonoBehaviour
         GameObject oakNut = oakNuts.Get();
         oakNut.transform.position = new Vector3(Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
         oakNut.SetActive(true);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Freeze player movement for a duration
+            StartCoroutine(FreezePlayer(playerFreezeDuration));
+        }
     }
 
     GameObject MakeHill()
@@ -266,6 +270,11 @@ public class CombatStageManager : MonoBehaviour
     // End of Pooling functions
     #endregion
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void OnGemSpawn()
     {
@@ -286,32 +295,6 @@ public class CombatStageManager : MonoBehaviour
     public void UpdateBossHealthBar(float healthRatio)
     {
         bossHealthBarRect.sizeDelta = new Vector2(bossHealthBarWidth * healthRatio, bossHealthBarHeight);
-    }
-
-    public void DisplayBossHint(string msg, float duration = 3f)
-    {
-        StartCoroutine(BossHintDisplaySequence(msg, duration));
-    }
-
-    IEnumerator BossHintDisplaySequence(string msg, float duration)
-    {
-        bossHintCanvas.SetActive(true);
-        hint.text = msg;
-        StartCoroutine(WarningSignFlash());
-        yield return new WaitForSeconds(duration);
-        StopCoroutine(WarningSignFlash());
-        bossHintCanvas.SetActive(false);
-    }
-
-    IEnumerator WarningSignFlash()
-    {
-        bool signOn = true;
-        while (true)
-        {
-            warningSign.enabled = signOn;
-            yield return new WaitForSeconds(0.3f);
-            signOn = !signOn;
-        }
     }
 
     public void OnPlayerDefeated()
@@ -350,6 +333,7 @@ public class CombatStageManager : MonoBehaviour
 
         stageEnded = true;
         stageUI.SetActive(false);
+        GameManager.Instance.updateProgress("Quest 2", enemyKillCount);
 
         if (playerWin)
         {

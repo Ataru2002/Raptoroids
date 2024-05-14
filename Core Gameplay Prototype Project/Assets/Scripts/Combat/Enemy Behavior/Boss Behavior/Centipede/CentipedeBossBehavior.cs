@@ -15,10 +15,6 @@ public class CentipedeBossBehavior : BossBehavior
 
     [SerializeField] CentipedeMandibleBehavior[] mandibles;
     [SerializeField] LaserBeamSource headLaser;
-    [SerializeField] ParticleSystem laserChargeParticles;
-    [SerializeField] EnemyLaserBall laserBall;
-
-    bool firstHintDisplayed = false;
 
     bool legBarrageStarted = false;
     bool pincersFiring = false;
@@ -51,8 +47,6 @@ public class CentipedeBossBehavior : BossBehavior
         TryTransition();
     }
 
-    #region TRANSITIONS
-
     bool StateTransition1()
     {
         if (remainingHealthRatio > 0.5f)
@@ -63,8 +57,6 @@ public class CentipedeBossBehavior : BossBehavior
         stateExecute = State2Execute;
 
         strafeBehavior.enabled = true;
-
-        CombatStageManager.Instance.DisplayBossHint("Shoot at the claws while they're open!");
 
         return true;
     }
@@ -80,14 +72,8 @@ public class CentipedeBossBehavior : BossBehavior
 
         strafeBehavior.enabled = false;
 
-        CombatStageManager.Instance.DisplayBossHint("Strike the mandibles while they're hot!");
-
         return true;
     }
-
-    #endregion
-
-    #region EXECUTION
 
     void State1Execute()
     {
@@ -96,21 +82,10 @@ public class CentipedeBossBehavior : BossBehavior
             return;
         }
 
-        if (!firstHintDisplayed)
-        {
-            DisplayFirstHint();
-        }
-
         if (!legBarrageStarted)
         {
             StartCoroutine(LegBarrage());
         }
-    }
-
-    void DisplayFirstHint()
-    {
-        CombatStageManager.Instance.DisplayBossHint("Break its legs before they break you!");
-        firstHintDisplayed = true;
     }
 
     IEnumerator LegBarrage()
@@ -191,8 +166,6 @@ public class CentipedeBossBehavior : BossBehavior
                 mandible.SetState(1);
             }
         }
-        laserChargeParticles.Play();
-        laserBall.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(0.9f);
         trackPlayer = false;
@@ -205,9 +178,6 @@ public class CentipedeBossBehavior : BossBehavior
                 mandible.SetState(2);
             }
         }
-        laserChargeParticles.Stop();
-        laserBall.ResetGrowth();
-        laserBall.gameObject.SetActive(false);
         laserFiring = true;
         headLaser.ToggleLaserBeam(true);
 
@@ -232,6 +202,4 @@ public class CentipedeBossBehavior : BossBehavior
         }
         laserSequenceStarted = false;
     }
-
-    #endregion
 }
