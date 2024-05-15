@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using TMPro;
+using GameAnalyticsSDK;
 
 public class MapManager : MonoBehaviour
 {
@@ -109,6 +110,9 @@ public class MapManager : MonoBehaviour
             currentMap.Populate(Random.Range(mapWidth - 1, mapWidth + 1));
             maps[m] = currentMap;
         }
+
+        // Maps regenerating signifies the start of a new mission
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Mission");
 
         return maps;
     }

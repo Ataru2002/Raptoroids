@@ -39,7 +39,9 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
+  m_SplashScreenLogos:
+  - logo: {fileID: -1036306189796190097, guid: 6dfb3227646a2794e8f843ea5634a795, type: 3}
+    duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -160,6 +162,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Standalone: com.DefaultCompany.2DProject
+    iPhone: com.Team18.Raptoroids
   buildNumber:
     Bratwurst: 0
     Standalone: 0

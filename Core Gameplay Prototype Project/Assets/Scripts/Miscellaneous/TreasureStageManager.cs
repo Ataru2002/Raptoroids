@@ -115,6 +115,7 @@ public class TreasureStageManager : MonoBehaviour
 
     public void GemPickup(int gemValue){
         gemsCollectedInStage += gemValue;
+        GameManager.Instance.UpdateGemSourceData(GemSources.Treasure, gemValue);
     }
 
     public void GoToMap()

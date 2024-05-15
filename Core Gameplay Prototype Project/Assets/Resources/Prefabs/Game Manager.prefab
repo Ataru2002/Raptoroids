@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7400294884672939909}
   - component: {fileID: 2135006064884097884}
+  - component: {fileID: 2139077769050719030}
+  - component: {fileID: 8988218712306365521}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -44,6 +46,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861d494ca4bf0ad4dac775a5076e9e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quests: {fileID: 0}
   gameLocales:
   - m_Code: en-US
   - m_Code: ja-JP
+--- !u!114 &2139077769050719030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995287531460226722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0277aa02a0990ae4d8438e767c2b4d93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 
+  dscurrent:
+    title: 
+    progress: 0
+    goal: 0
+  target: 
+--- !u!114 &8988218712306365521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995287531460226722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d714f0e3ba0f1854ebdf14d3e0c08c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using GameAnalyticsSDK;
+using UnityEngineInternal;
 
 public class CombatStageManager : MonoBehaviour
 {
@@ -80,7 +81,7 @@ public class CombatStageManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(instance);
+            Destroy(this);
         }
         else
         {
@@ -264,6 +265,7 @@ public class CombatStageManager : MonoBehaviour
     {
         gemsCollectedInStage += gemValue;
         gemsWaiting -= 1;
+        GameManager.Instance.UpdateGemSourceData(GemSources.Combat, gemValue);
     }
 
     public void OnGemDespawn()
@@ -351,6 +353,8 @@ public class CombatStageManager : MonoBehaviour
             netGemEvent.StringReference.Add("netGems", new IntVariable { Value = Mathf.CeilToInt(0.8f * grossGems) });
             netGemEvent.SetTable("LoseScreen");
             netGemEvent.SetEntry("FinalGemCount");
+
+            GameManager.Instance.SetGemPenaltyData(Mathf.FloorToInt(0.2f * grossGems));
         }
     }
 
@@ -402,22 +406,22 @@ public class CombatStageManager : MonoBehaviour
 
     public void EndRun(bool playerWon)
     {
-        //if (playerWon)
-        //{
-        //    GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Mission");
-        //}
-        //else
-        //{
-        //    if (isBossStage)
-        //    {
-        //        // BossID is 0-indexed for array access purposes. Add 1 to match the ID number
-        //        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "Boss", GameManager.Instance.BossID + 1);
-        //    }
-        //    else
-        //    {
-        //        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "ActionStage", GameManager.Instance.MapTier);
-        //    }
-        //}
+        if (playerWon)
+        {
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Mission");
+        }
+        else
+        {
+            if (isBossStage)
+            {
+                // BossID is 0-indexed for array access purposes. Add 1 to match the ID number
+                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "Boss", GameManager.Instance.BossID + 1);
+            }
+            else
+            {
+                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "ActionStage", GameManager.Instance.MapTier);
+            }
+        }
 
         GameManager.Instance.ClearMapInfo();
         GameManager.Instance.ResetScore();

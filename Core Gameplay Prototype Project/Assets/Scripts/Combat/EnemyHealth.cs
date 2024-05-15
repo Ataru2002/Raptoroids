@@ -70,7 +70,6 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
                 CombatStageManager.Instance.OnEnemyDefeated();
                 CombatStageManager.Instance.UpdateScore(pointsAwarded);
 
-
                 Destroy(gameObject);
             }
         }
