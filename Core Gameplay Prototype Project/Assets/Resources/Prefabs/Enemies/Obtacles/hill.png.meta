@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 934dec51f1a8e4a0a8acad8373839f0c
+guid: 5fa1be776df7a489ca21fdb0bbaac3d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 359788456126783194
-    second: hill_0
+      213: 3771772470719104655
+    second: hill 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hill_0
+      name: hill 1_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 23
-        width: 1869
-        height: 1248
+        x: 27
+        y: 32
+        width: 1762
+        height: 1670
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ade19b1d1b93ef400800000000000000
-      internalID: 359788456126783194
+      spriteID: f864fc21417085430800000000000000
+      internalID: 3771772470719104655
       vertices: []
       indices: 
       edges: []
@@ -157,7 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hill_0: 359788456126783194
+      hill 1_0: 3771772470719104655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

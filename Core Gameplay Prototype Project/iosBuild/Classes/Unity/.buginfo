@@ -1,0 +1,6 @@
+MetalTeam:
+  when:
+    path:
+      - MetalHelper.mm
+      - UnityRendering.h
+  area: Metal
