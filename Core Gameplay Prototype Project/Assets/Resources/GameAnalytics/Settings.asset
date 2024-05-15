@@ -68,7 +68,7 @@ MonoBehaviour:
   - Gem
   LastCreatedGamePlatform: -1
   Platforms: 08000000
-  CurrentInspectorState: 1
+  CurrentInspectorState: 3
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
@@ -96,14 +96,14 @@ MonoBehaviour:
   FpsCriticalThreshold: 20
   FpsCirticalSubmitInterval: 1
   PlatformFoldOut: 01
-  CustomDimensions01FoldOut: 0
+  CustomDimensions01FoldOut: 1
   CustomDimensions02FoldOut: 0
   CustomDimensions03FoldOut: 0
-  ResourceItemTypesFoldOut: 1
-  ResourceCurrenciesFoldOut: 1
+  ResourceItemTypesFoldOut: 0
+  ResourceCurrenciesFoldOut: 0
   EnableMemoryHistogram: 0
   EnableHealthEvent: 0
-  EnableFPSHistogram: 0
+  EnableFPSHistogram: 1
   EnableSDKInitEvent: 0
   EnableHardwareTracking: 0
   EnableMemoryTracking: 0
