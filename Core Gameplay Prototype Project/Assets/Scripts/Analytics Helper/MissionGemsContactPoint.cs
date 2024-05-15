@@ -38,10 +38,10 @@ public class MissionGemsContactPoint : MonoBehaviour
 
     public void SendData()
     {
-        GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, "Gem", gemSourceDict[GemSources.Combat], "Collected", "EnemyDrop");
-        GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, "Gem", gemSourceDict[GemSources.Treasure], "Collected", "Treasure");
+        GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, "Gem", gemSourceDict[GemSources.Combat], "Reward", "EnemyDrop");
+        GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, "Gem", gemSourceDict[GemSources.Treasure], "Reward", "Treasure");
         
-        GameAnalytics.NewResourceEvent(GAResourceFlowType.Sink, "Gem", failurePenalty, "Penalized", "Failure");
+        GameAnalytics.NewResourceEvent(GAResourceFlowType.Sink, "Gem", failurePenalty, "Penalty", "Failure");
     }
 }
 

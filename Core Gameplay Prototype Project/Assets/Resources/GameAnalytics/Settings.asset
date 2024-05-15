@@ -59,8 +59,13 @@ MonoBehaviour:
   CustomDimensions01: []
   CustomDimensions02: []
   CustomDimensions03: []
-  ResourceItemTypes: []
-  ResourceCurrencies: []
+  ResourceItemTypes:
+  - Reward
+  - Penalty
+  - Raptoroid
+  - Weapon
+  ResourceCurrencies:
+  - Gem
   LastCreatedGamePlatform: -1
   Platforms: 08000000
   CurrentInspectorState: 1
@@ -94,8 +99,8 @@ MonoBehaviour:
   CustomDimensions01FoldOut: 0
   CustomDimensions02FoldOut: 0
   CustomDimensions03FoldOut: 0
-  ResourceItemTypesFoldOut: 0
-  ResourceCurrenciesFoldOut: 0
+  ResourceItemTypesFoldOut: 1
+  ResourceCurrenciesFoldOut: 1
   EnableMemoryHistogram: 0
   EnableHealthEvent: 0
   EnableFPSHistogram: 0
