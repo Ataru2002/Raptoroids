@@ -233,6 +233,7 @@ public class GameManager : MonoBehaviour
     void SendGemAnalyticsData()
     {
         gemsContactPoint.SendData();
+        gemsContactPoint.ResetData();
     }
     #endregion
 

@@ -1,4 +1,5 @@
 using GameAnalyticsSDK;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,17 @@ public class MissionGemsContactPoint : MonoBehaviour
     private void Start()
     {
         gemSourceDict = new Dictionary<GemSources, int>();
+        ResetData();
+    }
+
+    public void ResetData()
+    {
+        foreach (GemSources sourceType in Enum.GetValues(typeof(GemSources)))
+        {
+            gemSourceDict[sourceType] = 0;
+        }
+
+        failurePenalty = 0;
     }
 
     public void SetSourceData(GemSources sourceType, int delta)
