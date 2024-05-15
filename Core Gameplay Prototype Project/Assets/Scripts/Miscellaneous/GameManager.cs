@@ -249,6 +249,8 @@ public class GameManager : MonoBehaviour
         targetList[bitVectorKey] |= bitMask;
 
         totalGems -= purchasedItem.gemCost;
+
+        GameAnalytics.NewResourceEvent(GAResourceFlowType.Sink, "Gem", purchasedItem.gemCost, purchasedItem.itemType.ToString(), purchasedItem.itemNumber.ToString());
     }
     #endregion
 

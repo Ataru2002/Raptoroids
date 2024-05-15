@@ -106,7 +106,6 @@ public class ShopManager : MonoBehaviour
     {
         GameManager.Instance.PurchaseItem(selectedItem);
         UpdateGemCount();
-        GameAnalytics.NewResourceEvent(GAResourceFlowType.Sink, "Gem", selectedItem.gemCost, selectedItem.itemType.ToString(), selectedItem.itemNumber.ToString());
 
         if (itemInfoDisplay.activeInHierarchy)
         {
