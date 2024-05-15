@@ -53,4 +53,9 @@ public class SettingsControl : MonoBehaviour
             monochromeController.Refresh();
         }
     }
+
+    public void ResetTutorial()
+    {
+        PlayerPrefs.SetInt("TutorialComplete", 0);
+    }
 }

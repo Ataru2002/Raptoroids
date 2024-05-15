@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   impactParticles: {fileID: 0}
+  hills: {fileID: 0}
 --- !u!114 &5435155920222395559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 0
-  useUnscaledTime: 0
+  useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2

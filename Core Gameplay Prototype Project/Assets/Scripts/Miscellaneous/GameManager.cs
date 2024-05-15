@@ -1,3 +1,4 @@
+using GameAnalyticsSDK;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
+    public QuestGetter quests;
 
     [SerializeField] LocaleIdentifier[] gameLocales;
 
@@ -33,8 +35,11 @@ public class GameManager : MonoBehaviour
 
     public int BossID { get; set; } = 0;
 
+    MissionGemsContactPoint gemsContactPoint;
+
+  
     private void Awake()
-    {
+    {   
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -72,7 +77,39 @@ public class GameManager : MonoBehaviour
             }
             SetLocale(PlayerPrefs.GetInt("LocaleIntID"));
 
+            gemsContactPoint = GetComponent<MissionGemsContactPoint>();
+
             EnemySpawner.LoadEnemyFormations();
+        }
+    }
+    private void Start()
+    {
+        LoadingDataStart();
+        GameAnalytics.Initialize();
+    }
+
+    public void LoadingDataStart()
+    {
+        quests = GetComponent<QuestGetter>();
+        quests.LoadData("Quest 2");
+    }
+
+    public void updateProgress(string ID, int amount) 
+    {
+        quests.LoadData(ID);
+        quests.dscurrent.progress += amount;
+        quests.SaveData(ID);
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+            GameAnalytics.StartSession();
+        }
+        else
+        {
+            GameAnalytics.EndSession();
         }
     }
 
@@ -156,11 +193,13 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region GEMS
-    public void CollectGems(int gemAmount){
+    public void CollectGems(int gemAmount)
+    {
         pendingGems += gemAmount;
     }
 
-    public int GetCurrentGems(){
+    public int GetCurrentGems()
+    {
         return pendingGems;
     }
 
@@ -168,6 +207,7 @@ public class GameManager : MonoBehaviour
     {
         totalGems += Mathf.CeilToInt(modifier * pendingGems);
         pendingGems = 0;
+        SendGemAnalyticsData();
     }
 
     public int GetTotalGems()
@@ -178,6 +218,22 @@ public class GameManager : MonoBehaviour
     public int GetCurrentScore()
     {
         return score;
+    }
+
+    public void UpdateGemSourceData(GemSources gemSource, int delta)
+    {
+        gemsContactPoint.SetSourceData(gemSource, delta);
+    }
+
+    public void SetGemPenaltyData(int val)
+    {
+        gemsContactPoint.SetPenaltyValue(val);
+    }
+
+    void SendGemAnalyticsData()
+    {
+        gemsContactPoint.SendData();
+        gemsContactPoint.ResetData();
     }
     #endregion
 

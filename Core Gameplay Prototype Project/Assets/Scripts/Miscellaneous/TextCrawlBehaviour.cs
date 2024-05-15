@@ -5,24 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class TextCrawlBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
+    bool crawlOver = false;
 
-    public int textOutOfScreen = 900;
+    AsyncOperation mainMenuLoadOp = null;
+
     void Start()
     {
-        
+        string targetScene = "MainMenu";
+
+        if (!PlayerPrefs.HasKey("TutorialComplete") || PlayerPrefs.GetInt("TutorialComplete") == 0)
+        {
+            targetScene = "Tutorial";
+        }
+
+        mainMenuLoadOp = SceneManager.LoadSceneAsync(targetScene);
+        mainMenuLoadOp.allowSceneActivation = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
-            SceneManager.LoadScene("MainMenu");
+        if (crawlOver)
+        {
+            return;
         }
-           
+
+        if (Input.GetMouseButton(0))
+        {
+            Time.timeScale = 2.5f;
+        }
+        
+        else if (Input.GetMouseButtonUp(0))
+        {
+            Time.timeScale = 1.0f;
+        }
     }
 
     public void animationEvent(){
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1.0f;
+        crawlOver = true;
+        mainMenuLoadOp.allowSceneActivation = true;
     }
 }

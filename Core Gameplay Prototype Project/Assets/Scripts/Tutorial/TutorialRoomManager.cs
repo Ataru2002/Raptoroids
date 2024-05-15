@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.Pool;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
-
+using GameAnalyticsSDK;
 
 public class TutorialRoomManager : MonoBehaviour
 {
@@ -34,10 +34,11 @@ public class TutorialRoomManager : MonoBehaviour
     GameObject raptoroid;   
     int boxCollided = 0;
     int enemyDefeated = 0;
+
     void Awake(){
         if (instance != null && instance != this)
         {
-            Destroy(instance);
+            Destroy(this);
         }
         else{
             instance = this;
@@ -48,15 +49,11 @@ public class TutorialRoomManager : MonoBehaviour
     }
     void Start()
     {
+        PlayerPrefs.SetInt("TutorialComplete", 0);
+        GameAnalytics.NewDesignEvent("TutorialBegin");
         IntroductionBehaviour.onIntroduction += IntroductionOver;
         raptoroid = Instantiate(raptoroidPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
         raptoroid.GetComponentInChildren<ProjectileSpawner>().enabled = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     GameObject MakePlayerProjectile()
@@ -158,6 +155,8 @@ public class TutorialRoomManager : MonoBehaviour
     }
 
     IEnumerator endTutorial(float seconds){
+        GameAnalytics.NewDesignEvent("TutorialComplete");
+        PlayerPrefs.SetInt("TutorialComplete", 1);
         yield return new WaitForSeconds(seconds);
         transition4.SetActive(false);
         winScreen.SetActive(true);

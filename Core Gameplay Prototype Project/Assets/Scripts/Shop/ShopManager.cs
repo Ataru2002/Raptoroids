@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using NUnit.Framework.Interfaces;
+using GameAnalyticsSDK;
 
 public class ShopManager : MonoBehaviour
 {
@@ -105,6 +106,7 @@ public class ShopManager : MonoBehaviour
     {
         GameManager.Instance.PurchaseItem(selectedItem);
         UpdateGemCount();
+        GameAnalytics.NewResourceEvent(GAResourceFlowType.Sink, "Gem", selectedItem.gemCost, selectedItem.itemType.ToString(), selectedItem.itemNumber.ToString());
 
         if (itemInfoDisplay.activeInHierarchy)
         {

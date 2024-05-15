@@ -1,5 +1,20 @@
 {
   "dependencies": {
+    "com.gameanalytics.sdk": {
+      "version": "7.9.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.google.external-dependency-manager": "1.2.168"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.google.external-dependency-manager": {
+      "version": "file:../GooglePackages/com.google.external-dependency-manager-1.2.179.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "10.0.3",
       "depth": 1,
@@ -154,15 +169,6 @@
         "com.unity.2d.tilemap.extras": "4.0.2",
         "com.unity.2d.aseprite": "1.1.0"
       }
-    },
-    "com.unity.ide.rider": {
-      "version": "3.0.26",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ext.nunit": "1.0.6"
-      },
-      "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
       "version": "2.0.22",
