@@ -56,7 +56,8 @@ MonoBehaviour:
   UseManualSessionHandling: 0
   SendExampleGameDataToMyGame: 0
   InternetConnectivity: 0
-  CustomDimensions01: []
+  CustomDimensions01:
+  - New (1)
   CustomDimensions02: []
   CustomDimensions03: []
   ResourceItemTypes:
@@ -68,7 +69,7 @@ MonoBehaviour:
   - Gem
   LastCreatedGamePlatform: -1
   Platforms: 08000000
-  CurrentInspectorState: 3
+  CurrentInspectorState: 1
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
@@ -103,7 +104,7 @@ MonoBehaviour:
   ResourceCurrenciesFoldOut: 0
   EnableMemoryHistogram: 0
   EnableHealthEvent: 0
-  EnableFPSHistogram: 1
+  EnableFPSHistogram: 0
   EnableSDKInitEvent: 0
   EnableHardwareTracking: 0
   EnableMemoryTracking: 0
