@@ -10,7 +10,7 @@ public class FPSTracker : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.activeSceneChanged += SendSceneFPSData;
+        SceneManager.sceneUnloaded += SendSceneFPSData;
     }
 
     // Update is called once per frame
@@ -20,8 +20,14 @@ public class FPSTracker : MonoBehaviour
         sceneFPS.Add(instantFPS);
     }
 
-    public void SendSceneFPSData(Scene current, Scene next)
+    public void SendSceneFPSData(Scene current)
     {
+        // Do nothing for initialization scene
+        if (current.buildIndex == 0)
+        {
+            return;
+        }
+
         sceneFPS.Sort();
         int medianIndex = sceneFPS.Count / 2;
         int median = sceneFPS[medianIndex];
