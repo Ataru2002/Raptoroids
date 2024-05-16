@@ -50,7 +50,7 @@ public class TutorialRoomManager : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("TutorialComplete", 0);
-        GameAnalytics.NewDesignEvent("TutorialBegin");
+        GameAnalytics.NewDesignEvent("Tutorial:Start");
         IntroductionBehaviour.onIntroduction += IntroductionOver;
         raptoroid = Instantiate(raptoroidPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
         raptoroid.GetComponentInChildren<ProjectileSpawner>().enabled = false;
@@ -155,7 +155,7 @@ public class TutorialRoomManager : MonoBehaviour
     }
 
     IEnumerator endTutorial(float seconds){
-        GameAnalytics.NewDesignEvent("TutorialComplete");
+        GameAnalytics.NewDesignEvent("Tutorial:Complete");
         PlayerPrefs.SetInt("TutorialComplete", 1);
         yield return new WaitForSeconds(seconds);
         transition4.SetActive(false);
