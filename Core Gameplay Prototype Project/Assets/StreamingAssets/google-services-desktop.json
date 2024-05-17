@@ -8,6 +8,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:132959101908:android:f14e0438bdbfc3b668ac41",
+        "android_client_info": {
+          "package_name": "com.Team18.Raptoroids"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDA8e_T4iiRqQMgVDnVRKD8xs-UBY65Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:132959101908:android:2e68b48c3b3e479268ac41",
         "android_client_info": {
           "package_name": "com.t18.Raptoroids"

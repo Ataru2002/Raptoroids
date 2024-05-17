@@ -84,14 +84,14 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        LoadingDataStart();
+        LoadingDataStart("Quest 2");
         GameAnalytics.Initialize();
     }
 
-    public void LoadingDataStart()
+    public void LoadingDataStart(string ID)
     {
         quests = GetComponent<QuestGetter>();
-        quests.LoadData("Quest 2");
+        quests.LoadData(ID);
     }
 
     public void updateProgress(string ID, int amount) 

@@ -50,7 +50,7 @@ public class QuestGetter : MonoBehaviour
             Debug.Log("server data found");
 
             dscurrent = JsonUtility.FromJson<CompQuest>(jsonData);
-            //Debug.Log(dscurrent.title + " " + dscurrent.progress + " " + dscurrent.goal);
+            Debug.Log("In QuestGetter: " + dscurrent.title + " " + dscurrent.progress + " " + dscurrent.goal);
         }
         else
         {

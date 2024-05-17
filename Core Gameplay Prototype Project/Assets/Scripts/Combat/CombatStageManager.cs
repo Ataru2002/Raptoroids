@@ -109,7 +109,7 @@ public class CombatStageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.LoadingDataStart();
+        GameManager.Instance.LoadingDataStart("Quest 2");
 
         enemySpawner = GetComponent<EnemySpawner>();
         enemyKillRequirement = enemySpawner.GetEnemyCount();
