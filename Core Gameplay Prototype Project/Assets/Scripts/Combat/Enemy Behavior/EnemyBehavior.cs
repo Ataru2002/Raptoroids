@@ -18,12 +18,6 @@ public class EnemyBehavior : MonoBehaviour
 
     public bool FinalPositionReached { get { return timeSinceSpawn >= timeToFinalPosition; } }
 
-    // Start is called before the first frame update
-    protected void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     protected void Update()
     {
@@ -58,6 +52,11 @@ public class EnemyBehavior : MonoBehaviour
     {
         path = new BezierCurve(points);
         finalPosition = points[points.Length - 1];
+    }
+
+    protected void ResetPathProgress()
+    {
+        timeSinceSpawn = 0;
     }
 }
 
