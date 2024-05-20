@@ -17,6 +17,8 @@ public class MapManager : MonoBehaviour
     const int mapHeight = 4;
     const int mapCount = 3;
 
+    Sprite[] bossNodeSprites;
+
     Map[] maps = null;
     MapNode selectedNode = null;
 
@@ -35,6 +37,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] GameObject mapLineContainer;
     [SerializeField] Image[] mapCellIcons;
     [SerializeField] RectTransform bossNodeTransform;
+    [SerializeField] Image bossButtonImage;
     [SerializeField] Button bossButton;
 
     [SerializeField] GameObject actionStagePrompt;
@@ -49,6 +52,7 @@ public class MapManager : MonoBehaviour
         else
         {
             instance = this;
+            bossNodeSprites = Resources.LoadAll<Sprite>("BossNodeSprites");
         }
     }
 
@@ -60,12 +64,6 @@ public class MapManager : MonoBehaviour
         maps = GameManager.Instance.GetMaps();
         nodeGroupTransform = GetComponentInChildren<GridLayoutGroup>().GetComponent<RectTransform>();
         SelectMap(GameManager.Instance.MapIndex);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     // Line pool functions
@@ -104,10 +102,22 @@ public class MapManager : MonoBehaviour
     {
         Map[] maps = new Map[mapCount];
 
+        int[] selectableBosses = Enumerable.Range(0, EnemySpawner.AvailableBossCount).ToArray();
+        for (int i = selectableBosses.Length - 1; i > 0; i--)
+        {
+            int swapIndex = Random.Range(0, i);
+
+            int temp = selectableBosses[swapIndex];
+            selectableBosses[swapIndex] = selectableBosses[i];
+            selectableBosses[i] = temp;
+        }
+
         for (int m = 0; m < maps.Length; m++)
         {
             Map currentMap = new Map(mapWidth, mapHeight);
             currentMap.Populate(Random.Range(mapWidth - 1, mapWidth + 1));
+            print(selectableBosses[m]);
+            currentMap.SetBossID(selectableBosses[m]);
             maps[m] = currentMap;
         }
 
@@ -184,6 +194,12 @@ public class MapManager : MonoBehaviour
         GameManager.Instance.SetStageFormations(selectedNode.GetEnemyFormations());
 
         enemyCountText.text = enemyCount.ToString();
+    }
+
+    public void GoToBoss()
+    {
+        GameManager.Instance.BossID = maps[GameManager.Instance.MapIndex].GetBossID();
+        GoToAction();
     }
 
     public void GoToAction()
@@ -284,6 +300,8 @@ public class MapManager : MonoBehaviour
         }
 
         UpdateMapButtons();
+
+        bossButtonImage.sprite = bossNodeSprites[map.GetBossID()];
         bossButton.interactable = GameManager.Instance.MapTier >= mapHeight;
     }
 
@@ -332,6 +350,8 @@ public enum MapNodeType
 public class Map
 {
     MapNode[,] mapNodes = null;
+    int bossID = 0;
+
     int width;
     int height;
 
@@ -392,6 +412,16 @@ public class Map
                 y++;
             }
         }
+    }
+
+    public void SetBossID(int val)
+    {
+        bossID = val;
+    }
+
+    public int GetBossID()
+    {
+        return bossID;
     }
 
     public MapNode[,] GetNodes()

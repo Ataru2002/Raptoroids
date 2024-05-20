@@ -1,0 +1,145 @@
+using System.Linq;
+using UnityEditor;
+using UnityEditor.Android;
+using Unity.Android.Gradle;
+using Unity.Android.Gradle.Manifest;
+public class ModifyProjectScript : AndroidProjectFilesModifier
+{
+    public override void OnModifyAndroidProjectFiles(AndroidProjectFiles projectFiles)
+    {
+        var elementG0 = new Element($"// Android Resolver Dependencies Start");
+        projectFiles.UnityLibraryBuildGradle.Dependencies.AddElement(elementG0);
+        var elementG1 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.android.gms:play-services-appset:16.0.2' // Packages/com.gameanalytics.sdk/Editor/Android/Dependencies.xml:4");
+        var elementG2 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.android.gms:play-services-base:18.4.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:17");
+        var elementG3 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.android.instantapps:instantapps:1.1.0' // Packages/com.gameanalytics.sdk/Editor/Android/Dependencies.xml:3");
+        var elementG4 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.firebase:firebase-analytics:22.0.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:15");
+        var elementG5 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.firebase:firebase-analytics-unity:12.0.0' // Assets/Firebase/Editor/AnalyticsDependencies.xml:18");
+        var elementG6 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.firebase:firebase-app-unity:12.0.0' // Assets/Firebase/Editor/AppDependencies.xml:22");
+        var elementG7 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.firebase:firebase-auth:23.0.0' // Assets/Firebase/Editor/AuthDependencies.xml:13");
+        var elementG8 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.firebase:firebase-auth-unity:12.0.0' // Assets/Firebase/Editor/AuthDependencies.xml:20");
+        var elementG9 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.firebase:firebase-common:21.0.0' // Assets/Firebase/Editor/AppDependencies.xml:13");
+        var elementG10 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.firebase:firebase-database:21.0.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:13");
+        var elementG11 = projectFiles.UnityLibraryBuildGradle.Dependencies.AddDependencyImplementationRaw("'com.google.firebase:firebase-database-unity:12.0.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:22");
+        var elementG12 = new Element($"// Android Resolver Dependencies End");
+        projectFiles.UnityLibraryBuildGradle.Dependencies.AddElement(elementG12);
+        var elementG13 = projectFiles.UnityLibraryBuildGradle.Dependencies.GetElements().First(e => e.GetRaw() == $"implementation fileTree(dir: \'libs\', include: [\'*.jar\'])");
+        if (elementG13?.GetRaw() != null && elementG0?.GetRaw() != null)
+            elementG0?.AddElementDependency(elementG13);
+        if (elementG0?.GetRaw() != null && elementG1?.GetRaw() != null)
+            elementG1?.AddElementDependency(elementG0);
+        if (elementG1?.GetRaw() != null && elementG2?.GetRaw() != null)
+            elementG2?.AddElementDependency(elementG1);
+        if (elementG2?.GetRaw() != null && elementG3?.GetRaw() != null)
+            elementG3?.AddElementDependency(elementG2);
+        if (elementG3?.GetRaw() != null && elementG4?.GetRaw() != null)
+            elementG4?.AddElementDependency(elementG3);
+        if (elementG4?.GetRaw() != null && elementG5?.GetRaw() != null)
+            elementG5?.AddElementDependency(elementG4);
+        if (elementG5?.GetRaw() != null && elementG6?.GetRaw() != null)
+            elementG6?.AddElementDependency(elementG5);
+        if (elementG6?.GetRaw() != null && elementG7?.GetRaw() != null)
+            elementG7?.AddElementDependency(elementG6);
+        if (elementG7?.GetRaw() != null && elementG8?.GetRaw() != null)
+            elementG8?.AddElementDependency(elementG7);
+        if (elementG8?.GetRaw() != null && elementG9?.GetRaw() != null)
+            elementG9?.AddElementDependency(elementG8);
+        if (elementG9?.GetRaw() != null && elementG10?.GetRaw() != null)
+            elementG10?.AddElementDependency(elementG9);
+        if (elementG10?.GetRaw() != null && elementG11?.GetRaw() != null)
+            elementG11?.AddElementDependency(elementG10);
+        if (elementG11?.GetRaw() != null && elementG12?.GetRaw() != null)
+            elementG12?.AddElementDependency(elementG11);
+        
+        var elementG14 = projectFiles.UnityLibraryBuildGradle.Android.PackagingOptions.AddExclude("('/lib/armeabi/*' + '*')");
+        var elementG15 = projectFiles.UnityLibraryBuildGradle.Android.PackagingOptions.AddExclude("('/lib/armeabi-v7a/*' + '*')");
+        var elementG16 = projectFiles.UnityLibraryBuildGradle.Android.PackagingOptions.AddExclude("('/lib/mips/*' + '*')");
+        var elementG17 = projectFiles.UnityLibraryBuildGradle.Android.PackagingOptions.AddExclude("('/lib/mips64/*' + '*')");
+        var elementG18 = projectFiles.UnityLibraryBuildGradle.Android.PackagingOptions.AddExclude("('/lib/x86/*' + '*')");
+        var elementG19 = projectFiles.UnityLibraryBuildGradle.Android.PackagingOptions.AddExclude("('/lib/x86_64/*' + '*')");
+        var elementG20 = new Element($"// Android Resolver Exclusions Start");
+        projectFiles.UnityLibraryBuildGradle.AddElement(elementG20);
+        var elementG21 = new Element($"// Android Resolver Exclusions End");
+        projectFiles.UnityLibraryBuildGradle.AddElement(elementG21);
+        var elementG22 = (Android)projectFiles.UnityLibraryBuildGradle.GetElements().First(e => e is BaseBlock block && block.GetRaw() == $"ndkPath \"**NDKPATH**\"\n" +
+        $"namespace \"com.unity3d.player\"\n" +
+        $"compileSdkVersion **APIVERSION**\n" +
+        $"buildToolsVersion \"**BUILDTOOLS**\"\n" +
+        $"compileOptions {{\n" +
+        $"    sourceCompatibility JavaVersion.VERSION_11\n" +
+        $"    targetCompatibility JavaVersion.VERSION_11\n" +
+        $"}}\n" +
+        $"defaultConfig {{\n" +
+        $"    minSdkVersion **MINSDKVERSION**\n" +
+        $"    targetSdkVersion **TARGETSDKVERSION**\n" +
+        $"    ndk {{\n" +
+        $"        abiFilters **ABIFILTERS**\n" +
+        $"    }}\n" +
+        $"    versionCode **VERSIONCODE**\n" +
+        $"    versionName \"**VERSIONNAME**\"\n" +
+        $"    consumerProguardFiles \'proguard-unity.txt\'**USER_PROGUARD**\n" +
+        $"    **DEFAULT_CONFIG_SETUP**\n" +
+        $"}}\n" +
+        $"lintOptions {{\n" +
+        $"    abortOnError false\n" +
+        $"}}\n" +
+        $"aaptOptions {{\n" +
+        $"    noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(\', \')\n" +
+        $"    ignoreAssetsPattern = \"!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~\"\n" +
+        $"}}\n" +
+        $"**PACKAGING_OPTIONS**");
+        elementG22?.RemoveAllElementDependencies();
+        if (elementG20?.GetRaw() != null && projectFiles.UnityLibraryBuildGradle.Android?.GetRaw() != null)
+            projectFiles.UnityLibraryBuildGradle.Android?.AddElementDependency(elementG20);
+        if (projectFiles.UnityLibraryBuildGradle.Dependencies?.GetRaw() != null && elementG20?.GetRaw() != null)
+            elementG20?.AddElementDependency(projectFiles.UnityLibraryBuildGradle.Dependencies);
+        if (projectFiles.UnityLibraryBuildGradle.Android?.GetRaw() != null && elementG21?.GetRaw() != null)
+            elementG21?.AddElementDependency(projectFiles.UnityLibraryBuildGradle.Android);
+        if (elementG21?.GetRaw() != null && elementG22?.GetRaw() != null)
+            elementG22?.AddElementDependency(elementG21);
+        var elementG23 = new Element($"# Android Resolver Properties Start");
+        projectFiles.GradleProperties.AddElement(elementG23);
+        var elementG24 = new Element($"android.useAndroidX=true");
+        projectFiles.GradleProperties.AddElement(elementG24);
+        var elementG25 = new Element($"android.enableJetifier=true");
+        projectFiles.GradleProperties.AddElement(elementG25);
+        var elementG26 = new Element($"# Android Resolver Properties End");
+        projectFiles.GradleProperties.AddElement(elementG26);
+        if (projectFiles.GradleProperties.UnityStreamingAssets?.GetRaw() != null && elementG23?.GetRaw() != null)
+            elementG23?.AddElementDependency(projectFiles.GradleProperties.UnityStreamingAssets);
+        if (elementG23?.GetRaw() != null && elementG24?.GetRaw() != null)
+            elementG24?.AddElementDependency(elementG23);
+        if (elementG24?.GetRaw() != null && elementG25?.GetRaw() != null)
+            elementG25?.AddElementDependency(elementG24);
+        if (elementG25?.GetRaw() != null && elementG26?.GetRaw() != null)
+            elementG26?.AddElementDependency(elementG25);
+        var templatedValueG29 = System.IO.Directory.GetParent(System.IO.Path.Combine(UnityEngine.Application.dataPath))?.FullName;
+        
+        var elementG27 = new Element($"// Android Resolver Repos Start");
+        projectFiles.GradleSettings.DependencyResolutionManagement.Repositories.AddElement(elementG27);
+        var elementG28 = new Element($"def unityProjectPath = $/file:///{templatedValueG29}/$.replace(\"\\\\\", \"/\")");
+        projectFiles.GradleSettings.DependencyResolutionManagement.Repositories.AddElement(elementG28);
+        var elementG30 = new Block("maven");
+        elementG30.SetRaw($"url (unityProjectPath + \"/Assets/GeneratedLocalRepo/Firebase/m2repository\") // Assets/Firebase/Editor/AnalyticsDependencies.xml:18, Assets/Firebase/Editor/AppDependencies.xml:22, Assets/Firebase/Editor/AuthDependencies.xml:20, Assets/Firebase/Editor/DatabaseDependencies.xml:22");
+        projectFiles.GradleSettings.DependencyResolutionManagement.Repositories.AddElement(elementG30);
+        var elementG31 = new Element($"mavenLocal()");
+        projectFiles.GradleSettings.DependencyResolutionManagement.Repositories.AddElement(elementG31);
+        var elementG32 = new Element($"// Android Resolver Repos End");
+        projectFiles.GradleSettings.DependencyResolutionManagement.Repositories.AddElement(elementG32);
+        var elementG33 = projectFiles.GradleSettings.DependencyResolutionManagement.Repositories.GetElements().First(e => e.GetRaw() == $"mavenCentral()");
+        var elementG34 = (Block)projectFiles.GradleSettings.DependencyResolutionManagement.Repositories.GetElements().First(e => e is BaseBlock block && block.GetName() == "flatDir");
+        elementG34?.RemoveAllElementDependencies();
+        if (elementG33?.GetRaw() != null && elementG27?.GetRaw() != null)
+            elementG27?.AddElementDependency(elementG33);
+        if (elementG27?.GetRaw() != null && elementG28?.GetRaw() != null)
+            elementG28?.AddElementDependency(elementG27);
+        if (elementG28?.GetRaw() != null && elementG30?.GetRaw() != null)
+            elementG30?.AddElementDependency(elementG28);
+        if (elementG30?.GetRaw() != null && elementG31?.GetRaw() != null)
+            elementG31?.AddElementDependency(elementG30);
+        if (elementG31?.GetRaw() != null && elementG32?.GetRaw() != null)
+            elementG32?.AddElementDependency(elementG31);
+        if (elementG32?.GetRaw() != null && elementG34?.GetRaw() != null)
+            elementG34?.AddElementDependency(elementG32);
+
+    }
+}

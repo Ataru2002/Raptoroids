@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
 
     MissionGemsContactPoint gemsContactPoint;
 
-  
     private void Awake()
     {   
         if (instance != null && instance != this)
