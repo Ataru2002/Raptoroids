@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
 
             // TODO: load from save file instead
             int shipVectorBytes = totalShips / 8 + 1;
