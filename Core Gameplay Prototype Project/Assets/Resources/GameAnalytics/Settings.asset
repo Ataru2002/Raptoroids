@@ -65,8 +65,8 @@ MonoBehaviour:
   CustomDimensions01:
   - Centipede
   - Parasite
-  - Queen Bee
   - Mantis
+  - Bee
   CustomDimensions02: []
   CustomDimensions03: []
   ResourceItemTypes:
