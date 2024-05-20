@@ -39,7 +39,8 @@ public class BossBehavior : EnemyBehavior
 
     protected void TryTransitionTo(int destinationState)
     {
-        if (!nonLinearTransitionConditions[bossState][destinationState]())
+        if (!nonLinearTransitionConditions[bossState].ContainsKey(destinationState) ||
+            !nonLinearTransitionConditions[bossState][destinationState]())
         {
             return;
         }

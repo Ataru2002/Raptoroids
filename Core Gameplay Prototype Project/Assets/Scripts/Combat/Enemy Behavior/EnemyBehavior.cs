@@ -7,7 +7,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected bool trackPlayer;
 
     float timeSinceSpawn = 0;
-    [SerializeField] float timeToFinalPosition = 0;
+    [SerializeField] protected float timeToFinalPosition = 0;
     
     protected Vector2 finalPosition;
     public Vector2 FinalPosition { get { return finalPosition; } }

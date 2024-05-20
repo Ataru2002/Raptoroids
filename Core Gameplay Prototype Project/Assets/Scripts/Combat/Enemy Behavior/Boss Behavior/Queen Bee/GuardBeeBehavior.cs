@@ -4,34 +4,42 @@ using UnityEngine;
 
 public class GuardBeeBehavior : EnemyBehavior, IBulletHittable
 {
-    static Vector2[] guardPositions =
-    {
-        new Vector2 (0, 0),
-        new Vector2 (1, 0),
-        new Vector2 (2, 0)
-    };
+    QueenBeeBossBehavior boss;
+    public static Vector2 meatShieldPos = new Vector2(0, 0.5f);
+    public bool isMeatShield = false;
+    bool bossNotified = false;
 
-    int id;
+    int guardHealth = 5;
 
-    public void DesignateGuardNumber(int guardNumber)
+    void Awake()
     {
-        id = guardNumber;
+        boss = FindFirstObjectByType<QueenBeeBossBehavior>();
     }
 
     new void Update()
     {
-
+        base.Update();
+        if (isMeatShield && !bossNotified && FinalPositionReached)
+        {
+            bossNotified = true;
+            boss.NotifyMeatShieldInPosition();
+        }
     }
 
     public void OnBulletHit()
     {
-
+        if (--guardHealth <= 0)
+        {
+            boss.NotifyGuardDown(this);
+            Destroy(gameObject);
+        }
     }
 
-    public void Reposition()
+    public void AppointMeatShield()
     {
-        Vector2[] newPath = { transform.position, guardPositions[id] };
-        SetPath(newPath);
+        isMeatShield = true;
+
+        SetPath(new Vector2[] { transform.position, meatShieldPos });
         ResetPathProgress();
     }
 }

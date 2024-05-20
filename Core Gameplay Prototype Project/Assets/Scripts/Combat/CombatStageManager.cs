@@ -448,7 +448,9 @@ public class CombatStageManager : MonoBehaviour
             if (isBossStage)
             {
                 // BossID is 0-indexed for array access purposes. Add 1 to match the ID number
-                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "Boss", GameManager.Instance.BossID + 1);
+                GameAnalytics.SetCustomDimension01("");
+                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "Boss");
+                GameAnalytics.SetCustomDimension01(null);
             }
             else
             {
