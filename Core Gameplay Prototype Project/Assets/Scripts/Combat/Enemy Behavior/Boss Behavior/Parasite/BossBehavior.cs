@@ -3,6 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Used for analytics collection
+public enum Bosses
+{
+    Centipede,
+    Parasite,
+    Mantis,
+    Bee
+}
+
 public class BossBehavior : EnemyBehavior
 {
     protected int bossState = 0;

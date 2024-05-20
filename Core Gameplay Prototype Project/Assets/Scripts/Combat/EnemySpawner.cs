@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     static Dictionary<EnemyFormationTiers, EnemyFormation[]> formationPools;
     // For use in boss levels -- spawn just one boss
     static GameObject[] bossPrefabs;
+    public static int AvailableBossCount { get { return bossPrefabs.Length; } }
 
     public enum EnemyFormationTiers
     {
@@ -47,16 +48,16 @@ public class EnemySpawner : MonoBehaviour
             switch (level)
             {
                 case 3:
-                    formationInterval = 1.8f;
+                    formationInterval = 4.4f;
                     break;
                 case 2:
-                    formationInterval = 2.2f;
+                    formationInterval = 4.6f;
                     break;
                 case 1:
-                    formationInterval = 2.6f;
+                    formationInterval = 4.8f;
                     break;
                 case 0:
-                    formationInterval = 3f;
+                    formationInterval = 5f;
                     break;
             }
 

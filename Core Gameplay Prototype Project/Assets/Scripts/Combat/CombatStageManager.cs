@@ -10,6 +10,7 @@ using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using GameAnalyticsSDK;
 using UnityEngineInternal;
 using Unity.Burst.CompilerServices;
+using System;
 
 public class CombatStageManager : MonoBehaviour
 {
@@ -166,7 +167,7 @@ public class CombatStageManager : MonoBehaviour
     void SpawnOakNut()
     {
         GameObject oakNut = oakNuts.Get();
-        oakNut.transform.position = new Vector3(Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
+        oakNut.transform.position = new Vector3(UnityEngine.Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
         oakNut.SetActive(true);
     }
 
@@ -189,7 +190,7 @@ public class CombatStageManager : MonoBehaviour
     void SpawnHill()
     {
         GameObject hill = hills.Get();
-        hill.transform.position = new Vector3(Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
+        hill.transform.position = new Vector3(UnityEngine.Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
         hill.SetActive(true);
     }
 
@@ -448,7 +449,7 @@ public class CombatStageManager : MonoBehaviour
             if (isBossStage)
             {
                 // BossID is 0-indexed for array access purposes. Add 1 to match the ID number
-                GameAnalytics.SetCustomDimension01("");
+                GameAnalytics.SetCustomDimension01(((Bosses)GameManager.Instance.BossID).ToString());
                 GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "Boss");
                 GameAnalytics.SetCustomDimension01(null);
             }
