@@ -455,9 +455,9 @@ public class CombatStageManager : MonoBehaviour
             }
             else
             {
-                GameAnalytics.SetCustomDimension01(GameManager.Instance.MapTier.ToString());
+                GameAnalytics.SetCustomDimension02(GameManager.Instance.MapTier.ToString());
                 GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Mission", "ActionStage");
-                GameAnalytics.SetCustomDimension01(null);
+                GameAnalytics.SetCustomDimension02(null);
             }
         }
 
