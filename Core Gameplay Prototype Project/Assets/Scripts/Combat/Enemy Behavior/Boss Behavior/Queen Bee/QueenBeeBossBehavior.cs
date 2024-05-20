@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class QueenBeeBossBehavior : BossBehavior
 {
@@ -13,6 +14,14 @@ public class QueenBeeBossBehavior : BossBehavior
 
     List<GuardBeeBehavior> guards = new List<GuardBeeBehavior>(maxGuardCount);
     bool canSpawnGuards = true;
+
+    bool feeding = false;
+    bool chasing = false;
+
+    Vector2 mark;
+    bool markReached = false;
+
+    Coroutine runningCoroutine;
 
     [SerializeField] QueenBeeWingBehavior[] wings;
     [SerializeField] GameObject guardPrefab;
@@ -151,8 +160,68 @@ public class QueenBeeBossBehavior : BossBehavior
     #region EXECUTION_CHASE
     void ChaseUpdate()
     {
-        
+        if (!chasing)
+        {
+            runningCoroutine = StartCoroutine(ChaseSequence());
+        }
     }
+
+    void ConfirmMark()
+    {
+        mark = CombatStageManager.Instance.PlayerTransform.position;
+        trackPlayer = false;
+    }
+
+    void RunUpdate()
+    {
+        transform.Translate(Vector2.right * (3f + 5f * wingsRemaining) * Time.deltaTime);
+        markReached = Vector2.Distance(transform.position, mark) <= 0.3f;
+    }
+
+    void RepositionUpdate()
+    {
+        Vector2 currentPos = transform.position;
+
+        Update();
+
+        float angle = Mathf.Atan2(transform.position.y - currentPos.y, transform.position.x - currentPos.x);
+        angle *= Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        if (FinalPositionReached)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+            TryTransitionTo(0);
+        }
+    }
+
+    IEnumerator ChaseSequence()
+    {
+        chasing = true;
+        trackPlayer = true;
+        markReached = false;
+        
+        yield return new WaitForSeconds(1);
+        ConfirmMark();
+        stateExecute = RunUpdate;
+        feeding = true;
+
+        while (!markReached)
+        {
+            yield return null;
+        }
+
+        feeding = false;
+        stateExecute = ChaseUpdate;
+        transform.position = mark;
+        yield return new WaitForSeconds(2);
+        chasing = false;
+    }
+
+    //IEnumerator ReturnSequence()
+    //{
+        
+    //}
     #endregion
 
     #region PARTS_COMMS
@@ -222,8 +291,53 @@ public class QueenBeeBossBehavior : BossBehavior
 
         foreach (QueenBeeWingBehavior wing in wings)
         {
-            Destroy(wing.gameObject);
+            if (wing != null)
+            {
+                Destroy(wing.gameObject);
+            }
         }
     }
     #endregion
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!feeding)
+        {
+            return;
+        }
+
+        if (collision.tag == "Player")
+        {
+            canSpawnGuards = true;
+
+            IBulletHittable hitComponent = collision.GetComponent<IBulletHittable>();
+            if (hitComponent != null)
+            {
+                hitComponent.OnBulletHit();
+            }
+
+            StopCoroutine(runningCoroutine);
+
+            feeding = false;
+            chasing = false;
+            trackPlayer = false;
+
+            List<Vector2> path = new List<Vector2>
+            {
+                transform.position,
+                FinalPosition
+            };
+
+            Vector2 mid = ((Vector2)transform.position + FinalPosition) / 2f;
+            Vector2 perp = Vector2.Perpendicular((Vector2)transform.position - FinalPosition) * 0.5f;
+            Vector2 curvePoint = mid + perp;
+            path.Insert(1, curvePoint);
+
+            SetPath(path.ToArray());
+
+            ResetPathProgress();
+            timeToFinalPosition = 1.3f;
+            stateExecute = RepositionUpdate;
+        }
+    }
 }

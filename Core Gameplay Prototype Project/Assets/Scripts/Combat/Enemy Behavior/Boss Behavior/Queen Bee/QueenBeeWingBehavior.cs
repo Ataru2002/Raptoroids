@@ -16,9 +16,6 @@ public class QueenBeeWingBehavior : MonoBehaviour, IBulletHittable
     const float travelTime = 1.2f;
     float timeElapsed = 0;
 
-    Coroutine deploymentCoroutine;
-    Coroutine recallCoroutine;
-
     void Awake()
     {
         beeBoss = GetComponentInParent<QueenBeeBossBehavior>();

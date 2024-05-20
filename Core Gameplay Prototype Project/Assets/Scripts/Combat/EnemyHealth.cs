@@ -67,8 +67,8 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
                 dead = true;
                 OnDefeat.Invoke();
 
-                CombatStageManager.Instance.OnEnemyDefeated();
                 CombatStageManager.Instance.UpdateScore(pointsAwarded);
+                CombatStageManager.Instance.OnEnemyDefeated();
 
                 Destroy(gameObject);
             }
