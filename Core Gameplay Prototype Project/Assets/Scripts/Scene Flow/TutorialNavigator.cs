@@ -5,21 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TutorialNavigator : MonoBehaviour
 {
-    [SerializeField] GameObject combatCanvas;
     [SerializeField] GameObject mapCanvas;
     [SerializeField] GameObject instructionCanvas;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void GoToMainMenu()
     {
@@ -36,7 +23,7 @@ public class TutorialNavigator : MonoBehaviour
                 mapCanvas.SetActive(true);
                 break;
             case "combat":
-                combatCanvas.SetActive(true);
+                SceneManager.LoadScene("Tutorial");
                 break;
             default:
                 break;
@@ -51,9 +38,6 @@ public class TutorialNavigator : MonoBehaviour
         {
             case "map":
                 mapCanvas.SetActive(false);
-                break;
-            case "combat":
-                combatCanvas.SetActive(false);
                 break;
             default:
                 break;

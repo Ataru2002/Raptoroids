@@ -62,8 +62,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6597752673787904
-    m_Localized: This icon denotes a treasure room. The amount of gems you can earn
-      here depends on how many mutant insects you have eliminated.
+    m_Localized: This icon denotes a treasure room. Collect gems here and spend them
+      at the shop to buy items.
     m_Metadata:
       m_Items: []
   references:

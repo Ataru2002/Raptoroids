@@ -11,21 +11,21 @@ public class LocustAttackSequence : BossBehavior
     [SerializeField] GameObject fusionBall;
     [SerializeField] GiantArmBehaviour giantLeftArm;
     [SerializeField] GiantArmBehaviour giantRightArm;
+    [SerializeField] BodyBehaviour body;
     float remainingHealthRatio = 1f;
     private bool swarmBarrageStarted = false;
     private bool swarmFusionDone = false;
     bool spawningGiantBoss = false;
     bool boomerangBarrageStarted = false;
+    bool invisAttackStarted = false;
     public int miniEnemiesDestroyed;
     void Awake()
     {
         transitionConditions = new List<System.Func<bool>>
         {
-            StateTransition1
-            // StateTransition2
+            StateTransition1,
+            StateTransition2
         };
-
-        
         
         stateExecute = StateDefaultExecute;
     }
@@ -38,7 +38,7 @@ public class LocustAttackSequence : BossBehavior
 
     #region STATE TRANSITIONS
     bool StateTransition1(){
-        if(remainingHealthRatio > 0.7f || miniEnemiesDestroyed < 3){
+        if(remainingHealthRatio > 0.7f){
             return false;
         }
 
@@ -46,6 +46,15 @@ public class LocustAttackSequence : BossBehavior
         SwarmBehaviour.onFusionComplete += spawnGiantBoss;
         stateExecute = State1Execute;
         
+        return true;
+    }
+
+    bool StateTransition2(){
+        if(remainingHealthRatio > 0.3f){
+            return false;
+        }
+
+        stateExecute = State2Execute;
         return true;
     }
     #endregion
@@ -69,6 +78,17 @@ public class LocustAttackSequence : BossBehavior
         if(!boomerangBarrageStarted){
             boomerangBarrage();
         }
+    }
+
+    void State2Execute(){
+        if(invisAttackStarted){
+            return;
+        }
+
+        if(!invisAttackStarted){
+            invisAttack();
+        }
+        
     }
     #endregion
     
@@ -96,10 +116,20 @@ public class LocustAttackSequence : BossBehavior
     private void boomerangBarrage(){
         if(giantLeftArm != null){
             giantLeftArm.tryBoomerangAttack();
+            boomerangBarrageStarted = true;
         }
         if(giantRightArm != null){
             giantRightArm.tryBoomerangAttack();
+            boomerangBarrageStarted = true;
         }
+        boomerangBarrageStarted = false;
+    }
+    private void invisAttack(){
+        invisAttackStarted = true;
+        body.enabled = true;
+        body.TryInvisAttack();
+
+        invisAttackStarted = false;
     }
     #endregion
 
@@ -130,6 +160,7 @@ public class LocustAttackSequence : BossBehavior
         yield return new WaitForSeconds(2);
         fusionBall.SetActive(false);
         giantBoss.SetActive(true);
+        
         giantBossLeftArm.SetActive(true);
         giantBossRightArm.SetActive(true);
         spawningGiantBoss = false;

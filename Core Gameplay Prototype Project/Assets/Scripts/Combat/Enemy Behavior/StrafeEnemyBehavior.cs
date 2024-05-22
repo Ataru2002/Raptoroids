@@ -15,6 +15,8 @@ public class StrafeEnemyBehavior : MonoBehaviour
     // Invert strafe direction (i.e. start by going to the left instead)
     [SerializeField] bool invertStrafe = false;
 
+    public bool publicInvertStrafe = false;
+
     // How far the enemy will go from the center
     [SerializeField] float strafeDistance;
 
@@ -38,7 +40,7 @@ public class StrafeEnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (invertStrafe)
+        if (invertStrafe || publicInvertStrafe)
         {
             strafeDirection = -1;
         }

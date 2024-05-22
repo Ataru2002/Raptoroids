@@ -63,17 +63,18 @@ public class GiantArmBehaviour : MonoBehaviour
         if(armDestroyed){
             return;
         }
-        
+
         int damage = 1;
         armHP -= damage;
         CombatStageManager.Instance.UpdateScore(pointsAwarded);
         combinedBossHP.TakeDamage(damage);
-
+        
         if(armHP <= 0){
             armDestroyed = true;
-            StopAllCoroutines();
+            // StopAllCoroutines();
             Destroy(gameObject);
         }
+        
         
     }
 
