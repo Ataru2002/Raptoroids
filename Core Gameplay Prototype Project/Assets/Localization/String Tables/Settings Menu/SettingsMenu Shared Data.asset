@@ -27,6 +27,14 @@ MonoBehaviour:
     m_Key: Grayscale
     m_Metadata:
       m_Items: []
+  - m_Id: 23309569542316032
+    m_Key: ButtonRimDetail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23313412049068032
+    m_Key: ButtonColor
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
