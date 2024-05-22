@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 public class ShopItemControl : MonoBehaviour
@@ -12,7 +13,7 @@ public class ShopItemControl : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemCodenameLabel;
 
     [SerializeField] Button purchaseButton;
-    [SerializeField] TextMeshProUGUI purchasabilityLabel;
+    [SerializeField] LocalizeStringEvent purchasabilityLabelLocalize;
     [SerializeField] TextMeshProUGUI itemPriceText;
 
     public void DisplayItemInfo()
@@ -42,6 +43,6 @@ public class ShopItemControl : MonoBehaviour
         bool alreadyOwned = GameManager.Instance.ItemUnlocked(itemData.itemType, itemData.itemNumber);
         bool hasEnoughGems = GameManager.Instance.GetTotalGems() >= itemData.gemCost;
         purchaseButton.interactable = !alreadyOwned && hasEnoughGems;
-        purchasabilityLabel.text = alreadyOwned ? "Already owned" : hasEnoughGems ? "Get Now" : "Not enough Gems";
+        purchasabilityLabelLocalize.SetEntry(alreadyOwned ? "AlreadyOwned" : hasEnoughGems ? "GetNow" : "GemInsufficient"); 
     }
 }

@@ -42,6 +42,18 @@ MonoBehaviour:
     m_Localized: No
     m_Metadata:
       m_Items: []
+  - m_Id: 19000427407204352
+    m_Localized: Raptoroid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19000457451003904
+    m_Localized: Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19005058350833664
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LoadoutItem_ja-JP
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ja-JP
+  m_SharedData: {fileID: 11400000, guid: 001db28c202a64a4cb3622e70bffd385, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 74003243008
+    m_Localized: "\u6301\u3063\u3066\u3044\u306A\u3044"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114532802560
+    m_Localized: "\u88C5\u5099\u3057\u305F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 144220086272
+    m_Localized: "\u88C5\u5099\u3059\u308B"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

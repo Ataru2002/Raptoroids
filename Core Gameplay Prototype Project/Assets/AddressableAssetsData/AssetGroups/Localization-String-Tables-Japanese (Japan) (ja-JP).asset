@@ -83,6 +83,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ja-JP
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 00d10516a76a9e44d83b38a7e4df8be6
+    m_Address: RaptoroidShopFlavorText_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da99e2b3983526b4dbdc4cefa2395d53
+    m_Address: WeaponShopFlavorText_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1027b829ddd35c84abb1c6a27168004b
+    m_Address: ShopMenu_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b329958d235ef54d9587671715b274e
+    m_Address: LoadoutItem_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 80101bc332c0f164db2abaf09c2d81bc, type: 2}
   m_SchemaSet:

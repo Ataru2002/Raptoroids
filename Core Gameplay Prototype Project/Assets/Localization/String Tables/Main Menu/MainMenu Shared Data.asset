@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Key: CurrencyCounter
     m_Metadata:
       m_Items: []
+  - m_Id: 26826191527731200
+    m_Key: CommunityQuests
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

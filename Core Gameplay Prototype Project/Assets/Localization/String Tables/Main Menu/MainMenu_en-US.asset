@@ -44,6 +44,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4180197222407209029
+  - m_Id: 26826191527731200
+    m_Localized: Community Quests
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
