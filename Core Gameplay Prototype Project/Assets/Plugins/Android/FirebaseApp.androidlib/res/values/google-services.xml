@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id">
+  <string name="firebase_database_url" translatable="false">https://raptoroids-d626c-default-rtdb.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">132959101908</string>
+  <string name="google_storage_bucket" translatable="false">raptoroids-d626c.appspot.com</string>
+  <string name="project_id" translatable="false">raptoroids-d626c</string>
+  <string name="google_api_key" translatable="false">AIzaSyCDA8e_T4iiRqQMgVDnVRKD8xs-UBY65Ho</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCDA8e_T4iiRqQMgVDnVRKD8xs-UBY65Ho</string>
+  <string name="google_app_id" translatable="false">1:132959101908:android:472c9d2ad4dcfbe168ac41</string>
+</resources>
