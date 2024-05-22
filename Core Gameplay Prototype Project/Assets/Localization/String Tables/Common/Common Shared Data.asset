@@ -39,6 +39,18 @@ MonoBehaviour:
     m_Key: No
     m_Metadata:
       m_Items: []
+  - m_Id: 19000427407204352
+    m_Key: Raptoroid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19000457451003904
+    m_Key: Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19005058350833664
+    m_Key: Cancel
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

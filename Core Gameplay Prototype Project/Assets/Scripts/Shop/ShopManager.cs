@@ -24,8 +24,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI itemCodenameText;
     [SerializeField] TextMeshProUGUI itemNicknameText;
-    [SerializeField] TextMeshProUGUI flavorText;
-    [SerializeField] TextMeshProUGUI purchasabilityLabel;
+    [SerializeField] LocalizeStringEvent flavorTextLocalize;
+    [SerializeField] LocalizeStringEvent purchasabilityLabelLocalize;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] Button purchaseButton;
 
@@ -121,8 +121,10 @@ public class ShopManager : MonoBehaviour
         itemImage.sprite = item.itemSprite;
         itemCodenameText.text = item.itemCodename;
         itemNicknameText.text = item.itemNickname;
-        flavorText.text = item.flavorText;
         priceText.text = item.gemCost.ToString();
+
+        flavorTextLocalize.SetTable(item.itemType == ItemType.Raptoroid ? "RaptoroidShopFlavorText" : "WeaponShopFlavorText");
+        flavorTextLocalize.SetEntry(item.flavorText);
 
         selectedItem = item;
         UpdatePurchaseButton();
@@ -143,6 +145,6 @@ public class ShopManager : MonoBehaviour
         bool alreadyOwned = GameManager.Instance.ItemUnlocked(selectedItem.itemType, selectedItem.itemNumber);
         bool hasEnoughGems = GameManager.Instance.GetTotalGems() >= selectedItem.gemCost;
         purchaseButton.interactable = !alreadyOwned && hasEnoughGems;
-        purchasabilityLabel.text = alreadyOwned ? "Already owned" : hasEnoughGems ? "Get Now" : "Not enough Gems";
+        purchasabilityLabelLocalize.SetEntry(alreadyOwned ? "AlreadyOwned" : hasEnoughGems ? "GetNow" : "GemInsufficient");
     }
 }

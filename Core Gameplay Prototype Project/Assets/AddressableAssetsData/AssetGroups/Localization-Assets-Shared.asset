@@ -79,6 +79,29 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23fcdffb8fdd9554ca5f58c5fa5b7435
+    m_Address: Assets/Localization/String Tables/Raptoroid Shop Flavor Text/RaptoroidShopFlavorText
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3685497cd3ca4fb4fbf5f3c3786ced46
+    m_Address: Assets/Localization/String Tables/Weapon Shop Flavor Text/WeaponShopFlavorText
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca0ea0553d5714449ac95c7499970805
+    m_Address: Assets/Localization/String Tables/Shop Menu/ShopMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 001db28c202a64a4cb3622e70bffd385
+    m_Address: Assets/Localization/String Tables/Loadout Item/LoadoutItem Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 80101bc332c0f164db2abaf09c2d81bc, type: 2}
   m_SchemaSet:

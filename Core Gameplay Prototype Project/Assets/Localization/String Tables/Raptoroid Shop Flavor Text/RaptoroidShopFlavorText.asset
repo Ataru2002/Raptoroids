@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: RaptoroidShopFlavorText
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 23fcdffb8fdd9554ca5f58c5fa5b7435, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: e5fd785a3bc2b564295b123ad4ddefde, type: 2}
+  - {fileID: 11400000, guid: 00d10516a76a9e44d83b38a7e4df8be6, type: 2}
+  - {fileID: 11400000, guid: b3fc500d2bcb08d4294434f2b0540309, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

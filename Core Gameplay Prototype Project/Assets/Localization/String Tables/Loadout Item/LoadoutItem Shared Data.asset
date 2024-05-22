@@ -10,49 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: MainMenu Shared Data
+  m_Name: LoadoutItem Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: MainMenu
-  m_TableCollectionNameGuidString: 0c7bfff048ec7db42a54ef4f0cd4b6f9
+  m_TableCollectionName: LoadoutItem
+  m_TableCollectionNameGuidString: 001db28c202a64a4cb3622e70bffd385
   m_Entries:
-  - m_Id: 31183797739520
-    m_Key: Loadout
+  - m_Id: 74003243008
+    m_Key: NotOwned
     m_Metadata:
       m_Items: []
-  - m_Id: 31286893731840
-    m_Key: Shop
+  - m_Id: 114532802560
+    m_Key: Equipped
     m_Metadata:
       m_Items: []
-  - m_Id: 22595389874176
-    m_Key: Start
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5862580224
-    m_Key: Title
-    m_Metadata:
-      m_Items: []
-  - m_Id: 659951709052928
-    m_Key: 'Tutorial
-
-'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 669296723222528
-    m_Key: CurrencyCounter
-    m_Metadata:
-      m_Items: []
-  - m_Id: 26826191527731200
-    m_Key: CommunityQuests
+  - m_Id: 144220086272
+    m_Key: Equip
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 4180197150079582705
+    rid: 559649720738250875
   references:
     version: 2
     RefIds:
-    - rid: 4180197150079582705
+    - rid: 559649720738250875
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1709955569123
+        m_CustomEpoch: 1716354778260

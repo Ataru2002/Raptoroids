@@ -16,6 +16,6 @@ MonoBehaviour:
   itemNumber: 1
   itemCodename: RWM-01
   itemNickname: Birdshot
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 403c7e3317d7ce2419db96eaf7fb7d67, type: 3}
   gemCost: 500
-  flavorText: A simple shotgun type weapon. Fires 3 shots in a fairly wide cone.
+  flavorText: w01

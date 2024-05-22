@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 public class LoadoutItemControl : MonoBehaviour
@@ -11,7 +12,7 @@ public class LoadoutItemControl : MonoBehaviour
     [SerializeField] Image itemImage;
 
     [SerializeField] Button equipButton;
-    [SerializeField] TextMeshProUGUI equipButtonText;
+    [SerializeField] LocalizeStringEvent equipButtonTextLocalizeEvent;
 
     public void DisplayItemInfo()
     {
@@ -35,6 +36,6 @@ public class LoadoutItemControl : MonoBehaviour
         bool owned = GameManager.Instance.ItemUnlocked(itemData.itemType, itemData.itemNumber);
         equipButton.interactable = owned && !equipped;
 
-        equipButtonText.text = !owned ? "Not owned" : equipped ? "Equipped" : "Equip";
+        equipButtonTextLocalizeEvent.SetEntry(!owned ? "NotOwned" : equipped ? "Equipped" : "Equip");
     }
 }
