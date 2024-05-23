@@ -109,7 +109,7 @@ MonoBehaviour:
   IncludeGooglePlay: 1
   FpsCriticalThreshold: 20
   FpsCirticalSubmitInterval: 1
-  PlatformFoldOut: 0000
+  PlatformFoldOut: 0101
   CustomDimensions01FoldOut: 1
   CustomDimensions02FoldOut: 1
   CustomDimensions03FoldOut: 0
