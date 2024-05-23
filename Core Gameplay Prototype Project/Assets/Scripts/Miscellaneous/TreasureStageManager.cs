@@ -52,6 +52,7 @@ public class TreasureStageManager : MonoBehaviour
         player.transform.position = playerSpawnPoint.position;
 
         player.GetComponent<DoubleTapDetector>().enabled = false;
+        player.GetComponent<RaptoroidAbility>().enabled = false;
         foreach (Transform child in player.transform)
         {
             child.gameObject.SetActive(false);
