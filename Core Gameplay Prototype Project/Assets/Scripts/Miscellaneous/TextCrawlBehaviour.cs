@@ -7,6 +7,9 @@ public class TextCrawlBehaviour : MonoBehaviour
 {
     bool crawlOver = false;
 
+    const float doubleTapWindow = 0.2f;
+    float lastTapTime = 0f;
+
     AsyncOperation mainMenuLoadOp = null;
 
     void Start()
@@ -38,6 +41,19 @@ public class TextCrawlBehaviour : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             Time.timeScale = 1.0f;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (Time.time - lastTapTime <= doubleTapWindow)
+            {
+                Time.timeScale = 1.0f;
+                mainMenuLoadOp.allowSceneActivation = true;
+            }
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            lastTapTime = Time.time;
         }
     }
 
