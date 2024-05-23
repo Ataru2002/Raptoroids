@@ -99,7 +99,7 @@ public class CombatStageManager : MonoBehaviour
             enemyProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyBullet");
             hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
-            playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids/Armed");
+            playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids");
             weaponDataBank = Resources.LoadAll<WeaponData>("Scriptable Objects/Weapons");
         }
     }

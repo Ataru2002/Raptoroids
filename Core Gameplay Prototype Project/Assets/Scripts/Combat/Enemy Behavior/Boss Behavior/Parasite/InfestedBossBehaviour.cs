@@ -68,7 +68,7 @@ public class InfestedBossBehaviour : BossBehavior
         if (remainingHealthRatio > 0.7f){
             return false;
         }
-        gameObject.GetComponent<PlayerAbility>().enabled = true;
+        gameObject.GetComponent<WhiteheadAbility>().enabled = true;
         hostBody.GetComponent<BoxCollider2D>().enabled = false;
         trackPlayer = true;
 
@@ -113,9 +113,6 @@ public class InfestedBossBehaviour : BossBehavior
         stateExecute = State4Execute;
         return true;
     }
-    
-
-    
 
     void State4Execute(){
         if(!tentacleAttacking){
@@ -177,10 +174,6 @@ public class InfestedBossBehaviour : BossBehavior
     //     strafeBehavior.enabled = false;
     //     strafing = false;
     // }
-
-    
-    
-
 
     private void enableTentacleHitbox(){
         foreach(TentacleBehavior tentacle in tentacles){

@@ -12,20 +12,12 @@ public enum SpeedTier
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float slowFollowSpeed;
-    [SerializeField] float mediumFollowSpeed;
-    [SerializeField] float fastFollowSpeed;
+    [SerializeField] float followSpeed;
     [SerializeField] float yOffset = 0.5f;
     [SerializeField] float snapDistance = 0.01f;
 
-    float selectedFollowSpeed;
     bool isFrozen = false;
     float freezeDuration = 2f;
-
-    void Start()
-    {
-        SetSpeed(SpeedTier.Medium);
-    }
 
     void Update()
     {
@@ -37,30 +29,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void SetSpeed(string tier)
-    {
-        SetSpeed((SpeedTier)Enum.Parse(typeof(SpeedTier), tier));
-    }
-
-    private void SetSpeed(SpeedTier tier)
-    {
-        switch(tier)
-        {
-            case SpeedTier.Slow:
-                selectedFollowSpeed = slowFollowSpeed;
-                break;
-            case SpeedTier.Medium:
-                selectedFollowSpeed = mediumFollowSpeed;
-                break;
-            case SpeedTier.Fast:
-                selectedFollowSpeed = fastFollowSpeed;
-                break;
-            default:
-                print("Unrecognized speed tier argument");
-                return;
-        }
-    }
-
     private void MoveTowards(Vector2 target)
     {
         if (Vector2.Distance(transform.position, target) <= snapDistance)
@@ -69,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, target, selectedFollowSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target, followSpeed * Time.deltaTime);
         }
     }
 

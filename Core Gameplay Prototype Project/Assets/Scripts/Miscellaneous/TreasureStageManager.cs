@@ -16,7 +16,6 @@ public class TreasureStageManager : MonoBehaviour
     LinkedPool<GameObject> gemProjectiles;
     GameObject gemPrefab;
     [SerializeField] Transform playerSpawnPoint;
-    [SerializeField] GameObject[] playerPrefabs;
     [SerializeField] GameObject winScreen;
     [SerializeField] RectTransform winScreenSummaryBox;
     [SerializeField] TextMeshProUGUI timer;
@@ -25,32 +24,39 @@ public class TreasureStageManager : MonoBehaviour
 
     public string[] scriptsToDisable;
     GameObject rewardSummaryPrefab;
-    
+
+    GameObject[] playerPrefabs;
 
     bool stageEnded = false;
 
-     private void Awake()
+    private void Awake()
     {
         if (instance != null && instance != this)
         {
-            Destroy(instance);
+            Destroy(this);
         }
         else
         {
             instance = this;
-
             
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
             gemPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/Pickups/TreasureRoomGem");
-
+            playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids");
         }
     }
+
     void Start()
     {
         int raptoroidID = PlayerPrefs.HasKey("EquippedRaptoroid") ? PlayerPrefs.GetInt("EquippedRaptoroid") : 0;
         GameObject player = Instantiate(playerPrefabs[raptoroidID]);
         player.transform.position = playerSpawnPoint.position;
-    
+
+        player.GetComponent<DoubleTapDetector>().enabled = false;
+        foreach (Transform child in player.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
         gemProjectiles = new LinkedPool<GameObject>(MakeGemProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
         
     }
@@ -128,5 +134,4 @@ public class TreasureStageManager : MonoBehaviour
     {
         GameManager.Instance.AdvanceMapProgress();
     }
-
 }

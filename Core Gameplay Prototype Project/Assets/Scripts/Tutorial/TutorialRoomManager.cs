@@ -119,7 +119,7 @@ public class TutorialRoomManager : MonoBehaviour
             transition1.SetActive(true);
             boxCollided = 0;
             IntroductionBehaviour.onIntroduction -= IntroductionOver;
-            PlayerAbility.onShieldActivated += Transition1Over;
+            WhiteheadAbility.onShieldActivated += Transition1Over;
         }
     }
 
@@ -127,16 +127,15 @@ public class TutorialRoomManager : MonoBehaviour
         
         transition1.SetActive(false);
         transition2.SetActive(true);
-        PlayerAbility.onShieldActivated -= Transition1Over;
-        PlayerAbility.onShieldCDFull += Transition2Over;
-        
+        WhiteheadAbility.onShieldActivated -= Transition1Over;
+        WhiteheadAbility.onShieldCDFull += Transition2Over;
     }
 
     private void Transition2Over(){
         
         transition2.SetActive(false);
         transition3.SetActive(true);
-        PlayerAbility.onShieldCDFull -= Transition2Over;
+        WhiteheadAbility.onShieldCDFull -= Transition2Over;
         raptoroid.GetComponentInChildren<ProjectileSpawner>().enabled = true;
         enemy = Instantiate(enemyPrefab, new Vector3(0, 3, 0), Quaternion.Euler(0, 0, 270));
         Vector2[] path = new Vector2[2]{new Vector2(0, 5), new Vector2(0, 3)};

@@ -11,8 +11,10 @@ public class LoadoutManager : MonoBehaviour
     static ItemData[] raptoroidsData;
 
     [SerializeField] GameObject itemPrefab;
-    [SerializeField] Transform raptoroidDisplayRow;
-    [SerializeField] Transform weaponDisplayRow;
+    [SerializeField] RectTransform raptoroidDisplayRow;
+    [SerializeField] RectTransform weaponDisplayRow;
+
+    const float rowHeight = 200f;
 
     private void Awake()
     {
@@ -47,21 +49,27 @@ public class LoadoutManager : MonoBehaviour
 
     void Start()
     {
+        int raptoroidCount = 0;
         foreach (ItemData raptoroidData in raptoroidsData)
         {
             GameObject itemEntry = Instantiate(itemPrefab);
             itemEntry.transform.SetParent(raptoroidDisplayRow);
             itemEntry.transform.localScale = Vector3.one;
             itemEntry.GetComponent<LoadoutItemControl>().AssociateItemData(raptoroidData);
+            raptoroidCount++;
         }
+        raptoroidDisplayRow.sizeDelta = new Vector2(raptoroidCount * 125 - 5, rowHeight);
 
+        int weaponCount = 0;
         foreach (ItemData weaponData in weaponsData)
         {
             GameObject itemEntry = Instantiate(itemPrefab);
             itemEntry.transform.SetParent(weaponDisplayRow);
             itemEntry.transform.localScale = Vector3.one;
             itemEntry.GetComponent<LoadoutItemControl>().AssociateItemData(weaponData);
+            weaponCount++;
         }
+        weaponDisplayRow.sizeDelta = new Vector2(weaponCount * 125 - 5, rowHeight);
 
         if (!PlayerPrefs.HasKey("EquippedRaptoroid"))
         {

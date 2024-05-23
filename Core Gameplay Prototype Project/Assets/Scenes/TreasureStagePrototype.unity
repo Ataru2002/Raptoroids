@@ -1665,17 +1665,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawnPoint: {fileID: 1617143395}
-  playerPrefabs:
-  - {fileID: 4272951143565367387, guid: a0c2876d32b42c6489995a8f65a9e4a8, type: 3}
-  - {fileID: 7442410451283973695, guid: 0f06af9725d518543866d05e907794d4, type: 3}
   winScreen: {fileID: 1653222007}
   winScreenSummaryBox: {fileID: 1307667488}
   timer: {fileID: 1292318797}
   timeLimit: 10
-  scriptsToDisable:
-  - PlayerHealth
-  - PlayerAbility
-  - ProjectileSpawner
+  scriptsToDisable: []
 --- !u!1 &2137648545
 GameObject:
   m_ObjectHideFlags: 0

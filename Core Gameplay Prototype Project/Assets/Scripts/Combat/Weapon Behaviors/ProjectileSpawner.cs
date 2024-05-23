@@ -73,7 +73,7 @@ public class ProjectileSpawner : Weapon
                 spawnProjectile = CombatStageManager.Instance.GetPlayerProjectile;
             }
             else{
-                spawnProjectile = TutorialRoomManager.Instance.GetPlayerProjectile;   
+                spawnProjectile = TutorialRoomManager.Instance.GetPlayerProjectile;
             }
         }
         else

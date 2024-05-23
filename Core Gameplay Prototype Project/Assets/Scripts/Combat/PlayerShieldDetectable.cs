@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class PlayerShieldDetectable : MonoBehaviour, IBulletHittable
 {
-    PlayerAbility playerAbility;
+    WhiteheadAbility playerAbility;
     // Start is called before the first frame update
     void Start()
     {
-        playerAbility = FindFirstObjectByType<PlayerAbility>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        playerAbility = FindFirstObjectByType<WhiteheadAbility>();
     }
 
     public void OnBulletHit(){
