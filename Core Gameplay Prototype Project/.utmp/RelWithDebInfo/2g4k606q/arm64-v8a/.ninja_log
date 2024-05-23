@@ -1,0 +1,21 @@
+# ninja log v5
+140	334	7381034428029863	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	aa7e0229d2a9983b
+47	1570	7381034440394677	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5ebc37dfc3e5e827
+14	1135	7381034435959272	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ad3d2d0cd9d1139b
+129	1154	7381034436115203	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	163f1101a676ef6
+335	1052	7381034430289698	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libswappywrapper.so	d4072bec6de57e6e
+66	1254	7381034437165371	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9ecd25d59521e43e
+38	1288	7381034437524272	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	3a9fff0dc9475e48
+119	1182	7381034436457157	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	190eae79869f0534
+109	1457	7381034439264149	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d7ad1713cc5c6fb5
+1571	2109	7381034441918780	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libgame.so	30c1e05449dd4873
+77	632	7381200699344070	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	aa7e0229d2a9983b
+633	1218	7381200703888655	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libswappywrapper.so	d4072bec6de57e6e
+58	1690	7381200709757275	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	163f1101a676ef6
+66	1758	7381200710498601	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	190eae79869f0534
+14	1857	7381200710837763	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ad3d2d0cd9d1139b
+41	1868	7381200711648224	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9ecd25d59521e43e
+32	1902	7381200712037139	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	3a9fff0dc9475e48
+49	2094	7381200713951586	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d7ad1713cc5c6fb5
+24	2178	7381200714809781	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5ebc37dfc3e5e827
+2178	2501	7381200716981440	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libgame.so	30c1e05449dd4873

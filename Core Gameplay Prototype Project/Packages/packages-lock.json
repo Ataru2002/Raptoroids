@@ -108,6 +108,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.adaptiveperformance": {
+      "version": "5.1.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.profiling.core": "1.0.2"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.addressables": {
       "version": "1.21.18",
       "depth": 1,
@@ -210,6 +219,13 @@
       "dependencies": {
         "com.unity.modules.physics": "1.0.0"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.profiling.core": {
+      "version": "1.0.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.scriptablebuildpipeline": {

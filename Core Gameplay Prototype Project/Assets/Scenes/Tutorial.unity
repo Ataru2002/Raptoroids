@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Notice at the grey bar on the left, it represents your ability cooldown.
+  m_text: Notice the gray bar on the left - it represents your ability cooldown.
     When the bar fills up you can activate the ability again.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -2368,8 +2368,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Well Done! You are free to strafe anywhere on the screen.  Each raptoroid
-    has a unique ability that can be activated by <b>double tapping</b>!
+  m_text: "Nice! You are free to strafe anywhere on the screen.  \n\nAlso, each Raptoroid
+    has a unique ability that can be activated by <b>double tapping</b>!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -3286,8 +3286,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Here is the insect scum. While moving you will automatically shoot. Align
-    your raptoroid with the enemy to destroy them.
+  m_text: Here comes one of them no-good insect mutants! While moving, the Raptoroid
+    will automatically shoot. Align your Raptoroid with the enemy to destroy them.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -4520,9 +4520,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to the tutorial! This tutorial will teach you all the basics you
-    need to squash the insect scums. First, try dragging left, right, top, and down
-    to collect the gems.
+  m_text: Let's learn how to pilot a Raptoroid! First, try dragging left, right,
+    up, and down to collect the gems.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
@@ -4557,7 +4556,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
