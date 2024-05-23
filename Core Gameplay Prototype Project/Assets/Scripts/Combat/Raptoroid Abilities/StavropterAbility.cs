@@ -13,8 +13,6 @@ public class StavropterAbility : RaptoroidAbility
 
     private float sideGunTimer = 0f;
 
-    public bool sideGunPermanent = false;
-
     public void activateSideGun(){
         print("Side Gun Activated");
         if(!sideGunActive && cooldownTimer <= 0){
@@ -24,18 +22,15 @@ public class StavropterAbility : RaptoroidAbility
                 bullet.SetActive(true);
             }
             cooldownTimer = cooldown;
-            if(!sideGunPermanent){
-                sideGunTimer = sideGunDuration;
-            }
+            sideGunTimer = sideGunDuration;
         }
     } 
 
     protected override void UpdateAbilityDuration(){
-        if(sideGunActive && !sideGunPermanent){
-            sideGunTimer -= Time.deltaTime;
-            if(sideGunTimer <= 0f){
-                DeactivateAbility();
-            }
+        sideGunTimer -= Time.deltaTime;
+        if (sideGunTimer <= 0f)
+        {
+            DeactivateAbility();
         }
     }
 
@@ -46,6 +41,5 @@ public class StavropterAbility : RaptoroidAbility
         foreach(GameObject bullet in sideGunBulletSpawn){
                 bullet.SetActive(false);
         }
-
     }
 }

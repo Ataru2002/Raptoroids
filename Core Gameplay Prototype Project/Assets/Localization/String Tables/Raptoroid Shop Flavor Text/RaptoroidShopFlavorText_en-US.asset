@@ -23,6 +23,11 @@ MonoBehaviour:
       each of its wings.
     m_Metadata:
       m_Items: []
+  - m_Id: 584677332082688
+    m_Localized: A nimble Raptoroid. Can go into overdrive to increase attack and
+      move speeds.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

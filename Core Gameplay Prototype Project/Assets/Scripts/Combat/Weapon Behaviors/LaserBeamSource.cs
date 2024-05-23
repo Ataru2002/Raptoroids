@@ -22,6 +22,11 @@ public class LaserBeamSource : Weapon
     // Start is called before the first frame update
     void Start()
     {
+        if (laserTickTime == 0)
+        {
+            laserTickTime = 1f / fireRate;
+        }
+
         timeSinceLastTick = laserTickTime;
         
         LayerMask mask = isPlayer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");

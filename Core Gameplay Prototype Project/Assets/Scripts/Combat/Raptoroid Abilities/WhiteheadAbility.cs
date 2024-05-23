@@ -67,7 +67,6 @@ public class WhiteheadAbility : RaptoroidAbility
     protected override void UpdateCooldownHUD()
     {
         base.UpdateCooldownHUD();
-        print(cooldownTimer);
         if (cooldownTimer <= 0 && onShieldCDFull != null)
         {
             print("On Shield CD Full has listeners");

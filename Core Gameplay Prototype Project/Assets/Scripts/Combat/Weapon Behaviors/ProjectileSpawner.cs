@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ProjectileSpawner : Weapon
 {
-    [SerializeField] float fireRate;
     [SerializeField] float firstShotDelay;
     [SerializeField] ShotType shotType;
 
@@ -91,7 +90,7 @@ public class ProjectileSpawner : Weapon
     public void AssociateWeaponData(WeaponData weaponData)
     {
         shotType = weaponData.shotType;
-        fireRate = weaponData.fireRate;
+        SetFireRate(weaponData.fireRate);
 
         if (shotType == ShotType.Cone)
         {
