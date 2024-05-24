@@ -20,7 +20,6 @@ public class ProjectileSpawner : Weapon
 
     Action shoot;
 
-    float shotInterval;
     float timestamp;
     float timeOfNextShot = 0;
 
@@ -31,9 +30,9 @@ public class ProjectileSpawner : Weapon
     }
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        shotInterval = 1f / fireRate;
+        base.Start();
         ResetShotTimer();
     }
 
@@ -121,7 +120,7 @@ public class ProjectileSpawner : Weapon
 
         shoot();
 
-        timeOfNextShot = Time.time + shotInterval;
+        timeOfNextShot = Time.time + 1f / effectiveFireRate;
     }
 
     GameObject BaseProjectile()

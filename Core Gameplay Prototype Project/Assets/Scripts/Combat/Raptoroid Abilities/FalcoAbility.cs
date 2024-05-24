@@ -6,6 +6,8 @@ using UnityEngine;
 public class FalcoAbility : RaptoroidAbility
 {
     Collider2D collision;
+    SpriteRenderer sprite;
+
     [SerializeField] GameObject afterImageOriginal;
 
     [SerializeField] float overdriveDuration;
@@ -17,6 +19,7 @@ public class FalcoAbility : RaptoroidAbility
     void Awake()
     {
         collision = GetComponent<Collider2D>();
+        sprite = GetComponent<SpriteRenderer>();
         overdriveTimer = overdriveDuration;
     }
 
@@ -26,16 +29,22 @@ public class FalcoAbility : RaptoroidAbility
         {
             inOverdrive = true;
             collision.enabled = false;
+            overdriveTimer = overdriveDuration;
             afterImageSpawn = StartCoroutine(SpawnAfterImage());
+            sprite.color = Color.red;
+            BroadcastMessage("FireRateBoost", 3f, SendMessageOptions.DontRequireReceiver);
         }
     }
 
     protected override void UpdateAbilityDuration()
     {
-        overdriveTimer -= Time.deltaTime;
-        if (overdriveTimer <= 0)
+        if (inOverdrive)
         {
-            DeactivateAbility();
+            overdriveTimer -= Time.deltaTime;
+            if (overdriveTimer <= 0)
+            {
+                DeactivateAbility();
+            }
         }
     }
 
@@ -44,6 +53,8 @@ public class FalcoAbility : RaptoroidAbility
         inOverdrive = false;
         collision.enabled = true;
         StopCoroutine(afterImageSpawn);
+        sprite.color = Color.white;
+        BroadcastMessage("ResetFireRate", SendMessageOptions.DontRequireReceiver);
     }
 
     IEnumerator SpawnAfterImage()

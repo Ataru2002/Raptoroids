@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FalcoAfterImage : MonoBehaviour
 {
-    const float maxLifetime = 1.2f;
+    const float maxLifetime = 0.8f;
     float lifetime = maxLifetime;
     SpriteRenderer sprite;
 

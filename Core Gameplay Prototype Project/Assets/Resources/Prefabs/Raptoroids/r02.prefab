@@ -4846,6 +4846,7 @@ GameObject:
   - component: {fileID: 3275017834772844810}
   - component: {fileID: 256641272611225467}
   - component: {fileID: 514816332975612332}
+  - component: {fileID: 4526415013065761720}
   m_Layer: 6
   m_Name: r02
   m_TagString: Player
@@ -4999,7 +5000,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleTap:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4526415013065761720}
+        m_TargetAssemblyTypeName: FalcoAbility, Assembly-CSharp
+        m_MethodName: ActivateAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &514816332975612332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5012,9 +5025,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ac40cf349941045a2897afeb479d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
   impactParticles: {fileID: 0}
   hills: {fileID: 0}
+--- !u!114 &4526415013065761720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442410451283973695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e069fe8bfbf3c74fb36a6c73ef15e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 10
+  afterImageOriginal: {fileID: 2096068884157885386, guid: c385d8088c355b942a208834ca2bce7f, type: 3}
+  overdriveDuration: 3
 --- !u!1 &8058161023988990806
 GameObject:
   m_ObjectHideFlags: 0
