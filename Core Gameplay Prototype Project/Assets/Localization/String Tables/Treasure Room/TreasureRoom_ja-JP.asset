@@ -16,16 +16,22 @@ MonoBehaviour:
     m_Code: ja-JP
   m_SharedData: {fileID: 11400000, guid: 849db9ed5a33ee047a088c7b88f0a6d2, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 559649781421441102
   m_TableData:
   - m_Id: 13940809728
     m_Localized: "\u30C8\u30EC\u30B8\u30E3\u30FC\u30B2\u30C3\u30C8 !"
     m_Metadata:
       m_Items: []
-  - m_Id: 37558935552
-    m_Localized: "\u7D9A\u3051\u308B"
+  - m_Id: 20258110449901568
+    m_Localized: "\u96C6\u3081\u305FG: {gemsCollected}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 559649781421441102
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 559649781421441102
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e02fe5a4f84700

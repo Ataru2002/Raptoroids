@@ -5,7 +5,8 @@ using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
-
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 public class TreasureStageManager : MonoBehaviour
 {
@@ -22,7 +23,6 @@ public class TreasureStageManager : MonoBehaviour
     [SerializeField] float timeLimit = 10;
     float currentTime = 0;
 
-    public string[] scriptsToDisable;
     GameObject rewardSummaryPrefab;
 
     GameObject[] playerPrefabs;
@@ -47,8 +47,7 @@ public class TreasureStageManager : MonoBehaviour
 
     void Start()
     {
-        int raptoroidID = PlayerPrefs.HasKey("EquippedRaptoroid") ? PlayerPrefs.GetInt("EquippedRaptoroid") : 0;
-        GameObject player = Instantiate(playerPrefabs[raptoroidID]);
+        GameObject player = Instantiate(playerPrefabs[GameManager.Instance.EquippedRaptoroid]);
         player.transform.position = playerSpawnPoint.position;
 
         player.GetComponent<DoubleTapDetector>().enabled = false;
@@ -115,7 +114,13 @@ public class TreasureStageManager : MonoBehaviour
         GameObject reward = Instantiate(rewardSummaryPrefab);
         reward.transform.SetParent(winScreenSummaryBox);
         reward.transform.localScale = Vector3.one;
-        reward.GetComponentInChildren<TextMeshProUGUI>().text = gemsCollectedInStage.ToString();
+
+        LocalizeStringEvent rewardLocalizeEvent = reward.GetComponentInChildren<LocalizeStringEvent>();
+        rewardLocalizeEvent.StringReference.Add("gemsCollected", new IntVariable { Value = gemsCollectedInStage });
+        rewardLocalizeEvent.SetTable("TreasureRoom");
+        rewardLocalizeEvent.SetEntry("TotalDisplay");
+        rewardLocalizeEvent.RefreshString();
+
         AdvanceRun();
         GameManager.Instance.CollectGems(gemsCollectedInStage);
     }

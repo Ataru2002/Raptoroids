@@ -7,14 +7,20 @@ public class IntroductionBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     public static event Action onIntroduction;
+    [SerializeField] float moveTimeRequired = 2f;
+    float moveTime = 0;
 
-
-    private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "Player"){
-            print("collision working");
-            onIntroduction?.Invoke();
-            Destroy(gameObject);
+    private void Update()
+    {
+        if (Input.mousePositionDelta != Vector3.zero)
+        {
+            moveTime += Time.deltaTime;
         }
-        
+
+        if (moveTime >= moveTimeRequired)
+        {
+            onIntroduction?.Invoke();
+            this.enabled = false;
+        }
     }
 }

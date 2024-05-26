@@ -7,6 +7,7 @@ using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using TMPro;
 using GameAnalyticsSDK;
+using UnityEngine.Localization.Components;
 
 public class MapManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class MapManager : MonoBehaviour
 
     const int mapWidth = 5;
     const int mapHeight = 4;
-    const int mapCount = 3;
+    int mapCount = 3;
 
     Sprite[] bossNodeSprites;
 
@@ -43,6 +44,12 @@ public class MapManager : MonoBehaviour
     [SerializeField] GameObject actionStagePrompt;
     [SerializeField] TextMeshProUGUI enemyCountText;
 
+    [SerializeField] GameObject tutorialMessageBox;
+    [SerializeField] GameObject gemHighlighterVeil;
+    [SerializeField] GameObject mapButtonsContainer;
+    [SerializeField] GameObject backButton;
+    [SerializeField] LocalizeStringEvent tutorialMessageLocalizeEvent;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -60,6 +67,28 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         drawnLinePool = new ObjectPool<GameObject>(MakeLine, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolLine, true, mapWidth * mapHeight);
+
+        mapCount = GameManager.Instance.tutorialMode ? 1 : 3;
+
+        if (GameManager.Instance.tutorialMode)
+        {
+            if (GameManager.Instance.MapTier == 0)
+            {
+                tutorialMessageBox.SetActive(true);
+            }
+            else if (!GameManager.Instance.tutorialGemMessageDisplayed && GameManager.Instance.GetCurrentGems() != 0)
+            {
+                tutorialMessageBox.SetActive(true);
+                gemHighlighterVeil.SetActive(true);
+                tutorialMessageLocalizeEvent.SetEntry("GemCollected1");
+                tutorialMessageLocalizeEvent.RefreshString();
+                GameManager.Instance.tutorialGemMessageDisplayed = true;
+                Time.timeScale = 0;
+            }
+        }
+
+        mapButtonsContainer.SetActive(!GameManager.Instance.tutorialMode);
+        backButton.SetActive(!GameManager.Instance.tutorialMode);
 
         maps = GameManager.Instance.GetMaps();
         nodeGroupTransform = GetComponentInChildren<GridLayoutGroup>().GetComponent<RectTransform>();
@@ -115,9 +144,8 @@ public class MapManager : MonoBehaviour
         for (int m = 0; m < maps.Length; m++)
         {
             Map currentMap = new Map(mapWidth, mapHeight);
-            currentMap.Populate(Random.Range(mapWidth - 1, mapWidth + 1));
-            print(selectableBosses[m]);
-            currentMap.SetBossID(selectableBosses[m]);
+            currentMap.Populate(Random.Range(mapWidth, 2 * mapWidth + 1));
+            currentMap.SetBossID(GameManager.Instance.tutorialMode ? 0 : selectableBosses[m]);
             maps[m] = currentMap;
         }
 
@@ -160,7 +188,7 @@ public class MapManager : MonoBehaviour
 
         if (selectedNodeType == MapNodeType.Treasure)
         {
-            GameManager.Instance.MarkNodeVisited(selectedNode);
+            GameManager.Instance.SelectNode(selectedNode);
             GoToTreasureRoom();
         }
         else
@@ -179,6 +207,11 @@ public class MapManager : MonoBehaviour
     {
         actionStagePrompt.SetActive(nodeIndex >= 0);
 
+        if (GameManager.Instance.tutorialMode && GameManager.Instance.MapTier == 0)
+        {
+            DisplayPromptTutorial();
+        }
+
         if (nodeIndex < 0)
         {
             return;
@@ -196,6 +229,11 @@ public class MapManager : MonoBehaviour
         enemyCountText.text = enemyCount.ToString();
     }
 
+    void DisplayPromptTutorial()
+    {
+        tutorialMessageLocalizeEvent.SetEntry("NodeSelected");
+    }
+
     public void GoToBoss()
     {
         GameManager.Instance.BossID = maps[GameManager.Instance.MapIndex].GetBossID();
@@ -204,8 +242,17 @@ public class MapManager : MonoBehaviour
 
     public void GoToAction()
     {
-        GameManager.Instance.MarkNodeVisited(selectedNode);
-        SceneManager.LoadScene("CombatStagePrototype", LoadSceneMode.Single);
+        GameManager.Instance.SelectNode(selectedNode);
+
+        if (GameManager.Instance.tutorialMode && GameManager.Instance.MapTier == 0)
+        {
+            SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadScene("CombatStagePrototype", LoadSceneMode.Single);
+        }
+        
         ButtonSFXPlayer.Instance.PlaySFX("ToAction");
     }
 
@@ -340,6 +387,7 @@ public class MapManager : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public enum MapNodeType
 {
     None,
@@ -347,13 +395,19 @@ public enum MapNodeType
     Treasure
 }
 
-public class Map
+[System.Serializable]
+public class Map : ISerializationCallbackReceiver
 {
     MapNode[,] mapNodes = null;
-    int bossID = 0;
 
-    int width;
-    int height;
+    // NodeRow array to help Unity serialize the map
+    [SerializeReference]
+    public NodeRow[] nodeRows;
+
+    public int bossID = 0;
+
+    public int width;
+    public int height;
 
     // Construct an empty map of the specified size
     public Map(int mapWidth, int mapHeight)
@@ -363,7 +417,7 @@ public class Map
         {
             for (int x = 0; x < mapWidth; x++)
             {
-                mapNodes[y, x] = new MapNode();
+                mapNodes[y, x] = new MapNode(x, y);
             }
         }
 
@@ -373,22 +427,9 @@ public class Map
 
     public void Populate(int seeds)
     {
-        // Range code acquired from https://stackoverflow.com/questions/10681882/create-c-sharp-int-with-value-as-0-1-2-3-length
-        int[] slotNumbers = Enumerable.Range(0, width).ToArray();
-
-        // Shuffle slot numbers
-        for (int s = slotNumbers.Length - 1; s > 0; s--)
-        {
-            int t = Random.Range(0, s + 1);
-
-            int temp = slotNumbers[s];
-            slotNumbers[s] = slotNumbers[t];
-            slotNumbers[t] = temp;
-        }
-
         for (int i = 0; i < seeds; i++)
         {
-            int x = slotNumbers[i % width];
+            int x = Random.Range(0, width);
             int y = 0;
             MapNode previous = null;
 
@@ -428,22 +469,95 @@ public class Map
     {
         return mapNodes;
     }
+
+    #region SERIALIZATION
+    public void OnBeforeSerialize()
+    {
+        nodeRows = new NodeRow[height];
+
+        for (int y = 0; y < height; y++)
+        {
+            MapNode[] rowEntries = new MapNode[width];
+            for (int x = 0; x < width; x++)
+            {
+                rowEntries[x] = mapNodes[y, x];
+            }
+
+            NodeRow row = new(rowEntries);
+            nodeRows[y] = row;
+        }
+    }
+
+    public void OnAfterDeserialize()
+    {
+        mapNodes = new MapNode[height, width];
+
+        // First pass - deserialize the nodes
+        for (int y = 0; y < height; y++)
+        {
+            MapNode[] rowEntries = nodeRows[y].entries;
+            for (int x = 0; x < width; x++)
+            {
+                mapNodes[y, x] = rowEntries[x];
+            }
+        }
+
+        // Second pass - reconnect the nodes
+        foreach (MapNode node in mapNodes)
+        {
+            for (int i = 0; i < node.nextNodeCount; i++)
+            {
+                int nextX = node.nextXCoords[i];
+                int nextY = node.nextYCoords[i];
+
+                node.AddLink(mapNodes[nextY, nextX]);
+            }
+        }
+    }
+    #endregion
 }
 
-public class MapNode
+[System.Serializable]
+public class NodeRow
 {
-    MapNodeType type;
-    EnemyFormation[] nodeEnemies = null;
-    Vector2 positionOffset;
-    List<MapNode> nextNodes;
+    [SerializeReference]
+    public MapNode[] entries;
+
+    public NodeRow(MapNode[] nodes)
+    {
+        entries = nodes;
+    }
+}
+
+[System.Serializable]
+public class MapNode : ISerializationCallbackReceiver
+{
+    
+    public int xCoord;
+    public List<int> nextXCoords;
+
+    public int yCoord;
+    public List<int> nextYCoords;
+
+    // Used to provide a count for when the map is deserialized
+    public int nextNodeCount;
+
+    public MapNodeType type;
+    public EnemyFormation[] nodeEnemies = null;
+    public Vector2 positionOffset;
+
+    [SerializeReference]
+    List<MapNode> nextNodes = new List<MapNode>();
 
     public Vector2 absolutePosition;
 
-    public MapNode()
+    public MapNode(int xCoord, int yCoord)
     {
         type = MapNodeType.None;
         positionOffset = Vector2.zero;
         nextNodes = new List<MapNode>();
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
     }
 
     public void Randomize(int nodeTier)
@@ -495,4 +609,29 @@ public class MapNode
     {
         return type == MapNodeType.None;
     }
+
+    #region SERIALIZATION
+    public void OnBeforeSerialize()
+    {
+        if (nextNodes == null)
+        {
+            return;
+        }
+
+        nextNodeCount = nextNodes.Count;
+        nextXCoords = new List<int>();
+        nextYCoords = new List<int>();
+
+        foreach (MapNode node in nextNodes)
+        {
+            nextXCoords.Add(node.xCoord);
+            nextYCoords.Add(node.yCoord);
+        }
+    }
+
+    public void OnAfterDeserialize()
+    {
+        
+    }
+    #endregion
 }

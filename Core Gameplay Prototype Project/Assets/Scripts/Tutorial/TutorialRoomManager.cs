@@ -47,6 +47,7 @@ public class TutorialRoomManager : MonoBehaviour
             enemyHitParticles = new LinkedPool<GameObject>(MakeEnemyParticles, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
         }
     }
+
     void Start()
     {
         PlayerPrefs.SetInt("TutorialComplete", 0);
@@ -113,14 +114,11 @@ public class TutorialRoomManager : MonoBehaviour
     }
 
     private void IntroductionOver(){
-        boxCollided += 1;
-        if(boxCollided == 4){
-            introduction.SetActive(false);
-            transition1.SetActive(true);
-            boxCollided = 0;
-            IntroductionBehaviour.onIntroduction -= IntroductionOver;
-            WhiteheadAbility.onShieldActivated += Transition1Over;
-        }
+        introduction.SetActive(false);
+        transition1.SetActive(true);
+        
+        IntroductionBehaviour.onIntroduction -= IntroductionOver;
+        WhiteheadAbility.onShieldActivated += Transition1Over;
     }
 
     private void Transition1Over(){
@@ -154,17 +152,16 @@ public class TutorialRoomManager : MonoBehaviour
     }
 
     IEnumerator endTutorial(float seconds){
-        GameAnalytics.NewDesignEvent("Tutorial:Complete");
-        PlayerPrefs.SetInt("TutorialComplete", 1);
         yield return new WaitForSeconds(seconds);
         transition4.SetActive(false);
         winScreen.SetActive(true);
         Time.timeScale = 0;
     }
 
-    public void toMainMenu(){
+    public void toMap(){
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        GameManager.Instance.AdvanceMapProgress();
+        SceneManager.LoadScene("MapSelection");
     }
 
     public void OnPlayerDefeated(){

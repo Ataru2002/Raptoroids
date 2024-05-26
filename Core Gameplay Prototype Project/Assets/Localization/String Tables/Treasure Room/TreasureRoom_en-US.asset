@@ -16,16 +16,22 @@ MonoBehaviour:
     m_Code: en-US
   m_SharedData: {fileID: 11400000, guid: 849db9ed5a33ee047a088c7b88f0a6d2, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 559649781421441101
   m_TableData:
   - m_Id: 13940809728
     m_Localized: Treasure Acquired!
     m_Metadata:
       m_Items: []
-  - m_Id: 37558935552
-    m_Localized: Continue
+  - m_Id: 20258110449901568
+    m_Localized: 'Gems collected: {gemsCollected}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 559649781421441101
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 559649781421441101
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e02fe5a4f84700

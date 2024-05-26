@@ -11,10 +11,19 @@ public class GemSpawner : MonoBehaviour
     [SerializeField] float spawnY = 5f;
     [SerializeField] float[] gemSpawnIntervals = {0.25f, 0.5f, 1f};
     [SerializeField] DropTableEntry<GemProjectileData>[] gemData;
-
     
     void Start()
     {
+        // Assume [Diamond, Emerald, Ruby, Sapphire] for weight shifting
+        int modifier = Mathf.Clamp(GameManager.Instance.EnemiesSinceLastTreasureRoom, 0, 50);
+
+        gemData[0].weight += 0.02f * modifier;
+        gemData[1].weight += 0.01f * modifier;
+        gemData[2].weight += 0.01f * modifier;
+        gemData[3].weight -= 0.04f * modifier;
+
+        GameManager.Instance.EnemiesSinceLastTreasureRoom = 0;
+
         StartCoroutine(spawnGems());
     }
 

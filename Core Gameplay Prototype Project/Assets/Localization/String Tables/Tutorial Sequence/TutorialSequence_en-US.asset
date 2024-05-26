@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: TutorialSequence_en-US
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 4188fecb64a0bb94d8de8ace48570ed7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 13211000832
+    m_Localized: "Just in time for your first mission in the Raptoroids squad, new
+      recruit! \n\nLet's begin by choosing a node from the top row!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84518363136
+    m_Localized: Check the number of mutants in the node for this stage of the mission.
+      If you're ready, let's begin!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087510667264
+    m_Localized: Let's learn how to pilot a Raptoroid! First, try dragging left,
+      right, up, and down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1149460537344
+    m_Localized: Now let's see what your Raptoroid can do. <b>Double tap</b> to activate
+      its special ability!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1173292572672
+    m_Localized: Notice the gray bar on the left - it represents your ability cooldown.
+      When the bar fills up you can activate the ability again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1203520921600
+    m_Localized: Here comes that no-good insect mutant! While moving, the Raptoroid
+      will automatically shoot. Align your Raptoroid with the enemy to destroy them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1988895956992
+    m_Localized: You have defeated your first enemy! Not bad for a rookie! But we
+      must keep going, for the target of the mission still awaits elimination. Let's
+      keep moving!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2352688914432
+    m_Localized: 'Seems you have collected some Gems! They can be traded in for a
+      new Raptoroid or weapon at the shop after your mission.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3277021241344
+    m_Localized: Be careful, however. If your Raptoroid is destroyed before you take
+      down the boss mutant, you'll lose a cut from what you've collected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3583545171968
+    m_Localized: Nicely done! There aren't many who can take down a boss on their
+      first run. You must be something else!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327214674468864
+    m_Localized: Not too bad. We all start somewhere. As long as you don't give up,
+      there's always a 'next time!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 330801597112320
+    m_Localized: "You found a treasure room! No mutants here, so here's your chance
+      to catch some gems! \n\nThe more mutants you kill before entering, the better
+      the odds of getting more valuable gems!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358598281519104
+    m_Localized: Tap to continue
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

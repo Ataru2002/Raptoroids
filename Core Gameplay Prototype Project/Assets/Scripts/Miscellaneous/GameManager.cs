@@ -1,6 +1,8 @@
 using GameAnalyticsSDK;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
@@ -12,29 +14,56 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     public QuestGetter quests;
 
+    public bool tutorialMode = false;
+    public bool tutorialGemMessageDisplayed = false;
+    public bool tutorialTreasureRoomMessageDisplayed = false;
+
+    SaveData playerData = null;
+    const string saveFileName = "raptoroidssave.dat";
+    string saveFilePath;
+
     [SerializeField] LocaleIdentifier[] gameLocales;
 
-    int pendingGems = 0;
-    int totalGems = 0;
-
-    Map[] generatedMaps = null;
-    int mapIndex = 0;
-    int currentMapTier = 0;
-    List<MapNode> visitedNodes = new List<MapNode>();
-
-    const int totalShips = 2;
+    const int totalShips = 3;
     const int totalGuns = 2;
-    List<byte> availableShips;
-    List<byte> availableGuns;
 
+    #region PERSISTENT_DATA
+    // TODO: if there is time, replace the following getters with references to the corresponding variable in playerData
+    int PendingGems { get { return playerData.pendingGems; } set { playerData.pendingGems = value; } }
+    int TotalGems { get { return playerData.totalGems; } set { playerData.totalGems = value; } }
+    public int EnemiesSinceLastTreasureRoom { get { return playerData.enemiesKilledSinceLastTreasureRoom; } set { playerData.enemiesKilledSinceLastTreasureRoom = value; } }
+
+    Map[] GeneratedMaps { get { return playerData.generatedMaps; } set { playerData.generatedMaps = value; } }
+    
+    public int MapIndex
+    {
+        get { return playerData.mapIndex; }
+        set { playerData.mapIndex = value; }
+    }
+
+    public int MapTier { get { return playerData.currentMapTier; } private set { playerData.currentMapTier = value; } }
+
+    public List<MapNode> VisitedNodes { get { return playerData.visitedNodes; } }
+
+    List<byte> AvailableRaptoroids { get { return playerData.ownedRaptoroids; } }
+
+    List<byte> AvailableGuns { get { return playerData.ownedWeapons; } }
+
+    public int EquippedRaptoroid { get { return playerData.equippedRaptoroid; } private set { playerData.equippedRaptoroid = value; } }
+    public int EquippedWeapon { get { return playerData.equippedWeapon; } private set { playerData.equippedWeapon = value; } }
+
+    int Score { get { return playerData.score; } set { playerData.score = value; } }
+    int HiScore { get { return playerData.hiScore; } set { playerData.hiScore = value; } }
+    #endregion
+
+    MapNode selectedNode = null;
     EnemyFormation[] selectedStageFormations;
 
-    int score;
-    int hiScore;
     public bool HighScoreChanged { get; private set; } = false;
 
     public int BossID { get; set; } = 0;
 
+    // For analytics data regarding gems
     MissionGemsContactPoint gemsContactPoint;
 
     private void Awake()
@@ -49,27 +78,35 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
 
-            // TODO: load from save file instead
-            int shipVectorBytes = totalShips / 8 + 1;
-            availableShips = new List<byte>();
-            for (int s = 0; s < shipVectorBytes; s++)
+            saveFilePath = Application.persistentDataPath + $"/{saveFileName}";
+            if (File.Exists(saveFilePath))
             {
-                availableShips.Add(0);
+                string saveFileString = File.ReadAllText(saveFilePath);
+                playerData = JsonUtility.FromJson<SaveData>(saveFileString);
+            }
+            else
+            {
+                playerData = new SaveData();
+            }
+
+            int shipVectorBytes = totalShips / 8 + 1;
+            while (AvailableRaptoroids.Count < shipVectorBytes)
+            {
+                AvailableRaptoroids.Add(0);
             }
             UnlockItem(ItemType.Raptoroid, 0);
             
             int gunVectorBytes = totalGuns / 8 + 1;
-            availableGuns = new List<byte>();
-            for (int g = 0; g < gunVectorBytes; g++)
+            while (AvailableGuns.Count < gunVectorBytes)
             {
-                availableGuns.Add(0);
+                AvailableGuns.Add(0);
             }
             UnlockItem(ItemType.Weapon, 0);
 
             // Remove these after playtesting - ensures that the loadout is reset to default
             // between sessions
-            PlayerPrefs.SetInt("EquippedRaptoroid", 0);
-            PlayerPrefs.SetInt("EquippedWeapon", 0);
+            //PlayerPrefs.SetInt("EquippedRaptoroid", 0);
+            //PlayerPrefs.SetInt("EquippedWeapon", 0);
 
             if (!PlayerPrefs.HasKey("LocaleIntID"))
             {
@@ -82,6 +119,7 @@ public class GameManager : MonoBehaviour
             EnemySpawner.LoadEnemyFormations();
         }
     }
+
     private void Start()
     {
         LoadingDataStart("Quest 2");
@@ -132,20 +170,16 @@ public class GameManager : MonoBehaviour
     public Map[] GetMaps()
     {
         // Return existing maps. If none exists, generate new maps.
-        if (generatedMaps == null)
+        if (GeneratedMaps == null || GeneratedMaps.Length == 0)
         {
             // Assume the maps will be generated for the first time in the maps scene.
-            generatedMaps = MapManager.Instance.GenerateMaps();
+            GeneratedMaps = MapManager.Instance.GenerateMaps();
+
+            // Save the generated maps
+            SaveGame();
         }
-        return generatedMaps;
+        return GeneratedMaps;
     }
-
-    public int MapIndex { 
-        get { return mapIndex; }
-        set { mapIndex = value; }
-    }
-
-    public int MapTier { get { return currentMapTier; } }
 
     public void ClearStageFormations()
     {
@@ -164,60 +198,67 @@ public class GameManager : MonoBehaviour
 
     public void AdvanceMapProgress()
     {
-        currentMapTier++;
+        MarkSelectedNodeVisited();
+        MapTier++;
+        SaveGame();
     }
 
     // The following function is included for the purpose of cheats
     public void SetMapTier(int val)
     {
-        currentMapTier = val;
+        MapTier = val;
     }
 
-    public void MarkNodeVisited(MapNode node)
+    public void SelectNode(MapNode node)
     {
-        visitedNodes.Add(node);
+        selectedNode = node;
+    }
+
+    public void MarkSelectedNodeVisited()
+    {
+        VisitedNodes.Add(selectedNode);
     }
 
     public MapNode LastVisitedNode
     {
-        get { return visitedNodes.Count > 0 ? visitedNodes[visitedNodes.Count - 1] : null; }
+        get { return VisitedNodes.Count > 0 ? VisitedNodes[VisitedNodes.Count - 1] : null; }
     }
 
     public void ClearMapInfo()
     {
-        generatedMaps = null;
-        mapIndex = 0;
-        currentMapTier = 0;
-        visitedNodes.Clear();
+        GeneratedMaps = null;
+        MapIndex = 0;
+        MapTier = 0;
+        VisitedNodes.Clear();
     }
     #endregion
 
     #region GEMS
     public void CollectGems(int gemAmount)
     {
-        pendingGems += gemAmount;
+        PendingGems += gemAmount;
     }
 
     public int GetCurrentGems()
     {
-        return pendingGems;
+        return PendingGems;
     }
 
     public void CommitCollectedGems(float modifier)
     {
-        totalGems += Mathf.CeilToInt(modifier * pendingGems);
-        pendingGems = 0;
+        TotalGems += Mathf.CeilToInt(modifier * PendingGems);
+        PendingGems = 0;
         SendGemAnalyticsData();
     }
 
     public int GetTotalGems()
     {
-        return totalGems;
+        return TotalGems;
     }
 
     public int GetCurrentScore()
     {
-        return score;
+        return Score;
     }
 
     public void UpdateGemSourceData(GemSources gemSource, int delta)
@@ -243,14 +284,15 @@ public class GameManager : MonoBehaviour
         int bitVectorKey = purchasedItem.itemNumber / 8;
         int bitIndex = purchasedItem.itemNumber % 8;
 
-        List<byte> targetList = purchasedItem.itemType == ItemType.Weapon ? availableGuns : availableShips;
+        List<byte> targetList = purchasedItem.itemType == ItemType.Weapon ? AvailableGuns : AvailableRaptoroids;
         
         byte bitMask = (byte)(1 << bitIndex);
         targetList[bitVectorKey] |= bitMask;
 
-        totalGems -= purchasedItem.gemCost;
+        TotalGems -= purchasedItem.gemCost;
 
         GameAnalytics.NewResourceEvent(GAResourceFlowType.Sink, "Gem", purchasedItem.gemCost, purchasedItem.itemType.ToString(), purchasedItem.itemNumber.ToString());
+        SaveGame();
     }
     #endregion
 
@@ -262,11 +304,11 @@ public class GameManager : MonoBehaviour
 
         if (type == ItemType.Weapon)
         {
-            availableGuns[arrayIndex] |= (byte)(1 << bitIndex);
+            AvailableGuns[arrayIndex] |= (byte)(1 << bitIndex);
         }
         else
         {
-            availableShips[arrayIndex] |= (byte)(1 << bitIndex);
+            AvailableRaptoroids[arrayIndex] |= (byte)(1 << bitIndex);
         }
     }
 
@@ -277,25 +319,23 @@ public class GameManager : MonoBehaviour
 
         if (type == ItemType.Weapon)
         {
-            return (availableGuns[arrayIndex] & (1 << bitIndex)) != 0;
+            return (AvailableGuns[arrayIndex] & (1 << bitIndex)) != 0;
         }
         else
         {
-            return (availableShips[arrayIndex] & (1 << bitIndex)) != 0;
+            return (AvailableRaptoroids[arrayIndex] & (1 << bitIndex)) != 0;
         }
     }
 
     public void EquipItem(ItemType type, int itemNumber)
     {
-        // TODO: use some other form of serialization
-        // to make it harder for the player to manipulate the data illegitimately
         if (type == ItemType.Weapon)
         {
-            PlayerPrefs.SetInt("EquippedWeapon", itemNumber);
+            EquippedWeapon = itemNumber;
         }
         else if (type == ItemType.Raptoroid)
         {
-            PlayerPrefs.SetInt("EquippedRaptoroid", itemNumber);
+            EquippedRaptoroid = itemNumber;
         }
     }
     #endregion
@@ -303,24 +343,61 @@ public class GameManager : MonoBehaviour
     #region SCORE
     public void ResetScore()
     {
-        score = 0;
+        Score = 0;
         HighScoreChanged = false;
     }
 
     public void AddScore(int val)
     {
-        score += val;
+        Score += val;
         
-        if (score > hiScore)
+        if (Score > HiScore)
         {
             HighScoreChanged = true;
-            hiScore = score;
+            HiScore = Score;
         }
     }
 
     public int GetHighScore()
     {
-        return hiScore;
+        return HiScore;
     }
     #endregion
+
+    #region UTILITIES
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ScreenCapture.CaptureScreenshot($"ScreenCap{DateTime.Now.Ticks}.png");
+        }
+    }
+
+    public void SaveGame()
+    {
+        string saveString = JsonUtility.ToJson(playerData, true);
+        File.WriteAllText(saveFilePath, saveString);
+    }
+    #endregion
+}
+
+[Serializable]
+public class SaveData
+{
+    public int pendingGems = 0;
+    public int totalGems = 0;
+    public int score = 0;
+    public int hiScore = 0;
+    public int enemiesKilledSinceLastTreasureRoom;
+
+    public int equippedRaptoroid = 0;
+    public int equippedWeapon = 0;
+
+    public List<byte> ownedRaptoroids = new List<byte>();
+    public List<byte> ownedWeapons = new List<byte>();
+
+    public Map[] generatedMaps = null;
+    public int mapIndex;
+    public int currentMapTier = 0;
+    public List<MapNode> visitedNodes = new List<MapNode>();
 }

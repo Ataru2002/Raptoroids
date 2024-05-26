@@ -15,13 +15,13 @@ public class DoubleTapDetector : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            float sinceLastClick = Time.time - lastClickTime;
+            float sinceLastClick = Time.unscaledTime - lastClickTime;
 
             if (sinceLastClick <= doubleClickWindow)
             {
                 doubleTap.Invoke();
             }
-            lastClickTime = Time.time;
+            lastClickTime = Time.unscaledTime;
         }
     }
 }

@@ -39,6 +39,10 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] GameObject runEndScoreCanvas;
     [SerializeField] TextMeshProUGUI runEndScoreText;
     [SerializeField] GameObject newHiScoreNotice;
+
+    [SerializeField] GameObject tutorialEndScreen;
+    [SerializeField] LocalizeStringEvent tutorialEndTextLocalizeEvent;
+
     EnemySpawner enemySpawner;
 
     const float bossHealthBarWidth = 400f;
@@ -115,11 +119,10 @@ public class CombatStageManager : MonoBehaviour
         enemySpawner = GetComponent<EnemySpawner>();
         enemyKillRequirement = enemySpawner.GetEnemyCount();
 
-        int raptoroidID = PlayerPrefs.HasKey("EquippedRaptoroid") ? PlayerPrefs.GetInt("EquippedRaptoroid") : 0;
-        playerObject = Instantiate(playerPrefabs[raptoroidID]);
+        playerObject = Instantiate(playerPrefabs[GameManager.Instance.EquippedRaptoroid]);
         playerObject.transform.position = playerSpawnPoint.position;
 
-        int gunID = PlayerPrefs.HasKey("EquippedWeapon") ? PlayerPrefs.GetInt("EquippedWeapon") : 0;
+        int gunID = GameManager.Instance.EquippedWeapon;
         playerObject.GetComponentInChildren<ProjectileSpawner>().AssociateWeaponData(weaponDataBank[gunID]);
 
         if (isBossStage)
@@ -389,6 +392,13 @@ public class CombatStageManager : MonoBehaviour
             netGemEvent.SetEntry("FinalGemCount");
 
             GameManager.Instance.SetGemPenaltyData(Mathf.FloorToInt(0.2f * grossGems));
+
+            if (GameManager.Instance.tutorialMode)
+            {
+                tutorialEndScreen.SetActive(true);
+                tutorialEndTextLocalizeEvent.SetEntry("TutorialLose");
+                tutorialEndTextLocalizeEvent.RefreshString();
+            }
         }
     }
 
@@ -407,6 +417,13 @@ public class CombatStageManager : MonoBehaviour
             runEndScoreCanvas.SetActive(true);
             runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
             newHiScoreNotice.SetActive(GameManager.Instance.HighScoreChanged);
+
+            if (GameManager.Instance.tutorialMode)
+            {
+                tutorialEndScreen.SetActive(true);
+                tutorialEndTextLocalizeEvent.SetEntry("TutorialWin");
+                tutorialEndTextLocalizeEvent.RefreshString();
+            }
         }
         else
         {
@@ -461,12 +478,20 @@ public class CombatStageManager : MonoBehaviour
             }
         }
 
+        if (GameManager.Instance.tutorialMode)
+        {
+            GameManager.Instance.tutorialMode = false;
+            GameAnalytics.NewDesignEvent("Tutorial:Complete");
+            PlayerPrefs.SetInt("TutorialComplete", 1);
+        }
+
         GameManager.Instance.ClearMapInfo();
         GameManager.Instance.ResetScore();
 
-        // TODO: possibly handle multipliers in Game Manager instead
         float multiplier = playerWon ? 1f : 0.8f;
         GameManager.Instance.CommitCollectedGems(multiplier);
+
+        GameManager.Instance.SaveGame();
     }
 
     public void GoToMainMenu()

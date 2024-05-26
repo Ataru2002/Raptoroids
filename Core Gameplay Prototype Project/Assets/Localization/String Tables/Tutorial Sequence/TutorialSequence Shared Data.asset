@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: TutorialSequence Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: TutorialSequence
+  m_TableCollectionNameGuidString: 4188fecb64a0bb94d8de8ace48570ed7
+  m_Entries:
+  - m_Id: 13211000832
+    m_Key: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84518363136
+    m_Key: NodeSelected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087510667264
+    m_Key: CombatStage1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1149460537344
+    m_Key: CombatStage2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1173292572672
+    m_Key: CombatStage3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1203520921600
+    m_Key: CombatStage4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1988895956992
+    m_Key: CombatStage5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2352688914432
+    m_Key: GemCollected1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3277021241344
+    m_Key: GemCollected2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3583545171968
+    m_Key: TutorialWin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327214674468864
+    m_Key: TutorialLose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 330801597112320
+    m_Key: TreasureRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358598281519104
+    m_Key: TapPrompt
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 559649781421441091
+  references:
+    version: 2
+    RefIds:
+    - rid: 559649781421441091
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1716588253306

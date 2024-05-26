@@ -18,7 +18,8 @@ public class TextCrawlBehaviour : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("TutorialComplete") || PlayerPrefs.GetInt("TutorialComplete") == 0)
         {
-            targetScene = "Tutorial";
+            GameManager.Instance.tutorialMode = true;
+            targetScene = "MapSelection";
         }
 
         mainMenuLoadOp = SceneManager.LoadSceneAsync(targetScene);

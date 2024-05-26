@@ -10,11 +10,6 @@ public class MainMenuRaptoroidControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("EquippedRaptoroid"))
-        {
-            PlayerPrefs.SetInt("EquippedRaptoroid", 0);
-        }
-
         RefreshRaptoroid();
     }
 
@@ -25,7 +20,7 @@ public class MainMenuRaptoroidControl : MonoBehaviour
 
     void RefreshRaptoroid()
     {
-        int raptoroidID = PlayerPrefs.GetInt("EquippedRaptoroid");
+        int raptoroidID = GameManager.Instance.EquippedRaptoroid;
         raptoroidRenderer.sprite = raptoroidSprites[raptoroidID];
     }
 }
