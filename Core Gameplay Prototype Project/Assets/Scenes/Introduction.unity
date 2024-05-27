@@ -764,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<align=center><size=40>Raptoroids Strike Back</size></align>
+  m_text: '<align=center><size=40>Enter Raptoroids</size></align>
 
 
     <size=20>On
@@ -775,7 +775,7 @@ MonoBehaviour:
 
 
     The mutant insects must be stopped before all the planet''s precious
-    natural resources are spent. You, will pilot the Raptoroid to cull these insects
+    natural resources are spent. You will pilot the Raptoroid to cull these insects
     and make them bug out. Best of luck on the battlefield, Raptoroid.</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
