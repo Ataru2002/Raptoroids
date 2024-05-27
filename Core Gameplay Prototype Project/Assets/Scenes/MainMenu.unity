@@ -2421,6 +2421,11 @@ MonoBehaviour:
   itemPrefab: {fileID: 903565578097934963, guid: 6fafedd28e20fa541afb0639edd6ef4e, type: 3}
   raptoroidDisplayRow: {fileID: 1416892932}
   weaponDisplayRow: {fileID: 1709874040}
+  infoDisplayBox: {fileID: 1857410680}
+  itemImage: {fileID: 1342406169}
+  itemNickname: {fileID: 820009751}
+  itemCodename: {fileID: 20416121}
+  flavorText: {fileID: 1554600442}
 --- !u!1 &175737723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2647,7 +2652,7 @@ GameObject:
   - component: {fileID: 204508068}
   - component: {fileID: 204508067}
   m_Layer: 5
-  m_Name: Price
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5485,8 +5490,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1858715989}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+      - m_Target: {fileID: 170413337}
+        m_TargetAssemblyTypeName: LoadoutManager, Assembly-CSharp
         m_MethodName: HideItemInfo
         m_Mode: 1
         m_Arguments:
@@ -10637,9 +10642,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1858715989}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: PurchaseSelectedItem
+      - m_Target: {fileID: 170413337}
+        m_TargetAssemblyTypeName: LoadoutManager, Assembly-CSharp
+        m_MethodName: EquipDisplayedItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14973,8 +14978,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 20}
-  m_SizeDelta: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1927437360
 MonoBehaviour:
@@ -14990,9 +14995,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:001db28c202a64a4cb3622e70bffd385
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 144220086272
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -15063,8 +15068,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

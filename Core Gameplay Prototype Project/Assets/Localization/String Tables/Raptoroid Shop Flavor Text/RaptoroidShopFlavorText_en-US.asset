@@ -28,6 +28,10 @@ MonoBehaviour:
       move speeds.
     m_Metadata:
       m_Items: []
+  - m_Id: 2055729677590528
+    m_Localized: Standard-issue Raptoroid. Can deploy a shield to protect itself.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

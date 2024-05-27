@@ -22,6 +22,10 @@ MonoBehaviour:
     m_Localized: A simple shotgun type weapon. Fires 3 shots in a fairly wide cone.
     m_Metadata:
       m_Items: []
+  - m_Id: 2053297039990784
+    m_Localized: A simple projectile launcher.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

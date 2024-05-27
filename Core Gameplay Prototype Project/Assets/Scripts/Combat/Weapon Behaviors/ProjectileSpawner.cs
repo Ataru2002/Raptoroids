@@ -70,8 +70,12 @@ public class ProjectileSpawner : Weapon
             if(CombatStageManager.Instance != null){
                 spawnProjectile = CombatStageManager.Instance.GetPlayerProjectile;
             }
-            else{
+            else if (TutorialRoomManager.Instance != null) {
                 spawnProjectile = TutorialRoomManager.Instance.GetPlayerProjectile;
+            }
+            else
+            {
+                enabled = false;
             }
         }
         else

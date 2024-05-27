@@ -18,5 +18,4 @@ MonoBehaviour:
   itemNickname: Whitehead
   itemSprite: {fileID: 21300000, guid: 77bac1a0433acca43831144223b17d78, type: 3}
   gemCost: 0
-  flavorText: Standard issue Raptoroid. Comes with a Shield Deployer to protect against
-    enemy fire.
+  flavorText: r00

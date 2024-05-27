@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
+using UnityEngine.UI;
 
 public class LoadoutManager : MonoBehaviour
 {
@@ -13,6 +16,13 @@ public class LoadoutManager : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     [SerializeField] RectTransform raptoroidDisplayRow;
     [SerializeField] RectTransform weaponDisplayRow;
+
+    [SerializeField] GameObject infoDisplayBox;
+    [SerializeField] Image itemImage;
+    [SerializeField] TextMeshProUGUI itemNickname;
+    [SerializeField] TextMeshProUGUI itemCodename;
+    [SerializeField] LocalizeStringEvent flavorText;
+    ItemData selectedItem = null;
 
     const float rowHeight = 200f;
 
@@ -45,6 +55,7 @@ public class LoadoutManager : MonoBehaviour
     private void OnEnable()
     {
         BroadcastMessage("UpdateEquipButton", SendMessageOptions.DontRequireReceiver);
+        BroadcastMessage("UpdateDisplayButton", SendMessageOptions.DontRequireReceiver);
     }
 
     void Start()
@@ -86,7 +97,28 @@ public class LoadoutManager : MonoBehaviour
 
     public void DisplayItemInfo(ItemData item)
     {
-        // TODO: show equipment info
+        infoDisplayBox.SetActive(true);
+
+        itemCodename.text = item.itemCodename;
+        itemNickname.text = item.itemNickname;
+        itemImage.sprite = item.itemSprite;
+
+        flavorText.SetTable($"{item.itemType}ShopFlavorText");
+        flavorText.SetEntry(item.flavorText);
+
+        selectedItem = item;
+    }
+
+    public void HideItemInfo()
+    {
+        infoDisplayBox.SetActive(false);
+    }
+
+    public void EquipDisplayedItem()
+    {
+        GameManager.Instance.EquipItem(selectedItem.itemType, selectedItem.itemNumber);
+        BroadcastMessage("UpdateEquipButton", SendMessageOptions.DontRequireReceiver);
+        HideItemInfo();
     }
 
     public void EquipItem(ItemData item)
