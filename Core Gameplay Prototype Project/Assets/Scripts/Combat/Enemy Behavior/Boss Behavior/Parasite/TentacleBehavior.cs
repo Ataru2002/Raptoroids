@@ -100,13 +100,6 @@ public class TentacleBehavior : MonoBehaviour
     IEnumerator AttackSequence(){
         attackStarted = true;
         
-        // transform.parent = null;
-        // stateUpdate = MoveFromBody;
-        // while (distanceTraveled < bodySeparationDistance)
-        // {
-        //     yield return new WaitForEndOfFrame();
-        // }
-        
         StartCoroutine(AttackSequenceIndicator());
 
         stateUpdate = TrackPlayer;

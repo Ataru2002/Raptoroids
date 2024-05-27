@@ -35,7 +35,7 @@ public class BombBehaviour : MonoBehaviour
                     
                     ParasiteManager.Instance.SetShieldStatus(false);
                 }
-                StartCoroutine(bombVisualDelay(2));
+                transform.parent.gameObject.SetActive(false);        
             }
 
         }

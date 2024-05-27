@@ -152,9 +152,9 @@ public class LocustAttackSequence : BossBehavior
         }
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(flicker());
-        fusionBall.transform.localScale = new Vector3(2, 1.5f);
+        fusionBall.transform.localScale = new Vector3(1.5f, 1f);
         yield return new WaitForSeconds(1);
-        fusionBall.transform.localScale = new Vector3(2.5f, 2);
+        fusionBall.transform.localScale = new Vector3(2f, 1.5f);
         
         
         yield return new WaitForSeconds(2);

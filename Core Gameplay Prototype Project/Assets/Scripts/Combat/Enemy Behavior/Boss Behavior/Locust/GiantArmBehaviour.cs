@@ -114,7 +114,7 @@ public class GiantArmBehaviour : MonoBehaviour
         transform.position = originalPosition;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
         stateUpdate = null;
-        bossInvis.tryFadeIn();
+        bossInvis.tryFadeIn(false);
         yield return new WaitForSeconds(2.5f);
         attackStarted = false;
         alreadyHitPlayer = false;

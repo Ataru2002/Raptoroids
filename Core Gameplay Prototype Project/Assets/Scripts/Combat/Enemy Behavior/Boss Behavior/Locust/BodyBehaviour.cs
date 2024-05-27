@@ -16,6 +16,7 @@ public class BodyBehaviour : MonoBehaviour
     bool attackStarted = false;
     bool fadeInDone = true;
     PlayerHealth playerHealth;
+
     Color opacity;
     // Start is called before the first frame update
 
@@ -96,7 +97,8 @@ public class BodyBehaviour : MonoBehaviour
         
         stateUpdate = DoNothing;
         
-        fadingEffect.tryFadeIn();
+        fadingEffect.tryFadeIn(true);
+
         // strafeBehaviour.enabled = true;
         yield return new WaitForSeconds(1.5f);
         // strafeBehaviour.enabled = false;

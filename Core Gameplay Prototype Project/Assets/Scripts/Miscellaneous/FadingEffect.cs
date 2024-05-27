@@ -8,7 +8,7 @@ public class FadingEffect : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     BodyBehaviour body;
-
+    [SerializeField] GameObject hitBox;
     public bool fadedIn = false;
 
     // Start is called before the first frame update
@@ -19,15 +19,15 @@ public class FadingEffect : MonoBehaviour
         body = GetComponent<BodyBehaviour>();
     }
 
-    public void tryFadeIn(){
-        StartCoroutine(FadeIn());
+    public void tryFadeIn(bool activateHitBox){
+        StartCoroutine(FadeIn(activateHitBox));
     }
     public void tryFadeOut(){
         StartCoroutine(FadeOut());
     }
 
     // Update is called once per frame
-    public IEnumerator FadeIn()
+    public IEnumerator FadeIn(bool activateHitBox)
     {
         float elapsedTime = 0f;
         while (elapsedTime < fadeDuration)
@@ -38,11 +38,14 @@ public class FadingEffect : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         fadedIn = true;
+        hitBox.SetActive(activateHitBox);
         body.TryAttack();
+
     }
 
     public IEnumerator FadeOut()
     {   
+        hitBox.SetActive(false);
         fadedIn = false;
         float elapsedTime = 0f;
         while (elapsedTime < fadeDuration)
