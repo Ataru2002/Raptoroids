@@ -27,6 +27,8 @@ public class FalcoAbility : RaptoroidAbility
     {
         if (!inOverdrive && cooldownTimer <= 0)
         {
+            cooldownTimer = cooldown;
+
             inOverdrive = true;
             collision.enabled = false;
             overdriveTimer = overdriveDuration;
