@@ -44,7 +44,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1203520921600
-    m_Localized: Here comes that no-good insect mutant! While moving, the Raptoroid
+    m_Localized: Here comes that no-good insect mutant! While held, the Raptoroid
       will automatically shoot. Align your Raptoroid with the enemy to destroy them.
     m_Metadata:
       m_Items: []
