@@ -17,10 +17,12 @@ public class GemSpawner : MonoBehaviour
         // Assume [Diamond, Emerald, Ruby, Sapphire] for weight shifting
         int modifier = Mathf.Clamp(GameManager.Instance.EnemiesSinceLastTreasureRoom, 0, 50);
 
-        gemData[0].weight += 0.02f * modifier;
-        gemData[1].weight += 0.01f * modifier;
-        gemData[2].weight += 0.01f * modifier;
-        gemData[3].weight -= 0.04f * modifier;
+        gemData[0].weight += 0.002f * modifier;
+        gemData[1].weight += 0.003f * modifier;
+        gemData[2].weight += 0.005f * modifier;
+        gemData[3].weight -= 0.01f * modifier;
+
+        print($"Diamond chance: {gemData[0].weight}\nRuby chance: {gemData[1].weight}\nSapphire chance: {gemData[2].weight}\nEmerald chance: {gemData[3].weight}");
 
         GameManager.Instance.EnemiesSinceLastTreasureRoom = 0;
 

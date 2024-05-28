@@ -170,14 +170,22 @@ public class GameManager : MonoBehaviour
     public Map[] GetMaps()
     {
         // Return existing maps. If none exists, generate new maps.
-        if (GeneratedMaps == null || GeneratedMaps.Length == 0 || (!tutorialMode && GeneratedMaps.Length < 3))
+        if (GeneratedMaps == null || GeneratedMaps.Length == 0)
         {
             // Assume the maps will be generated for the first time in the maps scene.
             GeneratedMaps = MapManager.Instance.GenerateMaps();
-
-            // Save the generated maps
-            SaveGame();
         }
+
+        else if (!tutorialMode && GeneratedMaps.Length < 3)
+        {
+            // Clear out leftover data from tutorial
+            ClearMapInfo();
+
+            GeneratedMaps = MapManager.Instance.GenerateMaps();
+        }
+
+        // Save the generated maps
+        SaveGame();
         return GeneratedMaps;
     }
 
