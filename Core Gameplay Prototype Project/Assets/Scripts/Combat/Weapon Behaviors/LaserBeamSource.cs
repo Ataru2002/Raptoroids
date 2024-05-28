@@ -20,11 +20,13 @@ public class LaserBeamSource : Weapon
     }
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
+        
         if (laserTickTime == 0)
         {
-            laserTickTime = 1f / fireRate;
+            laserTickTime = 1f / effectiveFireRate;
         }
 
         timeSinceLastTick = laserTickTime;
@@ -80,5 +82,17 @@ public class LaserBeamSource : Weapon
             }
             timeSinceLastTick = 0;
         }
+    }
+
+    new public void SetFireRate(float val)
+    {
+        base.SetFireRate(val);
+        laserTickTime = 1f / effectiveFireRate;
+    }
+
+    new public void ResetFireRate()
+    {
+        base.ResetFireRate();
+        laserTickTime = 1f / effectiveFireRate;
     }
 }
