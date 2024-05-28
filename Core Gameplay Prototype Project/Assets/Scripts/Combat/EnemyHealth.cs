@@ -66,6 +66,7 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
             {
                 dead = true;
                 OnDefeat.Invoke();
+                GameManager.Instance.EnemiesSinceLastTreasureRoom += 1;
 
                 CombatStageManager.Instance.UpdateScore(pointsAwarded);
                 CombatStageManager.Instance.OnEnemyDefeated();

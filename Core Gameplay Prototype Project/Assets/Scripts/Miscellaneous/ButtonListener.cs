@@ -70,8 +70,8 @@ public class ButtonListener : MonoBehaviour
 
     public void TutorialListener()
     {
-        StartCoroutine(loadScene("HowTo"));
-        ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
+        GameManager.Instance.StartTutorial();
+        StartCoroutine(loadScene("MapSelection"));
     }
 
     public void QuestListener()

@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
         impactParticles.Emit(10);
         currentHealth -= 1;
         healthUI.UpdateHealth((float)currentHealth / maxHealth);
+
         if (currentHealth <= 0 && CombatStageManager.Instance != null)
         {
             // Decouple the particle system from this gameobject so that it may continue playing
@@ -38,7 +39,10 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
             gameObject.SetActive(false);
             CombatStageManager.Instance.OnPlayerDefeated();
         }
-        else if(currentHealth <= 0){
+        else if(currentHealth <= 0) {
+            // Decouple the particle system from this gameobject so that it may continue playing
+            impactParticles.transform.parent = null;
+            gameObject.SetActive(false);
             TutorialRoomManager.Instance.OnPlayerDefeated();
         }
     }

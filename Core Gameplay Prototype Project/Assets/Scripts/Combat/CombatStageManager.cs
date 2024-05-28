@@ -119,10 +119,11 @@ public class CombatStageManager : MonoBehaviour
         enemySpawner = GetComponent<EnemySpawner>();
         enemyKillRequirement = enemySpawner.GetEnemyCount();
 
-        playerObject = Instantiate(playerPrefabs[GameManager.Instance.EquippedRaptoroid]);
+        int raptoroidID = GameManager.Instance.tutorialMode ? 0 : GameManager.Instance.EquippedRaptoroid;
+        playerObject = Instantiate(playerPrefabs[raptoroidID]);
         playerObject.transform.position = playerSpawnPoint.position;
 
-        int gunID = GameManager.Instance.EquippedWeapon;
+        int gunID = GameManager.Instance.tutorialMode ? 0 : GameManager.Instance.EquippedWeapon;
         playerObject.GetComponentInChildren<ProjectileSpawner>().AssociateWeaponData(weaponDataBank[gunID]);
 
         if (isBossStage)

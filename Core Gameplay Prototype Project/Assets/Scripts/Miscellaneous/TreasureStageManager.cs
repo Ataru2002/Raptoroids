@@ -47,7 +47,8 @@ public class TreasureStageManager : MonoBehaviour
 
     void Start()
     {
-        GameObject player = Instantiate(playerPrefabs[GameManager.Instance.EquippedRaptoroid]);
+        int prefabID = GameManager.Instance.tutorialMode ? 0 : GameManager.Instance.EquippedRaptoroid;
+        GameObject player = Instantiate(playerPrefabs[prefabID]);
         player.transform.position = playerSpawnPoint.position;
 
         player.GetComponent<DoubleTapDetector>().enabled = false;

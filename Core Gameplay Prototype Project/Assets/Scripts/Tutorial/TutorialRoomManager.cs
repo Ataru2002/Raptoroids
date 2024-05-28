@@ -168,4 +168,10 @@ public class TutorialRoomManager : MonoBehaviour
         loseScreen.SetActive(true);
         Time.timeScale = 0;
     }
+
+    public void RetryTutorial()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
