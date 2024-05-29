@@ -17,6 +17,8 @@ public class QueenBeeBossBehavior : BossBehavior
 
     bool feeding = false;
     bool chasing = false;
+    bool chaseMessageDisplayed = false;
+    bool wingDeployDisplayed = false;
 
     Vector2 mark;
     bool markReached = false;
@@ -37,6 +39,11 @@ public class QueenBeeBossBehavior : BossBehavior
         nonLinearTransitionConditions[1][0] = EnterIdleState;
 
         stateExecute = IdleUpdate;
+    }
+
+    void Start()
+    {
+        CombatStageManager.Instance.DisplayBossHint("Take down her guards!");
     }
 
     #region TRANSITIONS
@@ -73,6 +80,12 @@ public class QueenBeeBossBehavior : BossBehavior
         if (guards.Count != 0)
         {
             return false;
+        }
+
+        if (!chaseMessageDisplayed)
+        {
+            chaseMessageDisplayed = true;
+            CombatStageManager.Instance.DisplayBossHint("Don't let her catch you -- there will be trouble if she does!");
         }
 
         stateExecute = ChaseUpdate;
@@ -240,6 +253,12 @@ public class QueenBeeBossBehavior : BossBehavior
         }
         else if (!meatShieldActive)
         {
+            if (!wingDeployDisplayed)
+            {
+                wingDeployDisplayed = true;
+                CombatStageManager.Instance.DisplayBossHint("Attack the wings while you can!");
+            }
+
             DeployWings();
             AppointMeatShield();
         }
