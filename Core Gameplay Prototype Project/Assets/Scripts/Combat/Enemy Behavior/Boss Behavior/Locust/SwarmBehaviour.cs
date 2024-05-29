@@ -9,7 +9,7 @@ public class SwarmBehaviour : MonoBehaviour
     // Start is called before the first frame update
     #region Public Variables (attack, speed, delay)
     public float attackMoveSpeed = 6f;
-    public float speed = 2f;
+    public float speed = 4f;
     public float minAttackDelay = 3f; 
     public float maxAttackDelay = 5f;
     #endregion 

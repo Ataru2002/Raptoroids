@@ -13,7 +13,7 @@ public class GiantArmBehaviour : MonoBehaviour
     bool alreadyHitPlayer = false;
     bool armDestroyed = false;
     float armDirection = -1;
-    float attackMoveSpeed = 2f;
+    float attackMoveSpeed = 6f;
     float distanceTraveled = 0;
     float bodySeparationDistance = 0.5f;
     float moveSpeed = 2;
@@ -21,7 +21,7 @@ public class GiantArmBehaviour : MonoBehaviour
     Vector2 originalPosition;
     Vector2 attackDirection;
     float timeSinceReturnStart = 0;
-    float returnTime = 3f;
+    float returnTime = 1.5f;
     int pointsAwarded = 15;
     int armHP = 10;
     BezierCurve returnCurve = null;
@@ -115,7 +115,7 @@ public class GiantArmBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
         stateUpdate = null;
         bossInvis.tryFadeIn(false);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         attackStarted = false;
         alreadyHitPlayer = false;
         distanceTraveled = 0;
