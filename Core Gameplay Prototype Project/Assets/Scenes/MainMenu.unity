@@ -16606,6 +16606,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4076634292532087240, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 70fa276f00d21f04ab4624a78cfc8476, type: 3}
+    - target: {fileID: 4076634292532087240, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 70fa276f00d21f04ab4624a78cfc8476, type: 3}
+    - target: {fileID: 5624353483360326131, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
+      propertyPath: loopClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624353483360326131, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
+      propertyPath: 'loopClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9796ed95b575514448a079a165bdb7cc, type: 3}
+    - target: {fileID: 5624353483360326131, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
+      propertyPath: 'loopClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 92bb8d7935b06ba4db8d2615cdce003d, type: 3}
+    - target: {fileID: 5624353483360326131, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
+      propertyPath: 'loopClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 01a110304219f42408b1bd867a127b9e, type: 3}
+    - target: {fileID: 5624353483360326131, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
+      propertyPath: 'loopClips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 32569b5c476fd9b4fa965184537f2e58, type: 3}
     - target: {fileID: 8764596244596154480, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
       propertyPath: m_Name
       value: BGM Player
