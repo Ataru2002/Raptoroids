@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
         
     }
 
-    public void OnBulletHit()
+    public void OnBulletHit(int damage = 1)
     {
         // Do not allow the player to hit the enemy before the enemy comes on screen.
         if (!spriteRenderer.isVisible)
@@ -41,7 +41,7 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
             return;
         }
 
-        currentHealth--;
+        currentHealth -= damage;
         NotifyUpdateHealth();
     }
 

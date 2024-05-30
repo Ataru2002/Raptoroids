@@ -23,8 +23,8 @@ public class CentipedePincerHitDetector : MonoBehaviour, IBulletHittable
         
     }
 
-    public void OnBulletHit()
+    public void OnBulletHit(int damage = 1)
     {
-        pincerBehavior.NotifyPincerHit();
+        pincerBehavior.NotifyPincerHit(damage);
     }
 }

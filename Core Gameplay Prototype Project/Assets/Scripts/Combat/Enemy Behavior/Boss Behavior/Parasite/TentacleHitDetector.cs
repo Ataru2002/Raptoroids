@@ -21,7 +21,7 @@ public class TentacleHitDetector : MonoBehaviour, IBulletHittable
         
     }
 
-    public void OnBulletHit(){
-        tentacleBehavior.NotifytentacleHit();
+    public void OnBulletHit(int damage = 1){
+        tentacleBehavior.NotifytentacleHit(damage);
     }
 }

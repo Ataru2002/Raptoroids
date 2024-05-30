@@ -72,7 +72,7 @@ public class CentipedePincerBehavior : MonoBehaviour
         inAttackSequence = false;
     }
 
-    public void NotifyPincerHit()
+    public void NotifyPincerHit(int damage)
     {
         if (destroyed)
         {
@@ -81,8 +81,8 @@ public class CentipedePincerBehavior : MonoBehaviour
 
         CombatStageManager.Instance.UpdateScore(15);
 
-        centipedeHP.TakeDamage(hpScale);
-        armHP--;
+        centipedeHP.TakeDamage(hpScale * damage);
+        armHP -= damage;
 
         if (armHP <= 0)
         {

@@ -70,12 +70,11 @@ public class TentacleBehavior : MonoBehaviour
         }
     }
 
-    public void NotifytentacleHit(){
+    public void NotifytentacleHit(int damage){
         if(tentacleDestroyed){
             return;
         }
         if(vulnerable){
-            int damage = 1;
             tentacleHP -= damage;
             CombatStageManager.Instance.UpdateScore(pointsAwarded);
             parasiteHP.TakeDamage(damage);

@@ -65,15 +65,15 @@ public class CentipedeLegBehavior : MonoBehaviour
         }
     }
 
-    public void NotifyLegHit()
+    public void NotifyLegHit(int damage)
     {
         if (destroyed)
         {
             return;
         }
 
-        int damage = attackStarted ? 2 : 1;
-        legHP -= damage;
+        int multiplier = attackStarted ? 2 : 1;
+        legHP -= damage * multiplier;
         CombatStageManager.Instance.UpdateScore(pointsAwarded);
         centipedeHP.TakeDamage(damage);
 

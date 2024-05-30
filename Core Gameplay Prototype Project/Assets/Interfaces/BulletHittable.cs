@@ -1,4 +1,4 @@
 public interface IBulletHittable
 {
-    public void OnBulletHit();
+    public void OnBulletHit(int damage = 1);
 }

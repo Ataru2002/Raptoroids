@@ -17,7 +17,7 @@ public class BodyHitDetectable : MonoBehaviour, IBulletHittable
         
     }
 
-    public void OnBulletHit(){
+    public void OnBulletHit(int damage = 1){
         bodyBehaviour.NotifyBodyHit();
     }
 }

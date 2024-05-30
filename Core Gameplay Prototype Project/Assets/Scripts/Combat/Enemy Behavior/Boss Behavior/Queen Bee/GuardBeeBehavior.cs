@@ -26,9 +26,10 @@ public class GuardBeeBehavior : EnemyBehavior, IBulletHittable
         }
     }
 
-    public void OnBulletHit()
+    public void OnBulletHit(int damage = 1)
     {
-        if (--guardHealth <= 0)
+        guardHealth -= damage;
+        if (guardHealth <= 0)
         {
             boss.NotifyGuardDown(this);
             Destroy(gameObject);

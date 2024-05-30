@@ -13,7 +13,7 @@ public class BombDetectable : MonoBehaviour, IBulletHittable
     }
 
     // Update is called once per frame
-    public void OnBulletHit(){
+    public void OnBulletHit(int damage = 1){
 
         explosion.SetActive(true);
         explosionVisual.SetActive(true);

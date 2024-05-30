@@ -23,8 +23,8 @@ public class CentipedeLegHitDetector : MonoBehaviour, IBulletHittable
         
     }
 
-    public void OnBulletHit()
+    public void OnBulletHit(int damage = 1)
     {
-        legBehavior.NotifyLegHit();
+        legBehavior.NotifyLegHit(damage);
     }
 }

@@ -11,7 +11,7 @@ public class PlayerShieldDetectable : MonoBehaviour, IBulletHittable
         playerAbility = FindFirstObjectByType<WhiteheadAbility>();
     }
 
-    public void OnBulletHit(){
+    public void OnBulletHit(int damage = 1){
        
     }
 }

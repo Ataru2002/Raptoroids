@@ -34,16 +34,16 @@ public class CentipedeMandibleBehavior : MonoBehaviour, IBulletHittable
         
     }
 
-    public void OnBulletHit()
+    public void OnBulletHit(int damage = 1)
     {
         if (destroyed)
         {
             return;
         }
 
-        mandibleHP -= mandibleState;
+        mandibleHP -= mandibleState * damage;
 
-        CombatStageManager.Instance.UpdateScore(pointsAwarded * mandibleState);
+        CombatStageManager.Instance.UpdateScore(pointsAwarded * mandibleState * damage);
         centipedeHP.TakeDamage(mandibleState);
 
         if (mandibleHP <= 0)

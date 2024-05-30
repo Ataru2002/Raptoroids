@@ -17,8 +17,8 @@ public class SwarmHitDetectable : MonoBehaviour, IBulletHittable
         
     }
 
-    public void OnBulletHit(){
-        swarm.NotifySwarmHit();
+    public void OnBulletHit(int damage = 1){
+        swarm.NotifySwarmHit(damage);
     }
 
 }

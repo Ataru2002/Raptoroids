@@ -17,7 +17,7 @@ public class ArmHitDetectable : MonoBehaviour, IBulletHittable
         
     }
     
-    public void OnBulletHit(){
-        giantArm.NotifyArmHit();
+    public void OnBulletHit(int damage = 1){
+        giantArm.NotifyArmHit(damage);
     }
 }

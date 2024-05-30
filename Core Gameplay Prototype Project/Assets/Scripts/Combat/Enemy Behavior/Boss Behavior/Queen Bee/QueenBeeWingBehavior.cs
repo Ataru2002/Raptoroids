@@ -39,9 +39,9 @@ public class QueenBeeWingBehavior : MonoBehaviour, IBulletHittable
         transform.localEulerAngles = new Vector3(0, 0, angle);
     }
 
-    public void OnBulletHit()
+    public void OnBulletHit(int damage = 1)
     {
-        wingHealth--;
+        wingHealth -= damage;
         if (wingHealth <= 0 && !wingDestroyed)
         {
             wingDestroyed = true;

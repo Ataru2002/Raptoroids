@@ -66,12 +66,13 @@ public class SwarmBehaviour : MonoBehaviour
     
     #region "public funcs (communicate with other scripts)"
 
-    public void NotifySwarmHit(){
+    public void NotifySwarmHit(int damage){
+        
         if(swarmDestroyed){
             return;
         }
+
         if(isVulnerable){
-            int damage = 1;
             swarmHP -= damage;
             CombatStageManager.Instance.UpdateScore(pointsAwarded);
             combinedSwarmHP.TakeDamage(damage);

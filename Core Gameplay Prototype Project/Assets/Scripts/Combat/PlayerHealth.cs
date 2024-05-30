@@ -26,12 +26,12 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
 
     }
 
-    public void OnBulletHit()
+    public void OnBulletHit(int damage = 1)
     {
         print("Player hit by an enemy bullet!");
 
         impactParticles.Emit(10);
-        currentHealth -= 1;
+        currentHealth -= damage;
         onHit.Invoke();
         healthUI.UpdateHealth((float)currentHealth / maxHealth);
 

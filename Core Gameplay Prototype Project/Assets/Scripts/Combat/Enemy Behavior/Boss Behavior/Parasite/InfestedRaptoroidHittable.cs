@@ -17,8 +17,8 @@ public class InfestedRaptoroidHittable : MonoBehaviour, IBulletHittable
         
     }
 
-    public void OnBulletHit(){
-        enemyHealth.TakeDamage(4);
+    public void OnBulletHit(int damage = 1){
+        enemyHealth.TakeDamage(4 * damage);
         CombatStageManager.Instance.UpdateScore(pointsAwarded);
     }
 }
