@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: r03
   m_EditorClassIdentifier: 
   itemType: 0
-  itemNumber: 0
-  itemCodename: 
-  itemNickname: 
-  itemSprite: {fileID: 0}
-  gemCost: 0
-  flavorText: 
+  itemNumber: 3
+  itemCodename: AMR-03
+  itemNickname: Gryphus
+  itemSprite: {fileID: -898278811201358420, guid: 3c7f7ee18f1d354489852ddfbf555b11, type: 3}
+  gemCost: 300
+  flavorText: r03

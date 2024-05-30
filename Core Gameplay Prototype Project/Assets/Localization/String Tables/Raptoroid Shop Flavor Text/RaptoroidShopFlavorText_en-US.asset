@@ -32,6 +32,10 @@ MonoBehaviour:
     m_Localized: Standard-issue Raptoroid. Can deploy a shield to protect itself.
     m_Metadata:
       m_Items: []
+  - m_Id: 2963399339139072
+    m_Localized: A sturdy Raptoroid. The more it gets hit, the harder it hits back.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
