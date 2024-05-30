@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour, IBulletHittable
 {
@@ -10,6 +11,7 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
     PlayerHealthUI healthUI;
     [SerializeField] Hill hills;
 
+    [SerializeField] UnityEvent onHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
 
         impactParticles.Emit(10);
         currentHealth -= 1;
+        onHit.Invoke();
         healthUI.UpdateHealth((float)currentHealth / maxHealth);
 
         if (currentHealth <= 0 && CombatStageManager.Instance != null)

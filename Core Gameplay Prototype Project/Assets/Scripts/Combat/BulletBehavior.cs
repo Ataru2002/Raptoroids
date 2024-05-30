@@ -19,13 +19,19 @@ public class BulletBehavior : MonoBehaviour
     BulletDespawner despawn;
 
     bool isPlayerBullet { get { return targetType == TargetType.Enemy; } }
-
+    bool partOfPool = true;
+    bool punchThrough = false;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         if(CombatStageManager.Instance != null){
-            despawn = isPlayerBullet ? CombatStageManager.Instance.ReturnPlayerProjectile : CombatStageManager.Instance.ReturnEnemyProjectile;
+            if(partOfPool){
+                despawn = isPlayerBullet ? CombatStageManager.Instance.ReturnPlayerProjectile : CombatStageManager.Instance.ReturnEnemyProjectile;
+            }
+            else{
+                despawn = Destroy;
+            }
         }
         else{
             despawn = isPlayerBullet ? TutorialRoomManager.Instance.ReturnPlayerProjectile : TutorialRoomManager.Instance.ReturnEnemyProjectile;
@@ -69,7 +75,10 @@ public class BulletBehavior : MonoBehaviour
                 bulletHitDetector.OnBulletHit();
             }
 
-            despawn(gameObject);
+            if(!punchThrough){
+                despawn(gameObject);
+            }
+            
         }
     }
 
@@ -77,5 +86,13 @@ public class BulletBehavior : MonoBehaviour
     public void SetSpeed(float val)
     {
         speed = val;
+    }
+
+    public void AllowPunchThrough(){
+        punchThrough = true;
+    }
+
+    public void MarkNotPool(){
+        partOfPool = false;
     }
 }
