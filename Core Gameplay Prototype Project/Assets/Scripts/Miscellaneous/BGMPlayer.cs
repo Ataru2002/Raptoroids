@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class BGMPlayer : MonoBehaviour
 {
-    [SerializeField] AudioClip[] loopClips;
+    public AudioClip[] loopClips;
 
     double nextEventTime;
     int index = 0;

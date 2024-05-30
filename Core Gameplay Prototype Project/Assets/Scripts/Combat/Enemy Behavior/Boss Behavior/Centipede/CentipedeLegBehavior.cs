@@ -75,7 +75,7 @@ public class CentipedeLegBehavior : MonoBehaviour
         int multiplier = attackStarted ? 2 : 1;
         legHP -= damage * multiplier;
         CombatStageManager.Instance.UpdateScore(pointsAwarded);
-        centipedeHP.TakeDamage(damage);
+        centipedeHP.TakeDamage(damage * multiplier);
 
         if (legHP <= 0)
         {
