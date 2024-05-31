@@ -16,6 +16,10 @@ MonoBehaviour:
   itemNumber: 3
   itemCodename: AMR-03
   itemNickname: Gryphus
+<<<<<<< Updated upstream
   itemSprite: {fileID: 21300000, guid: 3c7f7ee18f1d354489852ddfbf555b11, type: 3}
+=======
+  itemSprite: {fileID: -898278811201358420, guid: 3c7f7ee18f1d354489852ddfbf555b11, type: 3}
+>>>>>>> Stashed changes
   gemCost: 300
   flavorText: r03

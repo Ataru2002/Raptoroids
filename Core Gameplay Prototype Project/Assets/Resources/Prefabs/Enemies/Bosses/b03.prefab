@@ -1898,7 +1898,6 @@ GameObject:
   - component: {fileID: 5269690849002221875}
   - component: {fileID: 7373542880474931722}
   - component: {fileID: 2082272948896072239}
-  - component: {fileID: 5328513523830429467}
   - component: {fileID: 6279002962544051443}
   m_Layer: 0
   m_Name: Giant Locust Body
@@ -1990,7 +1989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08aa59c2efecdd044b22560de80c3e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 0.5
+  fadeDuration: 0.25
   hitBox: {fileID: 4296901533732918576}
   fadedIn: 0
 --- !u!114 &5269690849002221875
@@ -2049,30 +2048,6 @@ MonoBehaviour:
   trackPlayer: 0
   timeToFinalPosition: 0
   defaultWeapon: {fileID: 0}
---- !u!114 &5328513523830429467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4837543120846033885}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8f0ce217e19a64bae93491cae08ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strafeCycleTime: 1
-  invertStrafe: 0
-  publicInvertStrafe: 0
-  strafeDistance: 1
-  strafePauseDurationAverage: 0
-  strafePauseDurationMaxDelta: 0
-  OnStrafeStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStrafeEnd:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &6279002962544051443
 BoxCollider2D:
   m_ObjectHideFlags: 0
