@@ -185,6 +185,11 @@ public class LocustAttackSequence : BossBehavior
         CombatStageManager.Instance.DisplayBossHint("Destroy the swarm!");
         firstHintDisplayed = true;
     }
-    
+
     #endregion
+
+    private void OnDestroy()
+    {
+        SwarmBehaviour.onFusionComplete -= spawnGiantBoss;
+    }
 }
