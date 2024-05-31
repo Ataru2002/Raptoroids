@@ -1,21 +1,21 @@
 # ninja log v5
-117	639	7387641358356987	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	aa7e0229d2a9983b
-24	3154	7387641384203835	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5ebc37dfc3e5e827
-47	2311	7387641374586470	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	163f1101a676ef6
-640	1191	7387641363495097	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libswappywrapper.so	d4072bec6de57e6e
-33	2621	7387641378811003	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	3a9fff0dc9475e48
-90	2478	7387641375743606	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	190eae79869f0534
-13	2446	7387641375713681	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ad3d2d0cd9d1139b
-77	2526	7387641377508881	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9ecd25d59521e43e
-102	2997	7387641382488511	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d7ad1713cc5c6fb5
-3155	4002	7387641387145607	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libgame.so	30c1e05449dd4873
 90	517	7387931382476977	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	aa7e0229d2a9983b
+36	2388	7387931401572401	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5ebc37dfc3e5e827
 518	1547	7387931388276482	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libswappywrapper.so	d4072bec6de57e6e
 70	1690	7387931393096118	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	163f1101a676ef6
-14	1747	7387931394053919	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ad3d2d0cd9d1139b
 51	1750	7387931394452861	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	190eae79869f0534
-81	1866	7387931396035708	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9ecd25d59521e43e
 43	1950	7387931397187571	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	3a9fff0dc9475e48
+14	1747	7387931394053919	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ad3d2d0cd9d1139b
+81	1866	7387931396035708	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9ecd25d59521e43e
 60	2188	7387931399549526	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d7ad1713cc5c6fb5
-36	2388	7387931401572401	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5ebc37dfc3e5e827
 2388	2897	7387931404588704	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libgame.so	30c1e05449dd4873
+106	559	7388450529467388	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	aa7e0229d2a9983b
+560	1781	7388450536915573	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libswappywrapper.so	d4072bec6de57e6e
+79	1828	7388450542346918	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	163f1101a676ef6
+50	1881	7388450542940915	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	190eae79869f0534
+20	1916	7388450543313740	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ad3d2d0cd9d1139b
+89	1995	7388450544072336	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9ecd25d59521e43e
+28	2047	7388450544594262	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	3a9fff0dc9475e48
+37	2344	7388450547515889	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d7ad1713cc5c6fb5
+12	2494	7388450549158977	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5ebc37dfc3e5e827
+2495	2879	7388450551339743	D:/School Work/CMPM 171/Prototype Projects/Raptoroids/Core Gameplay Prototype Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2g4k606q/obj/arm64-v8a/libgame.so	30c1e05449dd4873
