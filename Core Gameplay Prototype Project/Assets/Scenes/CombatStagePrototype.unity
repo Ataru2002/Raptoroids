@@ -2233,13 +2233,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalIntro: {fileID: 0}
-  bossIntro: {fileID: 8300000, guid: b783f27200cfeef41b32cba56fe620dc, type: 3}
+  bossIntro: {fileID: 8300000, guid: 9d037720d6c04344f8351ffd9b17dd5b, type: 3}
   normalSequence: []
   bossSequence:
-  - {fileID: 8300000, guid: fee8a5f5c09a7e74ca4c16121f1105c5, type: 3}
-  - {fileID: 8300000, guid: 9f6dc9e20b732b34d83d574328276fe7, type: 3}
-  - {fileID: 8300000, guid: 05b241a83a96bef489452488c06d374e, type: 3}
-  - {fileID: 8300000, guid: c940454d0585b8d4da44ab4acdbbf9e1, type: 3}
+  - {fileID: 8300000, guid: db0103a31febf3b41b5c366d74a7a2dc, type: 3}
+  - {fileID: 8300000, guid: 6d2df0f38d4eba844b98868df686d894, type: 3}
+  - {fileID: 8300000, guid: 3db086bcc96d2e04e8e05ce9fa9be7af, type: 3}
+  - {fileID: 8300000, guid: 10d97cd42cf830440b9d9cd757073fc0, type: 3}
 --- !u!1 &807317192
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class BGMPlayer : MonoBehaviour
         double time = AudioSettings.dspTime;
         
         // Allow some time for the audio to buffer
-        if (time >= nextEventTime - 1.8f)
+        if (time >= nextEventTime - 3f)
         {
             loopSources[index].clip = loopClips[index];
             loopSources[index].PlayScheduled(nextEventTime);
