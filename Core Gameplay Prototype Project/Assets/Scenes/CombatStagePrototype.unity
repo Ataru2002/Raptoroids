@@ -6399,6 +6399,7 @@ MonoBehaviour:
   bossHealthBarRect: {fileID: 1008951163}
   scoreText: {fileID: 1081325514}
   hiScoreText: {fileID: 1420023269}
+  bgmSelector: {fileID: 779497532}
   runEndScoreCanvas: {fileID: 337880007}
   runEndScoreText: {fileID: 311143083}
   newHiScoreNotice: {fileID: 1686828529}

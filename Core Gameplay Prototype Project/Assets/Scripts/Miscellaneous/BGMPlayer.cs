@@ -6,6 +6,7 @@ using UnityEngine;
 public class BGMPlayer : MonoBehaviour
 {
     public AudioClip[] loopClips;
+    public bool looping = false;
 
     double nextEventTime;
     int index = 0;
@@ -27,15 +28,21 @@ public class BGMPlayer : MonoBehaviour
         introSource = GetComponent<AudioSource>();
         introSource.Play();
         nextEventTime = AudioSettings.dspTime + introSource.clip.length;
+        looping = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!looping)
+        {
+            return;
+        }
+
         double time = AudioSettings.dspTime;
         
         // Allow some time for the audio to buffer
-        if (time >= nextEventTime - 3f)
+        if (time >= nextEventTime - 2f)
         {
             loopSources[index].clip = loopClips[index];
             loopSources[index].PlayScheduled(nextEventTime);

@@ -11,6 +11,8 @@ public class CombatBGMSelector : MonoBehaviour
     [SerializeField] AudioClip[] normalSequence;
     [SerializeField] AudioClip[] bossSequence;
 
+    Dictionary<string, AudioClip> stageEndSounds = new Dictionary<string, AudioClip>();
+
     AudioSource introSource;
     BGMPlayer bgmPlayer;
 
@@ -22,17 +24,29 @@ public class CombatBGMSelector : MonoBehaviour
         bool isBossStage = GameManager.Instance.MapTier == 4;
         introSource.clip = isBossStage ? bossIntro : normalIntro;
         bgmPlayer.loopClips = isBossStage ? bossSequence : normalSequence;
+
+        stageEndSounds["bossWin"] = Resources.Load<AudioClip>("Music/Stage End/BossWin");
+        stageEndSounds["win"] = Resources.Load<AudioClip>("Music/Stage End/Win");
+        stageEndSounds["lose"] = Resources.Load<AudioClip>("Music/Stage End/Lose");
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void PlayEndMusic(string trackID)
     {
-        
-    }
+        AudioSource[] bgmSources = GetComponentsInChildren<AudioSource>();
+        foreach (AudioSource source in bgmSources)
+        {
+            source.Stop();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        bgmPlayer.looping = false;
+
+        if (!stageEndSounds.ContainsKey(trackID))
+        {
+            Debug.LogWarning("provided Track ID not recognized");
+            return;
+        }
+
+        introSource.clip = stageEndSounds[trackID];
+        introSource.Play();
     }
 }

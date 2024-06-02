@@ -36,6 +36,8 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI hiScoreText;
 
+    [SerializeField] CombatBGMSelector bgmSelector;
+
     [SerializeField] GameObject runEndScoreCanvas;
     [SerializeField] TextMeshProUGUI runEndScoreText;
     [SerializeField] GameObject newHiScoreNotice;
@@ -111,6 +113,7 @@ public class CombatStageManager : MonoBehaviour
     const float oakNutFallSpeed = 2f;
     const float hillSpeed = 2f;
     const float playerFreezeDuration = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -360,7 +363,9 @@ public class CombatStageManager : MonoBehaviour
         }
         else
         {
+            bgmSelector.PlayEndMusic("lose");
             loseScreen.SetActive(true);
+            
             runEndScoreCanvas.SetActive(true);
             runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
             newHiScoreNotice.SetActive(GameManager.Instance.HighScoreChanged);
@@ -414,6 +419,7 @@ public class CombatStageManager : MonoBehaviour
 
         if (isBossStage)
         {
+            bgmSelector.PlayEndMusic("bossWin");
             bossWinScreen.SetActive(true);
             runEndScoreCanvas.SetActive(true);
             runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
@@ -428,6 +434,7 @@ public class CombatStageManager : MonoBehaviour
         }
         else
         {
+            bgmSelector.PlayEndMusic("win");
             winScreen.SetActive(true);
 
             GameManager.Instance.CollectGems(gemsCollectedInStage);
@@ -464,6 +471,7 @@ public class CombatStageManager : MonoBehaviour
         }
         else
         {
+            bgmSelector.PlayEndMusic("lose");
             if (isBossStage)
             {
                 // BossID is 0-indexed for array access purposes. Add 1 to match the ID number
