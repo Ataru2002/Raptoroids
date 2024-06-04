@@ -2232,9 +2232,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574da29fcc7e4fd46a0657d1a4d47d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalIntro: {fileID: 0}
+  normalIntro: {fileID: 8300000, guid: f74f79120564de443aed7df1ff5bcdf1, type: 3}
   bossIntro: {fileID: 8300000, guid: 9d037720d6c04344f8351ffd9b17dd5b, type: 3}
-  normalSequence: []
+  normalSequence:
+  - {fileID: 8300000, guid: ef11c9f3d5c188a4ab2e25093a02ba4f, type: 3}
+  - {fileID: 8300000, guid: 9ac3540288ec99443bf4ded7b295a132, type: 3}
+  - {fileID: 8300000, guid: 6b73eb471fbce2f4684a64892dfccb0a, type: 3}
+  - {fileID: 8300000, guid: a510995d34060a744884ba7d5020d7af, type: 3}
   bossSequence:
   - {fileID: 8300000, guid: db0103a31febf3b41b5c366d74a7a2dc, type: 3}
   - {fileID: 8300000, guid: 6d2df0f38d4eba844b98868df686d894, type: 3}
