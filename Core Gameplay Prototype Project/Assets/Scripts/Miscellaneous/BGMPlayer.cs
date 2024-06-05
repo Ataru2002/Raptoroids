@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class BGMPlayer : MonoBehaviour
@@ -13,6 +14,8 @@ public class BGMPlayer : MonoBehaviour
 
     private AudioSource introSource;
     private AudioSource[] loopSources;
+
+    public UnityEvent onLoopEnd;
 
     // Start is called before the first frame update
     void Start()
@@ -44,11 +47,23 @@ public class BGMPlayer : MonoBehaviour
         // Allow some time for the audio to buffer
         if (time >= nextEventTime - 1f)
         {
+            if (index == loopClips.Length)
+            {
+                onLoopEnd.Invoke();
+            }
+
+            if (!looping)
+            {
+                return;
+            }
+
+            index = index % loopClips.Length;
+
             loopSources[index].clip = loopClips[index];
             loopSources[index].PlayScheduled(nextEventTime);
             nextEventTime += loopClips[index].length;
 
-            index = (index + 1) % loopClips.Length;
+            index++;
         }
     }
 }
