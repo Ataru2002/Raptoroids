@@ -44,6 +44,6 @@ public class Hill : MonoBehaviour
         }
         Destroy(crackingInstance);
         GameObject newHill = Instantiate(hillPrefab, crackingInstance.transform.position, Quaternion.identity);
-        Destroy(newHill, 4.0f);
+        Destroy(newHill, 3.0f);
     }
 }
