@@ -219,6 +219,12 @@ public class MapManager : MonoBehaviour
 
         selectedNode = GetNodeInfo(nodeIndex);
         int enemyCount = 0;
+
+        if (selectedNode.EnemiesMissing())
+        {
+            selectedNode.PopulateWithEnemies(GameManager.Instance.MapTier);
+        }
+
         foreach (EnemyFormation formation in selectedNode.GetEnemyFormations())
         {
             enemyCount += formation.GetEnemyCount();
@@ -573,7 +579,7 @@ public class MapNode : ISerializationCallbackReceiver
 
         if (type == MapNodeType.Combat)
         {
-            nodeEnemies = EnemySpawner.PrepareFormations(nodeTier);
+            PopulateWithEnemies(nodeTier);
         }
 
         float xOffset = Random.Range(-10.0f, 10.0f);
@@ -584,6 +590,24 @@ public class MapNode : ISerializationCallbackReceiver
     public EnemyFormation[] GetEnemyFormations()
     {
         return nodeEnemies;
+    }
+
+    public void PopulateWithEnemies(int nodeTier)
+    {
+        nodeEnemies = EnemySpawner.PrepareFormations(nodeTier);
+    }
+
+    public bool EnemiesMissing()
+    {
+        foreach (EnemyFormation formation in nodeEnemies)
+        {
+            if (formation == null)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public MapNodeType Type { get { return type; } }

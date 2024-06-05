@@ -103,11 +103,6 @@ public class GameManager : MonoBehaviour
             }
             UnlockItem(ItemType.Weapon, 0);
 
-            // Remove these after playtesting - ensures that the loadout is reset to default
-            // between sessions
-            //PlayerPrefs.SetInt("EquippedRaptoroid", 0);
-            //PlayerPrefs.SetInt("EquippedWeapon", 0);
-
             if (!PlayerPrefs.HasKey("LocaleIntID"))
             {
                 PlayerPrefs.SetInt("LocaleIntID", 0);
