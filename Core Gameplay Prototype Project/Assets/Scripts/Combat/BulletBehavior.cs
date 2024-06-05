@@ -21,6 +21,7 @@ public class BulletBehavior : MonoBehaviour
     bool isPlayerBullet { get { return targetType == TargetType.Enemy; } }
     bool partOfPool = true;
     bool punchThrough = false;
+    int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +73,7 @@ public class BulletBehavior : MonoBehaviour
             IBulletHittable bulletHitDetector = collision.GetComponent<IBulletHittable>();
             if (bulletHitDetector != null)
             {
-                bulletHitDetector.OnBulletHit();
+                bulletHitDetector.OnBulletHit(damage);
             }
 
             if(!punchThrough){
@@ -94,5 +95,9 @@ public class BulletBehavior : MonoBehaviour
 
     public void MarkNotPool(){
         partOfPool = false;
+    }
+
+    public void SetDamage(int val){
+        damage = val;
     }
 }

@@ -5017,7 +5017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193b7df191449734d9bd4248c840013f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 10
+  followSpeed: 9
   yOffset: 0.5
   snapDistance: 0.05
 --- !u!114 &6410968611477726779
@@ -5105,5 +5105,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9291a4a5cebec8468973ea0eee77662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 10
+  cooldown: 9
   prefab: {fileID: 600153113385266887, guid: a238da5ecb2e8d74387b357bba9daf96, type: 3}

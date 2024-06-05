@@ -8,7 +8,8 @@ public class CondoroidAbility : RaptoroidAbility
     int rageMeter;
     SpriteRenderer spriteRenderer;
     [SerializeField] GameObject prefab;
-
+    int totalDamage = 1;
+    const int baseDamage = 1;
     void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
@@ -22,6 +23,7 @@ public class CondoroidAbility : RaptoroidAbility
             GameObject spawnBullet = Instantiate(prefab, new Vector3(transform.position.x, transform.position.y+1, 0), Quaternion.identity);
             spawnBullet.GetComponent<BulletBehavior>().MarkNotPool();
             spawnBullet.GetComponent<BulletBehavior>().AllowPunchThrough();
+            spawnBullet.GetComponent<BulletBehavior>().SetDamage(RageConvert(3));
             cooldownTimer = cooldown;
         }
     }
@@ -39,6 +41,12 @@ public class CondoroidAbility : RaptoroidAbility
     public void RageIndicator(){
         rageMeter++;
         spriteRenderer.color = new Color(1, ((12 - 1) - rageMeter) / 11f, ((12 - 1) - rageMeter) / 11f);
+    }
+
+    private int RageConvert(int hitsToDamageConversion){
+        int additionalDamage = rageMeter / hitsToDamageConversion;
+        int totalDamage = baseDamage + additionalDamage;
+        return totalDamage; 
     }
 }
 
