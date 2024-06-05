@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: d4a7c6f82dc0144098ae271ff636dff8
+guid: 89ea62148dbd6407484f8198a4e0192c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5299090981969037907
-    second: oak_nut_0
+      213: 7482574629061247159
+    second: ground_cracking_0
+  - first:
+      213: 718037309323524162
+    second: ground_cracking_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +100,33 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oak_nut_0
+      name: ground_cracking_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1182
-        height: 1534
+        x: 6
+        y: 7
+        width: 338
+        height: 351
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +156,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: da57243e3d8d576b0800000000000000
-      internalID: -5299090981969037907
+      spriteID: 7b0cb821bf177d760800000000000000
+      internalID: 7482574629061247159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_cracking_1
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 17
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 248b4b5e02bf6f900800000000000000
+      internalID: 718037309323524162
       vertices: []
       indices: 
       edges: []
@@ -136,7 +186,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 78512be69c75f1247a6c49c3035f3da0
     internalID: 0
     vertices: []
     indices: 
@@ -144,7 +194,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      oak_nut_0: -5299090981969037907
+      ground_cracking_0: 7482574629061247159
+      ground_cracking_1: 718037309323524162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
