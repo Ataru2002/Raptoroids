@@ -14,6 +14,7 @@ public class QuestGetter : MonoBehaviour
 {
     public string ID;
     public CompQuest dscurrent;
+    public TimeReset tscurrent;
     DatabaseReference dbRef;
     public string target;
 
@@ -30,9 +31,21 @@ public class QuestGetter : MonoBehaviour
         dbRef.Child("Admin").Child(ID).SetRawJsonValueAsync(json);
     }
 
+    public void SaveDate(DateTime insert)
+    {
+        tscurrent.lastSave = insert.ToString("yyyy-MM-dd HH:mm:ss");
+        string json = JsonUtility.ToJson(tscurrent);
+        dbRef.Child("Admin").Child("TimeStamp").SetRawJsonValueAsync(json);
+    }
+
     public void LoadData(string ID)
     {
         StartCoroutine(LoadDataEnum(ID));
+    }
+
+    public void LoadDate()
+    {
+        StartCoroutine(LoadDateEnum());
     }
 
     IEnumerator LoadDataEnum(string ID)
@@ -40,7 +53,7 @@ public class QuestGetter : MonoBehaviour
         var serverData = dbRef.Child("Admin").Child(ID).GetValueAsync();
         yield return new WaitUntil(predicate: () => serverData.IsCompleted);
 
-        Debug.Log("process is complete");
+        Debug.Log("data: process is complete");
 
         DataSnapshot snapshot = serverData.Result;
         string jsonData = snapshot.GetRawJsonValue();
@@ -57,5 +70,27 @@ public class QuestGetter : MonoBehaviour
             Debug.Log("no data found");
         }
     }
-    
+
+    IEnumerator LoadDateEnum()
+    {
+        var serverData = dbRef.Child("Admin").Child("TimeStamp").GetValueAsync();
+        yield return new WaitUntil(predicate: () => serverData.IsCompleted);
+
+        Debug.Log("date: process is complete");
+
+        DataSnapshot snapshot = serverData.Result;
+        string jsonData = snapshot.GetRawJsonValue();
+
+        if (jsonData != null)
+        {
+            Debug.Log("server data found");
+
+            tscurrent = JsonUtility.FromJson<TimeReset>(jsonData);
+            Debug.Log("In QuestGetter: " + dscurrent.title + " " + dscurrent.progress + " " + dscurrent.goal);
+        }
+        else
+        {
+            Debug.Log("no data found");
+        }
+    }
 }
