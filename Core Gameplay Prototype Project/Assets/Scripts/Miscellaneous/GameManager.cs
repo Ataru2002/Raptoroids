@@ -134,6 +134,11 @@ public class GameManager : MonoBehaviour
             resetQuests("Quest 2");
             timer = 0.0f;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ScreenCapture.CaptureScreenshot($"ScreenCap{DateTime.Now.Ticks}.png");
+        }
     }
 
     public void LoadingDataStart(string ID)
@@ -415,13 +420,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region UTILITIES
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ScreenCapture.CaptureScreenshot($"ScreenCap{DateTime.Now.Ticks}.png");
-        }
-    }
 
     public void SaveGame()
     {
