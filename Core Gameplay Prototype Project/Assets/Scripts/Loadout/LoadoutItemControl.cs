@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AdaptivePerformance.VisualScripting;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
