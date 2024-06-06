@@ -1,6 +1,8 @@
 using GameAnalyticsSDK;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
@@ -37,9 +39,12 @@ public class GameManager : MonoBehaviour
 
     MissionGemsContactPoint gemsContactPoint;
 
-  
+    private float updateInterval = 5.0f; // interval in second
+    private float timer = 0.0f;
+
+
     private void Awake()
-    {   
+    {
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -85,7 +90,18 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         LoadingDataStart("Quest 2");
+        LoadingDate();
         GameAnalytics.Initialize();
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= updateInterval)
+        {
+            resetQuests("Quest 2");
+            timer = 0.0f;
+        }
     }
 
     public void LoadingDataStart(string ID)
@@ -94,11 +110,43 @@ public class GameManager : MonoBehaviour
         quests.LoadData(ID);
     }
 
-    public void updateProgress(string ID, int amount) 
+    public void LoadingDate()
+    {
+        quests = GetComponent<QuestGetter>();
+        quests.LoadDate();
+    }
+
+    public void updateProgress1(string ID, int amount) 
     {
         quests.LoadData(ID);
         quests.dscurrent.progress += amount;
         quests.SaveData(ID);
+    }
+
+    public void updateProgress2(string ID, int amount)
+    {
+        quests.LoadData(ID);
+        quests.dscurrent.progress = amount;
+        quests.SaveData(ID);
+    }
+
+
+    public void resetQuests(string ID)
+    {
+        LoadingDate();
+        DateTime lastTimeStamp;
+        DateTime currentTimeStamp;
+        lastTimeStamp = DateTime.ParseExact(quests.tscurrent.lastSave, "yyyy-MM-dd HH:mm:ss", null);
+        currentTimeStamp = DateTime.Now;
+
+        Debug.Log(quests.tscurrent.lastSave);
+
+        TimeSpan diff = currentTimeStamp - lastTimeStamp;
+        if (diff.Days >= 7)
+        {
+            updateProgress2(ID, 0);
+            quests.SaveDate(currentTimeStamp);
+        }
     }
 
     private void OnApplicationFocus(bool focus)

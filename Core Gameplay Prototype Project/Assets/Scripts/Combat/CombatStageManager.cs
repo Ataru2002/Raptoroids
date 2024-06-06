@@ -347,7 +347,7 @@ public class CombatStageManager : MonoBehaviour
 
         stageEnded = true;
         stageUI.SetActive(false);
-        GameManager.Instance.updateProgress("Quest 2", enemyKillCount);
+        GameManager.Instance.updateProgress1("Quest 2", enemyKillCount);
 
         if (playerWin)
         {
