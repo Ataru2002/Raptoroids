@@ -38,6 +38,10 @@ MonoBehaviour:
     m_Localized: Button Color
     m_Metadata:
       m_Items: []
+  - m_Id: 29392340459184128
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

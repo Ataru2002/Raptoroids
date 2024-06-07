@@ -29,6 +29,9 @@ public class BGMPlayer : MonoBehaviour
         }
 
         introSource = GetComponent<AudioSource>();
+
+        UpdateVolume();
+
         introSource.Play();
         nextEventTime = AudioSettings.dspTime + introSource.clip.length;
         looping = true;
@@ -64,6 +67,28 @@ public class BGMPlayer : MonoBehaviour
             nextEventTime += loopClips[index].length;
 
             index++;
+        }
+    }
+
+    public void UpdateVolume()
+    {
+        if (!PlayerPrefs.HasKey("bgmOn"))
+        {
+            PlayerPrefs.SetInt("bgmOn", 1);
+        }
+
+        if (!PlayerPrefs.HasKey("bgmVol"))
+        {
+            PlayerPrefs.SetFloat("bgmVol", 1);
+        }
+
+        float volume = PlayerPrefs.GetInt("bgmOn") * PlayerPrefs.GetFloat("bgmVol");
+
+        introSource.volume = volume;
+
+        foreach (AudioSource source in loopSources)
+        {
+            source.volume = volume;
         }
     }
 }

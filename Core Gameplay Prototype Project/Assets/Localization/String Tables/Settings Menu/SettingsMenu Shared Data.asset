@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: ButtonColor
     m_Metadata:
       m_Items: []
+  - m_Id: 29392340459184128
+    m_Key: Volume
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
