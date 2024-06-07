@@ -6359,11 +6359,11 @@ PrefabInstance:
     - target: {fileID: 4076634292532087240, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 6b637ca1f30ba9346876f93f4ea558d2, type: 3}
+      objectReference: {fileID: 8300000, guid: 0cfb4616be4ffec46bb9d8244428648b, type: 3}
     - target: {fileID: 4076634292532087240, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 6b637ca1f30ba9346876f93f4ea558d2, type: 3}
+      objectReference: {fileID: 8300000, guid: 0cfb4616be4ffec46bb9d8244428648b, type: 3}
     - target: {fileID: 5624353483360326131, guid: ffb70dd429038924cbde9b49cca374aa, type: 3}
       propertyPath: loopClips.Array.size
       value: 4
