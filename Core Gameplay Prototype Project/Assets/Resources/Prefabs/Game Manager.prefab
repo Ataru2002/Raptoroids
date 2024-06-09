@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2139077769050719030}
   - component: {fileID: 8988218712306365521}
   - component: {fileID: 6529287667142115864}
+  - component: {fileID: 404992574211424863}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -48,6 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quests: {fileID: 0}
+  loadTimeMeasure: {fileID: 404992574211424863}
+  tutorialMode: 0
+  tutorialGemMessageDisplayed: 0
+  tutorialTreasureRoomMessageDisplayed: 0
   gameLocales:
   - m_Code: en-US
   - m_Code: ja-JP
@@ -68,6 +73,8 @@ MonoBehaviour:
     title: 
     progress: 0
     goal: 0
+  tscurrent:
+    lastSave: 
   target: 
 --- !u!114 &8988218712306365521
 MonoBehaviour:
@@ -91,5 +98,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: feb136c073da8a544ac1543a71f699bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404992574211424863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995287531460226722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca77b1d5b8c06c479d6741c59f1e818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

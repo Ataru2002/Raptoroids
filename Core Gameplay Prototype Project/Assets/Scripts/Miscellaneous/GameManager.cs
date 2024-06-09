@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     public QuestGetter quests;
 
+    //[SerializeField] LoadTimeMeasure loadTimeMeasure;
+
     public bool tutorialMode = false;
     public bool tutorialGemMessageDisplayed = false;
     public bool tutorialTreasureRoomMessageDisplayed = false;
@@ -69,7 +71,6 @@ public class GameManager : MonoBehaviour
     private float updateInterval = 5.0f; // interval in second
     private float timer = 0.0f;
 
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -81,6 +82,8 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
+
+            //loadTimeMeasure.EnableMeasurement();
 
             saveFilePath = Application.persistentDataPath + $"/{saveFileName}";
             if (File.Exists(saveFilePath))
