@@ -48,10 +48,9 @@ public class SettingsControl : MonoBehaviour
         localeDropdown.value = PlayerPrefs.GetInt("LocaleIntID");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateLocale(int id)
     {
-        
+        GameManager.Instance.SetLocale(id);
     }
 
     public void ToggleGrayscale(bool val)
