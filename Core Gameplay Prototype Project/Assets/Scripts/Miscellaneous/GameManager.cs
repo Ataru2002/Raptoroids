@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     public QuestGetter quests;
 
-    //[SerializeField] LoadTimeMeasure loadTimeMeasure;
+    [SerializeField] LoadTimeMeasure loadTimeMeasure;
 
     public bool tutorialMode = false;
     public bool tutorialGemMessageDisplayed = false;
