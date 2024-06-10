@@ -40,7 +40,6 @@ public class WhiteheadAbility : RaptoroidAbility
     }
 
     public void activateShield() {
-        print("Ability activated");
         if(!shieldActive && cooldownTimer <= 0) {
             shieldActive = true;
             shieldObject.SetActive(true);
@@ -69,7 +68,6 @@ public class WhiteheadAbility : RaptoroidAbility
         base.UpdateCooldownHUD();
         if (cooldownTimer <= 0 && onShieldCDFull != null)
         {
-            print("On Shield CD Full has listeners");
             onShieldCDFull.Invoke();
         }
     }

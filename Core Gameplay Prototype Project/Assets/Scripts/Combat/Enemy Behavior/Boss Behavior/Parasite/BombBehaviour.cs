@@ -17,29 +17,28 @@ public class BombBehaviour : MonoBehaviour
         shieldStatusUpdate = GetComponent<ParasiteManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) {
         if(explosionRadius > 0){
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
             foreach (Collider2D hitCollider in hitColliders){
-                if(collision.tag == "Enemy"){
+                if(collision.tag == "Enemy") {
+                    // Make sure the bomb affects only the shield
+                    InfestedRaptoroidShield shieldComponent = collision.GetComponent<InfestedRaptoroidShield>();
+                    if (shieldComponent == null)
+                    {
+                        continue;
+                    }
+
                     explosionVisual.transform.localScale = new Vector3(explosionRadius, explosionRadius, 1); 
                     collision.gameObject.SetActive(false);
                     disableBombCollider();
                     
                     ParasiteManager.Instance.SetShieldStatus(false);
+                    break;
                 }
-                transform.parent.gameObject.SetActive(false);        
             }
-
-        }
-
-        
+            StartCoroutine(bombVisualDelay(0.3f));
+        }   
     }
 
     void disableBombCollider(){
@@ -55,5 +54,4 @@ public class BombBehaviour : MonoBehaviour
         yield return new WaitForSeconds(duration);
         transform.parent.gameObject.SetActive(false);
     }
-
 }

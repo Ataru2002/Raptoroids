@@ -708,6 +708,7 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  sfxSource: {fileID: 0}
 --- !u!1 &2679251445403417817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,6 +1227,7 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  sfxSource: {fileID: 0}
 --- !u!1 &5068463288301573166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1278,7 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  sfxSource: {fileID: 0}
 --- !u!1 &5071281255877401884
 GameObject:
   m_ObjectHideFlags: 0
@@ -6209,7 +6212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3227318845912037281}
   - component: {fileID: 2256965007658540401}
-  - component: {fileID: 1025395162517044910}
+  - component: {fileID: 2821052743898759641}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Enemy
@@ -6269,7 +6272,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 2
---- !u!114 &1025395162517044910
+--- !u!114 &2821052743898759641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6278,7 +6281,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5683339773515422960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8779ef8701a2394f963bb2f7ff50772, type: 3}
+  m_Script: {fileID: 11500000, guid: b0bcf758970291d45b4875bad24f471f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5907472683566842930
@@ -6575,6 +6578,7 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  sfxSource: {fileID: 0}
 --- !u!1 &6423478088403630004
 GameObject:
   m_ObjectHideFlags: 0
@@ -7196,6 +7200,7 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  sfxSource: {fileID: 0}
 --- !u!1 &9036966153460400909
 GameObject:
   m_ObjectHideFlags: 0
