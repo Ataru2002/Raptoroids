@@ -7,6 +7,11 @@ public class LoadTimeMeasure : MonoBehaviour
 {
     float stopwatch = 0;
 
+    private void Awake()
+    {
+        stopwatch = Time.realtimeSinceStartup;
+    }
+
     public void EnableMeasurement()
     {
         SceneManager.sceneUnloaded += StartWatch;
