@@ -10,8 +10,12 @@ public class SettingsControl : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown localeDropdown;
     [SerializeField] Toggle grayScaleMode;
+    
     [SerializeField] Toggle bgmToggle;
     [SerializeField] Slider bgmSlider;
+
+    [SerializeField] Toggle sfxToggle;
+    [SerializeField] Slider sfxSlider;
 
     MonochromeControl monochromeController;
 
@@ -40,6 +44,18 @@ public class SettingsControl : MonoBehaviour
             PlayerPrefs.SetFloat("bgmVol", 1);
         }
         bgmSlider.value = PlayerPrefs.GetFloat("bgmVol") * 100;
+
+        if (!PlayerPrefs.HasKey("sfxOn"))
+        {
+            PlayerPrefs.SetInt("sfxOn", 1);
+        }
+        sfxToggle.isOn = PlayerPrefs.GetInt("sfxOn") != 0;
+
+        if (!PlayerPrefs.HasKey("sfxVol"))
+        {
+            PlayerPrefs.SetFloat("sfxVol", 1);
+        }
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVol") * 100;
 
         if (!PlayerPrefs.HasKey("LocaleIntID"))
         {
@@ -80,6 +96,18 @@ public class SettingsControl : MonoBehaviour
         {
             bgmPlayer.UpdateVolume();
         }
+    }
+
+    public void ToggleSFX(bool val)
+    {
+        PlayerPrefs.SetInt("sfxOn", val ? 1 : 0);
+        ButtonSFXPlayer.Instance.UpdateVolume();
+    }
+
+    public void SetSFXVolume(float val)
+    {
+        PlayerPrefs.SetFloat("sfxVol", val / 100f);
+        ButtonSFXPlayer.Instance.UpdateVolume();
     }
 
     public void ResetTutorial()

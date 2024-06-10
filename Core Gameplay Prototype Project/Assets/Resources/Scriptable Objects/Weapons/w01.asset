@@ -16,3 +16,4 @@ MonoBehaviour:
   fireRate: 2
   projectileCount: 3
   coneAngle: 30
+  shotSound: {fileID: 8300000, guid: 3483ed52201b3014484fa3b371961f08, type: 3}

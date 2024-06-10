@@ -129,6 +129,21 @@ public class CombatStageManager : MonoBehaviour
         int gunID = GameManager.Instance.tutorialMode ? 0 : GameManager.Instance.EquippedWeapon;
         playerObject.GetComponentInChildren<ProjectileSpawner>().AssociateWeaponData(weaponDataBank[gunID]);
 
+        AudioSource playerWeaponAudioSource = playerObject.GetComponent<AudioSource>();
+        playerWeaponAudioSource.clip = weaponDataBank[gunID].shotSound;
+        
+        if (!PlayerPrefs.HasKey("sfxOn"))
+        {
+            PlayerPrefs.SetInt("sfxOn", 1);
+        }
+
+        if (!PlayerPrefs.HasKey("sfxVol"))
+        {
+            PlayerPrefs.SetFloat("sfxVol", 1);
+        }
+
+        playerWeaponAudioSource.volume = PlayerPrefs.GetInt("sfxOn") * PlayerPrefs.GetFloat("sfxVol");
+
         if (isBossStage)
         {
             enemyKillRequirement = 1;

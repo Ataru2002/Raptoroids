@@ -21,20 +21,14 @@ public class ButtonSFXPlayer : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            audioSource = GetComponent<AudioSource>();
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         sfxLibrary = new Dictionary<string, AudioClip>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PlaySFX(string key)
@@ -46,5 +40,10 @@ public class ButtonSFXPlayer : MonoBehaviour
 
         audioSource.clip = sfxLibrary[key];
         audioSource.Play();
+    }
+
+    public void UpdateVolume()
+    {
+        audioSource.volume = PlayerPrefs.GetInt("sfxOn") * PlayerPrefs.GetFloat("sfxVol");
     }
 }

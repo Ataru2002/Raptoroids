@@ -13,6 +13,8 @@ public class ProjectileSpawner : Weapon
 
     [SerializeField] float coneAngle;
 
+    [SerializeField] AudioSource sfxSource;
+
     EnemyBehavior enemyBehavior = null;
 
     delegate GameObject ProjectileSpawnFunc();
@@ -147,6 +149,10 @@ public class ProjectileSpawner : Weapon
     void SingleShot()
     {
         BaseProjectile();
+        if (sfxSource != null)
+        {
+            sfxSource.PlayOneShot(sfxSource.clip);
+        }
     }
 
     void ConeShot()
@@ -179,6 +185,11 @@ public class ProjectileSpawner : Weapon
 
             projectileA.transform.Rotate(0, 0, -angleMultiplier * i * coneAngle);
             projectileB.transform.Rotate(0, 0, angleMultiplier * i * coneAngle);
+        }
+
+        if (sfxSource != null)
+        {
+            sfxSource.PlayOneShot(sfxSource.clip);
         }
     }
     // ---

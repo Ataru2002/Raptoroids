@@ -7,4 +7,5 @@ public class WeaponData : ScriptableObject
     public float fireRate;
     public int projectileCount;
     public float coneAngle;
+    public AudioClip shotSound;
 }
