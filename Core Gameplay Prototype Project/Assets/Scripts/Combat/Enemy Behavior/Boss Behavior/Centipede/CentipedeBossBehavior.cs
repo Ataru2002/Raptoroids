@@ -42,7 +42,6 @@ public class CentipedeBossBehavior : BossBehavior
     public void UpdateHealthRatio(float val)
     {
         remainingHealthRatio = val;
-        print("Received health ratio update");
         TryTransition();
     }
 

@@ -13904,7 +13904,7 @@ MonoBehaviour:
     - m_Text: "\u65E5\u672C\u8A9E"
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Thai
+    - m_Text: "\u0E20\u0E32\u0E29\u0E32\u0E44\u0E17\u0E22"
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
