@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2507059311019493654
 Transform:
   m_ObjectHideFlags: 0
@@ -138,7 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionRadius: 2
   explosionVisual: {fileID: 2123450826412344940}
-  shieldStatusUpdate: {fileID: 0}
 --- !u!1 &2123450826412344940
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,5 +400,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e033d902e7d01bd48863115985a6c967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 734654958913615894}
-  explosionVisual: {fileID: 2123450826412344940}
+  bomb: {fileID: 612094809616385406}

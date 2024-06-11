@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BombDetectable : MonoBehaviour, IBulletHittable 
 {
-    [SerializeField] GameObject explosion;
-    [SerializeField] GameObject explosionVisual;
+    [SerializeField] BombBehaviour bomb;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +13,7 @@ public class BombDetectable : MonoBehaviour, IBulletHittable
 
     // Update is called once per frame
     public void OnBulletHit(int damage = 1){
-
-        explosion.SetActive(true);
-        explosionVisual.SetActive(true);
+        bomb.Detonate();
     }
 
     // private void OnDrawGizmos() {
