@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 782947117}
   - component: {fileID: 782947120}
   - component: {fileID: 782947121}
+  - component: {fileID: 782947122}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -710,7 +711,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782947115}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -907,6 +908,61 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &782947122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782947115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69beb381e244f92449b8c4cf954630e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjects:
+  - rid: 6502800103602126922
+  - rid: 6502800103602126924
+  references:
+    version: 2
+    RefIds:
+    - rid: 6502800103602126922
+      type: {class: TrackedUGuiGraphic, ns: UnityEngine.Localization.PropertyVariants.TrackedObjects, asm: Unity.Localization}
+      data:
+        m_Target: {fileID: 782947118}
+        m_TrackedProperties:
+          items:
+          - rid: 6502800103602126923
+        m_UpdateType: 0
+    - rid: 6502800103602126923
+      type: {class: EnumTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_HorizontalAlignment
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 8
+        - localeIdentifier:
+            m_Code: th-TH
+          value: 1
+    - rid: 6502800103602126924
+      type: {class: TrackedRectTransform, ns: UnityEngine.Localization.PropertyVariants.TrackedObjects, asm: Unity.Localization}
+      data:
+        m_Target: {fileID: 782947116}
+        m_TrackedProperties:
+          items:
+          - rid: 6502800103602126925
+    - rid: 6502800103602126925
+      type: {class: FloatTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_SizeDelta.x
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 300
+        - localeIdentifier:
+            m_Code: th-TH
+          value: 380
 --- !u!1 &1108130007
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class ButtonSFXPlayer : MonoBehaviour
     {
         if (!sfxLibrary.ContainsKey(key))
         {
-            sfxLibrary[key] = Resources.Load<AudioClip>("SFX/" + key);
+            sfxLibrary[key] = Resources.Load<AudioClip>("SFX/Scene Flow/" + key);
         }
 
         audioSource.clip = sfxLibrary[key];
