@@ -37,6 +37,8 @@ public class CentipedeBossBehavior : BossBehavior
         };
 
         stateExecute = State1Execute;
+
+        CombatStageManager.Instance.SetBossHintTable("CentipedeHints");
     }
 
     public void UpdateHealthRatio(float val)
@@ -64,7 +66,7 @@ public class CentipedeBossBehavior : BossBehavior
 
         strafeBehavior.enabled = true;
 
-        CombatStageManager.Instance.DisplayBossHint("Shoot at the claws while they're open!");
+        CombatStageManager.Instance.DisplayBossHint("hint02");
 
         return true;
     }
@@ -80,7 +82,7 @@ public class CentipedeBossBehavior : BossBehavior
 
         strafeBehavior.enabled = false;
 
-        CombatStageManager.Instance.DisplayBossHint("Strike the mandibles while they're hot!");
+        CombatStageManager.Instance.DisplayBossHint("hint03");
 
         return true;
     }
@@ -109,7 +111,7 @@ public class CentipedeBossBehavior : BossBehavior
 
     void DisplayFirstHint()
     {
-        CombatStageManager.Instance.DisplayBossHint("Break its legs before they break you!");
+        CombatStageManager.Instance.DisplayBossHint("hint01");
         firstHintDisplayed = true;
     }
 

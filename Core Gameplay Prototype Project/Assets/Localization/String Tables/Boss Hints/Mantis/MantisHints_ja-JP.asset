@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MantisHints_ja-JP
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ja-JP
+  m_SharedData: {fileID: 11400000, guid: 0f42f82e384b60f44b56ad13ef413486, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 8756649984
+    m_Localized: "\u30D0\u30C3\u30BF\u305F\u3061\u3092\u7D76\u6EC5\u3057\u308D!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2283248017408
+    m_Localized: "\u30AB\u30DE\u30AD\u30EA\u306E\u8155\u306B\u7740\u3089\u308C\u308B\u524D\u306B\u3001\u305D\u306E\u8155\u3092\u58CA\u305B!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2864347865088
+    m_Localized: "\u30AB\u30DE\u30AD\u30EA\u304C\u307E\u305F\u73FE\u308C\u308B\u3068\u3001\u30C1\u30E3\u30F3\u30B9\u3060!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

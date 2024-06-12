@@ -27,6 +27,7 @@ public class InfestedBossBehaviour : BossBehavior
 
     void Awake(){
         transitionConditions = new List<System.Func<bool>>{StateTransition1, StateTransition2, StateTransition3};
+        CombatStageManager.Instance.SetBossHintTable("ParasiteHints");
         stateExecute = State1Execute;
     }
 
@@ -80,7 +81,7 @@ public class InfestedBossBehaviour : BossBehavior
 
         ParasiteManager.Instance.SetShieldStatus(true);
 
-        CombatStageManager.Instance.DisplayBossHint("It has subsumed the Raptoroid's shield ability. Shoot the bomb to destroy it!");
+        CombatStageManager.Instance.DisplayBossHint("hint02");
 
         stateExecute = State3Execute;
 
@@ -117,7 +118,7 @@ public class InfestedBossBehaviour : BossBehavior
         trackPlayer = false;
         strafeBehavior.enabled = false;
         
-        CombatStageManager.Instance.DisplayBossHint("Destroy the tentacles!", 2);
+        CombatStageManager.Instance.DisplayBossHint("hint03", 2);
         stateExecute = State4Execute;
         return true;
     }
@@ -135,7 +136,7 @@ public class InfestedBossBehaviour : BossBehavior
     }
 
     void DisplayFirstHint(){
-        CombatStageManager.Instance.DisplayBossHint("Defeat the parasite before you become its next host!");
+        CombatStageManager.Instance.DisplayBossHint("hint01");
         firstHintDisplayed = true;
     }
     void SpawnBomb(){

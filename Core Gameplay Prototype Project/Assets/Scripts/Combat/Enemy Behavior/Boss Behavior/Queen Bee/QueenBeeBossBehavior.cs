@@ -38,12 +38,14 @@ public class QueenBeeBossBehavior : BossBehavior
         nonLinearTransitionConditions[1] = new Dictionary<int, Func<bool>>();
         nonLinearTransitionConditions[1][0] = EnterIdleState;
 
+        CombatStageManager.Instance.SetBossHintTable("QueenBeeHints");
+
         stateExecute = IdleUpdate;
     }
 
     void Start()
     {
-        CombatStageManager.Instance.DisplayBossHint("Take down her guards!");
+        CombatStageManager.Instance.DisplayBossHint("hint01");
     }
 
     #region TRANSITIONS
@@ -85,7 +87,7 @@ public class QueenBeeBossBehavior : BossBehavior
         if (!chaseMessageDisplayed)
         {
             chaseMessageDisplayed = true;
-            CombatStageManager.Instance.DisplayBossHint("Don't let her catch you -- there will be trouble if she does!");
+            CombatStageManager.Instance.DisplayBossHint("hint03");
         }
 
         stateExecute = ChaseUpdate;
@@ -231,10 +233,6 @@ public class QueenBeeBossBehavior : BossBehavior
         chasing = false;
     }
 
-    //IEnumerator ReturnSequence()
-    //{
-        
-    //}
     #endregion
 
     #region PARTS_COMMS
@@ -256,7 +254,7 @@ public class QueenBeeBossBehavior : BossBehavior
             if (!wingDeployDisplayed)
             {
                 wingDeployDisplayed = true;
-                CombatStageManager.Instance.DisplayBossHint("Attack the wings while you can!");
+                CombatStageManager.Instance.DisplayBossHint("hint02");
             }
 
             DeployWings();

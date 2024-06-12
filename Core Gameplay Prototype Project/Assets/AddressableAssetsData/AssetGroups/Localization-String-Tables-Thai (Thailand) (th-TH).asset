@@ -119,6 +119,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-th-TH
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82951a0dfb97a8444a3bdf2eff014f9a
+    m_Address: CentipedeHints_th-TH
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-th-TH
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10311d09c6d9bc34f9365f64c538097e
+    m_Address: QueenBeeHints_th-TH
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-th-TH
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5512c05bda6ac546bdcb918086d5751
+    m_Address: ParasiteHints_th-TH
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-th-TH
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03de69e09e56e81409fb091492cb5e3f
+    m_Address: MantisHints_th-TH
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-th-TH
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 80101bc332c0f164db2abaf09c2d81bc, type: 2}
   m_SchemaSet:

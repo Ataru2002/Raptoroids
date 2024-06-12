@@ -27,7 +27,9 @@ public class LocustAttackSequence : BossBehavior
             StateTransition1,
             StateTransition2
         };
-        
+
+        CombatStageManager.Instance.SetBossHintTable("MantisHints");
+
         stateExecute = StateDefaultExecute;
     }
 
@@ -54,7 +56,7 @@ public class LocustAttackSequence : BossBehavior
         if(remainingHealthRatio > 0.3f){
             return false;
         }
-        CombatStageManager.Instance.DisplayBossHint("Seize the chance when it's fully visible!");
+        CombatStageManager.Instance.DisplayBossHint("hint03");
         stateExecute = State2Execute;
         return true;
     }
@@ -137,8 +139,6 @@ public class LocustAttackSequence : BossBehavior
     }
     #endregion
 
-    
-
     void spawnGiantBoss(){
         if(spawningGiantBoss){
             return;
@@ -164,7 +164,7 @@ public class LocustAttackSequence : BossBehavior
         yield return new WaitForSeconds(2);
         fusionBall.SetActive(false);
         giantBoss.SetActive(true);
-        CombatStageManager.Instance.DisplayBossHint("Strike the arm blades before you become armless! Oh wait...");
+        CombatStageManager.Instance.DisplayBossHint("hint02");
         giantBossLeftArm.SetActive(true);
         giantBossRightArm.SetActive(true);
         spawningGiantBoss = false;
@@ -182,7 +182,7 @@ public class LocustAttackSequence : BossBehavior
     }
 
     void DisplayFirstHint(){
-        CombatStageManager.Instance.DisplayBossHint("Destroy the swarm!");
+        CombatStageManager.Instance.DisplayBossHint("hint01");
         firstHintDisplayed = true;
     }
 

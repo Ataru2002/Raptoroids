@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: QueenBeeHints
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 0bc67e8c2f8e4de4f8e6f9838bd48855, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 6d8c45b273548744980b7538cb85a5be, type: 2}
+  - {fileID: 11400000, guid: 6c261ee063edfb445bcd79cd2df319dc, type: 2}
+  - {fileID: 11400000, guid: 10311d09c6d9bc34f9365f64c538097e, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

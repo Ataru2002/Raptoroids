@@ -33,6 +33,4 @@ public class ParasiteManager : MonoBehaviour
     public void SetShieldStatus(bool status){
         bossShielded = status;
     }
-
-    
 }

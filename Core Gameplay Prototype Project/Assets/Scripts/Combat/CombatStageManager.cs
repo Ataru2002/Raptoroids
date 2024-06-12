@@ -88,7 +88,7 @@ public class CombatStageManager : MonoBehaviour
     bool stageEnded = false;
 
     [SerializeField] GameObject bossHintCanvas;
-    [SerializeField] TextMeshProUGUI hint;
+    [SerializeField] LocalizeStringEvent hint;
     [SerializeField] Image warningSign;
 
     private void Awake()
@@ -308,15 +308,23 @@ public class CombatStageManager : MonoBehaviour
         bossHealthBarRect.sizeDelta = new Vector2(bossHealthBarWidth * healthRatio, bossHealthBarHeight);
     }
 
-    public void DisplayBossHint(string msg, float duration = 3f)
+    public void SetBossHintTable(string tableName)
     {
-        StartCoroutine(BossHintDisplaySequence(msg, duration));
+        hint.SetTable(tableName);
     }
 
-    IEnumerator BossHintDisplaySequence(string msg, float duration)
+    public void DisplayBossHint(string msgKey, float duration = 3f)
+    {
+        StartCoroutine(BossHintDisplaySequence(msgKey, duration));
+    }
+
+    IEnumerator BossHintDisplaySequence(string msgKey, float duration)
     {
         bossHintCanvas.SetActive(true);
-        hint.text = msg;
+
+        hint.SetEntry(msgKey);
+        hint.RefreshString();
+
         StartCoroutine(WarningSignFlash());
         yield return new WaitForSeconds(duration);
         StopCoroutine(WarningSignFlash());
