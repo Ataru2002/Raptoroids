@@ -6569,6 +6569,7 @@ GameObject:
   - component: {fileID: 1993596591}
   - component: {fileID: 1993596590}
   - component: {fileID: 1993596589}
+  - component: {fileID: 1993596592}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -6734,6 +6735,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993596587}
   m_CullTransparentMesh: 1
+--- !u!114 &1993596592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993596587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69beb381e244f92449b8c4cf954630e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjects:
+  - rid: 6502800115235291249
+  references:
+    version: 2
+    RefIds:
+    - rid: 6502800115235291249
+      type: {class: TrackedUGuiGraphic, ns: UnityEngine.Localization.PropertyVariants.TrackedObjects, asm: Unity.Localization}
+      data:
+        m_Target: {fileID: 1993596590}
+        m_TrackedProperties:
+          items:
+          - rid: 6502800115235291250
+          - rid: 6502800115235291251
+        m_UpdateType: 0
+    - rid: 6502800115235291250
+      type: {class: FloatTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_fontSize
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 28
+        - localeIdentifier:
+            m_Code: th-TH
+          value: 24
+    - rid: 6502800115235291251
+      type: {class: FloatTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_fontSizeBase
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 28
+        - localeIdentifier:
+            m_Code: th-TH
+          value: 24
 --- !u!1 &1993857157
 GameObject:
   m_ObjectHideFlags: 0
