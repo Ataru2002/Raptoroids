@@ -3327,6 +3327,7 @@ GameObject:
   - component: {fileID: 1151744548}
   - component: {fileID: 1151744547}
   - component: {fileID: 1151744549}
+  - component: {fileID: 1151744550}
   m_Layer: 5
   m_Name: Hint Text
   m_TagString: Untagged
@@ -3373,10 +3374,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Break its legs before they break you!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
-  m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
+  m_sharedMaterial: {fileID: -4242062084963466989, guid: 87b81a00830e8314c96b582db19138ae, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3492,6 +3493,80 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1151744550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151744545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69beb381e244f92449b8c4cf954630e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjects:
+  - rid: 6502800125069361152
+  references:
+    version: 2
+    RefIds:
+    - rid: 6502800125069361152
+      type: {class: TrackedUGuiGraphic, ns: UnityEngine.Localization.PropertyVariants.TrackedObjects, asm: Unity.Localization}
+      data:
+        m_Target: {fileID: 1151744547}
+        m_TrackedProperties:
+          items:
+          - rid: 6502800125069361153
+          - rid: 6502800125069361154
+          - rid: 6502800125069361226
+          - rid: 6502800125069361227
+        m_UpdateType: 0
+    - rid: 6502800125069361153
+      type: {class: UnityObjectProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_fontAsset
+        m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
+        - localeIdentifier:
+            m_Code: th-TH
+          value: {fileID: 11400000, guid: 87b81a00830e8314c96b582db19138ae, type: 2}
+    - rid: 6502800125069361154
+      type: {class: BoolTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_hasFontAssetChanged
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 0
+        - localeIdentifier:
+            m_Code: th-TH
+          value: 0
+    - rid: 6502800125069361226
+      type: {class: FloatTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_fontSize
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 24
+        - localeIdentifier:
+            m_Code: th-TH
+          value: 32
+    - rid: 6502800125069361227
+      type: {class: FloatTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_fontSizeBase
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: 24
+        - localeIdentifier:
+            m_Code: th-TH
+          value: 32
 --- !u!1 &1155185018
 GameObject:
   m_ObjectHideFlags: 0
