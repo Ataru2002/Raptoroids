@@ -76,6 +76,9 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] GameObject oakNutPrefab;
     LinkedPool<GameObject> oakNuts;
 
+    [SerializeField] GameObject minePrefab;
+    LinkedPool<GameObject> mines;
+
     [SerializeField] GameObject hillPrefab;
     LinkedPool<GameObject> hills;
 
@@ -111,6 +114,7 @@ public class CombatStageManager : MonoBehaviour
     }
 
     const float oakNutFallSpeed = 2f;
+    const float mineSpeed = 2f;
     const float hillSpeed = 2f;
     const float playerFreezeDuration = 5f;
 
@@ -165,6 +169,9 @@ public class CombatStageManager : MonoBehaviour
         oakNuts = new LinkedPool<GameObject>(MakeOakNut, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
         StartCoroutine(StartOakNutSpawn());
 
+        mines = new LinkedPool<GameObject>(MakeMine, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
+        StartCoroutine(StartMineSpawn());
+
         hills = new LinkedPool<GameObject>(MakeHill, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
         StartCoroutine(StartHillSpawn());
         UpdateScoreDisplay();
@@ -191,6 +198,29 @@ public class CombatStageManager : MonoBehaviour
         GameObject oakNut = oakNuts.Get();
         oakNut.transform.position = new Vector3(UnityEngine.Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
         oakNut.SetActive(true);
+    }
+
+    GameObject MakeMine()
+    {
+        GameObject mine = Instantiate(minePrefab);
+        mine.SetActive(false); // Set inactive initially
+        return mine;
+    }
+
+    IEnumerator StartMineSpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10f); // Spawn mine every 10 seconds
+            SpawnMine();
+        }
+    }
+
+    void SpawnMine()
+    {
+        GameObject mine = mines.Get();
+        mine.transform.position = new Vector3(0f, 10f, 0f); // Randomize spawn position
+        mine.SetActive(true);
     }
 
     GameObject MakeHill()
