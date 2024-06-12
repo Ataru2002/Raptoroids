@@ -13,7 +13,7 @@ public class Mine : MonoBehaviour
     void Start()
     {
         // Start the coroutine to handle the delayed appearance of the cracking object
-        minePrefab.transform.localScale = new Vector3(minePrefab.transform.localScale.x / 4, minePrefab.transform.localScale.y / 4, minePrefab.transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x / 4, transform.localScale.y / 4, transform.localScale.z);
         trigger = false;
         //StartCoroutine(HandleMineExplosion());
     }
@@ -46,7 +46,11 @@ public class Mine : MonoBehaviour
         print("explosion appear");
 
         yield return new WaitForSeconds(2.0f);
-        minePrefab.SetActive(false);
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false;
+        }
 
         // Determine a random position in the bottom half of the screen horizontally
         Vector3 centerPos = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 10));
