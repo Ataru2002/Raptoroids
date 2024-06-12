@@ -195,6 +195,7 @@ public class CentipedeBossBehavior : BossBehavior
         }
         laserChargeParticles.Play();
         laserBall.gameObject.SetActive(true);
+        CombatSFXManager.PlaySoundAtLocation("LaserChargeUp", laserBall.transform.position);
 
         yield return new WaitForSeconds(0.9f);
         trackPlayer = false;
@@ -212,6 +213,7 @@ public class CentipedeBossBehavior : BossBehavior
         laserBall.gameObject.SetActive(false);
         laserFiring = true;
         headLaser.ToggleLaserBeam(true);
+        CombatSFXManager.PlaySoundAtLocation("CentipedeLaser", headLaser.transform.position);
 
         yield return new WaitForSeconds(1);
         foreach (CentipedeMandibleBehavior mandible in mandibles)

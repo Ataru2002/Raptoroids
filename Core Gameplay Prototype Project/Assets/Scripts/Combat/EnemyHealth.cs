@@ -43,6 +43,7 @@ public class EnemyHealth : MonoBehaviour, IBulletHittable
 
         currentHealth -= damage;
         NotifyUpdateHealth();
+        CombatSFXManager.PlaySoundAtLocation("EnemyHit", transform.position);
     }
 
     public void TakeDamage(int damage)

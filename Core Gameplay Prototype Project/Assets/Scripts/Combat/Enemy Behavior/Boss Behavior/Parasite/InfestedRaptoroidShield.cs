@@ -20,6 +20,6 @@ public class InfestedRaptoroidShield : MonoBehaviour, IBulletHittable
     // and do nothing else
     public void OnBulletHit(int damage = 1)
     {
-
+        CombatSFXManager.PlaySoundAtLocation("ShieldHit", transform.position);
     }
 }

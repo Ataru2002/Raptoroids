@@ -154,16 +154,19 @@ public class LocustAttackSequence : BossBehavior
                 yield return new WaitForEndOfFrame();
             }
         }
+
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(flicker());
+
         fusionBall.transform.localScale = new Vector3(1.5f, 1f);
         yield return new WaitForSeconds(1);
+
         fusionBall.transform.localScale = new Vector3(2f, 1.5f);
-        
-        
         yield return new WaitForSeconds(2);
+
         fusionBall.SetActive(false);
         giantBoss.SetActive(true);
+        CombatSFXManager.PlaySoundAtLocation("FusionBallBreak", giantBoss.transform.position);
         CombatStageManager.Instance.DisplayBossHint("hint02");
         giantBossLeftArm.SetActive(true);
         giantBossRightArm.SetActive(true);

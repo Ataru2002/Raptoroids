@@ -80,6 +80,8 @@ public class GiantArmBehaviour : MonoBehaviour
     IEnumerator boomerangAttack(){
         attackStarted = true;
 
+        CombatSFXManager.PlaySoundAtLocation("MantisArmSwoosh", transform.position);
+
         stateUpdate = MoveFromBody;
         while(distanceTraveled < bodySeparationDistance){
             yield return new WaitForEndOfFrame();

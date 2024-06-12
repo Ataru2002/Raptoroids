@@ -48,6 +48,8 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
             gameObject.SetActive(false);
             TutorialRoomManager.Instance.OnPlayerDefeated();
         }
+
+        CombatSFXManager.PlaySoundAtLocation("RaptoroidHit", transform.position);
     }
 
     public void hillCollide()

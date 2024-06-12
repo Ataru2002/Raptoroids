@@ -168,6 +168,8 @@ public class QueenBeeBossBehavior : BossBehavior
             guardBehavior.SetPath(new Vector2[] { transform.position, selectedPos });
         }
 
+        CombatSFXManager.PlaySoundAtLocation($"Pop{1 + UnityEngine.Random.Range(0, 2)}", transform.position);
+
         DeployWings();
     }
     #endregion
@@ -325,6 +327,7 @@ public class QueenBeeBossBehavior : BossBehavior
 
         if (collision.tag == "Player")
         {
+            CombatSFXManager.PlaySoundAtLocation("Crunch", transform.position);
             canSpawnGuards = true;
 
             IBulletHittable hitComponent = collision.GetComponent<IBulletHittable>();
