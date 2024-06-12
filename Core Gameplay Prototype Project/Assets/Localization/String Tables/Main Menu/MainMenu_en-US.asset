@@ -48,6 +48,10 @@ MonoBehaviour:
     m_Localized: Community Quests
     m_Metadata:
       m_Items: []
+  - m_Id: 34617872155140096
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

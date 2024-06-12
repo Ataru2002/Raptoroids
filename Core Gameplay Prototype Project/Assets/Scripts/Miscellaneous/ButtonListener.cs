@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class ButtonListener : MonoBehaviour
 {
     private GameObject[] panels;
-    private GameObject defaultMenu; 
+    private GameObject defaultMenu;
+
+    [SerializeField] GameObject creditsScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +20,6 @@ public class ButtonListener : MonoBehaviour
         }
         defaultMenu = GameObject.FindGameObjectWithTag("DefaultMenu"); 
     }
-
-    // Update is called once per frame
- 
 
     public void playListener(){
         StartCoroutine(loadScene("MapSelection"));
@@ -77,6 +77,13 @@ public class ButtonListener : MonoBehaviour
     public void QuestListener()
     {
         StartCoroutine(loadScene("Quests"));
+        ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
+    }
+
+    public void CreditsListener()
+    {
+        creditsScreen.SetActive(true);
+        defaultMenu.SetActive(false);
         ButtonSFXPlayer.Instance.PlaySFX("MenuMove");
     }
 

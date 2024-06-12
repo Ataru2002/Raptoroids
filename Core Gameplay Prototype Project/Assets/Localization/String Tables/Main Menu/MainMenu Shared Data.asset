@@ -45,6 +45,10 @@ MonoBehaviour:
     m_Key: CommunityQuests
     m_Metadata:
       m_Items: []
+  - m_Id: 34617872155140096
+    m_Key: Credits
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
