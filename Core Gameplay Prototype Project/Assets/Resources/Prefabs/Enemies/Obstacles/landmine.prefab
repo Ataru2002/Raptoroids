@@ -174,5 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7735d4215bbbef4282e73eb82085e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallSpeed: 2
   minePrefab: {fileID: 3958620561065721105}
+  trigger: 0
   explosionPrefab: {fileID: 2866940191054417059, guid: 004c8654977864b6481c238c55822f14, type: 3}
+  bulletPrefab: {fileID: 8930704053567165026, guid: ebbdadbacbb8e1c4592b5fbbf5a3fcad, type: 3}

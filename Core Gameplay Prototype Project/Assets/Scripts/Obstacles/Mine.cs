@@ -8,24 +8,15 @@ public class Mine : MonoBehaviour
     public GameObject minePrefab;
     public bool trigger = false;
     public GameObject explosionPrefab;
+    public GameObject bulletPrefab;
     private GameObject explosionInstance;
+    private GameObject bulletInstance;
 
     void Start()
     {
-        // Start the coroutine to handle the delayed appearance of the cracking object
         transform.localScale = new Vector3(transform.localScale.x / 4, transform.localScale.y / 4, transform.localScale.z);
         trigger = false;
-        //StartCoroutine(HandleMineExplosion());
     }
-
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Player")){
-    //         PlayerHealth health = other.GetComponent<PlayerHealth>();
-    //         health.OnBulletHit();
-    //         Destroy(gameObject);
-    //     }
-    // }
 
     void Update()
     {
@@ -58,15 +49,25 @@ public class Mine : MonoBehaviour
         explosionInstance = Instantiate(explosionPrefab, centerPos, Quaternion.identity);
         explosionInstance.transform.localScale = new Vector3(explosionInstance.transform.localScale.x / 2, explosionInstance.transform.localScale.y / 2, explosionInstance.transform.localScale.z);
 
-        // // Make the cracking object blink 3 times
-        // for (int i = 0; i < 3; i++)
-        // {
-        //     crackingInstance.SetActive(true);
-        //     yield return new WaitForSeconds(0.5f);
-        //     crackingInstance.SetActive(false);
-        //     yield return new WaitForSeconds(0.5f);
-        // }
+        for (int i = 0; i < 4; i++)
+        {
+            ShootBullet();
+        }
+
         yield return new WaitForSeconds(0.5f);
         Destroy(explosionInstance);
+    }
+
+    void ShootBullet()
+    {
+        // Instantiate the bullet at the current position
+        GameObject bulletInstance = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+        // Set the bullet's velocity
+        float randomAngle = Random.Range(0f, 360f);
+        bulletInstance.transform.rotation = Quaternion.Euler(0, 0, randomAngle);
+
+        // Destroy the bullet after a specified lifetime
+        //Destroy(bulletInstance, 10.0f);
     }
 }
