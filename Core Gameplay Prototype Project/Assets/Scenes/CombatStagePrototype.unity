@@ -6526,6 +6526,7 @@ MonoBehaviour:
   tutorialEndScreen: {fileID: 1429468004}
   tutorialEndTextLocalizeEvent: {fileID: 807317194}
   oakNutPrefab: {fileID: 8562175422482686477, guid: 3dcdd9673cd19b5489baa1aea070aceb, type: 3}
+  minePrefab: {fileID: 3958620561065721105, guid: aeafb026ae6af49d184e168595e7b916, type: 3}
   hillPrefab: {fileID: 411778055368168216, guid: e6cdd9c0e81e5435fa9279155fc49dcf, type: 3}
   bossHintCanvas: {fileID: 858460535}
   hint: {fileID: 1151744549}

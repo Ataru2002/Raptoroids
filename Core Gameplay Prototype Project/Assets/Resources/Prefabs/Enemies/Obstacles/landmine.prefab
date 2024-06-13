@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: -3360842560204817788}
   - component: {fileID: -3682159175398795750}
   - component: {fileID: -1751101549991109638}
+  - component: {fileID: -8327356640816994005}
+  - component: {fileID: -3558278726751910440}
   m_Layer: 0
   m_Name: landmine
   m_TagString: Obstacles
@@ -82,7 +84,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.6, y: 10.29}
+  m_Size: {x: 2.66, y: 2.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -153,11 +155,50 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.6, y: 10.29}
-    newSize: {x: 10.6, y: 10.29}
+    oldSize: {x: 2.66, y: 2.59}
+    newSize: {x: 2.66, y: 2.59}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 10.6, y: 10.29}
   m_EdgeRadius: 0
+--- !u!114 &-8327356640816994005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958620561065721105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7735d4215bbbef4282e73eb82085e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 2
+  minePrefab: {fileID: 3958620561065721105}
+  trigger: 0
+  explosionPrefab: {fileID: 2866940191054417059, guid: 004c8654977864b6481c238c55822f14, type: 3}
+  bulletPrefab: {fileID: 8930704053567165026, guid: ebbdadbacbb8e1c4592b5fbbf5a3fcad, type: 3}
+--- !u!95 &-3558278726751910440
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958620561065721105}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f96deaaa780840743837e63bf9a35e6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
