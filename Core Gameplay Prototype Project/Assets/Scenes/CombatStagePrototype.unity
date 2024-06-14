@@ -3377,7 +3377,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
-  m_sharedMaterial: {fileID: -4242062084963466989, guid: 87b81a00830e8314c96b582db19138ae, type: 2}
+  m_sharedMaterial: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3520,6 +3520,7 @@ MonoBehaviour:
           - rid: 6502800125069361154
           - rid: 6502800125069361226
           - rid: 6502800125069361227
+          - rid: 6502800159473664071
         m_UpdateType: 0
     - rid: 6502800125069361153
       type: {class: UnityObjectProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
@@ -3555,7 +3556,7 @@ MonoBehaviour:
           value: 24
         - localeIdentifier:
             m_Code: th-TH
-          value: 32
+          value: 24
     - rid: 6502800125069361227
       type: {class: FloatTrackedProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
       data:
@@ -3566,7 +3567,20 @@ MonoBehaviour:
           value: 24
         - localeIdentifier:
             m_Code: th-TH
-          value: 32
+          value: 24
+    - rid: 6502800159473664071
+      type: {class: UnityObjectProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_PropertyPath: m_sharedMaterial
+        m_TypeString: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_VariantData:
+        - localeIdentifier:
+            m_Code: en-US
+          value: {fileID: -1051387169137841457, guid: 43c732e0c51d5e14ca7f3067d75d1fcc, type: 2}
+        - localeIdentifier:
+            m_Code: th-TH
+          value: {fileID: -4242062084963466989, guid: 87b81a00830e8314c96b582db19138ae, type: 2}
 --- !u!1 &1155185018
 GameObject:
   m_ObjectHideFlags: 0

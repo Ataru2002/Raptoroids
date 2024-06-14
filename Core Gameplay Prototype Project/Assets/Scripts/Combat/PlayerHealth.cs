@@ -31,6 +31,12 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
         print("Player hit by an enemy bullet!");
 
         impactParticles.Emit(10);
+
+        if (CombatStageManager.Instance != null && CombatStageManager.Instance.stageEnded)
+        {
+            return;
+        }
+
         currentHealth -= damage;
         onHit.Invoke();
         healthUI.UpdateHealth((float)currentHealth / maxHealth);

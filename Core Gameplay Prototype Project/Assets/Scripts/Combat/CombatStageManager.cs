@@ -88,7 +88,7 @@ public class CombatStageManager : MonoBehaviour
     public Transform PlayerTransform { get { return playerObject.transform; } }
 
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
-    bool stageEnded = false;
+    public bool stageEnded { get; private set; } = false;
 
     [SerializeField] GameObject bossHintCanvas;
     [SerializeField] LocalizeStringEvent hint;
