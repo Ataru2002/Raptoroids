@@ -600,6 +600,11 @@ public class MapNode : ISerializationCallbackReceiver
 
     public bool EnemiesMissing()
     {
+        if (nodeEnemies == null)
+        {
+            return true;
+        }
+
         foreach (EnemyFormation formation in nodeEnemies)
         {
             if (formation == null)
