@@ -205,26 +205,27 @@ public class MapManager : MonoBehaviour
 
     public void ToggleActionPrompt(int nodeIndex)
     {
-        actionStagePrompt.SetActive(nodeIndex >= 0);
-
-        if (GameManager.Instance.tutorialMode && GameManager.Instance.MapTier == 0)
-        {
-            DisplayPromptTutorial();
-        }
-
         if (nodeIndex < 0)
         {
+            actionStagePrompt.SetActive(false);
             return;
         }
 
         selectedNode = GetNodeInfo(nodeIndex);
-        int enemyCount = 0;
 
         if (selectedNode.EnemiesMissing())
         {
             selectedNode.PopulateWithEnemies(GameManager.Instance.MapTier);
         }
 
+        actionStagePrompt.SetActive(true);
+
+        if (GameManager.Instance.tutorialMode && GameManager.Instance.MapTier == 0)
+        {
+            DisplayPromptTutorial();
+        }
+
+        int enemyCount = 0;
         foreach (EnemyFormation formation in selectedNode.GetEnemyFormations())
         {
             enemyCount += formation.GetEnemyCount();
