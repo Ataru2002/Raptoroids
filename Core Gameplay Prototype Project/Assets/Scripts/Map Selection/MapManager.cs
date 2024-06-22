@@ -284,6 +284,12 @@ public class MapManager : MonoBehaviour
     void DrawMap(int mapIndex)
     {
         ClearLines();
+
+        if (maps[mapIndex] == null)
+        {
+            GenerateMaps();
+        }
+
         DrawMap(maps[mapIndex]);
     }
 

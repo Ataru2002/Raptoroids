@@ -235,6 +235,26 @@ public class GameManager : MonoBehaviour
             GeneratedMaps = MapManager.Instance.GenerateMaps();
         }
 
+        // Check for missing map data. If map data went missing, generate new maps
+        else
+        {
+            bool mapMissing = false;
+            foreach (Map map in GeneratedMaps)
+            {
+                if (map == null)
+                {
+                    mapMissing = true;
+                    break;
+                }
+            }
+
+            if (mapMissing)
+            {
+                ClearMapInfo();
+                GeneratedMaps = MapManager.Instance.GenerateMaps();
+            }
+        }
+
         // Save the generated maps
         SaveGame();
         return GeneratedMaps;
