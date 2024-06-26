@@ -47,7 +47,7 @@ public class CombatStageManager : MonoBehaviour
 
     EnemySpawner enemySpawner;
 
-    const float bossHealthBarWidth = 400f;
+    const float bossHealthBarWidth = 370f;
     const float bossHealthBarHeight = 50f;
 
     const float xBounds = 4f;

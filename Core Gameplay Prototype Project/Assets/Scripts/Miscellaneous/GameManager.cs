@@ -82,9 +82,6 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
-            print($"Current game version: {Application.version}");
-
-            loadTimeMeasure.EnableMeasurement();
 
             saveFilePath = Application.persistentDataPath + $"/{saveFileName}";
             if (File.Exists(saveFilePath))
