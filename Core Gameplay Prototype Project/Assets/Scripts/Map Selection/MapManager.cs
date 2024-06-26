@@ -161,7 +161,7 @@ public class MapManager : MonoBehaviour
 
         for (int b = 0; b < mapSelectButtonTransforms.Length; b++)
         {
-            float buttonHeight = b == mapIndex ? 100 : 75;
+            float buttonHeight = b == mapIndex ? 90 : 75;
             mapSelectButtonTransforms[b].sizeDelta = new Vector2(135, buttonHeight);
         }
 
