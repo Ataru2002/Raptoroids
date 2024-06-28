@@ -9,9 +9,13 @@ public class CentipedePincerBehavior : MonoBehaviour
 
     [SerializeField] GameObject vulnerableSpot;
 
-    SpriteRenderer spriteRenderer;
+    [SerializeField] SpriteRenderer clawRenderer;
+
     [SerializeField] Sprite closedSprite;
+    [SerializeField] Material closedMaterial;
+
     [SerializeField] Sprite openSprite;
+    [SerializeField] Material openMaterial;
 
     EnemyHealth centipedeHP;
     const int hpScale = 6;
@@ -25,7 +29,6 @@ public class CentipedePincerBehavior : MonoBehaviour
     {
         circleCollider = GetComponent<CircleCollider2D>();
         projectileSpawner = GetComponentInChildren<ProjectileSpawner>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         centipedeHP = GetComponentInParent<EnemyHealth>();
     }
 
@@ -33,12 +36,6 @@ public class CentipedePincerBehavior : MonoBehaviour
     void Start()
     {
         projectileSpawner.enabled = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PlayAttackSequence()
@@ -55,7 +52,8 @@ public class CentipedePincerBehavior : MonoBehaviour
 
         circleCollider.enabled = false;
         vulnerableSpot.SetActive(true);
-        spriteRenderer.sprite = openSprite;
+        clawRenderer.sprite = openSprite;
+        clawRenderer.material = openMaterial;
         yield return new WaitForSeconds(0.6f);
 
         for (int i = 0; i < 3; i++)
@@ -67,7 +65,8 @@ public class CentipedePincerBehavior : MonoBehaviour
 
         circleCollider.enabled = true;
         vulnerableSpot.SetActive(false);
-        spriteRenderer.sprite = closedSprite;
+        clawRenderer.sprite = closedSprite;
+        clawRenderer.material = closedMaterial;
 
         inAttackSequence = false;
     }

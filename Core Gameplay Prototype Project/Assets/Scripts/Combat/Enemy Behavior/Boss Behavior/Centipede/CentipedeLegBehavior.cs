@@ -7,6 +7,10 @@ public class CentipedeLegBehavior : MonoBehaviour
 {
     Transform parentTransform;
 
+    [SerializeField] Material defaultMat;
+    [SerializeField] Material attackMat;
+    SpriteRenderer spriteRenderer;
+
     [SerializeField] bool isLeftLeg = false;
     float legDirection = -1f;
 
@@ -39,12 +43,7 @@ public class CentipedeLegBehavior : MonoBehaviour
         legDirection = isLeftLeg ? 1f : -1f;
         originalPosition = transform.position;
         centipedeHP = GetComponentInParent<EnemyHealth>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -100,6 +99,7 @@ public class CentipedeLegBehavior : MonoBehaviour
         attackStarted = true;
 
         transform.parent = null;
+        spriteRenderer.material = attackMat;
         stateUpdate = MoveFromBody;
         while (distanceTraveled < bodySeparationDistance)
         {
@@ -133,6 +133,7 @@ public class CentipedeLegBehavior : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         stateUpdate = null;
+        spriteRenderer.material = defaultMat;
         transform.localEulerAngles = Vector3.zero;
         transform.position = originalPosition;
 
