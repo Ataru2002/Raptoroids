@@ -266,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 10
   shieldObject: {fileID: 5683339773515422960}
+  shieldRenderer: {fileID: 6901887412563049001}
   shieldDuration: 2
   shieldPermanent: 0
   isPlayer: 1

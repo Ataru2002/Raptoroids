@@ -74,17 +74,18 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RippleDuration: 3
+    - _RippleDuration: 2
     - _RippleThickness: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StartTime: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RippleColor: {r: 0.36037737, g: 0.6637793, b: 1, a: 0.78431374}
+    - _RippleColor: {r: 0, g: 0.82641506, b: 0.70835584, a: 0.80784315}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &8722081200269522316

@@ -8,6 +8,7 @@ using System;
 public class WhiteheadAbility : RaptoroidAbility
 {
     [SerializeField] GameObject shieldObject;
+    [SerializeField] SpriteRenderer shieldRenderer;
     
     TargetType targetType;
 
@@ -43,6 +44,12 @@ public class WhiteheadAbility : RaptoroidAbility
         if(!shieldActive && cooldownTimer <= 0) {
             shieldActive = true;
             shieldObject.SetActive(true);
+
+            // Set the shader's start time to the current shader time
+            // to make the ripple start from the center
+            float currentShaderTime = Shader.GetGlobalVector("_Time").y;
+            shieldRenderer.material.SetFloat("_StartTime", currentShaderTime);
+            
             cooldownTimer = cooldown;
             onShieldActivated?.Invoke();
             shieldTimer = shieldDuration;
