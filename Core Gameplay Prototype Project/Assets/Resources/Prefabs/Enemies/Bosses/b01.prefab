@@ -2206,6 +2206,10 @@ MonoBehaviour:
   - {fileID: -1063225969028044569, guid: 4ba9e32e32c38c24593482d447da50cf, type: 3}
   - {fileID: 5304562411711178521, guid: 4ba9e32e32c38c24593482d447da50cf, type: 3}
   - {fileID: -1662747437027108851, guid: 4ba9e32e32c38c24593482d447da50cf, type: 3}
+  materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1b77b8d4a0557f3489d4db6c4c7480d6, type: 2}
+  - {fileID: 2100000, guid: 589c47fd8eed99e4cb6679bbac5ad3f7, type: 2}
 --- !u!1 &3608263417479778279
 GameObject:
   m_ObjectHideFlags: 0
@@ -9654,6 +9658,10 @@ MonoBehaviour:
   - {fileID: 5622364245755057923, guid: 72a94fb107ea09243b66096fb741593a, type: 3}
   - {fileID: -5902245284655429768, guid: 72a94fb107ea09243b66096fb741593a, type: 3}
   - {fileID: -6642055134449916175, guid: 72a94fb107ea09243b66096fb741593a, type: 3}
+  materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1b77b8d4a0557f3489d4db6c4c7480d6, type: 2}
+  - {fileID: 2100000, guid: 589c47fd8eed99e4cb6679bbac5ad3f7, type: 2}
 --- !u!1001 &8253144296742195246
 PrefabInstance:
   m_ObjectHideFlags: 0

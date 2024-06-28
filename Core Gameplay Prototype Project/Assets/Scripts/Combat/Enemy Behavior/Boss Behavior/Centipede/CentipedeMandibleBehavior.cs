@@ -13,6 +13,7 @@ public class CentipedeMandibleBehavior : MonoBehaviour, IBulletHittable
     const int pointsAwarded = 50;
 
     [SerializeField] Sprite[] sprites;
+    [SerializeField] Material[] materials;
 
     bool destroyed = false;
 
@@ -57,5 +58,6 @@ public class CentipedeMandibleBehavior : MonoBehaviour, IBulletHittable
     {
         mandibleState = val;
         spriteRenderer.sprite = sprites[mandibleState];
+        spriteRenderer.material = materials[mandibleState];
     }
 }
