@@ -708,6 +708,9 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  projectileSprite: {fileID: 0}
+  playerProjectileParticlePreset: {fileID: 0}
+  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &2679251445403417817
 GameObject:
@@ -1010,6 +1013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 10
   shieldObject: {fileID: 5683339773515422960}
+  shieldRenderer: {fileID: 6901887412563049001}
   shieldDuration: 3
   shieldPermanent: 1
   isPlayer: 0
@@ -1145,7 +1149,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bbca05fd9404246498527857a5a1a704, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1227,6 +1231,9 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  projectileSprite: {fileID: 0}
+  playerProjectileParticlePreset: {fileID: 0}
+  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &5068463288301573166
 GameObject:
@@ -1278,6 +1285,9 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  projectileSprite: {fileID: 0}
+  playerProjectileParticlePreset: {fileID: 0}
+  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &5071281255877401884
 GameObject:
@@ -6578,6 +6588,9 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  projectileSprite: {fileID: 0}
+  playerProjectileParticlePreset: {fileID: 0}
+  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &6423478088403630004
 GameObject:
@@ -7200,6 +7213,9 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
+  projectileSprite: {fileID: 0}
+  playerProjectileParticlePreset: {fileID: 0}
+  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &9036966153460400909
 GameObject:

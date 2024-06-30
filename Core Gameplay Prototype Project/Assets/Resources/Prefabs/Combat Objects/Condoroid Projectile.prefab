@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3576256981894739770}
   - component: {fileID: 6098556969245145491}
   - component: {fileID: 6959577044400938390}
-  - component: {fileID: 594369883909736446}
+  - component: {fileID: 7337648395440779351}
   m_Layer: 0
   m_Name: Condoroid Projectile
   m_TagString: Untagged
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &594369883909736446
+--- !u!114 &7337648395440779351
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,8 +161,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 600153113385266887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6306e77307d931f44a151bc3d558b2de, type: 3}
+  m_Script: {fileID: 11500000, guid: a74a7c479c7ca2a45b976ba3092aa739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
   targetType: 1
+  pooled: 0

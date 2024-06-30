@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using UnityEditor.Presets;
 using UnityEngine;
 
 public class ProjectileSpawner : Weapon
@@ -12,6 +13,11 @@ public class ProjectileSpawner : Weapon
     [SerializeField] int projectilesPerShot;
 
     [SerializeField] float coneAngle;
+
+    // TODO: use sprite from relevant source instead
+    [SerializeField] Sprite projectileSprite;
+    [SerializeField] Preset playerProjectileParticlePreset;
+    [SerializeField] Preset enemyProjectileParticlePreset;
 
     [SerializeField] AudioSource sfxSource;
 
@@ -140,10 +146,13 @@ public class ProjectileSpawner : Weapon
         {
             projectile.transform.Rotate(0, 0, 270);
         }
+        
+        projectile.GetComponent<Bullet>().SetSpeed(isPlayer ? 10 : 5);
 
         return projectile;
     }
 
+    #region Shot Patterns
     // --- Shot Pattern Functions ---
     // These will be referenced via the shoot action.
     void SingleShot()
@@ -193,4 +202,5 @@ public class ProjectileSpawner : Weapon
         }
     }
     // ---
+    #endregion
 }

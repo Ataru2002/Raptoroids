@@ -50,6 +50,9 @@ MonoBehaviour:
   shotType: 0
   projectilesPerShot: 0
   coneAngle: 0
+  projectileSprite: {fileID: 0}
+  playerProjectileParticlePreset: {fileID: 0}
+  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 407628906937404315}
 --- !u!1 &2430181019833567799
 GameObject:
@@ -5108,7 +5111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 9
-  prefab: {fileID: 600153113385266887, guid: a238da5ecb2e8d74387b357bba9daf96, type: 3}
+  projectilePrefab: {fileID: 600153113385266887, guid: a238da5ecb2e8d74387b357bba9daf96, type: 3}
 --- !u!82 &407628906937404315
 AudioSource:
   m_ObjectHideFlags: 0

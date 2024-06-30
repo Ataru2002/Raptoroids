@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class CondoroidAbility : RaptoroidAbility
 {
-    PlayerHealth playerHealth;
-    int rageMeter;
+    [SerializeField] GameObject projectilePrefab;
     SpriteRenderer spriteRenderer;
-    [SerializeField] GameObject prefab;
-    int totalDamage = 1;
+    int rageMeter;
     const int baseDamage = 1;
+
     void Awake()
     {
-        playerHealth = GetComponent<PlayerHealth>();
-        rageMeter = 0;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rageMeter = 0;
         cooldown = 15;
     }
 
     public void ActivateAbility(){
-        if(rageMeter > 0 && cooldownTimer <= 0){
-            GameObject spawnBullet = Instantiate(prefab, new Vector3(transform.position.x, transform.position.y+1, 0), Quaternion.identity);
-            spawnBullet.GetComponent<BulletBehavior>().MarkNotPool();
-            spawnBullet.GetComponent<BulletBehavior>().AllowPunchThrough();
-            spawnBullet.GetComponent<BulletBehavior>().SetDamage(RageConvert(3));
+        if(rageMeter > 0 && cooldownTimer <= 0) {
+            Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 1, 0);
+            GameObject bulletObject = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+            PunchthroughBullet bulletComponent = bulletObject.GetComponent<PunchthroughBullet>();
+            bulletComponent.SetDamage(RageConvert(3));
+
             cooldownTimer = cooldown;
         }
     }
@@ -40,6 +40,8 @@ public class CondoroidAbility : RaptoroidAbility
 
     public void RageIndicator(){
         rageMeter++;
+
+        // TODO: maybe add a shader to make it "glow" ?
         spriteRenderer.color = new Color(1, ((12 - 1) - rageMeter) / 11f, ((12 - 1) - rageMeter) / 11f);
     }
 
