@@ -146,8 +146,6 @@ public class ProjectileSpawner : Weapon
         {
             projectile.transform.Rotate(0, 0, 270);
         }
-        
-        projectile.GetComponent<Bullet>().SetSpeed(isPlayer ? 10 : 5);
 
         return projectile;
     }
