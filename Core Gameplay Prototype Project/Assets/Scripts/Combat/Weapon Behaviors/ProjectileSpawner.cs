@@ -23,7 +23,7 @@ public class ProjectileSpawner : Weapon
 
     EnemyBehavior enemyBehavior = null;
 
-    delegate GameObject ProjectileSpawnFunc();
+    delegate GameObject ProjectileSpawnFunc(int projectileID);
     ProjectileSpawnFunc spawnProjectile;
 
     Action shoot;
@@ -73,29 +73,7 @@ public class ProjectileSpawner : Weapon
 
     void SetProjectileSpawnFunc()
     {
-        if (isPlayer)
-        {
-            if(CombatStageManager.Instance != null){
-                spawnProjectile = CombatStageManager.Instance.GetPlayerProjectile;
-            }
-            else if (TutorialRoomManager.Instance != null) {
-                spawnProjectile = TutorialRoomManager.Instance.GetPlayerProjectile;
-            }
-            else
-            {
-                enabled = false;
-            }
-        }
-        else
-        {
-            enemyBehavior = GetComponentInParent<EnemyBehavior>();
-            if(CombatStageManager.Instance != null){
-                spawnProjectile = CombatStageManager.Instance.GetEnemyProjectile;
-            }
-            else{
-                spawnProjectile = TutorialRoomManager.Instance.GetEnemyProjectile;
-            }
-        }
+        spawnProjectile = isPlayer ? ProjectilePoolManager.Instance.GetPlayerProjectile : ProjectilePoolManager.Instance.GetEnemyProjectile;
     }
 
     public void AssociateWeaponData(WeaponData weaponData)
@@ -137,7 +115,7 @@ public class ProjectileSpawner : Weapon
 
     GameObject BaseProjectile()
     {
-        GameObject projectile = spawnProjectile();
+        GameObject projectile = spawnProjectile(0);
         projectile.transform.position = transform.position;
         projectile.transform.rotation = transform.rotation;
 
@@ -181,8 +159,8 @@ public class ProjectileSpawner : Weapon
 
         for (int i = 1; i <= projectileGroupSize; i++)
         {
-            GameObject projectileA = spawnProjectile();
-            GameObject projectileB = spawnProjectile();
+            GameObject projectileA = spawnProjectile(0);
+            GameObject projectileB = spawnProjectile(0);
 
             projectileA.transform.position = transform.position;
             projectileB.transform.position = transform.position;

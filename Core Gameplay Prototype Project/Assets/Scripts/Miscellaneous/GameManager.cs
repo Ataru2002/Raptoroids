@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
             gemsContactPoint = GetComponent<MissionGemsContactPoint>();
 
             CombatSFXManager.LoadCombatSFX();
+            ProjectilePoolManager.LoadProjectiles();
             EnemySpawner.LoadEnemyFormations();
         }
     }
