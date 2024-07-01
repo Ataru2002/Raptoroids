@@ -115,6 +115,7 @@ public class ProjectileSpawner : Weapon
 
     GameObject BaseProjectile()
     {
+        // TODO: get the ID value from elsewhere to correspond to the player's selected weapon
         GameObject projectile = spawnProjectile(0);
         projectile.transform.position = transform.position;
         projectile.transform.rotation = transform.rotation;
@@ -159,6 +160,7 @@ public class ProjectileSpawner : Weapon
 
         for (int i = 1; i <= projectileGroupSize; i++)
         {
+            // TODO: get the ID value from elsewhere to correspond to the player's selected weapon
             GameObject projectileA = spawnProjectile(0);
             GameObject projectileB = spawnProjectile(0);
 

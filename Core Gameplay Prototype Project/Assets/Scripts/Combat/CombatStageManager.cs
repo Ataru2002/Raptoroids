@@ -64,12 +64,6 @@ public class CombatStageManager : MonoBehaviour
 
     int gemsWaiting = 0;
 
-    LinkedPool<GameObject> playerProjectiles;
-    GameObject playerProjectilePrefab;
-
-    LinkedPool<GameObject> enemyProjectiles;
-    GameObject enemyProjectilePrefab;
-
     LinkedPool<GameObject> enemyHitParticles;
     GameObject hitParticlesPrefab;
 
@@ -104,8 +98,6 @@ public class CombatStageManager : MonoBehaviour
         {
             instance = this;
 
-            playerProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/Projectiles/Pooled/Player/pb00_Basic");
-            enemyProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/Projectiles/Pooled/Enemy/eb00_Basic");
             hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
             playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids");
@@ -160,8 +152,6 @@ public class CombatStageManager : MonoBehaviour
             StartCoroutine(enemySpawner.DeployFormations());
         }
 
-        playerProjectiles = new LinkedPool<GameObject>(MakePlayerProjectile, PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 1000);
-        enemyProjectiles = new LinkedPool<GameObject>(MakeEnemyProjectile, PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 1000);
         enemyHitParticles = new LinkedPool<GameObject>(MakeEnemyParticles, PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 1000);
 
         killCounter.text = string.Format("0 / {0}", enemyKillRequirement);
@@ -253,35 +243,6 @@ public class CombatStageManager : MonoBehaviour
 
     #region Pool Functions
     // Pooling functions
-    GameObject MakePlayerProjectile()
-    {
-        return Instantiate(playerProjectilePrefab);
-    }
-
-    public GameObject GetPlayerProjectile()
-    {
-        return playerProjectiles.Get();
-    }
-
-    public void ReturnPlayerProjectile(GameObject target)
-    {
-        playerProjectiles.Release(target);
-    }
-
-    GameObject MakeEnemyProjectile()
-    {
-        return Instantiate(enemyProjectilePrefab);
-    }
-
-    public GameObject GetEnemyProjectile()
-    {
-        return enemyProjectiles.Get();
-    }
-
-    public void ReturnEnemyProjectile(GameObject target)
-    {
-        enemyProjectiles.Release(target);
-    }
 
     GameObject MakeEnemyParticles()
     {

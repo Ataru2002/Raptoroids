@@ -96,6 +96,30 @@ public class ProjectilePoolManager : MonoBehaviour
     {
         return enemyProjectilePools[(EnemyProjectileType)typeID].Get();
     }
+
+    public void ReturnPlayerProjectile(GameObject bullet)
+    {
+        Bullet bulletComponent = bullet.GetComponent<Bullet>();
+        if (bulletComponent == null)
+        {
+            Debug.LogError("Returning an object that is not a projectile into a player projectile pool. Abort");
+            return;
+        }
+        int id = bulletComponent.GetBulletPoolID();
+        playerProjectilePools[(PlayerProjectileType)id].Release(bullet);
+    }
+
+    public void ReturnEnemyProjectile(GameObject bullet)
+    {
+        Bullet bulletComponent = bullet.GetComponent<Bullet>();
+        if (bulletComponent == null)
+        {
+            Debug.LogError("Returning an object that is not a projectile into an enemy projectile pool. Abort");
+            return;
+        }
+        int id = bulletComponent.GetBulletPoolID();
+        enemyProjectilePools[(EnemyProjectileType)id].Release(bullet);
+    }
 }
 
 public enum PlayerProjectileType
