@@ -34,7 +34,7 @@ public class FalcoAbility : RaptoroidAbility
             overdriveTimer = overdriveDuration;
             afterImageSpawn = StartCoroutine(SpawnAfterImage());
             sprite.color = Color.red;
-            BroadcastMessage("FireRateBoost", 3f, SendMessageOptions.DontRequireReceiver);
+            BroadcastMessage("FireRateModify", 3f, SendMessageOptions.DontRequireReceiver);
         }
     }
 

@@ -19,7 +19,7 @@ public abstract class Weapon : MonoBehaviour
         effectiveFireRate = fireRate;
     }
 
-    public void FireRateBoost(float factor)
+    public void FireRateModify(float factor)
     {
         effectiveFireRate *= factor;
     }
