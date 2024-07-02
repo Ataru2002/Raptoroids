@@ -6748,6 +6748,7 @@ MonoBehaviour:
   bossHealthBarRect: {fileID: 1008951163}
   scoreText: {fileID: 1081325514}
   hiScoreText: {fileID: 1420023269}
+  joystickPrefab: {fileID: 99405190742385187, guid: 0ab5b326dcbc4c841a364a1691661882, type: 3}
   bgmSelector: {fileID: 779497532}
   runEndScoreCanvas: {fileID: 337880007}
   runEndScoreText: {fileID: 311143083}

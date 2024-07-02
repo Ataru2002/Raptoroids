@@ -15,17 +15,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float followSpeed;
     [SerializeField] float yOffset = 0.5f;
     [SerializeField] float snapDistance = 0.01f;
-
+    JoystickController joystickController;
     bool isFrozen = false;
     float freezeDuration = 2f;
 
+    void Start(){
+        joystickController = FindFirstObjectByType<JoystickController>();
+    }
     void Update()
     {
         if (!isFrozen && Input.GetMouseButton(0))
         {
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target += Vector3.up * yOffset;
-            MoveTowards(target);
+            
+            if(PlayerPrefs.GetInt("joystick") == 1){
+                JoystickMoveTowards();
+            }
+            else{
+                MoveTowards(target);
+            }
         }
     }
 
@@ -38,6 +47,14 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, target, followSpeed * Time.deltaTime);
+        }
+    }
+
+    private void JoystickMoveTowards(){
+        if(joystickController.joystickVec.y != 0){
+            Vector3 direction = new Vector3(joystickController.joystickVec.x, joystickController.joystickVec.y, 0f);
+            Vector3 newPos = transform.position + direction * followSpeed * Time.deltaTime;
+            transform.position = newPos;
         }
     }
 

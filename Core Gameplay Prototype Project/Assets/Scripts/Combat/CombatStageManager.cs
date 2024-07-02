@@ -35,7 +35,9 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] RectTransform bossHealthBarRect;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI hiScoreText;
-
+    [SerializeField] GameObject joystickPrefab;
+    GameObject joystick;
+    bool loseScreenUIActive = false;
     [SerializeField] CombatBGMSelector bgmSelector;
 
     [SerializeField] GameObject runEndScoreCanvas;
@@ -136,6 +138,8 @@ public class CombatStageManager : MonoBehaviour
         AudioSource playerWeaponAudioSource = playerObject.GetComponent<AudioSource>();
         playerWeaponAudioSource.clip = weaponDataBank[gunID].shotSound;
         
+        
+
         if (!PlayerPrefs.HasKey("sfxOn"))
         {
             PlayerPrefs.SetInt("sfxOn", 1);
@@ -148,6 +152,11 @@ public class CombatStageManager : MonoBehaviour
 
         playerWeaponAudioSource.volume = PlayerPrefs.GetInt("sfxOn") * PlayerPrefs.GetFloat("sfxVol");
 
+        if(PlayerPrefs.GetInt("joystick") == 1){
+            MakeJoyStick();
+        }
+        
+        
         if (isBossStage)
         {
             enemyKillRequirement = 1;
@@ -182,6 +191,10 @@ public class CombatStageManager : MonoBehaviour
         GameObject oakNut = Instantiate(oakNutPrefab);
         oakNut.SetActive(false); // Set inactive initially
         return oakNut;
+    }
+
+    GameObject MakeJoyStick(){
+        return joystick = Instantiate(joystickPrefab);
     }
 
     IEnumerator StartOakNutSpawn()
@@ -418,7 +431,8 @@ public class CombatStageManager : MonoBehaviour
         {
             bgmSelector.PlayEndMusic("lose");
             loseScreen.SetActive(true);
-            
+            loseScreenUIActive = true;
+            joystick.SetActive(false);
             runEndScoreCanvas.SetActive(true);
             runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
             newHiScoreNotice.SetActive(GameManager.Instance.HighScoreChanged);
@@ -469,6 +483,7 @@ public class CombatStageManager : MonoBehaviour
         }
 
         Time.timeScale = 0;
+        
 
         if (isBossStage)
         {
@@ -489,7 +504,7 @@ public class CombatStageManager : MonoBehaviour
         {
             bgmSelector.PlayEndMusic("win");
             winScreen.SetActive(true);
-
+            joystick.SetActive(false);
             GameManager.Instance.CollectGems(gemsCollectedInStage);
 
             GameObject stageGemsBox = Instantiate(rewardSummaryPrefab);

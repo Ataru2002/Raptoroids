@@ -16,6 +16,7 @@ public class SettingsControl : MonoBehaviour
 
     [SerializeField] Toggle sfxToggle;
     [SerializeField] Slider sfxSlider;
+    [SerializeField] Toggle joystickToggle;
 
     MonochromeControl monochromeController;
 
@@ -62,6 +63,11 @@ public class SettingsControl : MonoBehaviour
             PlayerPrefs.SetInt("LocaleIntID", 0);
         }
         localeDropdown.value = PlayerPrefs.GetInt("LocaleIntID");
+        if (!PlayerPrefs.HasKey("joystick"))
+        {
+            PlayerPrefs.SetInt("joystick", 0);
+        }
+        joystickToggle.isOn = PlayerPrefs.GetInt("joystick") != 0;
     }
 
     public void UpdateLocale(int id)
@@ -76,6 +82,11 @@ public class SettingsControl : MonoBehaviour
         {
             monochromeController.Refresh();
         }
+    }
+    
+    public void ToggleJoystick(bool val)
+    {
+        PlayerPrefs.SetInt("joystick", val ? 1 : 0);
     }
 
     public void ToggleBGM(bool val)
