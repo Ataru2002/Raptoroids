@@ -8,18 +8,13 @@ using UnityEngine;
 public class ProjectileSpawner : Weapon
 {
     [SerializeField] float firstShotDelay;
-    //[SerializeField] ShotType shotType;
-
-    //[SerializeField] int projectilesPerShot;
-
-    //[SerializeField] float coneAngle;
-
     [SerializeField] AudioSource sfxSource;
 
     EnemyBehavior enemyBehavior = null;
 
     delegate GameObject ProjectileSpawnFunc(int projectileID);
     ProjectileSpawnFunc spawnProjectile;
+    int projectileID;
 
     Action shoot;
 
@@ -83,6 +78,7 @@ public class ProjectileSpawner : Weapon
     new public void SetWeaponData(WeaponData weaponData)
     {
         base.SetWeaponData(weaponData);
+        projectileID = weaponData.isPlayer ? (int)weaponData.playerProjectileType : (int)weaponData.enemyProjectileType;
         SetShootFunc();
         SetProjectileSpawnFunc();
     }
@@ -112,8 +108,7 @@ public class ProjectileSpawner : Weapon
 
     GameObject BaseProjectile()
     {
-        // TODO: get the ID value from elsewhere to correspond to the player's selected weapon
-        GameObject projectile = spawnProjectile(0);
+        GameObject projectile = spawnProjectile(projectileID);
         projectile.transform.position = transform.position;
         projectile.transform.rotation = transform.rotation;
 
@@ -157,9 +152,8 @@ public class ProjectileSpawner : Weapon
 
         for (int i = 1; i <= projectileGroupSize; i++)
         {
-            // TODO: get the ID value from elsewhere to correspond to the player's selected weapon
-            GameObject projectileA = spawnProjectile(0);
-            GameObject projectileB = spawnProjectile(0);
+            GameObject projectileA = spawnProjectile(projectileID);
+            GameObject projectileB = spawnProjectile(projectileID);
 
             projectileA.transform.position = transform.position;
             projectileB.transform.position = transform.position;

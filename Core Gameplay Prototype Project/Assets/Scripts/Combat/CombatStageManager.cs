@@ -37,7 +37,6 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI hiScoreText;
     [SerializeField] GameObject joystickPrefab;
     GameObject joystick;
-    bool loseScreenUIActive = false;
     [SerializeField] CombatBGMSelector bgmSelector;
 
     [SerializeField] GameObject runEndScoreCanvas;
@@ -375,10 +374,13 @@ public class CombatStageManager : MonoBehaviour
         }
         else
         {
+            if (joystick != null)
+            {
+                joystick.SetActive(false);
+            }
+
             bgmSelector.PlayEndMusic("lose");
             loseScreen.SetActive(true);
-            loseScreenUIActive = true;
-            joystick.SetActive(false);
             runEndScoreCanvas.SetActive(true);
             runEndScoreText.text = GameManager.Instance.GetCurrentScore().ToString();
             newHiScoreNotice.SetActive(GameManager.Instance.HighScoreChanged);
@@ -448,9 +450,13 @@ public class CombatStageManager : MonoBehaviour
         }
         else
         {
+            if (joystick != null)
+            {
+                joystick.SetActive(false);
+            }
+
             bgmSelector.PlayEndMusic("win");
             winScreen.SetActive(true);
-            joystick.SetActive(false);
             GameManager.Instance.CollectGems(gemsCollectedInStage);
 
             GameObject stageGemsBox = Instantiate(rewardSummaryPrefab);

@@ -6,6 +6,8 @@ public class WeaponData : ScriptableObject
 {
     public bool isPlayer;
     public ShotType shotType;
+    public PlayerProjectileType playerProjectileType;
+    public EnemyProjectileType enemyProjectileType;
     public float fireRate;
     public AudioClip shotSound;
 
@@ -26,6 +28,8 @@ public class WeaponDataEditor : Editor
         #region PROPERTIES
         SerializedProperty isPlayer = serializedObject.FindProperty("isPlayer");
         SerializedProperty shotType = serializedObject.FindProperty("shotType");
+        SerializedProperty playerProjectileType = serializedObject.FindProperty("playerProjectileType");
+        SerializedProperty enemyProjectileType = serializedObject.FindProperty("enemyProjectileType");
         SerializedProperty fireRate = serializedObject.FindProperty("fireRate");
         SerializedProperty shotSound = serializedObject.FindProperty("shotSound");
 
@@ -42,6 +46,19 @@ public class WeaponDataEditor : Editor
         // Draw these by default because they are common to all weapons
         EditorGUILayout.PropertyField(isPlayer);
         EditorGUILayout.PropertyField(shotType);
+
+        if(shotTypeProperty != ShotType.Laser)
+        {
+            if (isPlayer.boolValue)
+            {
+                EditorGUILayout.PropertyField(playerProjectileType);
+            }
+            else
+            {
+                EditorGUILayout.PropertyField(enemyProjectileType);
+            }
+        }
+
         EditorGUILayout.PropertyField(fireRate);
         EditorGUILayout.PropertyField(shotSound);
 
