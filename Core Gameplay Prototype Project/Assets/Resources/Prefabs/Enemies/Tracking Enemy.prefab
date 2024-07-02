@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   fireRate: 1.2
+  weaponData: {fileID: 11400000, guid: d88eaebbca46f864eb40d52cdb45ed7b, type: 2}
   firstShotDelay: 0.8
   shotType: 0
   projectilesPerShot: 0

@@ -2,21 +2,25 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] protected bool isPlayer;
-    [SerializeField] protected float fireRate;
+    [SerializeField] protected WeaponData weaponData;
     protected float effectiveFireRate;
 
     protected void Start()
     {
-        effectiveFireRate = fireRate;
+        if (weaponData == null)
+        {
+            return;
+        }
+
+        effectiveFireRate = weaponData.fireRate;
     }
 
     public abstract void TryShoot();
 
-    public void SetFireRate(float val)
+    public void SetWeaponData(WeaponData val)
     {
-        fireRate = val;
-        effectiveFireRate = fireRate;
+        weaponData = val;
+        effectiveFireRate = weaponData.fireRate;
     }
 
     public void FireRateModify(float factor)
@@ -26,7 +30,7 @@ public abstract class Weapon : MonoBehaviour
 
     public void ResetFireRate()
     {
-        effectiveFireRate = fireRate;
+        effectiveFireRate = weaponData.fireRate;
     }
 }
 

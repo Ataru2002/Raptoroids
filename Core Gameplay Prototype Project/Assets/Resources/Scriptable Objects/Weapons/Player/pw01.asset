@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62755d49c75ae774e99761e36130dfd8, type: 3}
+  m_Name: pw01
+  m_EditorClassIdentifier: 
+  isPlayer: 1
+  shotType: 1
+  fireRate: 1.2
+  shotSound: {fileID: 8300000, guid: 3483ed52201b3014484fa3b371961f08, type: 3}
+  projectileCount: 3
+  coneAngle: 30

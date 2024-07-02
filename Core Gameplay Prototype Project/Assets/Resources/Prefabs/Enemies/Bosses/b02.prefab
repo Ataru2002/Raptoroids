@@ -704,13 +704,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   fireRate: 1
+  weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 1
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
-  projectileSprite: {fileID: 0}
-  playerProjectileParticlePreset: {fileID: 0}
-  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &2679251445403417817
 GameObject:
@@ -1227,13 +1225,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   fireRate: 1
+  weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 0.2
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
-  projectileSprite: {fileID: 0}
-  playerProjectileParticlePreset: {fileID: 0}
-  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &5068463288301573166
 GameObject:
@@ -1281,13 +1277,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   fireRate: 1
+  weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 1
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
-  projectileSprite: {fileID: 0}
-  playerProjectileParticlePreset: {fileID: 0}
-  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &5071281255877401884
 GameObject:
@@ -6584,13 +6578,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   fireRate: 1
+  weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 1
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
-  projectileSprite: {fileID: 0}
-  playerProjectileParticlePreset: {fileID: 0}
-  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &6423478088403630004
 GameObject:
@@ -7209,13 +7201,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   fireRate: 1
+  weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 1
   shotType: 0
   projectilesPerShot: 1
   coneAngle: 0
-  projectileSprite: {fileID: 0}
-  playerProjectileParticlePreset: {fileID: 0}
-  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 0}
 --- !u!1 &9036966153460400909
 GameObject:

@@ -1958,12 +1958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 1.2
+  weaponData: {fileID: 11400000, guid: dc23fe07d63ef8e4ab9340b227800103, type: 2}
   firstShotDelay: 0.8
-  shotType: 1
-  projectilesPerShot: 5
-  coneAngle: 15
   sfxSource: {fileID: 0}
 --- !u!1 &3568061668570364288
 GameObject:
@@ -9501,12 +9497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 1.2
+  weaponData: {fileID: 11400000, guid: dc23fe07d63ef8e4ab9340b227800103, type: 2}
   firstShotDelay: 0.8
-  shotType: 1
-  projectilesPerShot: 5
-  coneAngle: 15
   sfxSource: {fileID: 0}
 --- !u!1 &9151383849583229797
 GameObject:
@@ -9702,6 +9694,10 @@ PrefabInstance:
       propertyPath: laserRange
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 7709688487897607493, guid: 74241bf683a3290419a7ccaaa3c93a4c, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: df678f725ea492e44a141574a8a16b74, type: 2}
     - target: {fileID: 7709688487897607493, guid: 74241bf683a3290419a7ccaaa3c93a4c, type: 3}
       propertyPath: laserBreadth
       value: 0.32

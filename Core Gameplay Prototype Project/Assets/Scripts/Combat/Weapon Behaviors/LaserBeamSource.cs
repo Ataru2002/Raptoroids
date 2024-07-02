@@ -23,22 +23,19 @@ public class LaserBeamSource : Weapon
     new void Start()
     {
         base.Start();
-        
-        if (laserTickTime == 0)
-        {
-            laserTickTime = 1f / effectiveFireRate;
-        }
+
+        laserTickTime = 1f / effectiveFireRate;
 
         timeSinceLastTick = laserTickTime;
         
-        LayerMask mask = isPlayer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");
+        LayerMask mask = weaponData.isPlayer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");
         contactFilter.SetLayerMask(mask);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlayer)
+        if (weaponData.isPlayer)
         {
             laserActive = Input.GetMouseButton(0);
         }
@@ -82,12 +79,6 @@ public class LaserBeamSource : Weapon
             }
             timeSinceLastTick = 0;
         }
-    }
-
-    new public void SetFireRate(float val)
-    {
-        base.SetFireRate(val);
-        laserTickTime = 1f / effectiveFireRate;
     }
 
     new public void ResetFireRate()

@@ -119,10 +119,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   fireRate: 0.4
+  weaponData: {fileID: 11400000, guid: e570ff14b4157574ca95129ef6ee6734, type: 2}
   firstShotDelay: 0
   shotType: 0
   projectilesPerShot: 0
   coneAngle: 0
+  sfxSource: {fileID: 0}
 --- !u!61 &-5326608426363939409
 BoxCollider2D:
   m_ObjectHideFlags: 0

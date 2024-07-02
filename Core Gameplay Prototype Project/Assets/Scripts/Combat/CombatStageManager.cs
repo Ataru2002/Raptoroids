@@ -20,7 +20,7 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] Transform playerSpawnPoint;
     GameObject[] playerPrefabs;
 
-    WeaponData[] weaponDataBank;
+    WeaponData[] playerWeaponDataBank;
 
     [SerializeField] float enemyRespawnDelay;
 
@@ -101,7 +101,7 @@ public class CombatStageManager : MonoBehaviour
             hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
             playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids");
-            weaponDataBank = Resources.LoadAll<WeaponData>("Scriptable Objects/Weapons");
+            playerWeaponDataBank = Resources.LoadAll<WeaponData>("Scriptable Objects/Weapons/Player");
         }
     }
 
@@ -123,10 +123,10 @@ public class CombatStageManager : MonoBehaviour
         playerObject.transform.position = playerSpawnPoint.position;
 
         int gunID = GameManager.Instance.tutorialMode ? 0 : GameManager.Instance.EquippedWeapon;
-        playerObject.GetComponentInChildren<ProjectileSpawner>().AssociateWeaponData(weaponDataBank[gunID]);
+        playerObject.GetComponentInChildren<ProjectileSpawner>().SetWeaponData(playerWeaponDataBank[gunID]);
 
         AudioSource playerWeaponAudioSource = playerObject.GetComponent<AudioSource>();
-        playerWeaponAudioSource.clip = weaponDataBank[gunID].shotSound;
+        playerWeaponAudioSource.clip = playerWeaponDataBank[gunID].shotSound;
         
         if (!PlayerPrefs.HasKey("sfxOn"))
         {
