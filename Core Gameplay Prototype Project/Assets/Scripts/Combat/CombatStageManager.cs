@@ -20,7 +20,7 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] Transform playerSpawnPoint;
     GameObject[] playerPrefabs;
 
-    WeaponData[] weaponDataBank;
+    WeaponData[] playerWeaponDataBank;
 
     [SerializeField] float enemyRespawnDelay;
 
@@ -66,12 +66,6 @@ public class CombatStageManager : MonoBehaviour
 
     int gemsWaiting = 0;
 
-    LinkedPool<GameObject> playerProjectiles;
-    GameObject playerProjectilePrefab;
-
-    LinkedPool<GameObject> enemyProjectiles;
-    GameObject enemyProjectilePrefab;
-
     LinkedPool<GameObject> enemyHitParticles;
     GameObject hitParticlesPrefab;
 
@@ -106,12 +100,10 @@ public class CombatStageManager : MonoBehaviour
         {
             instance = this;
 
-            playerProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/PlayerBullet");
-            enemyProjectilePrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyBullet");
             hitParticlesPrefab = Resources.Load<GameObject>("Prefabs/Combat Objects/EnemyImpactParticles");
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
             playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids");
-            weaponDataBank = Resources.LoadAll<WeaponData>("Scriptable Objects/Weapons");
+            playerWeaponDataBank = Resources.LoadAll<WeaponData>("Scriptable Objects/Weapons/Player");
         }
     }
 
@@ -133,10 +125,10 @@ public class CombatStageManager : MonoBehaviour
         playerObject.transform.position = playerSpawnPoint.position;
 
         int gunID = GameManager.Instance.tutorialMode ? 0 : GameManager.Instance.EquippedWeapon;
-        playerObject.GetComponentInChildren<ProjectileSpawner>().AssociateWeaponData(weaponDataBank[gunID]);
+        playerObject.GetComponentInChildren<ProjectileSpawner>().SetWeaponData(playerWeaponDataBank[gunID]);
 
         AudioSource playerWeaponAudioSource = playerObject.GetComponent<AudioSource>();
-        playerWeaponAudioSource.clip = weaponDataBank[gunID].shotSound;
+        playerWeaponAudioSource.clip = playerWeaponDataBank[gunID].shotSound;
         
         
 
@@ -169,19 +161,17 @@ public class CombatStageManager : MonoBehaviour
             StartCoroutine(enemySpawner.DeployFormations());
         }
 
-        playerProjectiles = new LinkedPool<GameObject>(MakePlayerProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
-        enemyProjectiles = new LinkedPool<GameObject>(MakeEnemyProjectile, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
-        enemyHitParticles = new LinkedPool<GameObject>(MakeEnemyParticles, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 1000);
+        enemyHitParticles = new LinkedPool<GameObject>(MakeEnemyParticles, PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 1000);
 
         killCounter.text = string.Format("0 / {0}", enemyKillRequirement);
 
-        oakNuts = new LinkedPool<GameObject>(MakeOakNut, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
+        oakNuts = new LinkedPool<GameObject>(MakeOakNut, PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 100);
         StartCoroutine(StartOakNutSpawn());
 
-        mines = new LinkedPool<GameObject>(MakeMine, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
+        mines = new LinkedPool<GameObject>(MakeMine, PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 100);
         StartCoroutine(StartMineSpawn());
 
-        hills = new LinkedPool<GameObject>(MakeHill, OnGetFromPool, OnReleaseToPool, OnPoolItemDestroy, false, 100);
+        hills = new LinkedPool<GameObject>(MakeHill, PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 100);
         StartCoroutine(StartHillSpawn());
         UpdateScoreDisplay();
     }
@@ -266,35 +256,6 @@ public class CombatStageManager : MonoBehaviour
 
     #region Pool Functions
     // Pooling functions
-    GameObject MakePlayerProjectile()
-    {
-        return Instantiate(playerProjectilePrefab);
-    }
-
-    public GameObject GetPlayerProjectile()
-    {
-        return playerProjectiles.Get();
-    }
-
-    public void ReturnPlayerProjectile(GameObject target)
-    {
-        playerProjectiles.Release(target);
-    }
-
-    GameObject MakeEnemyProjectile()
-    {
-        return Instantiate(enemyProjectilePrefab);
-    }
-
-    public GameObject GetEnemyProjectile()
-    {
-        return enemyProjectiles.Get();
-    }
-
-    public void ReturnEnemyProjectile(GameObject target)
-    {
-        enemyProjectiles.Release(target);
-    }
 
     GameObject MakeEnemyParticles()
     {
@@ -309,21 +270,6 @@ public class CombatStageManager : MonoBehaviour
     public void ReturnEnemyParticles(GameObject target)
     {
         enemyHitParticles.Release(target);
-    }
-
-    void OnGetFromPool(GameObject item)
-    {
-        item.SetActive(true);
-    }
-
-    void OnReleaseToPool(GameObject item)
-    {
-        item.SetActive(false);
-    }
-
-    private void OnPoolItemDestroy(GameObject item)
-    {
-        Destroy(item);
     }
 
     // End of Pooling functions

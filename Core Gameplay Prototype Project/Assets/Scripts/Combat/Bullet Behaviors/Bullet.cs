@@ -10,9 +10,10 @@ public enum TargetType
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] bool pooled = true;
+    [SerializeField] int bulletPoolID;
     [SerializeField] float speed;
     [SerializeField] TargetType targetType;
-    [SerializeField] bool pooled = true;
 
     SpriteRenderer spriteRenderer;
 
@@ -34,14 +35,7 @@ public class Bullet : MonoBehaviour
 
         else
         {
-            if (CombatStageManager.Instance != null)
-            {
-                despawn = isPlayerBullet ? CombatStageManager.Instance.ReturnPlayerProjectile : CombatStageManager.Instance.ReturnEnemyProjectile;
-            }
-            else
-            {
-                despawn = isPlayerBullet ? TutorialRoomManager.Instance.ReturnPlayerProjectile : TutorialRoomManager.Instance.ReturnEnemyProjectile;
-            }
+            despawn = isPlayerBullet ? ProjectilePoolManager.Instance.ReturnPlayerProjectile : ProjectilePoolManager.Instance.ReturnEnemyProjectile;
         }
     }
 
@@ -85,6 +79,11 @@ public class Bullet : MonoBehaviour
 
             despawn(gameObject);
         }
+    }
+
+    public int GetBulletPoolID()
+    {
+        return bulletPoolID;
     }
 
     public void SetSpeed(float val)

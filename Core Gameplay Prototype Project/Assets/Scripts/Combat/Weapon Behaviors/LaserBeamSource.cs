@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class LaserBeamSource : Weapon
 {
-    [SerializeField] float laserRange;
-    [SerializeField] float laserBreadth;
-    [SerializeField] float laserTickTime;
+    float laserTickTime;
 
     bool laserActive = false;
     SpriteRenderer beamRenderer;
@@ -23,22 +21,19 @@ public class LaserBeamSource : Weapon
     new void Start()
     {
         base.Start();
-        
-        if (laserTickTime == 0)
-        {
-            laserTickTime = 1f / effectiveFireRate;
-        }
+
+        laserTickTime = 1f / effectiveFireRate;
 
         timeSinceLastTick = laserTickTime;
         
-        LayerMask mask = isPlayer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");
+        LayerMask mask = weaponData.isPlayer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");
         contactFilter.SetLayerMask(mask);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlayer)
+        if (weaponData.isPlayer)
         {
             laserActive = Input.GetMouseButton(0);
         }
@@ -62,7 +57,7 @@ public class LaserBeamSource : Weapon
         if (timeSinceLastTick > laserTickTime)
         {
             RaycastHit2D[] hit = new RaycastHit2D[1];
-            Physics2D.CircleCast(transform.position, laserBreadth, transform.up, contactFilter, hit, laserRange);
+            Physics2D.CircleCast(transform.position, weaponData.laserBreadth, transform.up, contactFilter, hit, weaponData.laserRange);
             if (hit[0])
             {
                 IBulletHittable hitDetector = hit[0].transform.GetComponent<IBulletHittable>();
@@ -77,17 +72,11 @@ public class LaserBeamSource : Weapon
             }
             else
             {
-                float beamLength = laserRange / transform.lossyScale.y;
+                float beamLength = weaponData.laserRange / transform.lossyScale.y;
                 beamRenderer.size = new Vector2(0.8f, beamLength);
             }
             timeSinceLastTick = 0;
         }
-    }
-
-    new public void SetFireRate(float val)
-    {
-        base.SetFireRate(val);
-        laserTickTime = 1f / effectiveFireRate;
     }
 
     new public void ResetFireRate()
