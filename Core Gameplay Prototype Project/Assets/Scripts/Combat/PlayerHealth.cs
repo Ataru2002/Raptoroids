@@ -9,7 +9,6 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
     int currentHealth = 0;
     [SerializeField] ParticleSystem impactParticles;
     PlayerHealthUI healthUI;
-    [SerializeField] Hill hills;
 
     [SerializeField] UnityEvent onHit;
     // Start is called before the first frame update
@@ -56,11 +55,5 @@ public class PlayerHealth : MonoBehaviour, IBulletHittable
         }
 
         CombatSFXManager.PlaySoundAtLocation("RaptoroidHit", transform.position);
-    }
-
-    public void hillCollide()
-    {
-        print("Player hit by hill!");
-        currentHealth -= 1;
     }
 }

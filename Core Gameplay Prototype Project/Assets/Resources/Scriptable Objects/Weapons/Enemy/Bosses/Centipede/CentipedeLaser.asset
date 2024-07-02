@@ -18,3 +18,5 @@ MonoBehaviour:
   shotSound: {fileID: 0}
   projectileCount: 0
   coneAngle: 0
+  laserRange: 12
+  laserBreadth: 0.32

@@ -44,15 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
-  fireRate: 3
+  weaponData: {fileID: 0}
   firstShotDelay: 0
-  shotType: 0
-  projectilesPerShot: 0
-  coneAngle: 0
-  projectileSprite: {fileID: 0}
-  playerProjectileParticlePreset: {fileID: 0}
-  enemyProjectileParticlePreset: {fileID: 0}
   sfxSource: {fileID: 407628906937404315}
 --- !u!1 &2430181019833567799
 GameObject:
@@ -4902,7 +4895,7 @@ GameObject:
   - component: {fileID: 5581179022971175809}
   - component: {fileID: 8483354259118490236}
   - component: {fileID: 407628906937404315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: r03
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4994,7 +4987,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 12
   impactParticles: {fileID: 0}
-  hills: {fileID: 0}
   onHit:
     m_PersistentCalls:
       m_Calls:
