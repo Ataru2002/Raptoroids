@@ -499,25 +499,12 @@ public class Map : ISerializationCallbackReceiver
     {
         mapNodes = new MapNode[height, width];
 
-        // First pass - deserialize the nodes
         for (int y = 0; y < height; y++)
         {
             MapNode[] rowEntries = nodeRows[y].entries;
             for (int x = 0; x < width; x++)
             {
                 mapNodes[y, x] = rowEntries[x];
-            }
-        }
-
-        // Second pass - reconnect the nodes
-        foreach (MapNode node in mapNodes)
-        {
-            for (int i = 0; i < node.nextNodeCount; i++)
-            {
-                int nextX = node.nextXCoords[i];
-                int nextY = node.nextYCoords[i];
-
-                node.AddLink(mapNodes[nextY, nextX]);
             }
         }
     }

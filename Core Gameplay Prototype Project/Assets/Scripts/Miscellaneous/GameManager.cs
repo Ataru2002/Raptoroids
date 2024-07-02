@@ -447,7 +447,7 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         // Pretty print on for debugging. Turn off to minimize save file size
-        string saveString = JsonUtility.ToJson(playerData, false);
+        string saveString = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(saveFilePath, saveString);
     }
 
