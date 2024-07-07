@@ -57,7 +57,7 @@ public class LaserBeamSource : Weapon
         if (timeSinceLastTick > laserTickTime)
         {
             RaycastHit2D[] hit = new RaycastHit2D[1];
-            Physics2D.CircleCast(transform.position, weaponData.laserBreadth, transform.up, contactFilter, hit, weaponData.laserRange);
+            Physics2D.CircleCast(transform.position, weaponData.laserBreadth, transform.up, contactFilter, hit, weaponData.range);
             if (hit[0])
             {
                 IBulletHittable hitDetector = hit[0].transform.GetComponent<IBulletHittable>();
@@ -72,7 +72,7 @@ public class LaserBeamSource : Weapon
             }
             else
             {
-                float beamLength = weaponData.laserRange / transform.lossyScale.y;
+                float beamLength = weaponData.range / transform.lossyScale.y;
                 beamRenderer.size = new Vector2(0.8f, beamLength);
             }
             timeSinceLastTick = 0;

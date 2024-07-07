@@ -21,6 +21,8 @@ public class ProjectileSpawner : Weapon
     float timestamp;
     float timeOfNextShot = 0;
 
+    int sequenceCounter = 0;
+
     void Awake()
     {
         SetShootFunc();
@@ -58,6 +60,8 @@ public class ProjectileSpawner : Weapon
                 shoot = SingleShot; break;
             case ShotType.Cone:
                 shoot = ConeShot; break;
+            case ShotType.ProjectileSequence:
+                shoot = ShootSequenceStep; break;
             default:
                 Debug.LogWarning("Setting shot to unsupported type. Falling back to single shot.");
                 shoot = SingleShot;
@@ -165,6 +169,24 @@ public class ProjectileSpawner : Weapon
             projectileB.transform.Rotate(0, 0, angleMultiplier * i * weaponData.coneAngle);
         }
 
+        if (sfxSource != null)
+        {
+            sfxSource.PlayOneShot(weaponData.shotSound);
+        }
+    }
+
+    void ShootSequenceStep()
+    {
+        GameObject projectile = BaseProjectile();
+
+        SequenceProjectile bulletComponent = projectile.GetComponent<SequenceProjectile>();
+        if (bulletComponent == null)
+        {
+            throw new Exception("ShootSequenceStep attempting to spawn a projectile that is not part of a sequence");
+        }
+        bulletComponent.SetSequenceStep(sequenceCounter);
+
+        sequenceCounter = (sequenceCounter + 1) % weaponData.projectileCount;
         if (sfxSource != null)
         {
             sfxSource.PlayOneShot(weaponData.shotSound);

@@ -170,7 +170,6 @@ public class GameManager : MonoBehaviour
         quests.SaveData(ID);
     }
 
-
     public void resetQuests(string ID)
     {
         LoadingDate();

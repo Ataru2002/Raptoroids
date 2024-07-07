@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 1754237923935055944}
   - component: {fileID: 702819018756286836}
   - component: {fileID: 6351044040761178337}
-  - component: {fileID: 1762223987579665283}
+  - component: {fileID: 6598640923210126703}
   - component: {fileID: 5650374238258701477}
-  - component: {fileID: 6475097801399561804}
   - component: {fileID: 2301554777044880239}
+  - component: {fileID: 6475097801399561804}
   - component: {fileID: 3595104417677740885}
   m_Layer: 0
-  m_Name: pb00_Basic
+  m_Name: pb01_Boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.3}
   m_Radius: 0.4
---- !u!114 &1762223987579665283
+--- !u!114 &6598640923210126703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,13 +137,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8930704053567165026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6306e77307d931f44a151bc3d558b2de, type: 3}
+  m_Script: {fileID: 11500000, guid: bd8eb9e3dde246e408ae69645d976667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pooled: 1
-  bulletPoolID: 0
-  speed: 10
+  bulletPoolID: 1
+  speed: 8
   targetType: 1
+  pathOffsets:
+  - {x: -2, y: 4}
+  - {x: -1, y: 6}
+  range: 5
 --- !u!50 &5650374238258701477
 Rigidbody2D:
   serializedVersion: 4
@@ -171,28 +175,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &6475097801399561804
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8930704053567165026}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c505211c3aaf35a4eb345e04202cf682, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!199 &2301554777044880239
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -269,6 +251,28 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!95 &6475097801399561804
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930704053567165026}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c505211c3aaf35a4eb345e04202cf682, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!198 &3595104417677740885
 ParticleSystem:
   m_ObjectHideFlags: 0

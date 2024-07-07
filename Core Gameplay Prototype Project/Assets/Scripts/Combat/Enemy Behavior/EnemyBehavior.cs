@@ -64,6 +64,15 @@ public class BezierCurve
 {
     Vector2[] controlPoints;
 
+    float length = 0;
+    public float Length
+    {
+        get
+        {
+            return length == 0 ? EstimateLength() : length;
+        }
+    }
+
     public BezierCurve(Vector2[] points)
     {
         controlPoints = points;
@@ -79,6 +88,20 @@ public class BezierCurve
             position += controlPoints[i] * coefficient;
         }
         return position;
+    }
+
+    float EstimateLength()
+    {
+        const float epsilon = 1e-3f;
+        float result = 0;
+        
+        for (float t = epsilon; t <= 1; t += epsilon)
+        {
+            Vector2 prev = GetPosition(t - epsilon);
+            Vector2 current = GetPosition(t);
+            result += Vector2.Distance(prev, current);
+        }
+        return length = result;
     }
 
     int Combination(int n, int r)

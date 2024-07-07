@@ -14,7 +14,7 @@ public class WeaponData : ScriptableObject
     public int projectileCount;
     public float coneAngle;
 
-    public float laserRange;
+    public float range;
     public float laserBreadth;
 }
 
@@ -36,7 +36,7 @@ public class WeaponDataEditor : Editor
         SerializedProperty projectileCount = serializedObject.FindProperty("projectileCount");
         SerializedProperty coneAngle = serializedObject.FindProperty("coneAngle");
 
-        SerializedProperty laserRange = serializedObject.FindProperty("laserRange");
+        SerializedProperty range = serializedObject.FindProperty("range");
         SerializedProperty laserBreadth = serializedObject.FindProperty("laserBreadth");
 
         #endregion
@@ -69,8 +69,11 @@ public class WeaponDataEditor : Editor
                 EditorGUILayout.PropertyField(coneAngle);
                 break;
             case ShotType.Laser:
-                EditorGUILayout.PropertyField(laserRange);
+                EditorGUILayout.PropertyField(range);
                 EditorGUILayout.PropertyField(laserBreadth);
+                break;
+            case ShotType.ProjectileSequence:
+                EditorGUILayout.PropertyField(projectileCount);
                 break;
             default:
                 break;
@@ -78,4 +81,12 @@ public class WeaponDataEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
+}
+
+public enum ShotType
+{
+    Single,
+    Cone,
+    Laser,
+    ProjectileSequence
 }

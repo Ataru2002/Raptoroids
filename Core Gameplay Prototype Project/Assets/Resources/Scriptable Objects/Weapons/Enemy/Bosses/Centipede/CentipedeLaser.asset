@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   shotType: 2
+  playerProjectileType: 0
+  enemyProjectileType: 0
   fireRate: 5
   shotSound: {fileID: 0}
   projectileCount: 0
   coneAngle: 0
-  laserRange: 12
+  range: 12
   laserBreadth: 0.32

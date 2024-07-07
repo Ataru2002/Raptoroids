@@ -106,7 +106,6 @@ public class GiantArmBehaviour : MonoBehaviour
         
         returnCurve = new BezierCurve(path.ToArray());
         stateUpdate = ReturnToBody;
-        
   
         while (timeSinceReturnStart <= returnTime)
         {

@@ -10,10 +10,10 @@ public enum TargetType
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] bool pooled = true;
-    [SerializeField] int bulletPoolID;
-    [SerializeField] float speed;
-    [SerializeField] TargetType targetType;
+    [SerializeField] protected bool pooled = true;
+    [SerializeField] protected int bulletPoolID;
+    [SerializeField] protected float speed;
+    [SerializeField] protected TargetType targetType;
 
     SpriteRenderer spriteRenderer;
 

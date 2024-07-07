@@ -33,10 +33,3 @@ public abstract class Weapon : MonoBehaviour
         effectiveFireRate = weaponData.fireRate;
     }
 }
-
-public enum ShotType
-{
-    Single,
-    Cone,
-    Laser,
-}
