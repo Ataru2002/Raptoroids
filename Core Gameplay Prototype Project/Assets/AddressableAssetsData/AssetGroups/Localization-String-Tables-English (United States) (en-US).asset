@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-English (United States) (en-US)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-English (United States) (en-US)
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8db959b3b54e55a4ba2ecb67b326438c
+  m_SerializeEntries:
+  - m_GUID: 272ca553c1a8e6f43bfe4a64ce996829
+    m_Address: MainMenu_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac8b8f0d35bfe734eb6532df8ff4920a
+    m_Address: MapTutorial_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74f4bc12bdc9d6345b41c9ae3544ebe1
+    m_Address: SettingsMenu_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b9292f652367c04dbe958347ecf8410
+    m_Address: Instructions_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6093867f98517544c837316836813283
+    m_Address: CombatTutorial_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c5ae5e9687093a438952ce8b0403068
+    m_Address: Common_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d66b5ed055d36d64cbcb98941c5c63c0
+    m_Address: MapSelect_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fa5e7220d514fe42b0090fe8551aa0f
+    m_Address: CombatStage_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54a0242ab471ccc449a119176dd3104d
+    m_Address: StageClearScreen_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bdfc54af1fba69e479e87775769b7b7d
+    m_Address: LoseScreen_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: efa001f228bd02e44a06b3c87f97e199
+    m_Address: TreasureRoom_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5fd785a3bc2b564295b123ad4ddefde
+    m_Address: RaptoroidShopFlavorText_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52f03285b4d01064a8a93384115f94b9
+    m_Address: WeaponShopFlavorText_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e844122f2e2a4749b9dbcb4e77433eb
+    m_Address: ShopMenu_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9572e94b738dc24bbd64287164b58bd
+    m_Address: LoadoutItem_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 277282425a962dc4bac1bbc45c96dcc4
+    m_Address: Intro_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae0615df6fe8a4546826643ef9f4f77a
+    m_Address: TutorialSequence_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3139e24d25efb1441992b032d6469f47
+    m_Address: CentipedeHints_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d8c45b273548744980b7538cb85a5be
+    m_Address: QueenBeeHints_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d0f67002a940894f84da2998593f36c
+    m_Address: ParasiteHints_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ae6b0125fab6ce4c9d80f403c424180
+    m_Address: MantisHints_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 80101bc332c0f164db2abaf09c2d81bc, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 310e70944f688dd41aea2fde557a367c, type: 2}
+    - {fileID: 11400000, guid: 8cfd067c0b627c144a4e478f667517a3, type: 2}

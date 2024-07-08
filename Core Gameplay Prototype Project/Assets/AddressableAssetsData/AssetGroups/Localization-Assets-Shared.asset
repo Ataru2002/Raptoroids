@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c6272e807bf9b5a46b5b36b11b01e37a
+  m_SerializeEntries:
+  - m_GUID: 0c7bfff048ec7db42a54ef4f0cd4b6f9
+    m_Address: Assets/Localization/String Tables/MainMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3dd49bea1216d96459d50ad94ff6ce2a
+    m_Address: Assets/Localization/String Tables/Map Tutorial/MapTutorial Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8c479aa975005c4880b7d1f07ec1c76
+    m_Address: Assets/Localization/String Tables/Settings Menu/SettingsMenu Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9334b157d38268346a73c4d77f41047f
+    m_Address: Assets/Localization/String Tables/Game Instructions/Instructions Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b725406d160e974a8c1c3307be2303b
+    m_Address: Assets/Localization/String Tables/Combat Tutorial/CombatTutorial Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4dbce9ca48ffa2048bdff2a048b25527
+    m_Address: Assets/Localization/String Tables/Common/Common Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b17eddea4ef9864f9b89aebf11e8d7b
+    m_Address: Assets/Localization/String Tables/Map Select/MapSelect Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49bf8e54755aaae4c82313e98386ac9f
+    m_Address: Assets/Localization/String Tables/Combat Stage/CombatStage Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b13b6ab2f74f5d4894503cc81590c24
+    m_Address: Assets/Localization/String Tables/Stage Clear Screen/StageClearScreen
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbfa3121c9088684ea519b322c47ae76
+    m_Address: Assets/Localization/String Tables/Lose Screen/LoseScreen Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 849db9ed5a33ee047a088c7b88f0a6d2
+    m_Address: Assets/Localization/String Tables/Treasure Room/TreasureRoom Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23fcdffb8fdd9554ca5f58c5fa5b7435
+    m_Address: Assets/Localization/String Tables/Raptoroid Shop Flavor Text/RaptoroidShopFlavorText
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3685497cd3ca4fb4fbf5f3c3786ced46
+    m_Address: Assets/Localization/String Tables/Weapon Shop Flavor Text/WeaponShopFlavorText
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca0ea0553d5714449ac95c7499970805
+    m_Address: Assets/Localization/String Tables/Shop Menu/ShopMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 001db28c202a64a4cb3622e70bffd385
+    m_Address: Assets/Localization/String Tables/Loadout Item/LoadoutItem Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03897abbbf451a44c83cc241a90b9c2f
+    m_Address: Assets/Localization/String Tables/Intro/Intro Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4188fecb64a0bb94d8de8ace48570ed7
+    m_Address: Assets/Localization/String Tables/Tutorial Sequence/TutorialSequence
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4210a3368b087e949ade526275ce2e2c
+    m_Address: Assets/Localization/String Tables/Boss Hints/Centipede/CentipedeHints
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0bc67e8c2f8e4de4f8e6f9838bd48855
+    m_Address: Assets/Localization/String Tables/Boss Hints/Queen Bee/QueenBeeHints
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d0adc67d667e474bbf4538a6e238488
+    m_Address: Assets/Localization/String Tables/Boss Hints/Parasite/ParasiteHints
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f42f82e384b60f44b56ad13ef413486
+    m_Address: Assets/Localization/String Tables/Boss Hints/Mantis/MantisHints Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 80101bc332c0f164db2abaf09c2d81bc, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: fea55b2c476dcda499da5074d5e12a83, type: 2}
+    - {fileID: 11400000, guid: b29786d7eb7606947931be02aaf0161c, type: 2}

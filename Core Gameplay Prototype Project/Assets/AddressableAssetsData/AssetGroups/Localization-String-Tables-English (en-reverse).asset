@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-English (en-reverse)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-English (en-reverse)
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d00398fdb9f11430da749928db8eefc9
+  m_SerializeEntries:
+  - m_GUID: be360a477b5f31343900328ebc310302
+    m_Address: MainMenu_en-reverse
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-reverse
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3fc500d2bcb08d4294434f2b0540309
+    m_Address: RaptoroidShopFlavorText_en-reverse
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-reverse
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e98d67a7fd667d745a32adaec34f11cc
+    m_Address: WeaponShopFlavorText_en-reverse
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-reverse
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f327869bd994e6438454e608eae25d9
+    m_Address: ShopMenu_en-reverse
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-reverse
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9cd17687cfef81c45aafd2d1269c9491
+    m_Address: LoadoutItem_en-reverse
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-reverse
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e79d2dfe9beb6cd43939d16a759b9591
+    m_Address: Intro_en-reverse
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-reverse
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca2f1de7b562c44498779d1c751559ba
+    m_Address: TutorialSequence_en-reverse
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-reverse
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 80101bc332c0f164db2abaf09c2d81bc, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e51c00133a21a412799ac18f555bb93a, type: 2}
+    - {fileID: 11400000, guid: 2a222a7d4bffa41dfaec35a20bd44d77, type: 2}

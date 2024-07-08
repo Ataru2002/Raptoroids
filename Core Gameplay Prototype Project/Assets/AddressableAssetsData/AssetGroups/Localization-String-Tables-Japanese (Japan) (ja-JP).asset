@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Japanese (Japan) (ja-JP)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Japanese (Japan) (ja-JP)
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 18f48d730e25b9b489712a62da820f46
+  m_SerializeEntries:
+  - m_GUID: 482480a9d252f79488312ca49544d513
+    m_Address: MainMenu_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0360b87afa23ce44a7960c61251701d
+    m_Address: MapTutorial_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 027ee22e67810d242ab967be2a6ff2ad
+    m_Address: SettingsMenu_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6795d76df23a2e14e9724b8529854c94
+    m_Address: Instructions_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d6429c3184ee384286c9860fb402b18
+    m_Address: CombatTutorial_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a54633f29c8eb94f9bff395b3592a18
+    m_Address: Common_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77145897ddfaf6b4fa9255957592463c
+    m_Address: MapSelect_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be485357c7b9b9549b1cef6e75140d6f
+    m_Address: CombatStage_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79e5cd7fcfadfb04e97a46ac40b7abd4
+    m_Address: StageClearScreen_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a58c62df8abeefc4f9657208a30dbfc1
+    m_Address: LoseScreen_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52455f5e0bd343c4b95c74ae31f29211
+    m_Address: TreasureRoom_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 00d10516a76a9e44d83b38a7e4df8be6
+    m_Address: RaptoroidShopFlavorText_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da99e2b3983526b4dbdc4cefa2395d53
+    m_Address: WeaponShopFlavorText_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1027b829ddd35c84abb1c6a27168004b
+    m_Address: ShopMenu_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b329958d235ef54d9587671715b274e
+    m_Address: LoadoutItem_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5820067ec30490d43808316d4ed2812d
+    m_Address: Intro_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 058b9fc20e6ed7e40a131bb4406d8754
+    m_Address: TutorialSequence_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52ec438db6547e34a9d27d5de37cfff0
+    m_Address: CentipedeHints_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c261ee063edfb445bcd79cd2df319dc
+    m_Address: QueenBeeHints_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd4e18c84916cb24b8f2cbc4bc04f948
+    m_Address: ParasiteHints_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f49ffee12ce25045b0d6c627aba39eb
+    m_Address: MantisHints_ja-JP
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja-JP
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 80101bc332c0f164db2abaf09c2d81bc, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7f1c4f0032c1d614380d9d4d09067786, type: 2}
+    - {fileID: 11400000, guid: 9a0839723731865479872ce724618db8, type: 2}
