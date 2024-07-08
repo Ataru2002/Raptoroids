@@ -16,7 +16,7 @@ MonoBehaviour:
   shotType: 3
   playerProjectileType: 1
   enemyProjectileType: 0
-  fireRate: 1.2
+  fireRate: 2
   shotSound: {fileID: 0}
   projectileCount: 2
   coneAngle: 0
