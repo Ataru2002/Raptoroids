@@ -12,6 +12,7 @@ public class TutorialRoomManager : MonoBehaviour
     private static TutorialRoomManager instance;
     public static TutorialRoomManager Instance { get { return instance; } }
     [SerializeField] GameObject raptoroidPrefab;
+    [SerializeField] WeaponData tutorialWeaponData;
 
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] TextMeshProUGUI killCounter;
@@ -52,8 +53,11 @@ public class TutorialRoomManager : MonoBehaviour
         PlayerPrefs.SetInt("TutorialComplete", 0);
         GameAnalytics.NewDesignEvent("Tutorial:Start");
         IntroductionBehaviour.onIntroduction += IntroductionOver;
+        
         raptoroid = Instantiate(raptoroidPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
-        raptoroid.GetComponentInChildren<ProjectileSpawner>().enabled = false;
+        ProjectileSpawner tutorialWeapon = raptoroid.GetComponentInChildren<ProjectileSpawner>();
+        tutorialWeapon.SetWeaponData(tutorialWeaponData);
+        tutorialWeapon.enabled = false;
     }
 
     GameObject MakePlayerProjectile()

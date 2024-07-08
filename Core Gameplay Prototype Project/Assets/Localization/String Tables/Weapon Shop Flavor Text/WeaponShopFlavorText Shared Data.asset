@@ -15,12 +15,16 @@ MonoBehaviour:
   m_TableCollectionName: WeaponShopFlavorText
   m_TableCollectionNameGuidString: 3685497cd3ca4fb4fbf5f3c3786ced46
   m_Entries:
+  - m_Id: 2053297039990784
+    m_Key: w00
+    m_Metadata:
+      m_Items: []
   - m_Id: 8702124032
     m_Key: w01
     m_Metadata:
       m_Items: []
-  - m_Id: 2053297039990784
-    m_Key: w00
+  - m_Id: 16958163671572480
+    m_Key: w02
     m_Metadata:
       m_Items: []
   m_Metadata:

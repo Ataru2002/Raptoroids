@@ -106,11 +106,6 @@ public class CombatStageManager : MonoBehaviour
         }
     }
 
-    const float oakNutFallSpeed = 2f;
-    const float mineSpeed = 2f;
-    const float hillSpeed = 2f;
-    const float playerFreezeDuration = 5f;
-
     // Start is called before the first frame update
     void Start()
     {

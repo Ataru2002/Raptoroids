@@ -26,6 +26,10 @@ MonoBehaviour:
     m_Localized: A simple projectile launcher.
     m_Metadata:
       m_Items: []
+  - m_Id: 16958163671572480
+    m_Localized: A weapon that launches high-velocity curving blades.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

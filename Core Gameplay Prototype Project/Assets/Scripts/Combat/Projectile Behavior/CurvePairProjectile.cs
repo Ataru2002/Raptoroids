@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.PostProcessing;
 using UnityEngine;
 
 public class CurvePairProjectile : SequenceProjectile
@@ -18,7 +19,13 @@ public class CurvePairProjectile : SequenceProjectile
     // Start is called before the first frame update
     new void Start()
     {
-        SetPath();
+        base.Start();
+        ResetPath();
+    }
+
+    private void OnEnable()
+    {
+        ResetPath();
     }
 
     // Update is called once per frame
@@ -30,6 +37,11 @@ public class CurvePairProjectile : SequenceProjectile
         }
         else
         {
+            if (!spriteRenderer.isVisible)
+            {
+                despawn(gameObject);
+            }
+
             transform.Translate(postCurveDirection.normalized * speed * Time.deltaTime, Space.World);
         }
 
@@ -38,10 +50,12 @@ public class CurvePairProjectile : SequenceProjectile
 
     public void SetPath()
     {
-        Vector2 point1Offset = pathOffsets[0].x * transform.right + pathOffsets[0].y * transform.up;
+        float curveDirection = sequenceStep == 0 ? 1 : -1;
+
+        Vector2 point1Offset = pathOffsets[0].x * curveDirection * transform.right + pathOffsets[0].y * transform.up;
         Vector2 point1 = (Vector2)transform.position + point1Offset;
 
-        Vector2 point2Offset = pathOffsets[1].x * transform.right + pathOffsets[1].y * transform.up;
+        Vector2 point2Offset = pathOffsets[1].x * curveDirection * transform.right + pathOffsets[1].y * transform.up;
         Vector2 point2 = (Vector2)transform.position + point2Offset;
 
         Vector2 end = transform.position + range * transform.up;
@@ -57,5 +71,11 @@ public class CurvePairProjectile : SequenceProjectile
 
         postCurveDirection = (end - point2).normalized;
         curveTime = curvePath.Length / speed;
+    }
+
+    void ResetPath()
+    {
+        SetPath();
+        timeElapsed = 0f;
     }
 }

@@ -36,7 +36,8 @@ public class ProjectilePoolManager : MonoBehaviour
             playerProjectilePools = new Dictionary<PlayerProjectileType, LinkedPool<GameObject>>();
             Func<GameObject>[] playerSpawnFuncs =
             {
-                MakePlayerBasicBullet
+                MakePlayerBasicBullet,
+                MakePlayerPairCurveProjectile
             };
             int playerProjectileTypeCount = Enum.GetValues(typeof(PlayerProjectileType)).Length;
             if (playerProjectileTypeCount != playerSpawnFuncs.Length)
@@ -60,7 +61,7 @@ public class ProjectilePoolManager : MonoBehaviour
             {
                 Debug.LogError("Enemy projectile type count and spawn function count mismatch.");
             }
-            for (int e = 0; e < playerSpawnFuncs.Length; e++)
+            for (int e = 0; e < enemySpawnFuncs.Length; e++)
             {
                 EnemyProjectileType projectileType = (EnemyProjectileType)e;
                 LinkedPool<GameObject> projectilePool = new LinkedPool<GameObject>(enemySpawnFuncs[e], PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 1000);
@@ -77,6 +78,11 @@ public class ProjectilePoolManager : MonoBehaviour
     GameObject MakePlayerBasicBullet()
     {
         return Instantiate(playerProjectiles[(int)PlayerProjectileType.Basic]);
+    }
+    
+    GameObject MakePlayerPairCurveProjectile()
+    {
+        return Instantiate(playerProjectiles[(int)PlayerProjectileType.CurvePair]);
     }
     #endregion
 
@@ -124,7 +130,8 @@ public class ProjectilePoolManager : MonoBehaviour
 
 public enum PlayerProjectileType
 {
-    Basic
+    Basic,
+    CurvePair
 }
 
 public enum EnemyProjectileType

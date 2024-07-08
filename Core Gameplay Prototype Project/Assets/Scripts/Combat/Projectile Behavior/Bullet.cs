@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected TargetType targetType;
 
-    SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
 
     protected delegate void BulletDespawner(GameObject bullet);
     protected BulletDespawner despawn;
