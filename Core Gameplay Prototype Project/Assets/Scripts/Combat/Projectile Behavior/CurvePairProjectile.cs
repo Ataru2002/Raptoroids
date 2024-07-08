@@ -20,12 +20,12 @@ public class CurvePairProjectile : SequenceProjectile
     new void Start()
     {
         base.Start();
-        ResetPath();
+        StartCoroutine(ResetPath());
     }
 
     private void OnEnable()
     {
-        ResetPath();
+        StartCoroutine(ResetPath());
     }
 
     // Update is called once per frame
@@ -73,8 +73,12 @@ public class CurvePairProjectile : SequenceProjectile
         curveTime = curvePath.Length / speed;
     }
 
-    void ResetPath()
+    IEnumerator ResetPath()
     {
+        // Wait for end of frame so that the projectile is moved into correct starting position
+        // after being retrieved from pool.
+        yield return new WaitForEndOfFrame();
+
         SetPath();
         timeElapsed = 0f;
     }
