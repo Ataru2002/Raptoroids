@@ -18,6 +18,7 @@ public class WeaponData : ScriptableObject
     public float laserBreadth;
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(WeaponData))]
 public class WeaponDataEditor : Editor
 {
@@ -82,6 +83,7 @@ public class WeaponDataEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
 
 public enum ShotType
 {
