@@ -50,8 +50,10 @@ public class CurvePairProjectile : SequenceProjectile
             {
                 despawn(gameObject);
             }
-
-            transform.Translate(postCurveDirection.normalized * speed * Time.deltaTime, Space.World);
+            else
+            {
+                transform.Translate(postCurveDirection.normalized * speed * Time.deltaTime, Space.World);
+            }
         }
 
         timeElapsed += Time.deltaTime;
@@ -96,6 +98,6 @@ public class CurvePairProjectile : SequenceProjectile
         trailRenderer.emitting = true;
 
         spinControl.SetClockwise(sequenceStep == 0);
-        spriteRenderer.flipX = sequenceStep == 0;
+        spriteRenderer.flipX = sequenceStep != 0;
     }
 }
