@@ -16,6 +16,16 @@ public class CurvePairProjectile : SequenceProjectile
     float curveTime;
     float timeElapsed = 0f;
 
+    Spin spinControl;
+    TrailRenderer trailRenderer;
+
+    new void Awake()
+    {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spinControl = GetComponentInChildren<Spin>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
+    }
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -75,11 +85,18 @@ public class CurvePairProjectile : SequenceProjectile
 
     IEnumerator ResetPath()
     {
+        trailRenderer.Clear();
+        trailRenderer.emitting = false;
+
         // Wait for end of frame so that the projectile is moved into correct starting position
         // after being retrieved from pool.
         yield return new WaitForEndOfFrame();
 
         SetPath();
         timeElapsed = 0f;
+        trailRenderer.emitting = true;
+
+        spinControl.SetClockwise(sequenceStep == 0);
+        spriteRenderer.flipX = sequenceStep == 0;
     }
 }

@@ -23,11 +23,14 @@ public class Bullet : MonoBehaviour
     protected bool isPlayerBullet { get { return targetType == TargetType.Enemy; } }
     protected int damage = 1;
 
+    protected void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     // Start is called before the first frame update
     protected void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
         if (!pooled)
         {
             despawn = Destroy;

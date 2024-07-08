@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 40b520532a526c5408567812b8070396
+guid: 464477ddab6f35948bda52220ade1e81
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8077132804792330106
-    second: RubyDropSprite_0
+      213: -4294649327590104590
+    second: CurveShuriken_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,15 +40,15 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +123,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RubyDropSprite_0
+      name: CurveShuriken_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 0
-        width: 66
-        height: 72
+        x: 5
+        y: 5
+        width: 118
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a772d41dd7db71070800000000000000
-      internalID: 8077132804792330106
+      spriteID: 2f12f1ac0375664c0800000000000000
+      internalID: -4294649327590104590
       vertices: []
       indices: 
       edges: []
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RubyDropSprite_0: 8077132804792330106
+      CurveShuriken_0: -4294649327590104590
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

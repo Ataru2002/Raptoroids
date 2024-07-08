@@ -2089,11 +2089,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  projectilePrefab: {fileID: 8930704053567165026, guid: ebbdadbacbb8e1c4592b5fbbf5a3fcad, type: 3}
-  fireRate: 1.6
-  coneFire: 0
-  coneAngle: 15
+  weaponData: {fileID: 0}
+  firstShotDelay: 0
+  sfxSource: {fileID: 0}
 --- !u!1 &946286040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,11 +2484,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
-  projectilePrefab: {fileID: 8930704053567165026, guid: b9adfceca6c25f244b588b8b49dc3017, type: 3}
-  fireRate: 3
-  coneFire: 0
-  coneAngle: 0
+  weaponData: {fileID: 0}
+  firstShotDelay: 0
+  sfxSource: {fileID: 0}
 --- !u!1 &1066266633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,6 +2727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackPlayer: 0
+  timeToFinalPosition: 0
+  defaultWeapon: {fileID: 0}
 --- !u!61 &1332243982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2828,7 +2826,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1332243984
@@ -5097,6 +5095,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ac40cf349941045a2897afeb479d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  impactParticles: {fileID: 0}
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1979158769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5155,9 +5158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193b7df191449734d9bd4248c840013f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowFollowSpeed: 0
-  mediumFollowSpeed: 12
-  fastFollowSpeed: 0
+  followSpeed: 0
+  yOffset: 0.5
   snapDistance: 0.05
 --- !u!212 &1979158771
 SpriteRenderer:
@@ -5210,7 +5212,7 @@ SpriteRenderer:
   m_Size: {x: 2.42, y: 2.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1979158772

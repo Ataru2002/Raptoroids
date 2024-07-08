@@ -111,6 +111,7 @@ public class ProjectilePoolManager : MonoBehaviour
             Debug.LogError("Returning an object that is not a projectile into a player projectile pool. Abort");
             return;
         }
+
         int id = bulletComponent.GetBulletPoolID();
         playerProjectilePools[(PlayerProjectileType)id].Release(bullet);
     }
@@ -123,6 +124,7 @@ public class ProjectilePoolManager : MonoBehaviour
             Debug.LogError("Returning an object that is not a projectile into an enemy projectile pool. Abort");
             return;
         }
+
         int id = bulletComponent.GetBulletPoolID();
         enemyProjectilePools[(EnemyProjectileType)id].Release(bullet);
     }
