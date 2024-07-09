@@ -7,11 +7,23 @@ public class BombBehaviour : MonoBehaviour
 {
     [SerializeField] float explosionRadius = 2f;
     [SerializeField] GameObject explosionVisual;
+    AudioSource explosionFXSource;
+    ParticleSystem explosionParticles;
+
+    private void Awake()
+    {
+        explosionFXSource = GetComponent<AudioSource>();
+        explosionParticles = explosionVisual.GetComponent<ParticleSystem>();
+    }
 
     public void Detonate()
     {
         explosionVisual.SetActive(true);
-        StartCoroutine(bombVisualDelay(0.3f));
+        explosionFXSource.PlayOneShot(explosionFXSource.clip);
+        explosionParticles.Emit(80);
+        transform.parent.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        transform.parent.GetComponent<SpriteRenderer>().enabled = false;
+        StartCoroutine(bombVisualDelay(0.6f));
 
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D hitCollider in hitColliders)
@@ -27,7 +39,6 @@ public class BombBehaviour : MonoBehaviour
 
                 explosionVisual.transform.localScale = new Vector3(explosionRadius, explosionRadius, 1);
                 hitCollider.gameObject.SetActive(false);
-                disableBombCollider();
 
                 ParasiteManager.Instance.SetShieldStatus(false);
                 break;
@@ -35,17 +46,8 @@ public class BombBehaviour : MonoBehaviour
         }
     }
 
-    void disableBombCollider(){
-        BoxCollider2D parentCollider =  transform.parent.gameObject.GetComponent<BoxCollider2D>();
-        if(parentCollider != null){
-            parentCollider.enabled = false;
-        }
-        CircleCollider2D childCollider = GetComponent<CircleCollider2D>();
-        childCollider.enabled = false;
-    }
-
     IEnumerator bombVisualDelay(float duration){
         yield return new WaitForSeconds(duration);
-        transform.parent.gameObject.SetActive(false);
+        Destroy(transform.parent.gameObject);
     }
 }
