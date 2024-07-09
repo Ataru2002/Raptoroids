@@ -16,11 +16,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float yOffset = 0.5f;
     [SerializeField] float snapDistance = 0.01f;
     JoystickController joystickController;
+    private Vector3 previousPos;
     bool isFrozen = false;
     float freezeDuration = 2f;
-
+    float joystickSpeedMult = 0.5f;
     void Start(){
         joystickController = FindFirstObjectByType<JoystickController>();
+        previousPos = transform.position;
     }
     void Update()
     {
@@ -48,13 +50,21 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target, followSpeed * Time.deltaTime);
         }
+
+        float distanceTraveled = Vector3.Distance(previousPos, transform.position);
     }
 
     private void JoystickMoveTowards(){
-        if(joystickController.joystickVec.y != 0){
+        if(Math.Abs(joystickController.joystickVec.magnitude) != 0){
             Vector3 direction = new Vector3(joystickController.joystickVec.x, joystickController.joystickVec.y, 0f);
-            Vector3 newPos = transform.position + direction * followSpeed * Time.deltaTime;
-            transform.position = newPos;
+            direction = direction.magnitude > 1f ? direction.normalized : direction;
+            Vector3 newPos = direction * followSpeed * Time.deltaTime * joystickSpeedMult;
+
+
+            float distanceTraveled = Vector3.Distance(previousPos, newPos);    
+            transform.position += newPos;
+
+            previousPos = newPos;
         }
     }
 
