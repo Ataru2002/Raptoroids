@@ -16,14 +16,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float yOffset = 0.5f;
     [SerializeField] float snapDistance = 0.01f;
     JoystickController joystickController;
-    private Vector3 previousPos;
     bool isFrozen = false;
     float freezeDuration = 2f;
     float joystickSpeedMult = 0.5f;
 
+    Vector2 upperBound;
+    Vector2 lowerBound;
+
     void Start() {
         joystickController = FindFirstObjectByType<JoystickController>();
-        previousPos = transform.position;
+
+        upperBound = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+        lowerBound = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
     }
 
     void Update()
@@ -60,9 +64,13 @@ public class PlayerMovement : MonoBehaviour
             direction = direction.magnitude > 1f ? direction.normalized : direction;
             Vector3 newPos = direction * followSpeed * Time.deltaTime * joystickSpeedMult;
 
-            transform.position += newPos;
+            float newX = transform.position.x + newPos.x;
+            newX = Math.Clamp(newX, lowerBound.x, upperBound.x);
+            
+            float newY = transform.position.y + newPos.y;
+            newY = Math.Clamp(newY, lowerBound.y, upperBound.y);
 
-            previousPos = newPos;
+            transform.position = new Vector3(newX, newY, transform.position.z);
         }
     }
 
