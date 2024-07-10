@@ -1,11 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
+// NOTE: it appears that each hill object spawns a new instance of the hill prefab
+// Might need reimplementation if performance considerably impacted
 public class Hill : MonoBehaviour
 {
     public GameObject hillPrefab;
     public GameObject crackingPrefab;
     private GameObject crackingInstance;
+
+    AudioSource audioSource;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -27,8 +36,6 @@ public class Hill : MonoBehaviour
 
     IEnumerator HandleHillCracking()
     {
-        print("cracking appear");
-
         yield return new WaitForSeconds(3.0f);
 
         // Determine a random position in the bottom half of the screen horizontally
@@ -47,6 +54,7 @@ public class Hill : MonoBehaviour
         }
         Destroy(crackingInstance);
         GameObject newHill = Instantiate(hillPrefab, crackingInstance.transform.position, Quaternion.identity);
+        audioSource.PlayOneShot(audioSource.clip);
         Destroy(newHill, 3.0f);
     }
 }
