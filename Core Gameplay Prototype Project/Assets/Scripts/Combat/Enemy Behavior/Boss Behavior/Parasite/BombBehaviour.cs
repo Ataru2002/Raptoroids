@@ -65,19 +65,19 @@ public class BombBehaviour : MonoBehaviour
         yield return null;
         if (rb.velocityX < 0)
         {
-            while (gameObject.transform.position.x > CombatStageManager.Instance.HorizontalLowerBound)
+            while (transform.parent.gameObject.transform.position.x > CombatStageManager.Instance.HorizontalLowerBound)
             {
                 yield return null;
             }
         }
         else
         {
-            while (gameObject.transform.position.x < CombatStageManager.Instance.HorizontalUpperBound)
+            while (transform.parent.gameObject.transform.position.x < CombatStageManager.Instance.HorizontalUpperBound)
             {
                 yield return null;
             }
         }
 
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }
