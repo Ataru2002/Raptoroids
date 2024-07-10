@@ -33,6 +33,13 @@ public class JoystickController : MonoBehaviour
 
         float joystickDist = Vector2.Distance(dragPos, joystickTouchPos);
 
+        float deadZone = 0.7f;
+
+
+        if(joystickDist / joystickRadius < deadZone){
+            joystickVec = Vector2.zero;
+        }
+        
         if(joystickDist < joystickRadius){
             joystick.transform.position = joystickTouchPos + joystickVec * joystickDist;
         }
@@ -45,5 +52,6 @@ public class JoystickController : MonoBehaviour
         joystickVec = Vector2.zero;
         joystick.transform.position = joystickOriginalPos;
         joystickBG.transform.position = joystickOriginalPos;
+        print("Pointer is Up");
     }
 }

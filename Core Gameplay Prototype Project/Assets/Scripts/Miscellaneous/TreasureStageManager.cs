@@ -21,6 +21,8 @@ public class TreasureStageManager : MonoBehaviour
     [SerializeField] RectTransform winScreenSummaryBox;
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] float timeLimit = 10;
+    [SerializeField] GameObject joystickPrefab;
+    GameObject joystick; 
     float currentTime = 0;
 
     GameObject rewardSummaryPrefab;
@@ -50,7 +52,7 @@ public class TreasureStageManager : MonoBehaviour
         int prefabID = GameManager.Instance.tutorialMode ? 0 : GameManager.Instance.EquippedRaptoroid;
         GameObject player = Instantiate(playerPrefabs[prefabID]);
         player.transform.position = playerSpawnPoint.position;
-
+        MakeJoystick();
         player.GetComponent<DoubleTapDetector>().enabled = false;
         player.GetComponent<RaptoroidAbility>().enabled = false;
         foreach (Transform child in player.transform)
@@ -102,6 +104,14 @@ public class TreasureStageManager : MonoBehaviour
         Destroy(item);
     }
 
+    GameObject MakeJoystick(){
+        return joystick = Instantiate(joystickPrefab);
+    }
+
+    void DisableJoystick(){
+        joystick.SetActive(false);
+    }
+
     void EndStage()
     {
         if(stageEnded){
@@ -111,6 +121,9 @@ public class TreasureStageManager : MonoBehaviour
         
         timer.gameObject.SetActive(false);
         Time.timeScale = 0;
+        if(joystick){
+            DisableJoystick();
+        }
         winScreen.SetActive(true);
         GameObject reward = Instantiate(rewardSummaryPrefab);
         reward.transform.SetParent(winScreenSummaryBox);

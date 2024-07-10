@@ -2293,6 +2293,7 @@ MonoBehaviour:
   winScreenSummaryBox: {fileID: 1307667488}
   timer: {fileID: 1292318797}
   timeLimit: 10
+  joystickPrefab: {fileID: 99405190742385187, guid: 0ab5b326dcbc4c841a364a1691661882, type: 3}
 --- !u!1001 &2108502974
 PrefabInstance:
   m_ObjectHideFlags: 0
