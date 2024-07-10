@@ -69,8 +69,6 @@ public class InfestedBossBehaviour : BossBehavior
         State1Execute();
     }
 
-    
-
     bool StateTransition2(){
         if (remainingHealthRatio > 0.7f){
             return false;
@@ -139,6 +137,7 @@ public class InfestedBossBehaviour : BossBehavior
         CombatStageManager.Instance.DisplayBossHint("hint01");
         firstHintDisplayed = true;
     }
+
     void SpawnBomb(){
         Vector3 spawnPos;
         spawnFromRight = Random.Range(0, 2) == 0;
@@ -151,43 +150,7 @@ public class InfestedBossBehaviour : BossBehavior
         GameObject prefabClone = Instantiate(bombPrefab, spawnPos, Quaternion.identity);
         Rigidbody2D rb = prefabClone.GetComponent<Rigidbody2D>();
         rb.velocity =  spawnFromRight ? Vector2.left * bombSpeed : Vector2.right * bombSpeed;   
-        StartCoroutine(DestroyOutOfRange(prefabClone));
     }
-
-    IEnumerator DestroyOutOfRange(GameObject obj){
-        yield return null;
-        if(obj != null){
-            if(spawnFromRight){
-                while(obj.transform.position.x > -5f){
-                    yield return null;
-                }
-            }
-            else{
-                while(obj.transform.position.x < 5f){
-                    yield return null;
-                }
-            }
-            
-            Destroy(obj);
-            
-        }
-    }
-
-    // IEnumerator BulletBarrageStrafe(){
-    //     originalPosition = finalPosition;
-    //     strafing = true;
-        
-    //     strafeBehavior.enabled = true;
-    //     yield return new WaitForSeconds(4.0f);
-    //     if(transform.position != originalPosition){
-    //         print("returning to position");
-    //         transform.position = originalPosition;
-    //         yield return new WaitForSeconds(0.8f);
-    //     }
-
-    //     strafeBehavior.enabled = false;
-    //     strafing = false;
-    // }
 
     private void enableTentacleHitbox(){
         foreach(TentacleBehavior tentacle in tentacles){
@@ -196,6 +159,4 @@ public class InfestedBossBehaviour : BossBehavior
             }
         }
     }
-
-
 }

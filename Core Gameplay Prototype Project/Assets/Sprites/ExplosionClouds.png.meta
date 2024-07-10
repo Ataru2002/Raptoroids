@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 7bd327ce8d0b19349800075b17ae8a7e
+guid: 2ab8d9c595b53ca479a6cbcfa99ed00d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5986030973748356752
-    second: Explosion_0
+      213: -6768890308001927097
+    second: ExplosionClouds_0
+  - first:
+      213: -2834425357342647873
+    second: ExplosionClouds_1
+  - first:
+      213: 4846914303374307944
+    second: ExplosionClouds_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,10 +54,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +145,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Explosion_0
+      name: ExplosionClouds_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 320
-        height: 320
+        x: 14
+        y: 140
+        width: 36
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +159,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 096a1cc8477a21350800000000000000
-      internalID: 5986030973748356752
+      spriteID: 740f5f3c0221012a0800000000000000
+      internalID: -6768890308001927097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionClouds_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 72
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb95b39a7291aa8d0800000000000000
+      internalID: -2834425357342647873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionClouds_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 862b26df0e2b34340800000000000000
+      internalID: 4846914303374307944
       vertices: []
       indices: 
       edges: []
@@ -170,7 +218,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Explosion_0: 5986030973748356752
+      ExplosionClouds_0: -6768890308001927097
+      ExplosionClouds_1: -2834425357342647873
+      ExplosionClouds_2: 4846914303374307944
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

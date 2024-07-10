@@ -10,10 +10,17 @@ public class BombBehaviour : MonoBehaviour
     AudioSource explosionFXSource;
     ParticleSystem explosionParticles;
 
+    Coroutine selfDestruct;
+
     private void Awake()
     {
         explosionFXSource = GetComponent<AudioSource>();
         explosionParticles = explosionVisual.GetComponent<ParticleSystem>();
+    }
+
+    void Start()
+    {
+        selfDestruct = StartCoroutine(DestroyOutOfRange());
     }
 
     public void Detonate()
@@ -48,6 +55,29 @@ public class BombBehaviour : MonoBehaviour
 
     IEnumerator bombVisualDelay(float duration){
         yield return new WaitForSeconds(duration);
+        StopCoroutine(selfDestruct);
         Destroy(transform.parent.gameObject);
+    }
+
+    IEnumerator DestroyOutOfRange()
+    {
+        Rigidbody2D rb = GetComponentInParent<Rigidbody2D>();
+        yield return null;
+        if (rb.velocityX < 0)
+        {
+            while (gameObject.transform.position.x > CombatStageManager.Instance.HorizontalLowerBound)
+            {
+                yield return null;
+            }
+        }
+        else
+        {
+            while (gameObject.transform.position.x < CombatStageManager.Instance.HorizontalUpperBound)
+            {
+                yield return null;
+            }
+        }
+
+        Destroy(gameObject);
     }
 }
