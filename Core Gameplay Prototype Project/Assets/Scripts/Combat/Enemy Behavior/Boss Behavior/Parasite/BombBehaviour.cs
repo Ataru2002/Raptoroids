@@ -30,7 +30,7 @@ public class BombBehaviour : MonoBehaviour
         explosionParticles.Emit(80);
         transform.parent.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         transform.parent.GetComponent<SpriteRenderer>().enabled = false;
-        StartCoroutine(bombVisualDelay(0.6f));
+        StartCoroutine(BombVisualDelay(0.6f));
 
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D hitCollider in hitColliders)
@@ -53,7 +53,7 @@ public class BombBehaviour : MonoBehaviour
         }
     }
 
-    IEnumerator bombVisualDelay(float duration){
+    IEnumerator BombVisualDelay(float duration){
         yield return new WaitForSeconds(duration);
         StopCoroutine(selfDestruct);
         Destroy(transform.parent.gameObject);

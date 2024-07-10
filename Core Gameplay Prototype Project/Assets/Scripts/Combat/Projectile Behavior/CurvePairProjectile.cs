@@ -52,7 +52,7 @@ public class CurvePairProjectile : SequenceProjectile
             }
             else
             {
-                transform.Translate(postCurveDirection.normalized * speed * Time.deltaTime, Space.World);
+                transform.Translate(speed * Time.deltaTime * postCurveDirection.normalized, Space.World);
             }
         }
 

@@ -112,7 +112,7 @@ public class InfestedBossBehaviour : BossBehavior
         transform.rotation = Quaternion.Euler(0, 0, 270);
         
         
-        enableTentacleHitbox();
+        EnableTentacleHitbox();
         trackPlayer = false;
         strafeBehavior.enabled = false;
         
@@ -152,7 +152,7 @@ public class InfestedBossBehaviour : BossBehavior
         rb.velocity =  spawnFromRight ? Vector2.left * bombSpeed : Vector2.right * bombSpeed;   
     }
 
-    private void enableTentacleHitbox(){
+    private void EnableTentacleHitbox(){
         foreach(TentacleBehavior tentacle in tentacles){
             if(tentacle != null){
                 tentacle.GetComponent<BoxCollider2D>().enabled = true;

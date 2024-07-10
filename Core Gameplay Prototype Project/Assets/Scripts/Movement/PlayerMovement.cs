@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveTowards(Vector2 target)
     {
-        if (Vector2.Distance(transform.position, target) <= snapDistance)
+        if (Time.timeScale > 0 && Vector2.Distance(transform.position, target) <= snapDistance)
         {
             transform.position = new Vector3(target.x, target.y, transform.position.z);
         }
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private void JoystickMoveTowards(){
         if(joystickController.joystickVec.y != 0){
             Vector3 direction = new Vector3(joystickController.joystickVec.x, joystickController.joystickVec.y, 0f);
-            Vector3 newPos = transform.position + direction * followSpeed * Time.deltaTime;
+            Vector3 newPos = transform.position + followSpeed * Time.deltaTime * direction;
             transform.position = newPos;
         }
     }

@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 2
-  oakNutPrefab: {fileID: 8562175422482686477}
+  sfxPlayerPrefab: {fileID: 3413234680368018481, guid: b10e5dfbf2008f944a2f3a7d3419ccd8, type: 3}
 --- !u!50 &-5018650540024815869
 Rigidbody2D:
   serializedVersion: 4
