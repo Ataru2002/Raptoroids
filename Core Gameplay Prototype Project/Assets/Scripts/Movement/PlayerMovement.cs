@@ -20,10 +20,12 @@ public class PlayerMovement : MonoBehaviour
     bool isFrozen = false;
     float freezeDuration = 2f;
     float joystickSpeedMult = 0.5f;
-    void Start(){
+
+    void Start() {
         joystickController = FindFirstObjectByType<JoystickController>();
         previousPos = transform.position;
     }
+
     void Update()
     {
         if (!isFrozen && Input.GetMouseButton(0))
@@ -50,8 +52,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target, followSpeed * Time.deltaTime);
         }
-
-        float distanceTraveled = Vector3.Distance(previousPos, transform.position);
     }
 
     private void JoystickMoveTowards(){
@@ -60,8 +60,6 @@ public class PlayerMovement : MonoBehaviour
             direction = direction.magnitude > 1f ? direction.normalized : direction;
             Vector3 newPos = direction * followSpeed * Time.deltaTime * joystickSpeedMult;
 
-
-            float distanceTraveled = Vector3.Distance(previousPos, newPos);    
             transform.position += newPos;
 
             previousPos = newPos;
