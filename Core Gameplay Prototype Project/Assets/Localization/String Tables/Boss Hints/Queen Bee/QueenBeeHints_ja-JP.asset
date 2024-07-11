@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2304357949440
-    m_Localized: "\u53CD\u6483\u3057\u306A\u304C\u3089\u9003\u3052\u308D! \u6355\u307E\u308C\u3070\u3001\u7D76\u5BFE\u306B\u3084\u3070\u304F\u306A\u308B!"
+    m_Localized: "\u53CD\u6483\u3057\u306A\u304C\u3089\u9003\u3052\u308D! "
     m_Metadata:
       m_Items: []
   references:

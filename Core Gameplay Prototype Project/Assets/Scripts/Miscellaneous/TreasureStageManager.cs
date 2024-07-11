@@ -52,7 +52,12 @@ public class TreasureStageManager : MonoBehaviour
         int prefabID = GameManager.Instance.tutorialMode ? 0 : GameManager.Instance.EquippedRaptoroid;
         GameObject player = Instantiate(playerPrefabs[prefabID]);
         player.transform.position = playerSpawnPoint.position;
-        MakeJoystick();
+
+        if (PlayerPrefs.GetInt("joystick") != 0)
+        {
+            MakeJoystick();
+        }
+
         player.GetComponent<DoubleTapDetector>().enabled = false;
         player.GetComponent<RaptoroidAbility>().enabled = false;
         foreach (Transform child in player.transform)
