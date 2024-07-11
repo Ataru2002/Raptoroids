@@ -64,17 +64,16 @@ public class GiantArmBehaviour : MonoBehaviour
             return;
         }
 
-        armHP -= damage;
+        int finalDamage = Mathf.Clamp(damage, 1, armHP);
+        armHP -= finalDamage;
         CombatStageManager.Instance.UpdateScore(pointsAwarded);
-        combinedBossHP.TakeDamage(damage);
+        combinedBossHP.TakeDamage(finalDamage);
         
         if(armHP <= 0){
             armDestroyed = true;
             // StopAllCoroutines();
             Destroy(gameObject);
         }
-        
-        
     }
 
     IEnumerator boomerangAttack(){

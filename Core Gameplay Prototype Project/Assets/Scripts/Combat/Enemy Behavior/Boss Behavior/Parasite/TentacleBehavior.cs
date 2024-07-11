@@ -73,10 +73,12 @@ public class TentacleBehavior : MonoBehaviour
         if(tentacleDestroyed){
             return;
         }
-        if(vulnerable){
-            tentacleHP -= damage;
+
+        if(vulnerable) {
+            int finalDamage = Mathf.Clamp(damage, 1, tentacleHP);
+            tentacleHP -= finalDamage;
             CombatStageManager.Instance.UpdateScore(pointsAwarded);
-            parasiteHP.TakeDamage(damage);
+            parasiteHP.TakeDamage(finalDamage);
 
             if(tentacleHP <= 0){
                 tentacleDestroyed = true;
