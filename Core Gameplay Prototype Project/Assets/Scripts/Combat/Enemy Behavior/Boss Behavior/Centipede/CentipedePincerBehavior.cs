@@ -80,8 +80,10 @@ public class CentipedePincerBehavior : MonoBehaviour
 
         CombatStageManager.Instance.UpdateScore(15);
 
-        centipedeHP.TakeDamage(hpScale * damage);
-        armHP -= damage;
+        int finalDamage = Mathf.Clamp(damage, 0, armHP);
+
+        centipedeHP.TakeDamage(hpScale * finalDamage);
+        armHP -= finalDamage;
 
         if (armHP <= 0)
         {

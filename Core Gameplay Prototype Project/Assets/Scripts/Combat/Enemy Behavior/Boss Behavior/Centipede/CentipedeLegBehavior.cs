@@ -72,9 +72,13 @@ public class CentipedeLegBehavior : MonoBehaviour
         }
 
         int multiplier = attackStarted ? 2 : 1;
-        legHP -= damage * multiplier;
+
+        // Limit damage to remaining HP to avoid changing states
+        // before all relevant parts are destroyed
+        int finalDamage = Mathf.Clamp(damage * multiplier, 1, legHP);
+        legHP -= finalDamage;
         CombatStageManager.Instance.UpdateScore(pointsAwarded);
-        centipedeHP.TakeDamage(damage * multiplier);
+        centipedeHP.TakeDamage(finalDamage);
 
         if (legHP <= 0)
         {

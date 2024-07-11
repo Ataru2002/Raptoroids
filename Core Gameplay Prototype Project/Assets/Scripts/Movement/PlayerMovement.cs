@@ -65,10 +65,10 @@ public class PlayerMovement : MonoBehaviour
             Vector3 newPos = direction * followSpeed * Time.deltaTime * joystickSpeedMult;
 
             float newX = transform.position.x + newPos.x;
-            newX = Math.Clamp(newX, lowerBound.x, upperBound.x);
+            newX = Mathf.Clamp(newX, lowerBound.x, upperBound.x);
             
             float newY = transform.position.y + newPos.y;
-            newY = Math.Clamp(newY, lowerBound.y, upperBound.y);
+            newY = Mathf.Clamp(newY, lowerBound.y, upperBound.y);
 
             transform.position = new Vector3(newX, newY, transform.position.z);
         }

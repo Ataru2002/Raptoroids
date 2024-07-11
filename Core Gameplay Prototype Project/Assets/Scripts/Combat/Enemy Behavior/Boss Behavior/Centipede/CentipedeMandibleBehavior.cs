@@ -23,18 +23,6 @@ public class CentipedeMandibleBehavior : MonoBehaviour, IBulletHittable
         centipedeHP = GetComponentInParent<EnemyHealth>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnBulletHit(int damage = 1)
     {
         if (destroyed)
@@ -42,10 +30,11 @@ public class CentipedeMandibleBehavior : MonoBehaviour, IBulletHittable
             return;
         }
 
-        mandibleHP -= mandibleState * damage;
+        int finalDamage = Mathf.Clamp(mandibleState * damage, 0, mandibleHP);
+        mandibleHP -= finalDamage;
 
         CombatStageManager.Instance.UpdateScore(pointsAwarded * mandibleState * damage);
-        centipedeHP.TakeDamage(mandibleState);
+        centipedeHP.TakeDamage(finalDamage);
 
         if (mandibleHP <= 0)
         {
