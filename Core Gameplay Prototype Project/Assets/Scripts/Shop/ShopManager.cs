@@ -15,8 +15,8 @@ public class ShopManager : MonoBehaviour
     private static ShopManager instance;
     public static ShopManager Instance { get { return instance; } }
 
-    static ItemData[] weaponsData;
-    static ItemData[] raptoroidsData;
+    public static ItemData[] WeaponsData { get; private set; }
+    public static ItemData[] RaptoroidsData { get; private set; }
 
     [SerializeField] LocalizeStringEvent gemCounterLocalizeEvent;
 
@@ -46,9 +46,6 @@ public class ShopManager : MonoBehaviour
         {
             instance = this;
             shopPages = new Dictionary<ItemType, List<GameObject>>();
-
-            weaponsData = Resources.LoadAll<ItemData>("Scriptable Objects/Items/Purchasable/Weapon");
-            raptoroidsData = Resources.LoadAll<ItemData>("Scriptable Objects/Items/Purchasable/Raptoroid");
             
             shopPages[ItemType.Weapon] = new List<GameObject>();
             shopPages[ItemType.Raptoroid] = new List<GameObject>();
@@ -66,6 +63,12 @@ public class ShopManager : MonoBehaviour
         UpdateGemCount();
     }
 
+    public static void LoadShopItems()
+    {
+        WeaponsData = Resources.LoadAll<ItemData>("Scriptable Objects/Items/Purchasable/Weapon");
+        RaptoroidsData = Resources.LoadAll<ItemData>("Scriptable Objects/Items/Purchasable/Raptoroid");
+    }
+
     public void UpdateGemCount()
     {
         gemCounterLocalizeEvent.StringReference.Add("currency", new IntVariable { Value = GameManager.Instance.GetTotalGems() });
@@ -77,7 +80,7 @@ public class ShopManager : MonoBehaviour
         ItemType pageType = Enum.Parse<ItemType>(type);
         if (shopPages[pageType].Count == 0)
         {
-            ItemData[] itemArray = pageType == ItemType.Weapon ? weaponsData : raptoroidsData;
+            ItemData[] itemArray = pageType == ItemType.Weapon ? WeaponsData : RaptoroidsData;
             foreach (ItemData item in itemArray)
             {
                 GameObject itemEntry = Instantiate(itemPrefab);

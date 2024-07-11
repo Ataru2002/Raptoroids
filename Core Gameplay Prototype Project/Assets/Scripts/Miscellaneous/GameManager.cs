@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] LocaleIdentifier[] gameLocales;
 
-    const int totalShips = 4;
-    const int totalGuns = 3;
+    int totalShips;
+    int totalGuns;
 
     #region PERSISTENT_DATA
     // TODO: if there is time, replace the following getters with references to the corresponding variable in playerData
@@ -83,6 +83,17 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
 
+            CombatSFXManager.LoadCombatSFX();
+            ProjectilePoolManager.LoadProjectiles();
+            EnemySpawner.LoadEnemyFormations();
+            ShopManager.LoadShopItems();
+            LoadoutManager.LoadItems();
+
+            totalShips = LoadoutManager.GetItemCount(ItemType.Raptoroid);
+            totalGuns = LoadoutManager.GetItemCount(ItemType.Weapon);
+
+            print($"Raptoroid count: {totalShips}, weapon count: {totalGuns}");
+
             saveFilePath = Application.persistentDataPath + $"/{saveFileName}";
             if (File.Exists(saveFilePath))
             {
@@ -115,10 +126,6 @@ public class GameManager : MonoBehaviour
             SetLocale(PlayerPrefs.GetInt("LocaleIntID"));
 
             gemsContactPoint = GetComponent<MissionGemsContactPoint>();
-
-            CombatSFXManager.LoadCombatSFX();
-            ProjectilePoolManager.LoadProjectiles();
-            EnemySpawner.LoadEnemyFormations();
         }
     }
 

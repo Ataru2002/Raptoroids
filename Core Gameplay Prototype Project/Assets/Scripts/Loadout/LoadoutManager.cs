@@ -28,20 +28,6 @@ public class LoadoutManager : MonoBehaviour
 
     private void Awake()
     {
-        if (weaponsData == null)
-        {
-            List<ItemData> weaponsList = new List<ItemData>(Resources.LoadAll<ItemData>("Scriptable Objects/Items/Basic/Weapon"));
-            weaponsList.AddRange(Resources.LoadAll<ItemData>("Scriptable Objects/Items/Purchasable/Weapon"));
-            weaponsData = weaponsList.ToArray();
-        }
-
-        if (raptoroidsData == null)
-        {
-            List<ItemData> raptoroidsList = new List<ItemData>(Resources.LoadAll<ItemData>("Scriptable Objects/Items/Basic/Raptoroid"));
-            raptoroidsList.AddRange(Resources.LoadAll<ItemData>("Scriptable Objects/Items/Purchasable/Raptoroid"));
-            raptoroidsData = raptoroidsList.ToArray();
-        }
-
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -93,6 +79,31 @@ public class LoadoutManager : MonoBehaviour
         }
 
         BroadcastMessage("UpdateEquipButton", SendMessageOptions.DontRequireReceiver);
+    }
+
+    public static void LoadItems()
+    {
+        List<ItemData> weaponsList = new List<ItemData>(Resources.LoadAll<ItemData>("Scriptable Objects/Items/Basic/Weapon"));
+        weaponsList.AddRange(ShopManager.WeaponsData);
+        weaponsData = weaponsList.ToArray();
+
+        List<ItemData> raptoroidsList = new List<ItemData>(Resources.LoadAll<ItemData>("Scriptable Objects/Items/Basic/Raptoroid"));
+        raptoroidsList.AddRange(ShopManager.RaptoroidsData);
+        raptoroidsData = raptoroidsList.ToArray();
+    }
+
+    public static int GetItemCount(ItemType type)
+    {
+        switch (type)
+        {
+            case ItemType.Weapon:
+                return weaponsData.Length;
+            case ItemType.Raptoroid:
+                return raptoroidsData.Length;
+            default:
+                Debug.LogError("Got unrecognized ItemType for GetItemCount");
+                return -1;
+        }
     }
 
     public void DisplayItemInfo(ItemData item)
