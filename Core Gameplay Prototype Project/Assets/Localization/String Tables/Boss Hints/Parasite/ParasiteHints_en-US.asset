@@ -19,12 +19,11 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 9499041792
-    m_Localized: Defeat the parasite before you become its next host!
+    m_Localized: Better broken than that thing's host, no?
     m_Metadata:
       m_Items: []
   - m_Id: 1358517231616
-    m_Localized: It has hijacked the Raptoroid's shield ability. Shoot the bomb to
-      destroy it!
+    m_Localized: Make the shield go boom!
     m_Metadata:
       m_Items: []
   - m_Id: 3122125594624

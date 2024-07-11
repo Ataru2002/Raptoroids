@@ -177,8 +177,4 @@ public class TentacleBehavior : MonoBehaviour
     void TrackPlayer(){
         LookAtTarget(CombatStageManager.Instance.PlayerTransform.position);
     }
-
-    
-
-
 }

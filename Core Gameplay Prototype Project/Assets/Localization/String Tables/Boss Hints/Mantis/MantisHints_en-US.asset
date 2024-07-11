@@ -23,11 +23,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2283248017408
-    m_Localized: Strike the arm blades before you become armless! Oh wait...
+    m_Localized: Disarm it - literally!
     m_Metadata:
       m_Items: []
   - m_Id: 2864347865088
-    m_Localized: Seize the chance when it's fully visible!
+    m_Localized: Let's play Whack-a-Mantis!
     m_Metadata:
       m_Items: []
   references:
