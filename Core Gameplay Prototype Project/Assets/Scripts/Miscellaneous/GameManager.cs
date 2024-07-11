@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] LocaleIdentifier[] gameLocales;
 
-    const int totalShips = 3;
-    const int totalGuns = 2;
+    const int totalShips = 4;
+    const int totalGuns = 3;
 
     #region PERSISTENT_DATA
     // TODO: if there is time, replace the following getters with references to the corresponding variable in playerData
