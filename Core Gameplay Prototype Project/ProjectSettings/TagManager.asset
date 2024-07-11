@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Obstacle
+    uniqueID: 4126121883
+    locked: 0
   - name: Trail
     uniqueID: 3660207969
     locked: 0
