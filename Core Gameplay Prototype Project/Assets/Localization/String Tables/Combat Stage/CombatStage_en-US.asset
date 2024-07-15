@@ -42,6 +42,14 @@ MonoBehaviour:
     m_Localized: Target Eliminated!
     m_Metadata:
       m_Items: []
+  - m_Id: 38776556766617600
+    m_Localized: Flight Control System jammed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38779530515570688
+    m_Localized: Rebooting
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

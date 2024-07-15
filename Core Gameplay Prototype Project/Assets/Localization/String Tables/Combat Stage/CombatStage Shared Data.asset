@@ -15,6 +15,10 @@ MonoBehaviour:
   m_TableCollectionName: CombatStage
   m_TableCollectionNameGuidString: 49bf8e54755aaae4c82313e98386ac9f
   m_Entries:
+  - m_Id: 38776556766617600
+    m_Key: MoveFreezeMessage
+    m_Metadata:
+      m_Items: []
   - m_Id: 11545862144
     m_Key: MapSelectButton
     m_Metadata:
@@ -37,6 +41,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 9402110173184
     m_Key: MissionClear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38779530515570688
+    m_Key: Rebooting
     m_Metadata:
       m_Items: []
   m_Metadata:

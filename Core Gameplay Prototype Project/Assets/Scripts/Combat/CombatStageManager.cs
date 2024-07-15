@@ -385,6 +385,8 @@ public class CombatStageManager : MonoBehaviour
                 joystick.SetActive(false);
             }
 
+            ToggleOaknutScreen(false);
+
             bgmSelector.PlayEndMusic("lose");
             loseScreen.SetActive(true);
             runEndScoreCanvas.SetActive(true);
@@ -436,8 +438,8 @@ public class CombatStageManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        ToggleOaknutScreen(false);
         Time.timeScale = 0;
-        
 
         if (isBossStage)
         {
