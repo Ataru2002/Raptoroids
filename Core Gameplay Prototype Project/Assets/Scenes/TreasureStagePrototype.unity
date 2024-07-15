@@ -2254,6 +2254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1979349631}
   - component: {fileID: 1979349632}
+  - component: {fileID: 1979349633}
   m_Layer: 0
   m_Name: Treasure Stage Manager
   m_TagString: Untagged
@@ -2294,6 +2295,20 @@ MonoBehaviour:
   timer: {fileID: 1292318797}
   timeLimit: 10
   joystickPrefab: {fileID: 99405190742385187, guid: 0ab5b326dcbc4c841a364a1691661882, type: 3}
+--- !u!114 &1979349633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979349630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42b73a84cabc64ca0462da4af46c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImages:
+  - {fileID: 1153334998}
 --- !u!1001 &2108502974
 PrefabInstance:
   m_ObjectHideFlags: 0
