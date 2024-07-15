@@ -37,6 +37,7 @@ public class CombatStageManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI hiScoreText;
     [SerializeField] GameObject joystickPrefab;
     GameObject joystick;
+    [SerializeField] GameObject OaknutHitScreen;
     [SerializeField] CombatBGMSelector bgmSelector;
 
     [SerializeField] GameObject runEndScoreCanvas;
@@ -170,13 +171,6 @@ public class CombatStageManager : MonoBehaviour
         UpdateScoreDisplay();
     }
 
-    GameObject MakeOakNut()
-    {
-        GameObject oakNut = Instantiate(oakNutPrefab);
-        oakNut.SetActive(false); // Set inactive initially
-        return oakNut;
-    }
-
     GameObject MakeJoyStick(){
         return joystick = Instantiate(joystickPrefab);
     }
@@ -197,13 +191,6 @@ public class CombatStageManager : MonoBehaviour
         oakNut.SetActive(true);
     }
 
-    GameObject MakeMine()
-    {
-        GameObject mine = Instantiate(minePrefab);
-        mine.SetActive(false); // Set inactive initially
-        return mine;
-    }
-
     IEnumerator StartMineSpawn()
     {
         while (true)
@@ -218,13 +205,6 @@ public class CombatStageManager : MonoBehaviour
         GameObject mine = mines.Get();
         mine.transform.position = new Vector3(0f, 10f, 0f); // Randomize spawn position
         mine.SetActive(true);
-    }
-
-    GameObject MakeHill()
-    {
-        GameObject hill = Instantiate(hillPrefab);
-        hill.SetActive(false); // Set inactive initially
-        return hill;
     }
 
     IEnumerator StartHillSpawn()
@@ -250,6 +230,26 @@ public class CombatStageManager : MonoBehaviour
 
     #region Pool Functions
     // Pooling functions
+    GameObject MakeOakNut()
+    {
+        GameObject oakNut = Instantiate(oakNutPrefab);
+        oakNut.SetActive(false); // Set inactive initially
+        return oakNut;
+    }
+
+    GameObject MakeMine()
+    {
+        GameObject mine = Instantiate(minePrefab);
+        mine.SetActive(false); // Set inactive initially
+        return mine;
+    }
+
+    GameObject MakeHill()
+    {
+        GameObject hill = Instantiate(hillPrefab);
+        hill.SetActive(false); // Set inactive initially
+        return hill;
+    }
 
     GameObject MakeEnemyParticles()
     {
@@ -322,6 +322,17 @@ public class CombatStageManager : MonoBehaviour
             warningSign.enabled = signOn;
             yield return new WaitForSeconds(0.3f);
             signOn = !signOn;
+        }
+    }
+
+    public void ToggleOaknutScreen(bool toggle, float duration = 0)
+    {
+        OaknutHitScreen.SetActive(toggle);
+        
+        if (toggle)
+        {
+            ControlRestoreProgressBar progressBarControl = OaknutHitScreen.GetComponentInChildren<ControlRestoreProgressBar>();
+            progressBarControl.ResetDuration(duration);
         }
     }
 

@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float snapDistance = 0.01f;
     JoystickController joystickController;
     bool isFrozen = false;
-    float freezeDuration = 2f;
+    const float freezeDuration = 2f;
     float joystickSpeedMult = 0.5f;
 
     Vector2 upperBound;
@@ -76,13 +76,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void FreezePlayer()
     {
-        isFrozen = true;
         StartCoroutine(UnfreezePlayerAfterDelay());
     }
 
     IEnumerator UnfreezePlayerAfterDelay()
     {
+        isFrozen = true;
+        CombatStageManager.Instance.ToggleOaknutScreen(true, freezeDuration);
+
         yield return new WaitForSeconds(freezeDuration);
+        
         isFrozen = false;
+        CombatStageManager.Instance.ToggleOaknutScreen(false);
     }
 }
