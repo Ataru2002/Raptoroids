@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en-US
   m_SharedData: {fileID: 11400000, guid: 3685497cd3ca4fb4fbf5f3c3786ced46, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 7504338761082208417
   m_TableData:
   - m_Id: 8702124032
     m_Localized: A simple shotgun type weapon. Fires 3 shots in a fairly wide cone.
@@ -30,6 +31,16 @@ MonoBehaviour:
     m_Localized: A weapon that launches high-velocity curving blades.
     m_Metadata:
       m_Items: []
+  - m_Id: 20203350132776960
+    m_Localized: Launches small bombs that need time to arm. <color=yellow>CAUTION:</color>
+      Raptoroids are not immune to explosions.
+    m_Metadata:
+      m_Items:
+      - rid: 7504338761082208417
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 7504338761082208417
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e0ef03d7c64700

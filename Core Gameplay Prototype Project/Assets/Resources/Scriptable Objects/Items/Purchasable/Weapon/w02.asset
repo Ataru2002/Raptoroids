@@ -17,5 +17,5 @@ MonoBehaviour:
   itemCodename: RWM-02
   itemNickname: Kotori
   itemSprite: {fileID: 21300000, guid: cdb4243201655314ab38b0505e6c182f, type: 3}
-  gemCost: 500
+  gemCost: 300
   flavorText: w02
