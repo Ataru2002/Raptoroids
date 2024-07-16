@@ -187,7 +187,7 @@ public class CombatStageManager : MonoBehaviour
     void SpawnOakNut()
     {
         GameObject oakNut = oakNuts.Get();
-        oakNut.transform.position = new Vector3(UnityEngine.Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
+        oakNut.transform.position = new Vector3(UnityEngine.Random.Range(HorizontalLowerBound, HorizontalUpperBound), 10f, 0f); // Randomize spawn position
         oakNut.SetActive(true);
     }
 
