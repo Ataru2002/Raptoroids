@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   shotType: 0
-  playerProjectileType: 0
+  playerProjectileType: 2
   enemyProjectileType: 0
   fireRate: 2
   shotSound: {fileID: 8300000, guid: 717778524f65c37448dc4e4b790f3663, type: 3}

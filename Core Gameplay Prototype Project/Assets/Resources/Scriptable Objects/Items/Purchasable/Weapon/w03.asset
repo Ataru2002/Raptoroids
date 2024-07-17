@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 1
   itemNumber: 3
   itemCodename: RWM-03
-  itemNickname: 
+  itemNickname: Cocktail
   itemSprite: {fileID: 0}
   gemCost: 500
   flavorText: w03

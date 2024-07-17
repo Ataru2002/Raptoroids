@@ -8,9 +8,6 @@ using TMPro;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using GameAnalyticsSDK;
-using UnityEngineInternal;
-using Unity.Burst.CompilerServices;
-using System;
 
 public class CombatStageManager : MonoBehaviour
 {

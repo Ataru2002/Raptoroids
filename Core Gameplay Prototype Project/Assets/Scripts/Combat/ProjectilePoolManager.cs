@@ -37,7 +37,8 @@ public class ProjectilePoolManager : MonoBehaviour
             Func<GameObject>[] playerSpawnFuncs =
             {
                 MakePlayerBasicBullet,
-                MakePlayerPairCurveProjectile
+                MakePlayerPairCurveProjectile,
+                MakePlayerExplosiveProjectile
             };
             int playerProjectileTypeCount = Enum.GetValues(typeof(PlayerProjectileType)).Length;
             if (playerProjectileTypeCount != playerSpawnFuncs.Length)
@@ -83,6 +84,11 @@ public class ProjectilePoolManager : MonoBehaviour
     GameObject MakePlayerPairCurveProjectile()
     {
         return Instantiate(playerProjectiles[(int)PlayerProjectileType.CurvePair]);
+    }
+
+    GameObject MakePlayerExplosiveProjectile()
+    {
+        return Instantiate(playerProjectiles[(int)PlayerProjectileType.Explosive]);
     }
     #endregion
 
@@ -133,7 +139,8 @@ public class ProjectilePoolManager : MonoBehaviour
 public enum PlayerProjectileType
 {
     Basic,
-    CurvePair
+    CurvePair,
+    Explosive
 }
 
 public enum EnemyProjectileType
