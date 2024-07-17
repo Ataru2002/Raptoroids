@@ -27,6 +27,9 @@ public class ExplosiveBullet : Bullet
         base.Update();
 
         timeSinceSpawn += Time.deltaTime;
+
+        spriteRenderer.material.SetFloat("_TimeRatio", timeSinceSpawn / explodeTime);
+
         if (timeSinceSpawn >= armTime && timeSinceSpawn >= explodeTime)
         {
             Explode();
