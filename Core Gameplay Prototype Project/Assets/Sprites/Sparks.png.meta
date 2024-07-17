@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b1baeedca07db2c42b4c6f7d590095cb
+guid: babc0a5997002284ca4094e0263e4077
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4641428447314951278
-    second: Spark_0
+      213: -4539016973228772116
+    second: Sparks_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +123,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,7 +139,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spark_0
+      name: Sparks_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce4fa319c1c2201c0800000000000000
+      internalID: -4539016973228772116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d1b983a1af0c8840a989e127527601f
+      internalID: 1328511158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks_2
       rect:
         serializedVersion: 2
         x: 0
@@ -151,10 +193,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e6cb99cd49aa96040800000000000000
-      internalID: 4641428447314951278
+      spriteID: 72c12d678d833a242852c0fa6da6c53f
+      internalID: 1175530199
       vertices: []
       indices: 
       edges: []
@@ -162,7 +204,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6530964fa49c5b2478e6d09ae92a55dc
     internalID: 0
     vertices: []
     indices: 
@@ -170,7 +212,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Spark_0: 4641428447314951278
+      Sparks_0: -4539016973228772116
+      Sparks_1: 1328511158
+      Sparks_2: 1175530199
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

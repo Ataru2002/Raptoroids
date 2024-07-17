@@ -1368,7 +1368,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     mode: 0
     timeMode: 0
     fps: 30
@@ -1480,8 +1480,8 @@ ParticleSystem:
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
     tilesX: 1
-    tilesY: 1
-    animationType: 0
+    tilesY: 3
+    animationType: 1
     rowIndex: 0
     cycles: 1
     uvChannelMask: -1
@@ -4779,7 +4779,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93f6cc3fd7a733e46964f3f8bd1796c0, type: 2}
+  - {fileID: 2100000, guid: d9b742251fa0b754f873ed1c1f534a56, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5028,7 +5028,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   impactParticles: {fileID: 0}
-  hills: {fileID: 0}
   onHit:
     m_PersistentCalls:
       m_Calls: []
@@ -5188,10 +5187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
-  fireRate: 3
+  weaponData: {fileID: 0}
   firstShotDelay: 0
-  shotType: 0
-  projectilesPerShot: 0
-  coneAngle: 0
   sfxSource: {fileID: 2273076494128635092}
