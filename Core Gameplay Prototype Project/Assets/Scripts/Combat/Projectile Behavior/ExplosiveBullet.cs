@@ -82,4 +82,10 @@ public class ExplosiveBullet : Bullet
             Destroy(effectInstance, audioFX.clip.length);
         }
     }
+
+    new public void OnGetFromPool()
+    {
+        base.OnGetFromPool();
+        timeSinceSpawn = 0;
+    }
 }

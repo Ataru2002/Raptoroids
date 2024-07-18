@@ -25,18 +25,6 @@ public class CurvePairProjectile : SequenceProjectile
         trailRenderer = GetComponentInChildren<TrailRenderer>();
     }
 
-    // Start is called before the first frame update
-    new void Start()
-    {
-        base.Start();
-        StartCoroutine(ResetPath());
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(ResetPath());
-    }
-
     // Update is called once per frame
     new void Update()
     {
@@ -99,5 +87,17 @@ public class CurvePairProjectile : SequenceProjectile
 
         spinControl.SetClockwise(sequenceStep == 0);
         spriteRenderer.flipX = sequenceStep != 0;
+    }
+
+    new public void OnGetFromPool()
+    {
+        base.OnGetFromPool();
+        StartCoroutine(ResetPath());
+    }
+
+    new public void OnReleaseToPool()
+    {
+        base.OnReleaseToPool();
+        StopAllCoroutines();
     }
 }

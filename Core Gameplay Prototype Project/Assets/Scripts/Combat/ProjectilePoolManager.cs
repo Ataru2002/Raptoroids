@@ -48,7 +48,7 @@ public class ProjectilePoolManager : MonoBehaviour
             for (int p = 0; p < playerSpawnFuncs.Length; p++)
             {
                 PlayerProjectileType projectileType = (PlayerProjectileType)p;
-                LinkedPool<GameObject> projectilePool = new LinkedPool<GameObject>(playerSpawnFuncs[p], PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 1000);
+                LinkedPool<GameObject> projectilePool = new LinkedPool<GameObject>(playerSpawnFuncs[p], PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, true, 1000);
                 playerProjectilePools[projectileType] = projectilePool;
             }
 
@@ -65,7 +65,7 @@ public class ProjectilePoolManager : MonoBehaviour
             for (int e = 0; e < enemySpawnFuncs.Length; e++)
             {
                 EnemyProjectileType projectileType = (EnemyProjectileType)e;
-                LinkedPool<GameObject> projectilePool = new LinkedPool<GameObject>(enemySpawnFuncs[e], PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, false, 1000);
+                LinkedPool<GameObject> projectilePool = new LinkedPool<GameObject>(enemySpawnFuncs[e], PoolCommons.OnGetFromPool, PoolCommons.OnReleaseToPool, PoolCommons.OnPoolItemDestroy, true, 1000);
                 enemyProjectilePools[projectileType] = projectilePool;
             }
         }
@@ -115,6 +115,11 @@ public class ProjectilePoolManager : MonoBehaviour
         if (bulletComponent == null)
         {
             Debug.LogError("Returning an object that is not a projectile into a player projectile pool. Abort");
+            return;
+        }
+        if (bulletComponent.ReleasedToPool)
+        {
+            Debug.LogError("Attempting to release a projectile that is already released. Abort");
             return;
         }
 

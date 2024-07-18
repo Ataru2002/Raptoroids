@@ -10,6 +10,7 @@ public enum TargetType
 
 public class Bullet : MonoBehaviour
 {
+    public bool ReleasedToPool { get; private set; }
     [SerializeField] protected bool pooled = true;
     [SerializeField] protected int bulletPoolID;
     [SerializeField] protected float speed;
@@ -101,5 +102,15 @@ public class Bullet : MonoBehaviour
 
     public void SetDamage(int val){
         damage = val;
+    }
+
+    public void OnGetFromPool()
+    {
+        ReleasedToPool = false;
+    }
+
+    public void OnReleaseToPool()
+    {
+        ReleasedToPool = true;
     }
 }
