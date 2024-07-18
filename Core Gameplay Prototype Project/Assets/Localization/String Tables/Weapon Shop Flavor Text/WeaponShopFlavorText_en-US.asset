@@ -32,7 +32,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20203350132776960
-    m_Localized: Launches small bombs that need time to arm. <color=yellow>CAUTION:</color>
+    m_Localized: Fires explosive rockets that need time to arm. <color=yellow>CAUTION:</color>
       Raptoroids are not immune to explosions.
     m_Metadata:
       m_Items:
