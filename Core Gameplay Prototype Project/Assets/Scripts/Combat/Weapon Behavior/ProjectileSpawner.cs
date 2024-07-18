@@ -25,6 +25,7 @@ public class ProjectileSpawner : Weapon
     {
         SetShootFunc();
         SetProjectileSpawnFunc();
+        enemyBehavior = GetComponentInParent<EnemyBehavior>();
     }
 
     // Start is called before the first frame update
