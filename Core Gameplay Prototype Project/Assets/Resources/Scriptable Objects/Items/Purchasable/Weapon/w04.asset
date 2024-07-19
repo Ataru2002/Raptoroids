@@ -17,5 +17,5 @@ MonoBehaviour:
   itemCodename: RWM-04
   itemNickname: 
   itemSprite: {fileID: 0}
-  gemCost: 500
+  gemCost: 200
   flavorText: w04
