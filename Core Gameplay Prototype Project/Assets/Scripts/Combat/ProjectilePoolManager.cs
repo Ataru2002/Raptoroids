@@ -145,7 +145,8 @@ public enum PlayerProjectileType
 {
     Basic,
     CurvePair,
-    Explosive
+    Explosive,
+    Homing
 }
 
 public enum EnemyProjectileType
