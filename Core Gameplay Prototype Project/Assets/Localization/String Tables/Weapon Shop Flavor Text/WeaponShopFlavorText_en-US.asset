@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 7504338761082208417
+  - m_Id: 21293426237497344
+    m_Localized: Launches missiles that track the nearest target after a short delay.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

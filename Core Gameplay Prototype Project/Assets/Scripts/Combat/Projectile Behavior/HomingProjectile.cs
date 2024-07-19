@@ -62,12 +62,14 @@ public class HomingProjectile : Bullet
 
     new public void OnGetFromPool()
     {
+        base.OnGetFromPool();
         transform.rotation = Quaternion.identity;
         targeting = StartCoroutine(SetTarget());
     }
 
     new public void OnReleaseToPool()
     {
+        base.OnReleaseToPool();
         StopCoroutine(targeting);
         target = null;
     }

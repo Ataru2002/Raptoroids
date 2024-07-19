@@ -38,7 +38,8 @@ public class ProjectilePoolManager : MonoBehaviour
             {
                 MakePlayerBasicBullet,
                 MakePlayerPairCurveProjectile,
-                MakePlayerExplosiveProjectile
+                MakePlayerExplosiveProjectile,
+                MakePlayerHomingProjectile
             };
             int playerProjectileTypeCount = Enum.GetValues(typeof(PlayerProjectileType)).Length;
             if (playerProjectileTypeCount != playerSpawnFuncs.Length)
@@ -89,6 +90,11 @@ public class ProjectilePoolManager : MonoBehaviour
     GameObject MakePlayerExplosiveProjectile()
     {
         return Instantiate(playerProjectiles[(int)PlayerProjectileType.Explosive]);
+    }
+
+    GameObject MakePlayerHomingProjectile()
+    {
+        return Instantiate(playerProjectiles[(int)(PlayerProjectileType.Homing)]);
     }
     #endregion
 
