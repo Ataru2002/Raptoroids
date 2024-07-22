@@ -28,6 +28,7 @@ public class InfestedBossBehaviour : BossBehavior
     void Awake(){
         transitionConditions = new List<System.Func<bool>>{StateTransition1, StateTransition2, StateTransition3};
         CombatStageManager.Instance.SetBossHintTable("ParasiteHints");
+        CombatStageManager.Instance.RegisterEnemyTransform(hostBody.transform);
         stateExecute = State1Execute;
     }
 
@@ -40,7 +41,6 @@ public class InfestedBossBehaviour : BossBehavior
         if(!firstHintDisplayed){
             DisplayFirstHint();
         }
-        
     }
 
     public void UpdateHealthRatio(float val)
@@ -55,7 +55,6 @@ public class InfestedBossBehaviour : BossBehavior
         }
         defaultWeapon.enabled = false;
         
-
         stateExecute = State2Execute; 
 
         return true;
@@ -85,6 +84,7 @@ public class InfestedBossBehaviour : BossBehavior
 
         return true;
     }
+
     void State3Execute(){
         leftSpawner1.TryShoot();
         leftSpawner2.TryShoot();
@@ -96,11 +96,13 @@ public class InfestedBossBehaviour : BossBehavior
             SpawnBomb();
             spawnTimer = 0f;
         }
+
         if(!ParasiteManager.Instance.BossShieldStatus()){
             hostBody.GetComponent<BoxCollider2D>().enabled = true;
             defaultWeapon.enabled = true;
         }
     }
+
     bool StateTransition3(){
         if(remainingHealthRatio > 0.3f){
             return false;
@@ -111,11 +113,15 @@ public class InfestedBossBehaviour : BossBehavior
         transform.position = originalPosition;
         transform.rotation = Quaternion.Euler(0, 0, 270);
         
-        
         EnableTentacleHitbox();
         trackPlayer = false;
         strafeBehavior.enabled = false;
-        
+
+        foreach (TentacleBehavior tentacle in tentacles)
+        {
+            CombatStageManager.Instance.RegisterEnemyTransform(tentacle.transform);
+        }
+
         CombatStageManager.Instance.DisplayBossHint("hint03", 2);
         stateExecute = State4Execute;
         return true;
