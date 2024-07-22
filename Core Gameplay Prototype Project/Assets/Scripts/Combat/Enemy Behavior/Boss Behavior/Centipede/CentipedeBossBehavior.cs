@@ -39,6 +39,16 @@ public class CentipedeBossBehavior : BossBehavior
         stateExecute = State1Execute;
 
         CombatStageManager.Instance.SetBossHintTable("CentipedeHints");
+
+        foreach (CentipedeLegBehavior l in centipedeLeftLegs)
+        {
+            CombatStageManager.Instance.RegisterEnemyTransform(l.transform);
+        }
+
+        foreach (CentipedeLegBehavior r in centipedeRightLegs)
+        {
+            CombatStageManager.Instance.RegisterEnemyTransform(r.transform);
+        }
     }
 
     public void UpdateHealthRatio(float val)
@@ -66,6 +76,11 @@ public class CentipedeBossBehavior : BossBehavior
 
         strafeBehavior.enabled = true;
 
+        Transform leftPincerHitTransform = leftPincer.transform.Find("Homing Target");
+        Transform rightPincerHitTransform = rightPincer.transform.Find("Homing Target");
+        CombatStageManager.Instance.RegisterEnemyTransform(leftPincerHitTransform);
+        CombatStageManager.Instance.RegisterEnemyTransform(rightPincerHitTransform);
+
         CombatStageManager.Instance.DisplayBossHint("hint02");
 
         return true;
@@ -83,6 +98,9 @@ public class CentipedeBossBehavior : BossBehavior
         strafeBehavior.enabled = false;
 
         CombatStageManager.Instance.DisplayBossHint("hint03");
+
+        CombatStageManager.Instance.RegisterEnemyTransform(mandibles[0].transform.Find("Homing Target"));
+        CombatStageManager.Instance.RegisterEnemyTransform(mandibles[1].transform.Find("Homing Target"));
 
         return true;
     }
