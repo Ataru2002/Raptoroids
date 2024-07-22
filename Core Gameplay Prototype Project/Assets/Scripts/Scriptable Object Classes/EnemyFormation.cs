@@ -18,6 +18,11 @@ public class EnemyFormation : ScriptableObject
             EnemyBehavior enemyBehavior = enemy.GetComponent<EnemyBehavior>();
             enemyBehavior.SetPath(enemies[i].curvePoints);
 
+            if (CombatStageManager.Instance != null)
+            {
+                CombatStageManager.Instance.RegisterEnemyTransform(enemy.transform);
+            }
+
             i += 1;
             if (i < enemies.Length)
             {

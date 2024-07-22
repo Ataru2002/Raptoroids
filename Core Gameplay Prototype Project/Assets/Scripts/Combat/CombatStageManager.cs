@@ -49,12 +49,14 @@ public class CombatStageManager : MonoBehaviour
     const float bossHealthBarWidth = 370f;
     const float bossHealthBarHeight = 50f;
 
+    #region Level Bounds
     const float xBounds = 4f;
     const float yBounds = 7f;
     public float HorizontalLowerBound { get { return -xBounds; } }
     public float HorizontalUpperBound {  get { return xBounds; } }
     public float VerticalLowerBound { get {  return -yBounds; } }
     public float VerticalUpperBound { get {  return yBounds; } }
+    #endregion
 
     int enemyKillRequirement;
     int enemyKillCount = 0;
@@ -80,6 +82,8 @@ public class CombatStageManager : MonoBehaviour
     GameObject playerObject;
     public Transform PlayerTransform { get { return playerObject.transform; } }
 
+    List<Transform> enemyTransforms;
+
     public bool isBossStage { get { return GameManager.Instance.MapTier >= 4; } }
     public bool stageEnded { get; private set; } = false;
 
@@ -101,6 +105,11 @@ public class CombatStageManager : MonoBehaviour
             rewardSummaryPrefab = Resources.Load<GameObject>("Prefabs/UI Elements/StageSummaryItem");
             playerPrefabs = Resources.LoadAll<GameObject>("Prefabs/Raptoroids");
             playerWeaponDataBank = Resources.LoadAll<WeaponData>("Scriptable Objects/Weapons/Player");
+
+            // No combat stage will have more than 32 enemies (as it is now)
+            // so allocate the transform list with capacity 32 to avoid reallocation
+            // when adding transforms to the list
+            enemyTransforms = new List<Transform>(32);
         }
     }
 
@@ -121,8 +130,6 @@ public class CombatStageManager : MonoBehaviour
 
         AudioSource playerWeaponAudioSource = playerObject.GetComponent<AudioSource>();
         playerWeaponAudioSource.clip = playerWeaponDataBank[gunID].shotSound;
-        
-        
 
         if (!PlayerPrefs.HasKey("sfxOn"))
         {
@@ -139,7 +146,6 @@ public class CombatStageManager : MonoBehaviour
         if(PlayerPrefs.GetInt("joystick") == 1){
             MakeJoyStick();
         }
-        
         
         if (isBossStage)
         {
@@ -172,6 +178,7 @@ public class CombatStageManager : MonoBehaviour
         return joystick = Instantiate(joystickPrefab);
     }
 
+    #region Obstacle Spawning
     IEnumerator StartOakNutSpawn()
     {
         while (true)
@@ -216,9 +223,10 @@ public class CombatStageManager : MonoBehaviour
     void SpawnHill()
     {
         GameObject hill = hills.Get();
-        hill.transform.position = new Vector3(UnityEngine.Random.Range(-5f, 5f), 10f, 0f); // Randomize spawn position
+        hill.transform.position = new Vector3(Random.Range(HorizontalLowerBound, HorizontalUpperBound), 10f, 0f); // Randomize spawn position
         hill.SetActive(true);
     }
+    #endregion
 
     void OnDisable()
     {
@@ -266,6 +274,7 @@ public class CombatStageManager : MonoBehaviour
     // End of Pooling functions
     #endregion
 
+    #region Gem Handling
     public void OnGemSpawn()
     {
         gemsWaiting += 1;
@@ -282,7 +291,9 @@ public class CombatStageManager : MonoBehaviour
     {
         gemsWaiting -= 1;
     }
+    #endregion
 
+    #region Boss
     public void UpdateBossHealthBar(float healthRatio)
     {
         bossHealthBarRect.sizeDelta = new Vector2(bossHealthBarWidth * healthRatio, bossHealthBarHeight);
@@ -321,6 +332,7 @@ public class CombatStageManager : MonoBehaviour
             signOn = !signOn;
         }
     }
+    #endregion
 
     public void ToggleOaknutScreen(bool toggle, float duration = 0)
     {
@@ -333,11 +345,7 @@ public class CombatStageManager : MonoBehaviour
         }
     }
 
-    public void OnPlayerDefeated()
-    {
-        EndStage(false);
-    }
-
+    #region Enemy Management
     public void OnEnemyDefeated()
     {
         killCounter.text = string.Format("{0} / {1}", ++enemyKillCount, enemyKillRequirement);
@@ -348,6 +356,43 @@ public class CombatStageManager : MonoBehaviour
         }
     }
 
+    public Transform GetClosestEnemyTransform(Vector2 point)
+    {
+        Transform ret = null;
+        float minDistanceSquare = float.MaxValue;
+
+        foreach (Transform et in enemyTransforms)
+        {
+            if (et == null)
+            {
+                continue;
+            }
+
+            // Use sqrMagnitude instead of actual distance since we won't need to know how far away the closest
+            // target actually is.
+            float currentDistanceSquare = ((Vector2)et.position - point).sqrMagnitude;
+            if (currentDistanceSquare < minDistanceSquare)
+            {
+                minDistanceSquare = currentDistanceSquare;
+                ret = et;
+            }
+        }
+
+        return ret;
+    }
+
+    public void RegisterEnemyTransform(Transform transform)
+    {
+        enemyTransforms.Add(transform);
+    }
+    #endregion
+
+    public void OnPlayerDefeated()
+    {
+        EndStage(false);
+    }
+
+    #region Level End
     public void UpdateScore(int score)
     {
         GameManager.Instance.AddScore(score);
@@ -539,4 +584,5 @@ public class CombatStageManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MapSelection");
     }
+    #endregion
 }

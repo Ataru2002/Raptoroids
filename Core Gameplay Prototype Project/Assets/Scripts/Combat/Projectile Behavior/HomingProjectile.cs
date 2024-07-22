@@ -55,7 +55,7 @@ public class HomingProjectile : Bullet
             }
             else
             {
-                target = GameObject.FindGameObjectWithTag("Enemy").transform;
+                target = CombatStageManager.Instance.GetClosestEnemyTransform(transform.position);
             }
         }
     }
