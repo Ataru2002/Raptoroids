@@ -20,6 +20,7 @@ public class LocustAttackSequence : BossBehavior
     bool boomerangBarrageStarted = false;
     bool invisAttackStarted = false;
     public int miniEnemiesDestroyed;
+    
     void Awake()
     {
         transitionConditions = new List<System.Func<bool>>
@@ -29,6 +30,10 @@ public class LocustAttackSequence : BossBehavior
         };
 
         CombatStageManager.Instance.SetBossHintTable("MantisHints");
+        foreach (SwarmBehaviour mini in miniLocustEnemy)
+        {
+            CombatStageManager.Instance.RegisterEnemyTransform(mini.transform);
+        }
 
         stateExecute = StateDefaultExecute;
     }
@@ -57,6 +62,8 @@ public class LocustAttackSequence : BossBehavior
             return false;
         }
         CombatStageManager.Instance.DisplayBossHint("hint03");
+        CombatStageManager.Instance.RegisterEnemyTransform(giantBoss.transform);
+
         stateExecute = State2Execute;
         return true;
     }
@@ -170,8 +177,11 @@ public class LocustAttackSequence : BossBehavior
         CombatStageManager.Instance.DisplayBossHint("hint02");
         giantBossLeftArm.SetActive(true);
         giantBossRightArm.SetActive(true);
+        CombatStageManager.Instance.RegisterEnemyTransform(giantBossLeftArm.transform);
+        CombatStageManager.Instance.RegisterEnemyTransform(giantBossRightArm.transform);
         spawningGiantBoss = false;
     }
+
     IEnumerator flicker(){
         float step = 0;
         float stepTime = 0.4f;
