@@ -14,6 +14,7 @@ public class GuardBeeBehavior : EnemyBehavior, IBulletHittable
     void Awake()
     {
         boss = FindFirstObjectByType<QueenBeeBossBehavior>();
+        CombatStageManager.Instance.RegisterEnemyTransform(transform);
     }
 
     new void Update()
@@ -32,6 +33,9 @@ public class GuardBeeBehavior : EnemyBehavior, IBulletHittable
         if (guardHealth <= 0)
         {
             boss.NotifyGuardDown(this);
+            // Remove the guard's transform from the list. Depending on how the player plays,
+            // the number of guards could grow to large numbers.
+            CombatStageManager.Instance.UnregisterEnemyTransform(transform);
             Destroy(gameObject);
         }
     }

@@ -381,9 +381,14 @@ public class CombatStageManager : MonoBehaviour
         return ret;
     }
 
-    public void RegisterEnemyTransform(Transform transform)
+    public void RegisterEnemyTransform(Transform t)
     {
-        enemyTransforms.Add(transform);
+        enemyTransforms.Add(t);
+    }
+
+    public void UnregisterEnemyTransform(Transform t)
+    {
+        enemyTransforms.Remove(t);
     }
     #endregion
 

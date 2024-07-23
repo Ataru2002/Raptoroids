@@ -39,6 +39,7 @@ public class QueenBeeBossBehavior : BossBehavior
         nonLinearTransitionConditions[1][0] = EnterIdleState;
 
         CombatStageManager.Instance.SetBossHintTable("QueenBeeHints");
+        CombatStageManager.Instance.RegisterEnemyTransform(transform);
 
         stateExecute = IdleUpdate;
     }
