@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 1
   itemNumber: 4
   itemCodename: RWM-04
-  itemNickname: 
+  itemNickname: Hawkeye
   itemSprite: {fileID: 21300000, guid: c02c0540dcfef6e4ba7c6baec7542e2e, type: 3}
   gemCost: 200
   flavorText: w04
