@@ -13,22 +13,22 @@ public class CondoroidAbility : RaptoroidAbility
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rageMeter = 0;
-        cooldown = 15;
+        cooldownDuration = 15;
     }
 
     public void ActivateAbility(){
-        if(rageMeter > 0 && cooldownTimer <= 0) {
+        if(rageMeter > 0 && cooldownTimeRemaining <= 0) {
             Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 1, 0);
             GameObject bulletObject = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
 
             PunchthroughBullet bulletComponent = bulletObject.GetComponent<PunchthroughBullet>();
             bulletComponent.SetDamage(RageConvert(3));
 
-            cooldownTimer = cooldown;
+            cooldownTimeRemaining = cooldownDuration;
         }
     }
 
-    //Intentionally left blank
+    // Intentionally left blank
     protected override void UpdateAbilityDuration(){
         
         

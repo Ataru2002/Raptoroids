@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class RaptoroidAbility : MonoBehaviour
 {
-    protected float cooldownTimer = 0f;
-    public float cooldown = 10f;
+    protected float cooldownTimeRemaining = 0f;
+    public float cooldownDuration = 10f;
     protected AbilityCooldownUI cooldownUI;
 
     // Start is called before the first frame update
@@ -34,10 +34,10 @@ public abstract class RaptoroidAbility : MonoBehaviour
 
     void DiminishCooldown()
     {
-        if (cooldownTimer > 0f)
+        if (cooldownTimeRemaining > 0f)
         {
-            cooldownTimer -= Time.deltaTime;
-            cooldownTimer = Mathf.Max(0f, cooldownTimer);   //make sure that it does not go below 0
+            cooldownTimeRemaining -= Time.deltaTime;
+            cooldownTimeRemaining = Mathf.Max(0f, cooldownTimeRemaining);   //make sure that it does not go below 0
         }
 
         UpdateCooldownHUD();
@@ -45,7 +45,7 @@ public abstract class RaptoroidAbility : MonoBehaviour
 
     protected virtual void UpdateCooldownHUD()
     {
-        float timeRemaining = cooldown - cooldownTimer;
-        cooldownUI.UpdateCooldownProgress(timeRemaining / cooldown);
+        float timeElapsed = cooldownDuration - cooldownTimeRemaining;
+        cooldownUI.UpdateCooldownProgress(timeElapsed / cooldownDuration);
     }
 }

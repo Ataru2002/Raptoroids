@@ -41,7 +41,7 @@ public class WhiteheadAbility : RaptoroidAbility
     }
 
     public void activateShield() {
-        if(!shieldActive && cooldownTimer <= 0) {
+        if(!shieldActive && cooldownTimeRemaining <= 0) {
             shieldActive = true;
             shieldObject.SetActive(true);
 
@@ -50,7 +50,7 @@ public class WhiteheadAbility : RaptoroidAbility
             float currentShaderTime = Shader.GetGlobalVector("_Time").y;
             shieldRenderer.material.SetFloat("_StartTime", currentShaderTime);
             
-            cooldownTimer = cooldown;
+            cooldownTimeRemaining = cooldownDuration;
             onShieldActivated?.Invoke();
             shieldTimer = shieldDuration;
         }
@@ -73,7 +73,7 @@ public class WhiteheadAbility : RaptoroidAbility
     protected override void UpdateCooldownHUD()
     {
         base.UpdateCooldownHUD();
-        if (cooldownTimer <= 0 && onShieldCDFull != null)
+        if (cooldownTimeRemaining <= 0 && onShieldCDFull != null)
         {
             onShieldCDFull.Invoke();
         }

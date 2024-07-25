@@ -15,13 +15,13 @@ public class StavropterAbility : RaptoroidAbility
 
     public void activateSideGun(){
         print("Side Gun Activated");
-        if(!sideGunActive && cooldownTimer <= 0){
+        if(!sideGunActive && cooldownTimeRemaining <= 0){
             sideGunActive = true;
             defaultGun.SetActive(false);
             foreach(GameObject bullet in sideGunBulletSpawn){
                 bullet.SetActive(true);
             }
-            cooldownTimer = cooldown;
+            cooldownTimeRemaining = cooldownDuration;
             sideGunTimer = sideGunDuration;
         }
     } 
