@@ -4845,6 +4845,7 @@ GameObject:
   - component: {fileID: 8592961143897934641}
   - component: {fileID: 3275017834772844810}
   - component: {fileID: 256641272611225467}
+  - component: {fileID: 7776232823240430464}
   - component: {fileID: 514816332975612332}
   - component: {fileID: 2273076494128635092}
   m_Layer: 6
@@ -4893,7 +4894,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e02916e366cf36046b9d3491392800e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5001,8 +5002,8 @@ MonoBehaviour:
   doubleTap:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FalcoAbility, Assembly-CSharp
+      - m_Target: {fileID: 7776232823240430464}
+        m_TargetAssemblyTypeName: GarudaAbility, Assembly-CSharp
         m_MethodName: ActivateAbility
         m_Mode: 1
         m_Arguments:
@@ -5013,6 +5014,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7776232823240430464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442410451283973695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e995ebe0bb01a604b86ad9e12e410866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownDuration: 7
+  projectilePrefab: {fileID: 0}
 --- !u!114 &514816332975612332
 MonoBehaviour:
   m_ObjectHideFlags: 0

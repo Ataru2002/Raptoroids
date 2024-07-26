@@ -5,8 +5,13 @@ using UnityEngine;
 
 public abstract class RaptoroidAbility : MonoBehaviour
 {
-    protected float cooldownTimeRemaining = 0f;
     public float cooldownDuration = 10f;
+    protected float cooldownTimeRemaining = 0f;
+    // Allow subclasses to access timeElapsed and rechargeRatio in case the corresponding Raptoroid
+    // does something with ability cooldown
+    protected float timeElapsed;
+    protected float rechargeRatio;
+
     protected AbilityCooldownUI cooldownUI;
 
     // Start is called before the first frame update
@@ -40,12 +45,14 @@ public abstract class RaptoroidAbility : MonoBehaviour
             cooldownTimeRemaining = Mathf.Max(0f, cooldownTimeRemaining);   //make sure that it does not go below 0
         }
 
-        UpdateCooldownHUD();
+        UpdateCooldownVisuals();
     }
 
-    protected virtual void UpdateCooldownHUD()
+    protected virtual void UpdateCooldownVisuals()
     {
-        float timeElapsed = cooldownDuration - cooldownTimeRemaining;
-        cooldownUI.UpdateCooldownProgress(timeElapsed / cooldownDuration);
+        timeElapsed = cooldownDuration - cooldownTimeRemaining;
+        rechargeRatio = timeElapsed / cooldownDuration;
+        
+        cooldownUI.UpdateCooldownProgress(rechargeRatio);
     }
 }

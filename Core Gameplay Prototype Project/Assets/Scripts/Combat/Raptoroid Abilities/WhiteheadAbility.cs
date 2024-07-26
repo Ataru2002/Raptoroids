@@ -70,9 +70,9 @@ public class WhiteheadAbility : RaptoroidAbility
         shieldObject.SetActive(false);
     }
 
-    protected override void UpdateCooldownHUD()
+    protected override void UpdateCooldownVisuals()
     {
-        base.UpdateCooldownHUD();
+        base.UpdateCooldownVisuals();
         if (cooldownTimeRemaining <= 0 && onShieldCDFull != null)
         {
             onShieldCDFull.Invoke();
