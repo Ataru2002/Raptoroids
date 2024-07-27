@@ -36,10 +36,10 @@ public class StavropterAbility : RaptoroidAbility
 
     protected override void DeactivateAbility(){
         sideGunActive = false;
-        //sideGun Obj setactive false?
         defaultGun.SetActive(true);
-        foreach(GameObject bullet in sideGunBulletSpawn){
-                bullet.SetActive(false);
+
+        foreach(GameObject sideGun in sideGunBulletSpawn){
+           sideGun.SetActive(false);
         }
     }
 }

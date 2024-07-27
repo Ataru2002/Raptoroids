@@ -4889,10 +4889,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3766362014274598958}
   - component: {fileID: 1453588783832134358}
-  - component: {fileID: 5038142104078122152}
   - component: {fileID: 2196391181388784385}
-  - component: {fileID: 6410968611477726779}
   - component: {fileID: 5581179022971175809}
+  - component: {fileID: 6410968611477726779}
+  - component: {fileID: 5038142104078122152}
+  - component: {fileID: 5791845246925957729}
   - component: {fileID: 8483354259118490236}
   - component: {fileID: 407628906937404315}
   m_Layer: 6
@@ -4973,35 +4974,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5038142104078122152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211751053163929552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ac40cf349941045a2897afeb479d3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 12
-  impactParticles: {fileID: 0}
-  onHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8483354259118490236}
-        m_TargetAssemblyTypeName: CondoroidAbility, Assembly-CSharp
-        m_MethodName: RageIndicator
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2196391181388784385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5017,33 +4989,6 @@ MonoBehaviour:
   followSpeed: 9
   yOffset: 0.5
   snapDistance: 0.05
---- !u!114 &6410968611477726779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211751053163929552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501c98d13caa3d248a5fa0884ba8034c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doubleTap:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8483354259118490236}
-        m_TargetAssemblyTypeName: CondoroidAbility, Assembly-CSharp
-        m_MethodName: ActivateAbility
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!61 &5581179022971175809
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5090,6 +5035,74 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.6}
   m_EdgeRadius: 0
+--- !u!114 &6410968611477726779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211751053163929552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501c98d13caa3d248a5fa0884ba8034c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doubleTap:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8483354259118490236}
+        m_TargetAssemblyTypeName: CondoroidAbility, Assembly-CSharp
+        m_MethodName: ActivateAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5038142104078122152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211751053163929552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ac40cf349941045a2897afeb479d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 12
+  impactParticles: {fileID: 0}
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8483354259118490236}
+        m_TargetAssemblyTypeName: CondoroidAbility, Assembly-CSharp
+        m_MethodName: RageIndicator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5791845246925957729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211751053163929552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8483354259118490236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5102,7 +5115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9291a4a5cebec8468973ea0eee77662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 9
+  cooldownDuration: 10
   projectilePrefab: {fileID: 600153113385266887, guid: a238da5ecb2e8d74387b357bba9daf96, type: 3}
 --- !u!82 &407628906937404315
 AudioSource:

@@ -16,16 +16,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float yOffset = 0.5f;
     [SerializeField] float snapDistance = 0.01f;
     JoystickController joystickController;
-    bool isFrozen = false;
+
+    StatusEffectHandler statusHandler;
+    bool isFrozen { 
+        get
+        {
+            return statusHandler.HasStatusCondition(StatusEffect.Stun);
+        } 
+    }
     const float freezeDuration = 2f;
+    
     float joystickSpeedMult = 0.5f;
 
     Vector2 upperBound;
     Vector2 lowerBound;
 
-    void Start() {
+    void Awake()
+    {
+        statusHandler = GetComponent<StatusEffectHandler>();
         joystickController = FindFirstObjectByType<JoystickController>();
+    }
 
+    void Start() {
         upperBound = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         lowerBound = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
     }
@@ -81,12 +93,11 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator UnfreezePlayerAfterDelay()
     {
-        isFrozen = true;
+        statusHandler.SetStatusCondition(StatusEffect.Stun, freezeDuration);
         CombatStageManager.Instance.ToggleOaknutScreen(true, freezeDuration);
 
         yield return new WaitForSeconds(freezeDuration);
         
-        isFrozen = false;
         CombatStageManager.Instance.ToggleOaknutScreen(false);
     }
 }

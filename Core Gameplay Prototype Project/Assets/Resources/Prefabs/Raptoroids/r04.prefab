@@ -4847,6 +4847,7 @@ GameObject:
   - component: {fileID: 256641272611225467}
   - component: {fileID: 7776232823240430464}
   - component: {fileID: 514816332975612332}
+  - component: {fileID: 1932015502162480841}
   - component: {fileID: 2273076494128635092}
   m_Layer: 6
   m_Name: r04
@@ -5045,6 +5046,18 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1932015502162480841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442410451283973695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &2273076494128635092
 AudioSource:
   m_ObjectHideFlags: 0

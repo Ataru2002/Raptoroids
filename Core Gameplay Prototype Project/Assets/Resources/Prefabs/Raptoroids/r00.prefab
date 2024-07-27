@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 6474109902213267987}
   - component: {fileID: 3462860501150082408}
   - component: {fileID: 5838066362365024841}
+  - component: {fileID: 3876117602674193921}
   - component: {fileID: 5435155920222395559}
   - component: {fileID: 6437744643147431709}
   m_Layer: 6
@@ -247,6 +248,18 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3876117602674193921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272951143565367387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5435155920222395559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008cf25dc2ee35748ae28933b2f5b5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 10
+  cooldownDuration: 10
   shieldObject: {fileID: 5683339773515422960}
   shieldRenderer: {fileID: 6901887412563049001}
   shieldDuration: 2

@@ -78,4 +78,9 @@ public class StrafeEnemyBehavior : MonoBehaviour
             transform.position = new Vector3(nextX, transform.position.y, transform.position.z);
         }
     }
+
+    public void StunForSeconds(float t)
+    {
+        nextStrafeStart += t;
+    }
 }

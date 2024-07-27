@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 9318d2da507aa7f46bb8a2f4d78f40ca, type: 2}
   firstShotDelay: 0
   sfxSource: {fileID: 0}
 --- !u!1 &3941256206491604988
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 9318d2da507aa7f46bb8a2f4d78f40ca, type: 2}
   firstShotDelay: 0
   sfxSource: {fileID: 0}
 --- !u!1 &4196629239620882456
@@ -4940,6 +4940,7 @@ GameObject:
   - component: {fileID: 3275017834772844810}
   - component: {fileID: 933488627022204332}
   - component: {fileID: 514816332975612332}
+  - component: {fileID: 4760952061656661287}
   - component: {fileID: 2290518305236426929}
   - component: {fileID: 1231585791502763107}
   m_Layer: 6
@@ -5129,6 +5130,18 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4760952061656661287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442410451283973695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2290518305236426929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5141,7 +5154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0cb8279e147a45bb793b4c4291485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 20
+  cooldownDuration: 10
   defaultGun: {fileID: 8058161023988990806}
   sideGunBulletSpawn:
   - {fileID: 1095407585032414320}
@@ -5337,7 +5350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 9318d2da507aa7f46bb8a2f4d78f40ca, type: 2}
   firstShotDelay: 0
   sfxSource: {fileID: 0}
 --- !u!1 &9072429906028354087
@@ -5384,6 +5397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 9318d2da507aa7f46bb8a2f4d78f40ca, type: 2}
   firstShotDelay: 0
   sfxSource: {fileID: 0}
