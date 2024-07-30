@@ -18,9 +18,21 @@ public class EnemyBehavior : MonoBehaviour
 
     public bool FinalPositionReached { get { return timeSinceSpawn >= timeToFinalPosition; } }
 
+    protected StatusEffectHandler statusHandler;
+
+    protected void Awake()
+    {
+        statusHandler = GetComponent<StatusEffectHandler>();
+    }
+
     // Update is called once per frame
     protected void Update()
     {
+        if (statusHandler != null && statusHandler.HasStatusCondition(StatusEffect.Stun))
+        {
+            return;
+        }
+
         if (!FinalPositionReached)
         {
             timeSinceSpawn += Time.deltaTime;

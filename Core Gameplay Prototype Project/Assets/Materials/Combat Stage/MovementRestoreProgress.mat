@@ -82,7 +82,7 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _TimeElapsed: 2.0078688
+    - _TimeElapsed: 2.0073018
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
     - _UVSec: 0

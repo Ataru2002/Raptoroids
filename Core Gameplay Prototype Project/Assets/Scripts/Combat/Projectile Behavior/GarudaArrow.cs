@@ -25,7 +25,11 @@ public class GarudaArrow : Bullet
                 particles.GetComponent<ParticleSystem>().Emit(10);
             }
 
-            collision.BroadcastMessage("StunForSeconds", stunTime, SendMessageOptions.DontRequireReceiver);
+            StatusEffectHandler targetStatusHandler = collision.GetComponent<StatusEffectHandler>();
+            if (targetStatusHandler != null)
+            {
+                targetStatusHandler.SetStatusCondition(StatusEffect.Stun, stunTime);
+            }
 
             IBulletHittable bulletHitDetector = collision.GetComponent<IBulletHittable>();
             if (bulletHitDetector != null)

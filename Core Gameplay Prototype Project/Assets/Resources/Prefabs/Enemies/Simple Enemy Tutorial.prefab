@@ -44,13 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 0.8
   weaponData: {fileID: 11400000, guid: 2370e7f55028dad4485723c178a48d66, type: 2}
   firstShotDelay: 0.8
-  shotType: 0
-  projectilesPerShot: 0
-  coneAngle: 0
   sfxSource: {fileID: 4161103871229620102}
 --- !u!1 &782689998002506709
 GameObject:
@@ -65,6 +60,7 @@ GameObject:
   - component: {fileID: 7015960903068093348}
   - component: {fileID: 934293569053676419}
   - component: {fileID: -8304840118553371879}
+  - component: {fileID: 3563796709169294533}
   - component: {fileID: 4161103871229620102}
   m_Layer: 0
   m_Name: Simple Enemy Tutorial
@@ -236,6 +232,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3563796709169294533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782689998002506709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &4161103871229620102
 AudioSource:
   m_ObjectHideFlags: 0

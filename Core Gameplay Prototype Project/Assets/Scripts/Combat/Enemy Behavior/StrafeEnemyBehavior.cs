@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class StrafeEnemyBehavior : MonoBehaviour
 {
     EnemyBehavior enemyBehavior;
+    StatusEffectHandler statusHandler;
 
     // Using the sine function, the enemy goes to the right, 
     // then to the left, then back to the center to complete the cycle.
@@ -35,6 +36,7 @@ public class StrafeEnemyBehavior : MonoBehaviour
     private void Awake()
     {
         enemyBehavior = GetComponent<EnemyBehavior>();
+        statusHandler = GetComponent<StatusEffectHandler>();
     }
 
     // Start is called before the first frame update
@@ -57,6 +59,11 @@ public class StrafeEnemyBehavior : MonoBehaviour
 
     void Strafe()
     {
+        if (statusHandler != null && statusHandler.HasStatusCondition(StatusEffect.Stun))
+        {
+            return;
+        }
+
         if (sinceStrafeStart >= strafeCycleTime)
         {
             sinceStrafeStart = 0;
@@ -77,10 +84,5 @@ public class StrafeEnemyBehavior : MonoBehaviour
             float nextX = enemyBehavior.FinalPosition.x + strafeDirection * strafeDistance * Mathf.Sin(2 * Mathf.PI * sinceStrafeStart / strafeCycleTime);
             transform.position = new Vector3(nextX, transform.position.y, transform.position.z);
         }
-    }
-
-    public void StunForSeconds(float t)
-    {
-        nextStrafeStart += t;
     }
 }

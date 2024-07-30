@@ -6,6 +6,7 @@ using UnityEngine;
 public class GarudaAbility : RaptoroidAbility
 {
     [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Transform projectileSpawnPoint;
     SpriteRenderer spriteRenderer;
 
     void Awake()
@@ -15,7 +16,7 @@ public class GarudaAbility : RaptoroidAbility
 
     public void ActivateAbility()
     {
-        print("Pretend the projectile was fired, please");
+        Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         cooldownTimeRemaining = cooldownDuration;
     }
 

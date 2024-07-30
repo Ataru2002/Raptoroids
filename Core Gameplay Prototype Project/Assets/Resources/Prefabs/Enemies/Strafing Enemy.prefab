@@ -44,13 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 0.6
   weaponData: {fileID: 11400000, guid: 5567c35b65049fd4b9b34d319a014179, type: 2}
   firstShotDelay: 0.6
-  shotType: 1
-  projectilesPerShot: 3
-  coneAngle: 15
   sfxSource: {fileID: 1282928892793234541}
 --- !u!1 &4536745841740775154
 GameObject:
@@ -66,6 +61,7 @@ GameObject:
   - component: {fileID: 2159036636388848805}
   - component: {fileID: 7730016327616722248}
   - component: {fileID: -3337596448108323892}
+  - component: {fileID: 1959485119507729500}
   - component: {fileID: -2685531040773037737}
   - component: {fileID: 1282928892793234541}
   m_Layer: 0
@@ -262,6 +258,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1959485119507729500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536745841740775154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-2685531040773037737
 MonoBehaviour:
   m_ObjectHideFlags: 0
