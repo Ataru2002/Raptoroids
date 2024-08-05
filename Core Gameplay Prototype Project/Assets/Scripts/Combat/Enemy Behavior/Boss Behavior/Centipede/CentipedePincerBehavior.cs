@@ -17,6 +17,8 @@ public class CentipedePincerBehavior : MonoBehaviour
     [SerializeField] Sprite openSprite;
     [SerializeField] Material openMaterial;
 
+    StatusEffectHandler mainStatusHandler;
+
     EnemyHealth centipedeHP;
     const int hpScale = 6;
     int armHP = 4;
@@ -30,6 +32,7 @@ public class CentipedePincerBehavior : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
         projectileSpawner = GetComponentInChildren<ProjectileSpawner>();
         centipedeHP = GetComponentInParent<EnemyHealth>();
+        mainStatusHandler = GetComponentInParent<StatusEffectHandler>();
     }
 
     // Start is called before the first frame update
@@ -56,9 +59,16 @@ public class CentipedePincerBehavior : MonoBehaviour
         clawRenderer.material = openMaterial;
         yield return new WaitForSeconds(0.6f);
 
+        // Wait until the stun status ends
+        yield return new WaitUntil(() => !mainStatusHandler.HasStatusCondition(StatusEffect.Stun));
+
         for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.4f);
+
+            // Hold out until the stun status ends
+            yield return new WaitUntil(() => !mainStatusHandler.HasStatusCondition(StatusEffect.Stun));
+
             projectileSpawner.ResetShotTimer();
             projectileSpawner.TryShoot();
         }

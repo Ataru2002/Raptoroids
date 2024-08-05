@@ -18,6 +18,8 @@ public class CentipedeBossBehavior : BossBehavior
     [SerializeField] ParticleSystem laserChargeParticles;
     [SerializeField] EnemyLaserBall laserBall;
 
+    StatusEffectHandler mainStatusHandler;
+
     bool firstHintDisplayed = false;
 
     bool legBarrageStarted = false;
@@ -28,7 +30,7 @@ public class CentipedeBossBehavior : BossBehavior
     public bool strafing = false;
     float remainingHealthRatio = 1f;
 
-    void Awake()
+    new void Awake()
     {
         transitionConditions = new List<System.Func<bool>>
         {
@@ -49,6 +51,8 @@ public class CentipedeBossBehavior : BossBehavior
         {
             CombatStageManager.Instance.RegisterEnemyTransform(r.transform);
         }
+
+        mainStatusHandler = GetComponent<StatusEffectHandler>();
     }
 
     public void UpdateHealthRatio(float val)
@@ -211,6 +215,10 @@ public class CentipedeBossBehavior : BossBehavior
                 mandible.SetState(1);
             }
         }
+
+        // Wait until the stun status ends
+        yield return new WaitUntil(() => !mainStatusHandler.HasStatusCondition(StatusEffect.Stun));
+
         laserChargeParticles.Play();
         laserBall.gameObject.SetActive(true);
         CombatSFXManager.PlaySoundAtLocation("LaserChargeUp", laserBall.transform.position);
@@ -227,6 +235,10 @@ public class CentipedeBossBehavior : BossBehavior
             }
         }
         laserChargeParticles.Stop();
+
+        // Wait until the stun status ends
+        yield return new WaitUntil(() => !mainStatusHandler.HasStatusCondition(StatusEffect.Stun));
+
         laserBall.ResetGrowth();
         laserBall.gameObject.SetActive(false);
         laserFiring = true;
@@ -245,6 +257,10 @@ public class CentipedeBossBehavior : BossBehavior
         headLaser.ToggleLaserBeam(false);
 
         yield return new WaitForSeconds(0.6f);
+
+        // Wait until the stun status ends
+        yield return new WaitUntil(() => !mainStatusHandler.HasStatusCondition(StatusEffect.Stun));
+
         foreach (CentipedeMandibleBehavior mandible in mandibles)
         {
             if (mandible != null)

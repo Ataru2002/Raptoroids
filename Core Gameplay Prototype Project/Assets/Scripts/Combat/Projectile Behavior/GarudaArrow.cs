@@ -25,7 +25,7 @@ public class GarudaArrow : Bullet
                 particles.GetComponent<ParticleSystem>().Emit(10);
             }
 
-            StatusEffectHandler targetStatusHandler = collision.GetComponent<StatusEffectHandler>();
+            StatusEffectHandler targetStatusHandler = collision.GetComponentInParent<StatusEffectHandler>();
             if (targetStatusHandler != null)
             {
                 targetStatusHandler.SetStatusCondition(StatusEffect.Stun, stunTime);

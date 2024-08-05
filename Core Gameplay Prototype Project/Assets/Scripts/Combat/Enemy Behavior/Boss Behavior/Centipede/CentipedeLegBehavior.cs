@@ -24,6 +24,8 @@ public class CentipedeLegBehavior : MonoBehaviour
     [SerializeField] float bodySeparationDistance = 1f;
     Vector2 originalPosition;
 
+    StatusEffectHandler statusHandler;
+
     bool attackStarted = false;
     bool alreadyHitPlayer = false;
 
@@ -44,12 +46,13 @@ public class CentipedeLegBehavior : MonoBehaviour
         originalPosition = transform.position;
         centipedeHP = GetComponentInParent<EnemyHealth>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        statusHandler = GetComponentInChildren<StatusEffectHandler>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (stateUpdate != null)
+        if (stateUpdate != null && !statusHandler.HasStatusCondition(StatusEffect.Stun))
         {
             stateUpdate();
         }
@@ -112,6 +115,9 @@ public class CentipedeLegBehavior : MonoBehaviour
 
         stateUpdate = TrackPlayer;
         yield return new WaitForSeconds(2);
+
+        stateUpdate = null;
+        yield return new WaitUntil(() => !statusHandler.HasStatusCondition(StatusEffect.Stun));
 
         stateUpdate = Attack;
         while (Mathf.Abs(transform.position.y) < CombatStageManager.Instance.VerticalUpperBound && 
