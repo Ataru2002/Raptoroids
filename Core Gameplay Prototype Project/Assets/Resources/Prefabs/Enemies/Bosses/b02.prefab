@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6551362528558485661}
   - component: {fileID: 8572168135213654219}
   - component: {fileID: 5744931711106822147}
+  - component: {fileID: 870506841507297691}
   m_Layer: 0
   m_Name: WormTopMiddle_0
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,6 +177,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &870506841507297691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774246364505798820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1103563822961188986
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,8 +215,8 @@ Transform:
   m_GameObject: {fileID: 1103563822961188986}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: -0.25260097, y: 0.24307586, z: 0.17900288}
-  m_LocalScale: {x: 2.4999993, y: 2.4999993, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1483429013176211663}
@@ -233,6 +246,7 @@ GameObject:
   - component: {fileID: 7406855648261056294}
   - component: {fileID: 3743198998696112185}
   - component: {fileID: 8460169234716974052}
+  - component: {fileID: 2635884012689721458}
   m_Layer: 0
   m_Name: WormBotLeft_0
   m_TagString: Untagged
@@ -396,6 +410,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.87, y: 0.77}
   m_EdgeRadius: 0
+--- !u!114 &2635884012689721458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395576617483525859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1646852113915012479
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,9 +435,10 @@ GameObject:
   - component: {fileID: 7258866088665545037}
   - component: {fileID: 2009283033248096783}
   - component: {fileID: 4846705858617804131}
+  - component: {fileID: 8049196411854581817}
   m_Layer: 0
   m_Name: WormTopLeft_0
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -572,6 +599,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8049196411854581817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646852113915012479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1717553125053944301
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,9 +621,10 @@ GameObject:
   m_Component:
   - component: {fileID: 708597679724974016}
   - component: {fileID: 7244615474295968422}
+  - component: {fileID: 961444572012106169}
   m_Layer: 0
   m_Name: parasiteNoTentacles_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -658,6 +698,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &961444572012106169
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717553125053944301}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.02, y: 1.62}
+    newSize: {x: 1.02, y: 1.62}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1.6}
+  m_EdgeRadius: 0
 --- !u!1 &2317541730168082137
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,13 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 1
   weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 1
-  shotType: 0
-  projectilesPerShot: 1
-  coneAngle: 0
   sfxSource: {fileID: 0}
 --- !u!1 &2679251445403417817
 GameObject:
@@ -906,6 +987,7 @@ GameObject:
   - component: {fileID: -4911741989801965411}
   - component: {fileID: 5321855231735290441}
   - component: {fileID: 1521957515219252103}
+  - component: {fileID: 5563542948740557530}
   m_Layer: 0
   m_Name: b02
   m_TagString: Enemy
@@ -1009,7 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008cf25dc2ee35748ae28933b2f5b5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 10
+  cooldownDuration: 10
   shieldObject: {fileID: 5683339773515422960}
   shieldRenderer: {fileID: 6901887412563049001}
   shieldDuration: 3
@@ -1093,6 +1175,18 @@ MonoBehaviour:
   OnStrafeEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5563542948740557530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272951143565367387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4407078997391759102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,13 +1317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 1
   weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 0.2
-  shotType: 0
-  projectilesPerShot: 1
-  coneAngle: 0
   sfxSource: {fileID: 0}
 --- !u!1 &5068463288301573166
 GameObject:
@@ -1275,13 +1364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 1
   weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 1
-  shotType: 0
-  projectilesPerShot: 1
-  coneAngle: 0
   sfxSource: {fileID: 0}
 --- !u!1 &5071281255877401884
 GameObject:
@@ -6576,13 +6660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 1
   weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 1
-  shotType: 0
-  projectilesPerShot: 1
-  coneAngle: 0
   sfxSource: {fileID: 0}
 --- !u!1 &6423478088403630004
 GameObject:
@@ -6725,9 +6804,10 @@ GameObject:
   - component: {fileID: 8111899772962261531}
   - component: {fileID: 4985214661894682336}
   - component: {fileID: 2282304264955022550}
+  - component: {fileID: 3285238812231280294}
   m_Layer: 0
   m_Name: WormBotMiddle_0
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6888,6 +6968,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.82, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &3285238812231280294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6726520252849143870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7148893300186909531
 GameObject:
   m_ObjectHideFlags: 0
@@ -6992,9 +7084,10 @@ GameObject:
   - component: {fileID: 3721923125353544470}
   - component: {fileID: 2896746700641321853}
   - component: {fileID: 6490103902821094247}
+  - component: {fileID: 3710012103103133314}
   m_Layer: 0
   m_Name: WormBotRight_0
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7155,6 +7248,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3710012103103133314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431429408837594181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8993986325687701087
 GameObject:
   m_ObjectHideFlags: 0
@@ -7199,13 +7304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 1
   weaponData: {fileID: 11400000, guid: fca51fbb88ed9694a8a26ad2a864090f, type: 2}
   firstShotDelay: 1
-  shotType: 0
-  projectilesPerShot: 1
-  coneAngle: 0
   sfxSource: {fileID: 0}
 --- !u!1 &9036966153460400909
 GameObject:
@@ -7220,9 +7320,10 @@ GameObject:
   - component: {fileID: 1781324339535708100}
   - component: {fileID: 5212706601972840695}
   - component: {fileID: 402292957281032685}
+  - component: {fileID: 3313768646997627396}
   m_Layer: 0
   m_Name: WormTopRight_0
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7383,3 +7484,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3313768646997627396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036966153460400909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

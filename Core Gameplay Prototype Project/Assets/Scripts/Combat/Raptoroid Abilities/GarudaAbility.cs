@@ -16,8 +16,11 @@ public class GarudaAbility : RaptoroidAbility
 
     public void ActivateAbility()
     {
-        Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        cooldownTimeRemaining = cooldownDuration;
+        if (cooldownTimeRemaining <= 0)
+        {
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+            cooldownTimeRemaining = cooldownDuration;
+        }
     }
 
     // Intentionally left blank

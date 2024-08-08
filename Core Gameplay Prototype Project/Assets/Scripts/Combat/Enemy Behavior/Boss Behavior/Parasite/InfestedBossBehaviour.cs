@@ -25,7 +25,8 @@ public class InfestedBossBehaviour : BossBehavior
     private float spawnTimer = 5f;
     bool firstHintDisplayed = false;
 
-    void Awake(){
+    new void Awake(){
+        base.Awake();
         transitionConditions = new List<System.Func<bool>>{StateTransition1, StateTransition2, StateTransition3};
         CombatStageManager.Instance.SetBossHintTable("ParasiteHints");
         CombatStageManager.Instance.RegisterEnemyTransform(hostBody.transform);
@@ -33,7 +34,7 @@ public class InfestedBossBehaviour : BossBehavior
     }
 
     void State1Execute(){
-        if(!strafing){
+        if (!strafing) {
             strafeBehavior.enabled = true;
             strafing = true;
         }
@@ -97,6 +98,8 @@ public class InfestedBossBehaviour : BossBehavior
             spawnTimer = 0f;
         }
 
+        // TODO: maybe fire an event when the shield breaks instead so we don't have to
+        // run this check every frame?
         if(!ParasiteManager.Instance.BossShieldStatus()){
             hostBody.GetComponent<BoxCollider2D>().enabled = true;
             defaultWeapon.enabled = true;

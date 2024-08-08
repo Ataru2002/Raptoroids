@@ -21,6 +21,7 @@ public class ParasiteManager : MonoBehaviour
             
         }
     }
+
     void Start()
     {
         bossShielded = false;

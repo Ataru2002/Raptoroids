@@ -19,6 +19,13 @@ public class StatusEffectHandler : MonoBehaviour
 
     IEnumerator SetStatusTime(StatusEffect status, float duration)
     {
+        // For now, assume only one instance of a status can exist
+        if (HasStatusCondition(status))
+        {
+            // yield break breaks a coroutine early. Think returning from a function
+            yield break;
+        }
+
         statusVector |= (byte)status;
         yield return new WaitForSeconds(duration);
         // Bitwise XOR flips only the relevant bit from 1 to 0 while keeping all other bits as is

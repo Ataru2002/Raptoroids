@@ -22,6 +22,8 @@ public class TentacleBehavior : MonoBehaviour
 
     const float attackMoveSpeed = 8f;
 
+    StatusEffectHandler statusHandler;
+
     // [SerializeField] float bodySeparationDistance = 0.5f;
     Vector2 originalPosition;
     bool attackStarted = false;
@@ -34,28 +36,32 @@ public class TentacleBehavior : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Action stateUpdate = null;
     bool vulnerable = false;
+
     void Awake(){
         parentTransform = transform.parent;
         tentacleDirection = isTopTentacle ? 1f : -1f;
         originalPosition = transform.position;
         parasiteHP = GetComponentInParent<EnemyHealth>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        statusHandler = GetComponent<StatusEffectHandler>();
     }
 
     void Update(){
-        if(stateUpdate != null){
+        if(stateUpdate != null && !statusHandler.HasStatusCondition(StatusEffect.Stun)){
             stateUpdate();
         }
     }
+
     public void TryTentacleSequence(){
-        if(attackStarted){
+        if (attackStarted) {
             return;
         }
+
         StartCoroutine(AttackSequence());
     }
 
     public void TryAttackSequenceIndicator(){
-        if(indicatorStarted){
+        if(indicatorStarted) {
             return;
         }
 
@@ -70,11 +76,11 @@ public class TentacleBehavior : MonoBehaviour
     }
 
     public void NotifytentacleHit(int damage){
-        if(tentacleDestroyed){
+        if (tentacleDestroyed) {
             return;
         }
 
-        if(vulnerable) {
+        if (vulnerable) {
             int finalDamage = Mathf.Clamp(damage, 1, tentacleHP);
             tentacleHP -= finalDamage;
             CombatStageManager.Instance.UpdateScore(pointsAwarded);
@@ -97,6 +103,7 @@ public class TentacleBehavior : MonoBehaviour
             step++;
         }
     }
+
     IEnumerator AttackSequence(){
         attackStarted = true;
         
@@ -106,6 +113,8 @@ public class TentacleBehavior : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
+        stateUpdate = null;
+        yield return new WaitUntil(() => !statusHandler.HasStatusCondition(StatusEffect.Stun));
         
         vulnerable = true;
         stateUpdate = Attack;
@@ -156,6 +165,7 @@ public class TentacleBehavior : MonoBehaviour
         Vector2 dir = Vector2.up * distance * tentacleDirection;
         transform.Translate(dir);
     }
+
     void ReturnToBody()
     {
         timeSinceReturnStart += Time.deltaTime;
