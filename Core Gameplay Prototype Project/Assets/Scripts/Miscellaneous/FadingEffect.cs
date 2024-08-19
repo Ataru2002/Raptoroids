@@ -7,7 +7,7 @@ public class FadingEffect : MonoBehaviour
     public float fadeDuration = 1f; // Duration of fade in seconds
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
-    BodyBehaviour body;
+    MantisBodyBehaviour body;
     [SerializeField] GameObject hitBox;
     public bool fadedIn = false;
 
@@ -16,7 +16,7 @@ public class FadingEffect : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-        body = GetComponent<BodyBehaviour>();
+        body = GetComponent<MantisBodyBehaviour>();
     }
 
     public void tryFadeIn(bool activateHitBox){

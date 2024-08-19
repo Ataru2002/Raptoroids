@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6049311907867471194}
   - component: {fileID: 3810187403642044529}
   - component: {fileID: 7616395218770833032}
+  - component: {fileID: 3568438477233871173}
   - component: {fileID: 3137828314147524658}
   m_Layer: 0
   m_Name: SwarmEnemy (9)
@@ -133,6 +134,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &3568438477233871173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173915173672019643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &3137828314147524658
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -282,6 +295,7 @@ GameObject:
   - component: {fileID: 8086713356661677918}
   - component: {fileID: 8230423219346863102}
   - component: {fileID: 755397313183500516}
+  - component: {fileID: 8478603406434467143}
   - component: {fileID: 1489838358708563327}
   m_Layer: 0
   m_Name: SwarmEnemy (7)
@@ -403,6 +417,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &8478603406434467143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663627072772374461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1489838358708563327
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -694,6 +720,7 @@ GameObject:
   - component: {fileID: 4373753778105329307}
   - component: {fileID: 2211319336198680188}
   - component: {fileID: 8504961948850653425}
+  - component: {fileID: 8832138897501837025}
   - component: {fileID: 5954664189904913262}
   m_Layer: 0
   m_Name: SwarmEnemy (4)
@@ -815,6 +842,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &8832138897501837025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083280967535951179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5954664189904913262
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -908,6 +947,7 @@ GameObject:
   - component: {fileID: 5264956582196776955}
   - component: {fileID: 2661530502335179491}
   - component: {fileID: 4089336794101166225}
+  - component: {fileID: 2380103970214808509}
   - component: {fileID: 4241480072135065389}
   m_Layer: 0
   m_Name: SwarmEnemy (1)
@@ -1029,6 +1069,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &2380103970214808509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544843367001862927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &4241480072135065389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1086,6 +1138,7 @@ GameObject:
   - component: {fileID: 2259078850523605901}
   - component: {fileID: 8493341463409571581}
   - component: {fileID: 7203002639356045708}
+  - component: {fileID: 1288290000807664245}
   - component: {fileID: 5804605135813430603}
   - component: {fileID: 1020209576331089391}
   m_Layer: 0
@@ -1180,6 +1233,18 @@ MonoBehaviour:
   isLeftArm: 1
   bossInvis: {fileID: 8772653649043724999}
   combinedBossHP: {fileID: 7444285340675142408}
+--- !u!114 &1288290000807664245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553664183727732622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5804605135813430603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1447,6 +1512,7 @@ GameObject:
   - component: {fileID: 2476673024176608657}
   - component: {fileID: 5835139204900396597}
   - component: {fileID: 3911098865890964150}
+  - component: {fileID: 4723318423207640185}
   - component: {fileID: 5909416818245837194}
   m_Layer: 0
   m_Name: SwarmEnemy (2)
@@ -1568,6 +1634,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &4723318423207640185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234617108265950577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5909416818245837194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1626,6 +1704,7 @@ GameObject:
   - component: {fileID: 7892661504128141924}
   - component: {fileID: 2528144037944255018}
   - component: {fileID: 3853351078054596802}
+  - component: {fileID: 720970495359215803}
   - component: {fileID: 4027382510590408426}
   m_Layer: 0
   m_Name: SwarmEnemy (8)
@@ -1747,6 +1826,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &720970495359215803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745657701486067640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &4027382510590408426
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1898,6 +1989,7 @@ GameObject:
   - component: {fileID: 5269690849002221875}
   - component: {fileID: 7373542880474931722}
   - component: {fileID: 2082272948896072239}
+  - component: {fileID: 2169915777967465623}
   - component: {fileID: 6279002962544051443}
   m_Layer: 0
   m_Name: Giant Locust Body
@@ -2048,6 +2140,18 @@ MonoBehaviour:
   trackPlayer: 0
   timeToFinalPosition: 0
   defaultWeapon: {fileID: 0}
+--- !u!114 &2169915777967465623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4837543120846033885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &6279002962544051443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2197,6 +2301,7 @@ GameObject:
   - component: {fileID: 2119253770095042788}
   - component: {fileID: 3970051839853335555}
   - component: {fileID: 7148383974419947227}
+  - component: {fileID: 2315124352370777898}
   - component: {fileID: 3288024064805800396}
   m_Layer: 0
   m_Name: SwarmEnemy (6)
@@ -2318,6 +2423,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &2315124352370777898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055482036158360240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &3288024064805800396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2467,6 +2584,7 @@ GameObject:
   - component: {fileID: 6940956261230952932}
   - component: {fileID: 3927192905596785549}
   - component: {fileID: 1151508762652714468}
+  - component: {fileID: 2672149703481885135}
   - component: {fileID: 6202593423514907439}
   m_Layer: 0
   m_Name: SwarmEnemy (3)
@@ -2588,6 +2706,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &2672149703481885135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5063466807127065866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &6202593423514907439
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3010,6 +3140,7 @@ GameObject:
   - component: {fileID: 1370909749023984519}
   - component: {fileID: 4910026544721917814}
   - component: {fileID: 7159803555119806841}
+  - component: {fileID: 4995244725865391878}
   - component: {fileID: 8637672351130954871}
   m_Layer: 0
   m_Name: SwarmEnemy (5)
@@ -3131,6 +3262,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &4995244725865391878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7616849697245341599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &8637672351130954871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3294,7 +3437,7 @@ Transform:
   m_GameObject: {fileID: 8670691411869305982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1, y: 0, z: 0.009015089}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3365,6 +3508,7 @@ GameObject:
   - component: {fileID: 2901047579376427024}
   - component: {fileID: 2301541005304442169}
   - component: {fileID: 7350456138936924684}
+  - component: {fileID: 9145317391083983666}
   - component: {fileID: 5533616556913066345}
   - component: {fileID: 617218862412369009}
   m_Layer: 0
@@ -3459,6 +3603,18 @@ MonoBehaviour:
   isLeftArm: 0
   bossInvis: {fileID: 8772653649043724999}
   combinedBossHP: {fileID: 7444285340675142408}
+--- !u!114 &9145317391083983666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723249955184936483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5533616556913066345
 BoxCollider2D:
   m_ObjectHideFlags: 0

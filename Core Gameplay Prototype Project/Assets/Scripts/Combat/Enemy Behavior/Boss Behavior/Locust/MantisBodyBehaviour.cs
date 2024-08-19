@@ -2,17 +2,18 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class BodyBehaviour : MonoBehaviour
+public class MantisBodyBehaviour : MonoBehaviour
 {   
     [SerializeField] GameObject hitBox;
     [SerializeField] EnemyHealth combinedBossHP;
-    StrafeEnemyBehavior strafeBehaviour;
     FadingEffect fadingEffect;
+    StatusEffectHandler statusEffectHandler;
+
     Action stateUpdate = null;
     float attackMoveSpeed = 12f;
     int bodyHP = 15;
     int pointsAwarded = 20;
-    Transform playerCurrentPos;
+    Transform playerTransform;
     bool attackStarted = false;
     bool fadeInDone = true;
     PlayerHealth playerHealth;
@@ -20,15 +21,17 @@ public class BodyBehaviour : MonoBehaviour
     Color opacity;
     // Start is called before the first frame update
 
-    void Awake(){
+    void Awake()
+    {
         fadingEffect = GetComponent<FadingEffect>();
         opacity = GetComponent<SpriteRenderer>().color;
-        strafeBehaviour = GetComponent<StrafeEnemyBehavior>();
-        
+        statusEffectHandler = GetComponent<StatusEffectHandler>();
     }
+
     void Start()
     {
         hitBox.SetActive(true);
+        playerTransform = CombatStageManager.Instance.PlayerTransform;
     }
 
     // Update is called once per frame
@@ -38,6 +41,7 @@ public class BodyBehaviour : MonoBehaviour
             stateUpdate();
         }
     }
+
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player"){
             playerHealth = other.GetComponent<PlayerHealth>();
@@ -79,61 +83,28 @@ public class BodyBehaviour : MonoBehaviour
         StartCoroutine(invisAttackSequence());
     }
 
-    
-
     IEnumerator invisAttackSequence(){
         attackStarted = true;
         fadingEffect.tryFadeOut();
         yield return new WaitForSeconds(1f);
         
-        UpdatePlayerPos();
-        stateUpdate = Attack;
-        while(Vector3.Distance(transform.position, playerCurrentPos.position) > 0.2f){
+        stateUpdate = Stalk;
+        while(Vector3.Distance(transform.position, playerTransform.position) > 0.2f){
             yield return new WaitForEndOfFrame();
         }
         
-        UpdatePlayerPos();
-        // strafeBehaviour.publicInvertStrafe = playerCurrentPos.position.x <= transform.position.x ? true : false;
-        
-        stateUpdate = DoNothing;
+        stateUpdate = null;
         
         fadingEffect.tryFadeIn(true);
 
-        // strafeBehaviour.enabled = true;
         yield return new WaitForSeconds(1.5f);
-        // strafeBehaviour.enabled = false;
-        // strafeBehaviour.publicInvertStrafe = false;
-        stateUpdate = DoNothing;
+        yield return new WaitUntil(() => !statusEffectHandler.HasStatusCondition(StatusEffect.Stun));
 
-        // strafeBehaviour.enabled = false;
         attackStarted = false;
     }   
 
-    void Attack()
+    void Stalk()
     {
-        transform.position = Vector3.MoveTowards(transform.position, playerCurrentPos.position, attackMoveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, attackMoveSpeed * Time.deltaTime);
     }
-
-    void UpdatePlayerPos(){
-        playerCurrentPos = CombatStageManager.Instance.PlayerTransform;
-
-    }
-
-    void Strafe(){
-
-    }
-    void DoNothing(){
-        return;
-    }
-    // void TrackPlayer(){
-    //     LookAtTarget(CombatStageManager.Instance.PlayerTransform.position);
-    // }
-//     void LookAtTarget(Vector3 target)
-//     {
-//         attackDirection = target - transform.position;
-//         float angle = Mathf.Atan2(attackDirection.y, attackDirection.x);
-//         angle += Mathf.PI / 2f;
-//         angle *= Mathf.Rad2Deg;
-//         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-//     }
 }

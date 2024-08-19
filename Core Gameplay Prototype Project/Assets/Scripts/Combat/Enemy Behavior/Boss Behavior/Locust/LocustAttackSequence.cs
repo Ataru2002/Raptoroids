@@ -11,7 +11,7 @@ public class LocustAttackSequence : BossBehavior
     [SerializeField] GameObject fusionBall;
     [SerializeField] GiantArmBehaviour giantLeftArm;
     [SerializeField] GiantArmBehaviour giantRightArm;
-    [SerializeField] BodyBehaviour body;
+    [SerializeField] MantisBodyBehaviour body;
     float remainingHealthRatio = 1f;
     private bool swarmBarrageStarted = false;
     private bool swarmFusionDone = false;
@@ -21,7 +21,7 @@ public class LocustAttackSequence : BossBehavior
     bool invisAttackStarted = false;
     public int miniEnemiesDestroyed;
     
-    void Awake()
+    new void Awake()
     {
         transitionConditions = new List<System.Func<bool>>
         {

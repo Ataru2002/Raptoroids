@@ -196,14 +196,19 @@ public class SwarmBehaviour : MonoBehaviour
 
     void LookAtTarget(Vector3 target)
     {
-        
         Vector2 direction = target - transform.position;
         float angleRadians = Mathf.Atan2(direction.y, direction.x);
         float angleDegrees = angleRadians * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleDegrees));
     }
 
-    void Attack(){
+    void Attack()
+    {
+        if (!fusionSequenceStarted && statusEffectHandler.HasStatusCondition(StatusEffect.Stun))
+        {
+            return;
+        }
+
         transform.Translate(Vector2.right * attackMoveSpeed * Time.deltaTime * swarmDirection);
     }
 
