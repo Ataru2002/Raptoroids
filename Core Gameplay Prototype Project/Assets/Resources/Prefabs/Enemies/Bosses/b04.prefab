@@ -413,6 +413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4892624266284697539}
   - component: {fileID: 2097199646088586536}
+  - component: {fileID: 1054007429330611209}
   - component: {fileID: -4939493955065338496}
   - component: {fileID: 785206574986019104}
   m_Layer: 0
@@ -459,6 +460,18 @@ MonoBehaviour:
   - {fileID: 6600299152996509344}
   - {fileID: 1092370512556506415}
   guardPrefab: {fileID: 6430903866872757892, guid: cb1f0d29af86e7b4c9af4e6de395acb2, type: 3}
+--- !u!114 &1054007429330611209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604408532364374373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &-4939493955065338496
 BoxCollider2D:
   m_ObjectHideFlags: 0

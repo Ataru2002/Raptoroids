@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3430406488179952189}
   - component: {fileID: 284288070988691034}
   - component: {fileID: 8701948477536619918}
+  - component: {fileID: 8549436556839062009}
   - component: {fileID: -2001575152877552545}
   - component: {fileID: -5326608426363939409}
   m_Layer: 0
@@ -105,6 +106,18 @@ MonoBehaviour:
   timeToFinalPosition: 2.4
   defaultWeapon: {fileID: -2001575152877552545}
   isMeatShield: 0
+--- !u!114 &8549436556839062009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430903866872757892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-2001575152877552545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,13 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6726c36785e343b49965ecf1cf9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  fireRate: 0.4
   weaponData: {fileID: 11400000, guid: e570ff14b4157574ca95129ef6ee6734, type: 2}
   firstShotDelay: 0
-  shotType: 0
-  projectilesPerShot: 0
-  coneAngle: 0
   sfxSource: {fileID: 0}
 --- !u!61 &-5326608426363939409
 BoxCollider2D:

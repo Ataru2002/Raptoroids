@@ -5,14 +5,16 @@ using UnityEngine;
 public class GuardBeeBehavior : EnemyBehavior, IBulletHittable
 {
     QueenBeeBossBehavior boss;
+    StatusEffectHandler statusEffectHandler;
     public static Vector2 meatShieldPos = new Vector2(0, 0.5f);
     public bool isMeatShield = false;
     bool bossNotified = false;
 
     int guardHealth = 5;
 
-    void Awake()
+    new void Awake()
     {
+        base.Awake();
         boss = FindFirstObjectByType<QueenBeeBossBehavior>();
         CombatStageManager.Instance.RegisterEnemyTransform(transform);
     }

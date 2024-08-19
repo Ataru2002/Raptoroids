@@ -28,8 +28,9 @@ public class QueenBeeBossBehavior : BossBehavior
     [SerializeField] QueenBeeWingBehavior[] wings;
     [SerializeField] GameObject guardPrefab;
 
-    void Awake()
+    new void Awake()
     {
+        base.Awake();
         nonLinearTransitionConditions = new Dictionary<int, Dictionary<int, Func<bool>>>();
 
         nonLinearTransitionConditions[0] = new Dictionary<int, Func<bool>>();
@@ -182,12 +183,12 @@ public class QueenBeeBossBehavior : BossBehavior
         {
             runningCoroutine = StartCoroutine(ChaseSequence());
         }
-    }
 
-    void ConfirmMark()
-    {
-        mark = CombatStageManager.Instance.PlayerTransform.position;
-        trackPlayer = false;
+        // Update the mark only while not stunned so that the stun has a noticeable effect
+        if (trackPlayer && !statusHandler.HasStatusCondition(StatusEffect.Stun))
+        {
+            mark = CombatStageManager.Instance.PlayerTransform.position;
+        }
     }
 
     void RunUpdate()
@@ -218,9 +219,12 @@ public class QueenBeeBossBehavior : BossBehavior
         chasing = true;
         trackPlayer = true;
         markReached = false;
-        
+
         yield return new WaitForSeconds(1);
-        ConfirmMark();
+        trackPlayer = false;
+
+        yield return new WaitUntil(() => !statusHandler.HasStatusCondition(StatusEffect.Stun));
+
         stateExecute = RunUpdate;
         feeding = true;
 
