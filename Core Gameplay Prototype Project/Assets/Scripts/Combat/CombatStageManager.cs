@@ -316,9 +316,11 @@ public class CombatStageManager : MonoBehaviour
         hint.SetEntry(msgKey);
         hint.RefreshString();
 
-        StartCoroutine(WarningSignFlash());
-        yield return new WaitForSeconds(duration);
-        StopCoroutine(WarningSignFlash());
+        Time.timeScale = 1 / 64f;
+        Coroutine warningFlash = StartCoroutine(WarningSignFlash());
+        yield return new WaitForSecondsRealtime(duration);
+        StopCoroutine(warningFlash);
+        Time.timeScale = 1;
         bossHintCanvas.SetActive(false);
     }
 
@@ -328,7 +330,7 @@ public class CombatStageManager : MonoBehaviour
         while (true)
         {
             warningSign.enabled = signOn;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSecondsRealtime(0.3f);
             signOn = !signOn;
         }
     }

@@ -3721,6 +3721,7 @@ GameObject:
   - component: {fileID: 5797665976462547224}
   - component: {fileID: 2831111846903512209}
   - component: {fileID: 4906845393527617376}
+  - component: {fileID: 5253992791511551622}
   - component: {fileID: 8512695701709195854}
   m_Layer: 0
   m_Name: SwarmEnemy
@@ -3842,6 +3843,18 @@ MonoBehaviour:
   speed: 2
   minAttackDelay: 0
   maxAttackDelay: 1
+--- !u!114 &5253992791511551622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098901527759956215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00e50859ee029419d07181b7b5fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &8512695701709195854
 BoxCollider2D:
   m_ObjectHideFlags: 0

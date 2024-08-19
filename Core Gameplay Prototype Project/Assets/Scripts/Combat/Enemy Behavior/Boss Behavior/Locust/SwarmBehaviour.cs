@@ -23,6 +23,7 @@ public class SwarmBehaviour : MonoBehaviour
     BezierCurve returnLine = null;
     Action stateUpdate = null;
     SpriteRenderer spriteRenderer;
+    StatusEffectHandler statusEffectHandler;
     EnemyHealth combinedSwarmHP;
     LocustAttackSequence controller;
     BoxCollider2D boxCollider;
@@ -45,6 +46,7 @@ public class SwarmBehaviour : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
         controller = GetComponentInParent<LocustAttackSequence>();
+        statusEffectHandler = GetComponent<StatusEffectHandler>();
     }
 
     // Update is called once per frame
@@ -169,7 +171,6 @@ public class SwarmBehaviour : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        
 
         transform.position = fusionLocation;
         stateUpdate = null;
