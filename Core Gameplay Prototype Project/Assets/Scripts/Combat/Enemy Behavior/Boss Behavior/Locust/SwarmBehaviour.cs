@@ -33,8 +33,8 @@ public class SwarmBehaviour : MonoBehaviour
     const float returnTime = 2f;
     private float swarmDirection = 1f;
     private Vector3 originalPosition;
-    private IEnumerator flickerCoroutine;
-    private IEnumerator attackFlag;
+    private Coroutine flickerCoroutine;
+    private Coroutine attackCoroutine;
     #endregion
     public static event Action onFusionComplete; 
     
@@ -53,7 +53,6 @@ public class SwarmBehaviour : MonoBehaviour
         if(stateUpdate != null){
             stateUpdate();
         }
-        
     }
 
     void OnTriggerEnter2D(Collider2D other){
@@ -88,18 +87,16 @@ public class SwarmBehaviour : MonoBehaviour
         if(swarmSequenceStarted || fusionSequenceStarted){
             return;
         }
-        StartCoroutine(SwarmAttackSequence());
+        attackCoroutine = StartCoroutine(SwarmAttackSequence());
     }
+
     public void TryFusion(){
         if(fusionSequenceStarted){
             return;
         }
-        attackFlag = FusionSequence();
         StartCoroutine(FusionSequence());
     }
-
     #endregion
-
     
     #region "coroutines"
 
@@ -115,8 +112,7 @@ public class SwarmBehaviour : MonoBehaviour
         // attack till swarm goes out of bound
         isVulnerable = false;
         stateUpdate = Attack;
-        flickerCoroutine = AttackSequenceIndicator();
-        StartCoroutine(flickerCoroutine);
+        flickerCoroutine = StartCoroutine(AttackSequenceIndicator());
         while (Mathf.Abs(transform.position.y) < CombatStageManager.Instance.VerticalUpperBound && 
             Mathf.Abs(transform.position.x) < CombatStageManager.Instance.HorizontalUpperBound)
         {
@@ -147,6 +143,7 @@ public class SwarmBehaviour : MonoBehaviour
         isVulnerable = true;
         flickerCoroutine = null;
     }
+
     IEnumerator AttackSequenceIndicator(){
         float step = 0;
         float stepTime = 0.4f;
@@ -157,18 +154,15 @@ public class SwarmBehaviour : MonoBehaviour
         }
     }
 
-
     IEnumerator FusionSequence(){
-        StopCoroutine(attackFlag);
+        StopCoroutine(attackCoroutine);
         stateUpdate = null;
         fusionSequenceStarted = true;
         isVulnerable = false;
         boxCollider.enabled = false;
         stateUpdate = TrackGiantSpawnPoint;
-        flickerCoroutine = AttackSequenceIndicator();
-        StartCoroutine(flickerCoroutine);
+        flickerCoroutine = StartCoroutine(AttackSequenceIndicator());
         yield return new WaitForSeconds(2);
-        
         
         stateUpdate = Attack;
         while (Vector2.Distance(transform.position, new Vector2(0, 2)) > 0.1f)
@@ -179,8 +173,7 @@ public class SwarmBehaviour : MonoBehaviour
 
         transform.position = fusionLocation;
         stateUpdate = null;
-        // yield return new WaitForSeconds(4);
-         
+        // yield return new WaitForSeconds(4);         
         
         // gameObject.SetActive(false);
         onFusionComplete.Invoke();
@@ -199,6 +192,7 @@ public class SwarmBehaviour : MonoBehaviour
         Vector3 giantSpawnPoint = new Vector3(0,2,0);
         LookAtTarget(giantSpawnPoint); 
     }
+
     void LookAtTarget(Vector3 target)
     {
         
@@ -206,9 +200,7 @@ public class SwarmBehaviour : MonoBehaviour
         float angleRadians = Mathf.Atan2(direction.y, direction.x);
         float angleDegrees = angleRadians * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleDegrees));
-
     }
-
 
     void Attack(){
         transform.Translate(Vector2.right * attackMoveSpeed * Time.deltaTime * swarmDirection);
@@ -223,11 +215,8 @@ public class SwarmBehaviour : MonoBehaviour
         alreadyHitPlayer = false;
     }
 
-    
-
     void ResetOpacity(){
         spriteRenderer.color = new Color(1, 1, 1, 1);
-
     }
 
     #endregion
